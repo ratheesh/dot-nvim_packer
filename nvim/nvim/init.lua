@@ -313,29 +313,6 @@ require("packer").startup({ function(use)
 		"norcalli/nvim-colorizer.lua",
 		config = function() require("colorizer").setup({ "*" }, { names = false }) end,
 	})
-	use({
-		"~/dev/nnn.nvim",
-		config = function()
-			local nnn = require("nnn")
-			nnn.setup({
-				explorer = { cmd = "nnn -Go", session = "shared", side = "topleft", tabs = true },
-				picker = { cmd = "tmux new-session nnn -GPp", style = { border = "rounded" } },
-				replace_netrw = "picker",
-				windownav = { left = "<C-h>", right = "<C-l>" },
-				auto_open = { setup = "picker", tabpage = "explorer", empty = true },
-				auto_close = true,
-				mappings = {
-					{ "<C-t>", nnn.builtin.open_in_tab },      -- open file(s) in tab
-					{ "<C-s>", nnn.builtin.open_in_split },    -- open file(s) in split
-					{ "<C-v>", nnn.builtin.open_in_vsplit },   -- open file(s) in vertical split
-					{ "<C-y>", nnn.builtin.copy_to_clipboard },-- copy file(s) to clipboard
-					{ "<C-w>", nnn.builtin.cd_to_path },       -- cd to file directory
-					{ "<C-p>", nnn.builtin.open_in_preview },  -- open file in preview split keeping nnn focused
-					{ "<C-e>", nnn.builtin.populate_cmdline }, -- populate cmdline (:) with file(s)
-				},
-			})
-		end,
-	})
 	use("wbthomason/packer.nvim")
 	use({
 		"SmiteshP/nvim-gps",
@@ -515,12 +492,8 @@ require("packer").startup({ function(use)
 		config = function() require("fidget").setup() end
 	})
 	use({ "RRethy/vim-illuminate", after = "fidget.nvim" })
-	use({
-		"~/dev/stabilize.nvim",
-		after = "vim-illuminate",
-		config = function() require("stabilize").setup({ forcemark = "f", nested = "QuickFixCmdPost,DiagnosticChanged *" }) end,
-	})
-	use({ "nvim-treesitter/playground", after = "stabilize.nvim" })
+	-- use({ "nvim-treesitter/playground", after = "stabilize.nvim" })
+	use({ "nvim-treesitter/playground" })
 	use({
 		"rcarriga/nvim-notify",
 		after = "playground",
