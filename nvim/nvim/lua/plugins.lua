@@ -27,7 +27,7 @@ require("packer").startup({ function(use)
 				},
 				highlights = {
 					background = { guifg = colors.grey_fg, guibg = colors.black2 },
-					buffer_selected = { guifg = colors.white, guibg = colors.black},
+					buffer_selected = { guifg = colors.white, guibg = colors.black },
 					buffer_visible = { guifg = colors.light_grey, guibg = colors.black2 },
 					error = { guifg = colors.light_grey, guibg = colors.black2 },
 					error_diagnostic = { guifg = colors.light_grey, guibg = colors.black2 },
@@ -202,6 +202,7 @@ require("packer").startup({ function(use)
 			local capabilities = vim.lsp.protocol.make_client_capabilities()
 			capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 			-- capabilities.offsetEncoding = { "utf-16" }
+			lspconfig.vimls.setup({ on_attach = on_attach, capabilities = capabilities })
 			lspconfig.bashls.setup({ on_attach = on_attach, capabilities = capabilities })
 			-- lspconfig.clangd.setup({ on_attach = on_attach, capabilities = capabilities })
 			lspconfig.ccls.setup({
@@ -312,7 +313,16 @@ require("packer").startup({ function(use)
 		"williamboman/nvim-lsp-installer",
 		after = "nvim-lspconfig",
 		config = function()
-			require("nvim-lsp-installer").setup({})
+			require("nvim-lsp-installer").setup({
+				automatic_installation = true,
+				ui = {
+					icons = {
+						server_installed = "✓",
+						server_pending = "➜",
+						server_uninstalled = "✗"
+					}
+				}
+			})
 		end
 	})
 	use({
@@ -425,8 +435,8 @@ require("packer").startup({ function(use)
 					end, { "i", "c" })
 				}
 			})
-			cmp.setup.cmdline('/', { sources = { { name = 'buffer' } } })
-			cmp.setup.cmdline(':', { sources = cmp.config.sources({ { name = 'path' } }, { { name = 'cmdline' } }) })
+			-- cmp.setup.cmdline('/', { sources = { { name = 'buffer' } } })
+			-- cmp.setup.cmdline(':', { sources = cmp.config.sources({ { name = 'path' } }, { { name = 'cmdline' } }) })
 		end,
 	})
 	use({
@@ -486,7 +496,7 @@ require("packer").startup({ function(use)
 				post_hook = nil,
 			})
 		end
-		})
+	})
 	use({ "tweekmonster/startuptime.vim", cmd = "StartupTime" })
 	use({
 		"Yggdroot/LeaderF",
@@ -504,29 +514,158 @@ require("packer").startup({ function(use)
 			vim.g.Lf_PopupShowBorder       = 1
 			vim.g.Lf_PopupBorders          = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" }
 			vim.g.Lf_ShowRelativePath      = 0
-			vim.g.Lf_StlSeparator          = { left="", right="", font="" }
+			vim.g.Lf_StlSeparator          = { left = "", right = "", font = "" }
 		end
 	})
 
 	if vim.g.is_linux then
 		use({ "ojroques/vim-oscyank", cmd = { 'OSCYank', 'OSCYankReg' } })
 	end
+	use({
+		'romgrk/nvim-treesitter-context',
+		after = { 'nvim-treesitter' },
+		config = function()
+			require('treesitter-context').setup({
+				enable = true,
+				throttle = true,
+			})
+		end
+	})
 
+	use({
+		"mhinz/vim-startify",
+		config = function()
+			vim.g.startify_files_number = 5
+			vim.g.startify_change_to_vcs_root = 1
+			vim.g.startify_lists = {
+				{ type = 'files', header = { '   Files' } },
+				{ type = 'dir', header = { '   MRU ' } },
+				{ type = 'sessions', header = { '   Sessions' } },
+				{ type = 'bookmarks', header = { '   Bookmarks' } },
+				{ type = 'commands', header = { '   Commands' } },
+			}
+			vim.g.startify_bookmarks = {
+				{ c = '$HOME/.vim/vimrc' },
+				{ g = '$HOME/.gitconfig' },
+				{ s = '$HOME/.screenrc' },
+				{ t = '$HOME/.tmux.conf' },
+				{ z = '$HOME/.zshrc' },
+			}
+		end
+	})
 	-- The missing auto-completion for cmdline!
 	use({
 		"gelguy/wilder.nvim",
-		opt = true,
+		opt = false,
 		config = function()
 			local wilder = require('wilder')
 			wilder.setup({ modes = { ':', '/', '?' } })
 			wilder.set_option('pipeline', {
+				wilder.debounce(100),
 				wilder.branch(
-					wilder.cmdline_pipeline(),
-					wilder.search_pipeline()
+					{
+						wilder.check(function(_, x) return x == '' end),
+						wilder.history(100),
+					},
+					wilder.python_file_finder_pipeline({
+						file_command = function(_, arg)
+							if string.find(arg, '.') ~= nil then
+								return { 'fd', '-tf', '-H' }
+							else
+								return { 'fd', '-tf' }
+							end
+						end,
+						dir_command = { 'fd', '-td' },
+						filters = { 'cpsm_filter' },
+					}),
+					wilder.substitute_pipeline({
+						pipeline = wilder.python_search_pipeline({
+							skip_cmdtype_check = 1,
+							pattern = wilder.python_fuzzy_pattern({
+								start_at_boundary = 0,
+							}),
+						}),
+					}),
+					wilder.cmdline_pipeline({
+						fuzzy = 2,
+						-- fuzzy_filter = wilder.lua_fzy_filter(),
+					}),
+					wilder.search_pipeline({
+						pattern = wilder.python_fuzzy_pattern({
+							start_at_boundary = 0,
+						}),
+						-- pattern = 'fuzzy',
+					})
 				),
 			})
-			wilder.set_option('renderer', wilder.wildmenu_renderer({})
+			wilder.set_option('renderer', wilder.wildmenu_renderer({
+				highlighter = wilder.basic_highlighter(),
+				-- highlighter = highlighters,
+				separator = ' · ',
+				left = { 'Wilder', wilder.wildmenu_spinner(), ' ' },
+				right = { 'Idx', wilder.wildmenu_index() },
+			})
 			)
+		end
+	})
+	use({ 'anuvyklack/hydra.nvim',
+		requires = 'anuvyklack/keymap-layer.nvim',
+		config = function()
+			local Hydra = require('hydra')
+			local gitsigns = require('gitsigns')
+			local hint = [[
+		_j_: next hunk   _s_: stage hunk        _d_: show deleted   _b_: blame line				^
+		_k_: prev hunk   _u_: undo stage hunk   _p_: preview hunk   _B_: blame show full  ^
+		^ ^              _S_: stage buffer      ^ ^                 _/_: show base file   ^
+		^
+		^ ^              _q_/<Esc>: exit
+		]]
+			Hydra({
+				hint = hint,
+				config = {
+					color = 'pink',
+					invoke_on_body = true,
+					hint = {
+						position = 'bottom',
+						border = 'rounded'
+					},
+					on_enter = function()
+						vim.bo.modifiable = false
+						gitsigns.toggle_signs(true)
+						gitsigns.toggle_linehl(true)
+					end,
+					on_exit = function()
+						gitsigns.toggle_signs(false)
+						gitsigns.toggle_linehl(false)
+						gitsigns.toggle_deleted(false)
+						vim.cmd 'echo' -- clear the echo area
+					end
+				},
+				mode = { 'n', 'x' },
+				body = '<leader>g',
+				heads = {
+					{ 'j', function()
+						if vim.wo.diff then return ']c' end
+						vim.schedule(function() gitsigns.next_hunk() end)
+						return '<Ignore>'
+					end, { expr = true } },
+					{ 'k', function()
+						if vim.wo.diff then return '[c' end
+						vim.schedule(function() gitsigns.prev_hunk() end)
+						return '<Ignore>'
+					end, { expr = true } },
+					{ 's', ':Gitsigns stage_hunk<CR>', { silent = true } },
+					{ 'u', gitsigns.undo_stage_hunk },
+					{ 'S', gitsigns.stage_buffer },
+					{ 'p', gitsigns.preview_hunk },
+					{ 'd', gitsigns.toggle_deleted, { nowait = true } },
+					{ 'b', gitsigns.blame_line },
+					{ 'B', function() gitsigns.blame_line { full = true } end },
+					{ '/', gitsigns.show, { exit = true } }, -- show the base of the file
+					{ '<Esc>', nil, { exit = true, nowait = true } },
+					{ 'q', nil, { exit = true, nowait = true } },
+				}
+			})
 		end
 	})
 	use({ "tpope/vim-surround", event = "VimEnter" })
@@ -534,7 +673,7 @@ require("packer").startup({ function(use)
 	use({ "tpope/vim-repeat", event = "VimEnter" })
 	use({ "jeetsukumaran/vim-pythonsense", ft = { "python" } })
 	use({ "machakann/vim-swap", event = "VimEnter" })
-	use({"ojroques/vim-oscyank", cmd = {'OSCYank', 'OSCYankReg'}})
+	use({ "ojroques/vim-oscyank", cmd = { 'OSCYank', 'OSCYankReg' } })
 	-- use ({
 	-- 	'goolord/alpha-nvim',
 	-- 	requires = { 'kyazdani42/nvim-web-devicons' },
@@ -563,7 +702,7 @@ end,
 
 local status, _ = pcall(require, 'packer_compiled')
 if not status then
-  vim.notify("Error requiring packer_compiled.lua: run PackerSync to fix!")
+	vim.notify("Error requiring packer_compiled.lua: run PackerSync to fix!")
 end
 
 local notify = vim.notify

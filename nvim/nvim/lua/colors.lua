@@ -2,10 +2,10 @@
 --
 
 _G.colors = {
-	red  = "#BF616A", teal   = "#97B7D7", one_bg  = "#373D49", lightbg   = "#3B4252", blue         = "#81A1C1",
-	cyan = "#5E81AC", black  = "#1E2430", orange  = "#D08770", one_bg2   = "#434C5E", foreground   = "#EEEEEE",
-	grey = "#4B515D", green  = "#A3BE8C", purple  = "#8FBCBB", one_bg3   = "#4C566A", light_grey   = "#646A76",
-	line = "#3A404C", white  = "#D8DEE9", yellow  = "#EBCB8B", lightbg2  = "#393F4B", dark_purple  = "#B48EAD",
+	red = "#BF616A", teal = "#97B7D7", one_bg = "#373D49", lightbg = "#3B4252", blue = "#81A1C1",
+	cyan = "#5E81AC", black = "#1E2430", orange = "#D08770", one_bg2 = "#434C5E", foreground = "#EEEEEE",
+	grey = "#4B515D", green = "#A3BE8C", purple = "#8FBCBB", one_bg3 = "#4C566A", light_grey = "#646A76",
+	line = "#3A404C", white = "#D8DEE9", yellow = "#EBCB8B", lightbg2 = "#393F4B", dark_purple = "#B48EAD",
 	pink = "#D57780", black2 = "#343A46", grey_fg = "#606672", baby_pink = "#DE878F", darker_black = "#2A303C",
 }
 
@@ -57,7 +57,7 @@ hl(0, "Title", { fg = colors.blue })
 hl(0, "Conceal", { fg = colors.blue, bg = colors.black })
 hl(0, "Cursor", { fg = colors.black, bg = colors.white })
 hl(0, "NonText", { fg = colors.one_bg3 })
-hl(0, "LineNr", { fg = colors.grey })
+hl(0, "LineNr", { fg = "#a0a0a0", bg = "#343848" })
 hl(0, "SignColumn", { fg = colors.one_bg3 })
 hl(0, "StatusLineNC", { fg = colors.one_bg3, underline = true })
 hl(0, "StatusLine", { fg = colors.one_bg2, underline = true })
@@ -65,7 +65,7 @@ hl(0, "VertSplit", { fg = colors.one_bg2 })
 hl(0, "ColorColumn", { bg = colors.lightbg })
 hl(0, "CursorColumn", { bg = colors.lightbg })
 hl(0, "CursorLine", { bg = colors.lightbg })
-hl(0, "CursorLinenr", { fg = colors.white, bg = colors.black })
+hl(0, "CursorLineNr", { fg = "#ffffff", bg = "#9f268f" })
 hl(0, "QuickFixLine", { bg = colors.lightbg })
 hl(0, "Pmenu", { fg = colors.one_bg, bg = colors.black2 })
 hl(0, "PmenuSbar", { fg = colors.one_bg2 })
@@ -185,4 +185,7 @@ hl(0, "NotifyERRORBorder", { fg = colors.red })
 hl(0, "NotifyERRORTitle", { fg = colors.red })
 hl(0, "NotifyERRORIcon", { fg = colors.red })
 hl(0, "WhichKeyValue", { fg = colors.purple })
--- End of File 
+
+hl(0, "TreesitterContext", { bg = "#343848" })
+
+-- End of File
