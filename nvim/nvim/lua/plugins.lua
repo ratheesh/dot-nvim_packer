@@ -1,3 +1,4 @@
+-- License: MIT
 -- plugins
 --
 local fn = vim.fn
@@ -9,44 +10,13 @@ require("packer").startup({ function(use)
 	use({
 		"windwp/windline.nvim",
 		config = function()
-			require("windline_init")
+			require("plugins.windline")
 		end,
 	})
-	use({ "junegunn/fzf.vim" })
 	use({
 		"akinsho/bufferline.nvim",
 		config = function()
-			require("bufferline").setup({
-				options = {
-					-- separator_style = "thin",
-					diagnostics = "nvim_lsp",
-					custom_filter = function(buf)
-						local ignored = { "dap-repl" }
-						if not vim.tbl_contains(ignored, vim.api.nvim_buf_get_option(buf, "filetype")) then return true end
-					end,
-				},
-				highlights = {
-					background = { guifg = colors.grey_fg, guibg = colors.black2 },
-					buffer_selected = { guifg = colors.white, guibg = colors.black },
-					buffer_visible = { guifg = colors.light_grey, guibg = colors.black2 },
-					error = { guifg = colors.light_grey, guibg = colors.black2 },
-					error_diagnostic = { guifg = colors.light_grey, guibg = colors.black2 },
-					close_button = { guifg = colors.light_grey, guibg = colors.black2 },
-					close_button_visible = { guifg = colors.light_grey, guibg = colors.black2 },
-					close_button_selected = { guifg = colors.red, guibg = colors.black },
-					fill = { guifg = colors.grey_fg, guibg = colors.black2 },
-					indicator_selected = { guifg = colors.black, guibg = colors.black },
-					modified = { guifg = colors.red, guibg = colors.black2 },
-					modified_visible = { guifg = colors.red, guibg = colors.black2 },
-					modified_selected = { guifg = colors.green, guibg = colors.black },
-					separator = { guifg = colors.black2, guibg = colors.black2 },
-					separator_visible = { guifg = colors.black2, guibg = colors.black2 },
-					separator_selected = { guifg = colors.black2, guibg = colors.black2 },
-					tab = { guifg = colors.light_grey, guibg = colors.one_bg3 },
-					tab_selected = { guifg = colors.black2, guibg = colors.blue },
-					tab_close = { guifg = colors.red, guibg = colors.black },
-				},
-			})
+			require("plugins.bufferline")
 		end,
 	})
 	use("nvim-lua/plenary.nvim")
@@ -57,14 +27,7 @@ require("packer").startup({ function(use)
 	use({
 		"nvim-treesitter/nvim-treesitter",
 		config = function()
-			require("nvim-treesitter.configs").setup({
-				highlight = { enable = true },
-				ensure_installed = {
-					"bash", "c", "cmake", "cpp", "css", "dockerfile", "go", "html", "java",
-					"javascript", "json", "lua", "perl", "python", "r", "regex", "toml", "vim",
-					"yaml",
-				},
-			})
+			require("plugins.treesitter")
 		end,
 	})
 	use({
@@ -84,6 +47,16 @@ require("packer").startup({ function(use)
 		config = function()
 			require("virt-column").setup({
 				char = "│"
+			})
+		end
+	})
+	use({
+		"ethanholz/nvim-lastplace",
+		config = function()
+			require 'nvim-lastplace'.setup({
+				lastplace_ignore_buftype = { "quickfix", "nofile", "help" },
+				lastplace_ignore_filetype = { "gitcommit", "gitrebase", "svn", "hgcommit" },
+				lastplace_open_folds = true
 			})
 		end
 	})
@@ -301,7 +274,7 @@ require("packer").startup({ function(use)
 
 				on_attach = function(client)
 					if client.server_capabilities.documentFormattingProvider then
-						if vim.bo.filetype ~= 'c' or vim.bo.filetype ~= 'lua' then
+						if vim.bo.filetype == 'python' then
 							vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.format()")
 						end
 					end
@@ -353,11 +326,10 @@ require("packer").startup({ function(use)
 		config = function() require("lsp_signature").setup({ doc_lines = 0, hint_enable = false }) end,
 	})
 	use({ "j-hui/fidget.nvim",
-		-- after = "lsp_signature.nvim",
 		config = function()
 			require("fidget").setup({
 				spinner = "dots",
-				done = "✔ ",
+				done = "✔  ",
 				commenced = "Gestartet",
 				completed = "Fertig",
 			})
@@ -371,6 +343,51 @@ require("packer").startup({ function(use)
 		config = function()
 			require("notify").setup({ max_width = 40 })
 			vim.notify = require("notify")
+		end
+	})
+	use({
+		"stevearc/dressing.nvim",
+		config = function() require("dressing").setup() end
+	})
+	use({
+		"gbprod/yanky.nvim",
+		-- after = "dressing",
+		config = function()
+			require("yanky").setup({
+				ring = {
+					history_length = 10,
+					storage = "shada",
+					sync_with_numbered_registers = true,
+				},
+				picker = {
+					-- select = {
+					-- 	action = {
+					-- 		default = actions.put("p"),
+					-- 		i = {
+					-- 			["<c-p>"] = actions.put("p"),
+					-- 			["<c-k>"] = actions.put("P"),
+					-- 			["<c-x>"] = actions.delete(),
+					-- 		},
+					-- 		n = {
+					-- 			p = actions.put("p"),
+					-- 			P = actions.put("P"),
+					-- 			d = actions.delete(),
+					-- 		},
+					-- 	},
+					-- },
+				},
+				system_clipboard = {
+					sync_with_ring = true,
+				},
+				highlight = {
+					on_put = true,
+					on_yank = true,
+					timer = 200,
+				},
+				preserve_cursor_position = {
+					enabled = true,
+				},
+			})
 		end
 	})
 	use({
@@ -522,12 +539,17 @@ require("packer").startup({ function(use)
 		use({ "ojroques/vim-oscyank", cmd = { 'OSCYank', 'OSCYankReg' } })
 	end
 	use({
+		'p00f/nvim-ts-rainbow',
+		after = { 'nvim-treesitter' },
+	})
+	use({
 		'romgrk/nvim-treesitter-context',
 		after = { 'nvim-treesitter' },
 		config = function()
 			require('treesitter-context').setup({
 				enable = true,
 				throttle = true,
+				separator = '━',
 			})
 		end
 	})
@@ -557,115 +579,15 @@ require("packer").startup({ function(use)
 	use({
 		"gelguy/wilder.nvim",
 		opt = false,
+		event = "CmdlineEnter",
 		config = function()
-			local wilder = require('wilder')
-			wilder.setup({ modes = { ':', '/', '?' } })
-			wilder.set_option('pipeline', {
-				wilder.debounce(100),
-				wilder.branch(
-					{
-						wilder.check(function(_, x) return x == '' end),
-						wilder.history(100),
-					},
-					wilder.python_file_finder_pipeline({
-						file_command = function(_, arg)
-							if string.find(arg, '.') ~= nil then
-								return { 'fd', '-tf', '-H' }
-							else
-								return { 'fd', '-tf' }
-							end
-						end,
-						dir_command = { 'fd', '-td' },
-						filters = { 'cpsm_filter' },
-					}),
-					wilder.substitute_pipeline({
-						pipeline = wilder.python_search_pipeline({
-							skip_cmdtype_check = 1,
-							pattern = wilder.python_fuzzy_pattern({
-								start_at_boundary = 0,
-							}),
-						}),
-					}),
-					wilder.cmdline_pipeline({
-						fuzzy = 2,
-						-- fuzzy_filter = wilder.lua_fzy_filter(),
-					}),
-					wilder.search_pipeline({
-						pattern = wilder.python_fuzzy_pattern({
-							start_at_boundary = 0,
-						}),
-						-- pattern = 'fuzzy',
-					})
-				),
-			})
-			wilder.set_option('renderer', wilder.wildmenu_renderer({
-				highlighter = wilder.basic_highlighter(),
-				-- highlighter = highlighters,
-				separator = ' · ',
-				left = { 'Wilder', wilder.wildmenu_spinner(), ' ' },
-				right = { 'Idx', wilder.wildmenu_index() },
-			})
-			)
+			require("plugins.wilder")
 		end
 	})
 	use({ 'anuvyklack/hydra.nvim',
 		requires = 'anuvyklack/keymap-layer.nvim',
 		config = function()
-			local Hydra = require('hydra')
-			local gitsigns = require('gitsigns')
-			local hint = [[
-		_j_: next hunk   _s_: stage hunk        _d_: show deleted   _b_: blame line				^
-		_k_: prev hunk   _u_: undo stage hunk   _p_: preview hunk   _B_: blame show full  ^
-		^ ^              _S_: stage buffer      ^ ^                 _/_: show base file   ^
-		^
-		^ ^              _q_/<Esc>: exit
-		]]
-			Hydra({
-				hint = hint,
-				config = {
-					color = 'pink',
-					invoke_on_body = true,
-					hint = {
-						position = 'bottom',
-						border = 'rounded'
-					},
-					on_enter = function()
-						vim.bo.modifiable = false
-						gitsigns.toggle_signs(true)
-						gitsigns.toggle_linehl(true)
-					end,
-					on_exit = function()
-						gitsigns.toggle_signs(false)
-						gitsigns.toggle_linehl(false)
-						gitsigns.toggle_deleted(false)
-						vim.cmd 'echo' -- clear the echo area
-					end
-				},
-				mode = { 'n', 'x' },
-				body = '<leader>g',
-				heads = {
-					{ 'j', function()
-						if vim.wo.diff then return ']c' end
-						vim.schedule(function() gitsigns.next_hunk() end)
-						return '<Ignore>'
-					end, { expr = true } },
-					{ 'k', function()
-						if vim.wo.diff then return '[c' end
-						vim.schedule(function() gitsigns.prev_hunk() end)
-						return '<Ignore>'
-					end, { expr = true } },
-					{ 's', ':Gitsigns stage_hunk<CR>', { silent = true } },
-					{ 'u', gitsigns.undo_stage_hunk },
-					{ 'S', gitsigns.stage_buffer },
-					{ 'p', gitsigns.preview_hunk },
-					{ 'd', gitsigns.toggle_deleted, { nowait = true } },
-					{ 'b', gitsigns.blame_line },
-					{ 'B', function() gitsigns.blame_line { full = true } end },
-					{ '/', gitsigns.show, { exit = true } }, -- show the base of the file
-					{ '<Esc>', nil, { exit = true, nowait = true } },
-					{ 'q', nil, { exit = true, nowait = true } },
-				}
-			})
+			require("plugins.hydra")
 		end
 	})
 	use({ "tpope/vim-surround", event = "VimEnter" })
@@ -674,13 +596,6 @@ require("packer").startup({ function(use)
 	use({ "jeetsukumaran/vim-pythonsense", ft = { "python" } })
 	use({ "machakann/vim-swap", event = "VimEnter" })
 	use({ "ojroques/vim-oscyank", cmd = { 'OSCYank', 'OSCYankReg' } })
-	-- use ({
-	-- 	'goolord/alpha-nvim',
-	-- 	requires = { 'kyazdani42/nvim-web-devicons' },
-	-- 	config = function ()
-	-- 		require'alpha'.setup(require'alpha.themes.startify'.config)
-	-- 	end
-	-- })
 	use({
 		"michaelb/sniprun",
 		run = "bash ./install.sh",

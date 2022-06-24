@@ -28,16 +28,4 @@ function _G.vimgrepprompt()
 	end
 end
 
--- vim.schedule(function()
--- 	local home = os.getenv("HOME")
--- 	local shada = home.."/.local/state/nvim/shada/main.shada"
--- 	vim.opt.shadafile = shada
--- 	if vim.loop.fs_stat(shada) then
--- 		vim.cmd("rshada")
--- 	end
--- 	local shortcuts = home..".config/nvim/shortcuts.vim"
--- 	if vim.loop.fs_stat(shortcuts) then
--- 		vim.cmd("source "..shortcuts)
--- 	end
--- end)
 -- End of File

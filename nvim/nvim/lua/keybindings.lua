@@ -61,4 +61,15 @@ map("n", "gR", "<cmd>TroubleToggle lsp_references<CR>")
 map("n", "<C-A-j>", "<cmd>lua require('trouble').next({skip_groups = true, jump = true})<CR>")
 map("n", "<C-A-k>", "<cmd>lua require('trouble').previous({skip_groups = true, jump = true})<CR>")
 
+-- bufferline
+map("n", "<Leader>1", "<Cmd>BufferLineGoToBuffer 1<CR>")
+map("n", "<Leader>2", "<Cmd>BufferLineGoToBuffer 2<CR>")
+map("n", "<Leader>3", "<Cmd>BufferLineGoToBuffer 3<CR>")
+map("n", "<Leader>4", "<Cmd>BufferLineGoToBuffer 4<CR>")
+map("n", "<Leader>5", "<Cmd>BufferLineGoToBuffer 5<CR>")
+map("n", "<Leader>6", "<Cmd>BufferLineGoToBuffer 6<CR>")
+map("n", "<Leader>7", "<Cmd>BufferLineGoToBuffer 7<CR>")
+map("n", "<Leader>8", "<Cmd>BufferLineGoToBuffer 8<CR>")
+map("n", "<Leader>9", "<Cmd>BufferLineGoToBuffer 9<CR>")
+
 -- End of File
