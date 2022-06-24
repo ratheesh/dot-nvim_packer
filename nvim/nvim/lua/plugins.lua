@@ -597,7 +597,13 @@ require("packer").startup({ function(use)
 	use({ "machakann/vim-swap", event = "VimEnter" })
 	use({ "ojroques/vim-oscyank", cmd = { 'OSCYank', 'OSCYankReg' } })
 	use({
-		"michaelb/sniprun",
+		"bootleq/vim-cycle",
+		config = function ()
+			require("plugins.vim-cycle")
+		end
+	})
+	use({
+		"micelb/sniprun",
 		run = "bash ./install.sh",
 		cmd = { "SnipRun", "SnipInfo" }
 	})
