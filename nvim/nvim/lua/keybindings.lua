@@ -1,4 +1,6 @@
--- keybindings.lua
+-- Copyright (c) 2022 Ratheesh <ratheeshreddy@gmail.com>
+-- Author: Ratheesh S
+-- License: MIT
 
 local function map(mode, lhs, rhs, opts)
 	local options = { noremap = true, silent = true }
@@ -15,6 +17,7 @@ map("n", "<C-l>", "<C-w>l")
 map("n", "<Leader>w", "<cmd>w<CR>")
 map("n", "<Leader>x", "<cmd>q<CR>")
 map("n", "<Leader>;", ":")
+map("x", "<Leader>;", ":")
 map("n", "<BS>", "<cmd>nohlsearch<CR>")
 map("n", "<Leader><BS>", "<C-V>")
 map("n", "<Leader><Space>", "V")
@@ -61,6 +64,12 @@ map("n", "gR", "<cmd>TroubleToggle lsp_references<CR>")
 map("n", "<C-A-j>", "<cmd>lua require('trouble').next({skip_groups = true, jump = true})<CR>")
 map("n", "<C-A-k>", "<cmd>lua require('trouble').previous({skip_groups = true, jump = true})<CR>")
 
+map("n", "<F5>", "<cmd>lua require('dap').continue() require('dapui').open()<CR>")
+map("n", "<F6>", "<cmd>lua require('dapui').toggle()<CR>")
+map("n", "<F10>", "<cmd>lua require('dap').step_over()<CR>")
+map("n", "<F11>", "<cmd>lua require('dap').step_into()<CR>")
+map("n", "<F12>", "<cmd>lua require('dap').step_out()<CR>")
+
 -- bufferline
 map("n", "<Leader>1", "<Cmd>BufferLineGoToBuffer 1<CR>")
 map("n", "<Leader>2", "<Cmd>BufferLineGoToBuffer 2<CR>")
@@ -71,5 +80,11 @@ map("n", "<Leader>6", "<Cmd>BufferLineGoToBuffer 6<CR>")
 map("n", "<Leader>7", "<Cmd>BufferLineGoToBuffer 7<CR>")
 map("n", "<Leader>8", "<Cmd>BufferLineGoToBuffer 8<CR>")
 map("n", "<Leader>9", "<Cmd>BufferLineGoToBuffer 9<CR>")
+
+map("n", "ga", "<Plug>(EasyAlign)")
+map("x", "ga", "<Plug>(EasyAlign)")
+
+map('o', 'ih', '<cmd><C-U>Gitsigns select_hunk<CR>')
+map('x', 'ih', '<cmd><C-U>Gitsigns select_hunk<CR>')
 
 -- End of File

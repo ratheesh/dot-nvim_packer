@@ -19,9 +19,9 @@
 -- CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 local windline = require('windline')
-local helper = require('windline.helpers')
-local sep = helper.separators
-local gps = require("nvim-gps")
+local helper   = require('windline.helpers')
+local sep      = helper.separators
+local gps      = require("nvim-gps")
 -- local vim_components = require('windline.components.vim')
 
 local b_components = require('windline.components.basic')
@@ -31,20 +31,20 @@ local lsp_comps = require('windline.components.lsp')
 local git_comps = require('windline.components.git')
 
 local hl_list = {
-  Black    = { 'white', 'black' },
-  White    = { 'black', 'white' },
-  Inactive = { 'InactiveFg', 'InactiveBg' },
-  Active   = { 'ActiveFg', 'ActiveBg' },
+  Black    = { 'white'      , 'black'      },
+  White    = { 'black'      , 'white'      },
+  Inactive = { 'InactiveFg' , 'InactiveBg' },
+  Active   = { 'ActiveFg'   , 'ActiveBg'   },
 
   -- Left Space
   LeftSpace = { 'ActiveFg', 'ActiveBg' },
 
   -- Mode
-  ModeNormal  = {'ModeNormalFg', 'ModeNormalBg', 'bold'},
-  ModeInsert  = {'ModeInsertFg', 'ModeInsertBg', 'bold'},
-  ModeVisual  = {'ModeVisualFg', 'ModeVisualBg', 'bold'},
-  ModeReplace = {'ModeReplaceFg', 'ModeReplaceBg', 'bold'},
-  ModeCommand = {'ModeCommandFg', 'ModeCommandBg', 'bold'},
+  ModeNormal  = {'ModeNormalFg'  , 'ModeNormalBg'  , 'bold' },
+  ModeInsert  = {'ModeInsertFg'  , 'ModeInsertBg'  , 'bold' },
+  ModeVisual  = {'ModeVisualFg'  , 'ModeVisualBg'  , 'bold' },
+  ModeReplace = {'ModeReplaceFg' , 'ModeReplaceBg' , 'bold' },
+  ModeCommand = {'ModeCommandFg' , 'ModeCommandBg' , 'bold' },
 
   -- File
   File      = { 'FileNameBg', 'ActiveBg', 'italic' },
@@ -106,21 +106,21 @@ basic.mode_rightsep = {
   hl_colors = {
     default  = {'FileNameFg', 'FileNameBg'},
     sep_left = {'ProjectNameBg', 'FileNameBg'},
-    FileNormalAfter     = { 'FileNameBg', 'ModeNormalBg' },
-    FileInsertAfter     = { 'FileNameBg', 'ModeInsertBg' },
-    FileVisualAfter     = { 'FileNameBg', 'ModeVisualBg' },
-    FileReplaceAfter    = { 'FileNameBg', 'ModeReplaceBg' },
-    FileCommandAfter    = { 'FileNameBg', 'ModeCommandBg' },
-    PasteNormalAfter    = { 'PasteModeBg', 'ModeNormalBg' },
-    PasteInsertAfter    = { 'PasteModeBg', 'ModeInsertBg' },
-    PasteVisualAfter    = { 'PasteModeBg', 'ModeVisualBg' },
-    PasteReplaceAfter   = { 'PasteModeBg', 'ModeReplaceBg' },
-    PasteCommandAfter   = { 'PasteModeBg', 'ModeCommandBg' },
-    ProjectNormalAfter  = { 'ProjectNameBg', 'ModeNormalBg' },
-    ProjectInsertAfter  = { 'ProjectNameBg', 'ModeInsertBg' },
-    ProjectVisualAfter  = { 'ProjectNameBg', 'ModeVisualBg' },
-    ProjectReplaceAfter = { 'ProjectNameBg', 'ModeReplaceBg' },
-    ProjectCommandAfter = { 'ProjectNameBg', 'ModeCommandBg' },
+    FileNormalAfter     = { 'FileNameBg'    , 'ModeNormalBg'  },
+    FileInsertAfter     = { 'FileNameBg'    , 'ModeInsertBg'  },
+    FileVisualAfter     = { 'FileNameBg'    , 'ModeVisualBg'  },
+    FileReplaceAfter    = { 'FileNameBg'    , 'ModeReplaceBg' },
+    FileCommandAfter    = { 'FileNameBg'    , 'ModeCommandBg' },
+    PasteNormalAfter    = { 'PasteModeBg'   , 'ModeNormalBg'  },
+    PasteInsertAfter    = { 'PasteModeBg'   , 'ModeInsertBg'  },
+    PasteVisualAfter    = { 'PasteModeBg'   , 'ModeVisualBg'  },
+    PasteReplaceAfter   = { 'PasteModeBg'   , 'ModeReplaceBg' },
+    PasteCommandAfter   = { 'PasteModeBg'   , 'ModeCommandBg' },
+    ProjectNormalAfter  = { 'ProjectNameBg' , 'ModeNormalBg'  },
+    ProjectInsertAfter  = { 'ProjectNameBg' , 'ModeInsertBg'  },
+    ProjectVisualAfter  = { 'ProjectNameBg' , 'ModeVisualBg'  },
+    ProjectReplaceAfter = { 'ProjectNameBg' , 'ModeReplaceBg' },
+    ProjectCommandAfter = { 'ProjectNameBg' , 'ModeCommandBg' },
   },
   text = function(bufnr)
   if vim.o.paste then
@@ -145,9 +145,9 @@ basic.paste_mode = {
     default             = { 'FileNameFg', 'FileNameBg'},
     sep_right_proj      = hl_list.PasteRightProjSep,
     sep_right_file      = hl_list.PasteRightFileSep,
-    paste_mode          = { 'PasteModeFg', 'PasteModeBg'},
-    FileNormalAfter     = { 'FileNameBg', 'ModeNormalBg' },
-    FileInsertAfter     = { 'FileNameBg', 'ModeInsertBg' },
+    paste_mode          = { 'PasteModeFg' , 'PasteModeBg'  },
+    FileNormalAfter     = { 'FileNameBg'  , 'ModeNormalBg' },
+    FileInsertAfter     = { 'FileNameBg'  , 'ModeInsertBg' },
   },
   text = function(bufnr)
     if vim.o.paste then
@@ -210,9 +210,9 @@ basic.file = {
   name = 'file',
   hl_colors = {
     default      = hl_list.File,
-    FileName     = { 'FileFg', 'FileBg', 'italic' },
+    FileName     = { 'FileFg', 'FileBg', 'italic'  },
     FileModified = { 'FileNameModFg', 'FileNameBg' },
-    FileRO       = { 'FileNameROFg', 'FileNameBg' },
+    FileRO       = { 'FileNameROFg', 'FileNameBg'  },
     FileIcon     = hl_list.FileIcon
   },
   text = function()
@@ -255,7 +255,7 @@ basic.file_rightsep = {
     else
       return {
         { sep.right_rounded, 'default' },
-        { '', 'default' },
+        { ' ', 'default' },
       }
     end
   end,
@@ -271,8 +271,8 @@ basic.git = {
   text = function(bufnr)
     if git_comps.is_git(bufnr) and hide_in_width() then
       return {
-        { ' ', ' ' },
-        { git_comps.diff_added({ format = ' %s', show_zero = false }), 'added' },
+        { '', ' ' },
+        { git_comps.diff_added({ format = ' %s', show_zero = false    }), 'added'   },
         { git_comps.diff_changed({ format = ' 柳%s', show_zero = false }), 'changed' },
         { git_comps.diff_removed({ format = '  %s', show_zero = false }), 'removed' },
       }
@@ -306,13 +306,14 @@ basic.gps_right_sep = {
   name = 'gps',
   width = 20,
   hl_colors = {
-    GpsHL           = {'GpsFg', 'GpsBg'},
-    GpsRightSep     = {'GpsBg', 'ActiveBg'},
+    GpsHL           = {'GpsFg', 'GpsBg'    },
+    GpsRightSep     = {'GpsBg', 'ActiveBg' },
     },
   text = function()
     if gps_info() ~= "" then
       return {
         {  sep.right_rounded, 'GpsRightSep' },
+        { ' ', '' }
       }
     else
       return {
@@ -323,22 +324,21 @@ basic.gps_right_sep = {
 }
 
 -- Right side segment
-
 ---------------------------------------------
 -- local check_lsp_status = lsp_comps.check_lsp({})
 basic.lsp_diagnos = {
   name = 'diagnostic',
   hl_colors = {
-    red    = { 'red', 'ActiveBg' },
-    yellow = { 'yellow', 'ActiveBg' },
-    blue   = { 'blue', 'ActiveBg' },
+    red    = { 'red'    , 'ActiveBg' },
+    yellow = { 'yellow' , 'ActiveBg' },
+    blue   = { 'blue'   , 'ActiveBg' },
   },
   text = function(bufnr)
     if lsp_comps.check_lsp(bufnr) then
       return {
-        { lsp_comps.lsp_hint({ format = '  %s', show_zero = false }), 'blue' },
-        { lsp_comps.lsp_warning({ format = '  %s', show_zero = false}), 'yellow' },
-        { lsp_comps.lsp_error({ format = '  %s', show_zero = false }), 'red' },
+        { lsp_comps.lsp_hint({ format    = ' %s', show_zero = false  }), 'blue'   },
+        { lsp_comps.lsp_warning({ format = '  %s', show_zero = false }), 'yellow' },
+        { lsp_comps.lsp_error({ format   = '  %s', show_zero = false }), 'red'    },
       }
     end
     return ''
@@ -349,7 +349,7 @@ local function lsp_client_names(component)
     local clients = {}
     local icon = component.icon or ' '
 
-    for _, client in pairs(vim.lsp.buf_get_clients()) do
+    for _, client in pairs(vim.lsp.get_active_clients({bufnr = 0})) do
         table.insert(clients, client.name)
     end
 
@@ -383,10 +383,10 @@ basic.lsp_client = {
 basic.fileinfo = {
   name = 'fileinfo',
   hl_colors = {
-    sep_before = { 'FileInfoBg', 'ActiveBg' },
-    sep        = { 'black', 'FileInfoBg' },
-    file_type  = { 'FileInfoFg', 'FileInfoBg' },
-    FileIcon     = hl_list.FileIcon
+    sep_before = { 'FileInfoBg' , 'ActiveBg'   },
+    sep        = { 'black'      , 'FileInfoBg' },
+    file_type  = { 'FileInfoFg' , 'FileInfoBg' },
+    FileIcon   = hl_list.FileIcon
   },
   text = function()
       return {
@@ -424,11 +424,11 @@ basic.indent = {
 
 basic.right = {
   hl_colors = {
-    sep_before = { 'RightBg', 'IndentBg' },
-    sep_after  = { 'RightBg', 'black' },
-    text       = { 'black', 'RightBg' },
-    lineno     = { 'LineNoFg', 'LineNoBg' },
-    sep        = { 'black', 'RightBg', 'bold' },
+    sep_before = { 'RightBg'  , 'IndentBg'         },
+    sep_after  = { 'RightBg'  , 'black'            },
+    text       = { 'black'    , 'RightBg'          },
+    lineno     = { 'LineNoFg' , 'LineNoBg'         },
+    sep        = { 'black'    , 'RightBg' , 'bold' },
   },
   text = function()
     return {
@@ -576,33 +576,33 @@ windline.setup({
 })
 
 -- local windline = require('windline')
-local winbar = {
-  filetypes = { 'winbar' },
-  active = {
-    { ' ' },
-    { '%=' },
-    {
-      function(bufnr)
-        local bufname = vim.api.nvim_buf_get_name(bufnr)
-        local path = vim.fn.fnamemodify(bufname, ':~:.')
-        return path
-      end,
-      { 'red', 'white' },
-    },
-  },
-  inactive = {
-    { ' ', { 'white', 'InactiveBg' } },
-    { '%=' },
-    {
-      function(bufnr)
-        local bufname = vim.api.nvim_buf_get_name(bufnr)
-        local path = vim.fn.fnamemodify(bufname, ':~:.')
-        return path
-      end,
-      { 'white', 'InactiveBg' },
-    },
-  },
-}
+-- local winbar = {
+--   filetypes = { 'winbar' },
+--   active = {
+--     { ' ' },
+--     { '%=' },
+--     {
+--       function(bufnr)
+--         local bufname = vim.api.nvim_buf_get_name(bufnr)
+--         local path = vim.fn.fnamemodify(bufname, ':~:.')
+--         return path
+--       end,
+--       { 'red', 'white' },
+--     },
+--   },
+--   inactive = {
+--     { ' ', { 'white', 'InactiveBg' } },
+--     { '%=' },
+--     {
+--       function(bufnr)
+--         local bufname = vim.api.nvim_buf_get_name(bufnr)
+--         local path = vim.fn.fnamemodify(bufname, ':~:.')
+--         return path
+--       end,
+--       { 'white', 'InactiveBg' },
+--     },
+--   },
+-- }
 
 -- windline.add_status(winbar)
 

@@ -20,12 +20,12 @@ function _G.TroubleQuickFixPost(mode)
 	end, { mode = mode })
 end
 
-function _G.vimgrepprompt()
-	local pattern = fn.input("vimgrep pattern: ")
-	if pattern and pattern ~= "" then
-		local ok = vim.F.npcall(vim.cmd, "vimgrep /"..pattern.."/j %")
-		vim.schedule(function() print(ok and " " or "No results") end)
-	end
-end
+-- function _G.vimgrepprompt()
+-- 	local pattern = fn.input("vimgrep pattern: ")
+-- 	if pattern and pattern ~= "" then
+-- 		local ok = vim.F.npcall(vim.cmd, "vimgrep /"..pattern.."/j %")
+-- 		vim.schedule(function() print(ok and " " or "No results") end)
+-- 	end
+-- end
 
 -- End of File

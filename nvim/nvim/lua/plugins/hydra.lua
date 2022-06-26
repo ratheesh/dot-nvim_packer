@@ -25,7 +25,7 @@
 			local hint = [[
 		_j_: next hunk   _s_: stage hunk        _d_: show deleted   _b_: blame line				^
 		_k_: prev hunk   _u_: undo stage hunk   _p_: preview hunk   _B_: blame show full  ^
-		^ ^              _S_: stage buffer      ^ ^                 _/_: show base file   ^
+		_r_: reset hunk  _S_: stage buffer      ^ ^                 _/_: show base file   ^
 		^
 		^ ^              _q_/<Esc>: exit
 		]]
@@ -63,16 +63,17 @@
 						vim.schedule(function() gitsigns.prev_hunk() end)
 						return '<Ignore>'
 					end, { expr = true } },
-					{ 's', ':Gitsigns stage_hunk<CR>', { silent = true } },
-					{ 'u', gitsigns.undo_stage_hunk },
-					{ 'S', gitsigns.stage_buffer },
-					{ 'p', gitsigns.preview_hunk },
-					{ 'd', gitsigns.toggle_deleted, { nowait = true } },
-					{ 'b', gitsigns.blame_line },
-					{ 'B', function() gitsigns.blame_line { full = true } end },
-					{ '/', gitsigns.show, { exit = true } }, -- show the base of the file
+					{ 's',     '<cmd>Gitsigns stage_hunk<CR>', { silent = true } },
+					{ 'u',     gitsigns.undo_stage_hunk },
+					{ 'S',     gitsigns.stage_buffer },
+					{ 'r',     gitsigns.reset_hunk },
+					{ 'p',     gitsigns.preview_hunk },
+					{ 'd',     gitsigns.toggle_deleted, { nowait = true } },
+					{ 'b',     gitsigns.blame_line },
+					{ 'B',     function() gitsigns.blame_line { full = true } end },
+					{ '/',     gitsigns.show, { exit = true } },
 					{ '<Esc>', nil, { exit = true, nowait = true } },
-					{ 'q', nil, { exit = true, nowait = true } },
+					{ 'q',     nil, { exit = true, nowait = true } },
 				}
 			})
 

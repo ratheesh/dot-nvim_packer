@@ -14,10 +14,10 @@ require("packer").startup({ function(use)
 		end,
 	})
 	use({
-		"akinsho/bufferline.nvim",
-		config = function()
-			require("plugins.bufferline")
-		end,
+	"romgrk/barbar.nvim",
+	config = function ()
+		require("plugins.barbar")
+	end
 	})
 	use("nvim-lua/plenary.nvim")
 	use({
@@ -306,16 +306,34 @@ require("packer").startup({ function(use)
 		end
 	})
 	use({
-		"bellini666/trouble.nvim",
+		-- "bellini666/trouble.nvim",
+		"folke/trouble.nvim",
 		after = "nvim-dd.git",
 		config = function()
 			require("trouble").setup({
-				auto_open = true,
-				auto_close = true,
-				padding = false,
-				height = 5,
-				signs = { error = "", warning = "", hint = "", information = "", other = "", },
+				auto_open    = true,
+				auto_close   = true,
+				padding      = false,
+				height       = 5,
+				signs        = { error = "", warning = "", hint = "", information = "", other = "", },
 				track_cursor = true,
+
+				action_keys = {
+        close          = "q",
+        cancel         = "<esc>",
+        refresh        = "r",
+        jump           = {"<cr>", "<tab>"},
+        jump_close     = {"o"},
+        toggle_mode    = "m",
+        toggle_preview = "P",
+        hover          = "K",
+        preview        = "p",
+        close_folds    = {"zM", "zm"},
+        open_folds     = {"zR", "zr"},
+        toggle_fold    = {"zA", "za"},
+        previous       = "k",
+        next           = "j"
+    },
 			})
 		end,
 	})
@@ -325,7 +343,8 @@ require("packer").startup({ function(use)
 		after = "trouble.nvim",
 		config = function() require("lsp_signature").setup({ doc_lines = 0, hint_enable = false }) end,
 	})
-	use({ "j-hui/fidget.nvim",
+	use({
+		"j-hui/fidget.nvim",
 		config = function()
 			require("fidget").setup({
 				spinner = "dots",
@@ -516,6 +535,85 @@ require("packer").startup({ function(use)
 	})
 	use({ "tweekmonster/startuptime.vim", cmd = "StartupTime" })
 	use({
+		"mfussenegger/nvim-dap",
+		rwants = { "nvim-dap-virtual-text", "DAPInstall.nvim", "nvim-dap-ui", "nvim-dap-python" },
+		requires = {
+			"Pocco81/DAPInstall.nvim",
+			"theHamsta/nvim-dap-virtual-text",
+			"rcarriga/nvim-dap-ui",
+			"mfussenegger/nvim-dap-python",
+		},
+		module = "dap",
+		config = function()
+			local dap = require("dap")
+			dap.configurations.python = { {
+				type = "python",
+				request = "launch",
+				name = "Launch file",
+				program = "${file}",
+				pythonPath = function()
+					return "/usr/bin/python"
+				end
+			}}
+			dap.adapters.lldb = {
+				type = 'executable',
+				command = '/usr/bin/lldb-vscode',
+				name = "lldb"
+			}
+			dap.configurations.c = {
+				{
+					name = "Launch",
+					type = "lldb",
+					request = "launch",
+					program = function() return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file') end,
+					cwd = '${workspaceFolder}',
+					stopOnEntry = false,
+					args = {},
+					runInTerminal = false,
+				},
+				{
+					name = "Attach",
+					type = "lldb",
+					request = "attach",
+					pid = require("dap.utils").pick_process,
+					args = {},
+				},
+			}
+			vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "DiagnosticError", linehl = "", numhl = "" })
+			vim.fn.sign_define("DapBreakpointCondition", { text = "", texthl = "DiagnosticError", linehl = "", numhl = "" })
+			vim.fn.sign_define("DapBreakpointRejected", { text = "", texthl = "DiagnosticError", linehl = "", numhl = "" })
+			vim.fn.sign_define("DapLogPoint", { text = "", texthl = "DiagnosticHint", linehl = "", numhl = "" })
+			vim.fn.sign_define("DapStopped", { text = "", texthl = "DiagnosticInfo", linehl = "", numhl = "" })
+		end
+	})
+	use ({
+		"mfussenegger/nvim-dap-python",
+		requires = "mfussenegger/nvim-dap",
+		config = function ()
+			require('dap-python').setup('/home/ratheesh/.virtualenvs/py-iitm/bin')
+		end
+	})
+	use ({
+		"rcarriga/nvim-dap-ui",
+		config = function()
+			require("dapui").setup({
+				sidebar = {
+					elements = {
+						{ id = "scopes",      size = 0.52 },
+						{ id = "breakpoints", size = 0.16 },
+						{ id = "stacks",      size = 0.16 },
+						{ id = "watches",     size = 0.16 },
+					},
+				}
+			})
+		end,
+		module = "dapui"
+	})
+	use({
+		"theHamsta/nvim-dap-virtual-text",
+		config = function() require("nvim-dap-virtual-text").setup() end
+	})
+	use({
 		"Yggdroot/LeaderF",
 		cmd = "Leaderf",
 		run = ":LeaderfInstallCExtension",
@@ -579,7 +677,7 @@ require("packer").startup({ function(use)
 	use({
 		"gelguy/wilder.nvim",
 		opt = false,
-		event = "CmdlineEnter",
+		-- event = "VimEnter",
 		config = function()
 			require("plugins.wilder")
 		end
@@ -590,22 +688,28 @@ require("packer").startup({ function(use)
 			require("plugins.hydra")
 		end
 	})
+	use({
+		"junegunn/vim-easy-align",
+	})
 	use({ "tpope/vim-surround", event = "VimEnter" })
 	use({ "michaeljsmith/vim-indent-object", event = "VimEnter" })
 	use({ "tpope/vim-repeat", event = "VimEnter" })
-	use({ "jeetsukumaran/vim-pythonsense", ft = { "python" } })
+	use({ "jeetsukumaran/vim-pythonsense", ft = { "python" }})
 	use({ "machakann/vim-swap", event = "VimEnter" })
 	use({ "ojroques/vim-oscyank", cmd = { 'OSCYank', 'OSCYankReg' } })
+	use({
+		"antoyo/vim-licenses",
+		config = function ()
+			vim.g.licenses_copyright_holders_name = 'Ratheesh <ratheeshreddy@gmail.com>'
+			vim.g.licenses_authors_name           = 'Ratheesh S'
+			vim.g.licenses_default_commands       = {'gplv2', 'apache', 'mit'}
+		end
+})
 	use({
 		"bootleq/vim-cycle",
 		config = function ()
 			require("plugins.vim-cycle")
 		end
-	})
-	use({
-		"micelb/sniprun",
-		run = "bash ./install.sh",
-		cmd = { "SnipRun", "SnipInfo" }
 	})
 
 	if Packer_bootstrap then

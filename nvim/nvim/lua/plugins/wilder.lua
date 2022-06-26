@@ -19,7 +19,7 @@ wilder.set_option('pipeline', {
 			end
 		end,
 		dir_command = { 'fd', '-td' },
-		filters = { 'cpsm_filter' },
+		-- filters = { 'cpsm_filter' },
 	}),
 	wilder.substitute_pipeline({
 		pipeline = wilder.python_search_pipeline({
@@ -41,10 +41,22 @@ wilder.set_option('pipeline', {
 })
 wilder.set_option('renderer', wilder.wildmenu_renderer({
 	highlighter = wilder.basic_highlighter(),
-	-- highlighter = highlighters,
-	separator = ' · ',
-	left = { ' Wilder', wilder.wildmenu_spinner(), ' ' },
-	right = { '', 'Idx', wilder.wildmenu_index(), ' ' },
+	highlights = {
+		default         = wilder.make_hl('WilderStatus',         'WildStatus'),
+		accent          = wilder.make_hl('WilderAccent',         'WildAccent'),
+		index           = wilder.make_hl('WilderIndex',          'WildIndex'),
+		mode            = wilder.make_hl('WilderMode',           'WildMode'),
+    selected        = wilder.make_hl('WilderSelected',       'WildSelected'),
+    selected_accent = wilder.make_hl('WilderSelectedAccent', 'WildSelectedAccent'),
+    separator       = wilder.make_hl('WilderSeparator',      'WildSeparator'),
+    left_arrow      = wilder.make_hl('Left',                 'WildSepLeft'),
+    right_arrow     = wilder.make_hl('Right',                'WildSepRight'),
+    left_arrow2     = wilder.make_hl('Left2',                'WildSepLeft2'),
+    right_arrow2    = wilder.make_hl('Right2',               'WildSepRight2'),
+	},
+	separator = ' • ',
+	left  = { 'Wilder ',  wilder.wildmenu_spinner(), ' ' },
+	right = { '',  wilder.wildmenu_index() },
 })
 )
 -- End of File
