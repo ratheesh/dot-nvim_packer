@@ -664,6 +664,22 @@ require("packer").startup({ function(use)
 			})
 		end
 	})
+use ({
+	"windwp/nvim-autopairs",
+	config = function ()
+		require('nvim-autopairs').setup({
+			disable_filetype          = { "TelescopePrompt" , "vim" },
+			ignored_next_char         = string.gsub([[ [%w%%%'%[%"%.] ]],"%s+", ""),
+			enable_moveright          = true,
+			enable_afterquote         = true,  -- add bracket pairs after quote
+			enable_check_bracket_line = true,  --- check bracket in same line
+			check_ts                  = true,
+			map_bs                    = true,
+			map_c_w                   = true,
+			map_c_h                   = true,
+			map_cr                    = false })
+			end
+		})
 
 	use({
 		"mhinz/vim-startify",
