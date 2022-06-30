@@ -30,8 +30,6 @@ map("n", "<A-x>", "<C-x>")
 map("n", "<A-a>", "<C-a>")
 map("n", "<S-t", "<cmd>enew<CR>")
 map("n", "<C-t>b", "<cmd>tabnew<CR>")
-map("n", "<Leader>l", "<cmd>BufferLineCycleNext<CR>")
-map("n", "<Leader>h", "<cmd>BufferLineCyclePrev<CR>")
 
 map("n", "J", "mzJ`z")
 map("n", "k", "(v:count > 5 ? (\"m'\" . v:count1) : \"\") . (v:count || mode(1)[0:1] == \"no\" ? \"\" : \"g\") . \"k\"",
@@ -70,21 +68,27 @@ map("n", "<F10>", "<cmd>lua require('dap').step_over()<CR>")
 map("n", "<F11>", "<cmd>lua require('dap').step_into()<CR>")
 map("n", "<F12>", "<cmd>lua require('dap').step_out()<CR>")
 
--- bufferline
-map("n", "<Leader>1", "<Cmd>BufferLineGoToBuffer 1<CR>")
-map("n", "<Leader>2", "<Cmd>BufferLineGoToBuffer 2<CR>")
-map("n", "<Leader>3", "<Cmd>BufferLineGoToBuffer 3<CR>")
-map("n", "<Leader>4", "<Cmd>BufferLineGoToBuffer 4<CR>")
-map("n", "<Leader>5", "<Cmd>BufferLineGoToBuffer 5<CR>")
-map("n", "<Leader>6", "<Cmd>BufferLineGoToBuffer 6<CR>")
-map("n", "<Leader>7", "<Cmd>BufferLineGoToBuffer 7<CR>")
-map("n", "<Leader>8", "<Cmd>BufferLineGoToBuffer 8<CR>")
-map("n", "<Leader>9", "<Cmd>BufferLineGoToBuffer 9<CR>")
-
 map("n", "ga", "<Plug>(EasyAlign)")
 map("x", "ga", "<Plug>(EasyAlign)")
 
-map('o', 'ih', '<cmd><C-U>Gitsigns select_hunk<CR>')
-map('x', 'ih', '<cmd><C-U>Gitsigns select_hunk<CR>')
+map('o', 'ih', '<cmd>Gitsigns select_hunk<CR>')
+map('x', 'ih', '<cmd>Gitsigns select_hunk<CR>')
+
+-- DAP
+map("n", "<F5>",       "<cmd>lua require('dap').continue() require('dapui').open()<CR>")
+map("n", "<F6>",       "<cmd>lua require('dapui').toggle()<CR>")
+map("n", "<F7>",       "<cmd>lua require('dap').step_over()<CR>")
+map("n", "<F8>",       "<cmd>lua require('dap').step_into()<CR>")
+map("n", "<F9>",       "<cmd>lua require('dap').step_out()<CR>")
+map("n", "<F10>",      "<cmd>lua require('dap').dap.terminate()<CR>")
+map("n", "<leader>dc", "<cmd>lua require('dap').dap.run_to_cursor()<CR>")
+map("n", "<leader>b",  "<cmd>lua require('dap').toggle_breakpoint()<CR>")
+map("n", "<leader>B",  "<cmd>lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>")
+
+-- map("n", "<leader>dl", "<cmd>lua require('dap').run_last()<CR>")
+-- map("n", "<leader>dr", "<cmd>lua require('dap').repl.open()<CR>")
+-- map("n", "<leader>lp", "<cmd>lua require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>")
+-- map("n", "<leader>dl", "<cmd>lua require('dap').run_last()<CR>")
+-- map("n", "<leader>lp", "<cmd>lua require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>")
 
 -- End of File
