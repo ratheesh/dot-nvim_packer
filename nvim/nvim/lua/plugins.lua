@@ -716,7 +716,19 @@ require("packer").startup({ function(use)
 			vim.g.licenses_authors_name           = 'Ratheesh S'
 			vim.g.licenses_default_commands       = {'gplv2', 'apache', 'mit'}
 		end
-})
+	})
+	use ({
+		"metakirby5/codi.vim",
+		config = function ()
+			-- vim.g.codi.virtual_text_prefix = ">>> "
+			-- vim.g.codi.interpreters = {
+			-- 	python= {
+			-- 		bin = 'python',
+			-- 		prompt= '^(>>>|...) '
+			-- 	}
+			-- }
+		end
+	})
 	use({
 		"bootleq/vim-cycle",
 		config = function ()
