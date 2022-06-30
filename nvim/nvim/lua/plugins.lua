@@ -546,6 +546,15 @@ require("packer").startup({ function(use)
 			})
 		end
 	})
+	use({
+		"folke/which-key.nvim",
+		after = "Comment.nvim",
+		config = function()
+			local wk = require("which-key")
+			wk.setup({ icons = { separator = "➡  " } })
+			wk.register({}, {})
+		end,
+	})
 	use({ "tweekmonster/startuptime.vim", cmd = "StartupTime" })
 	use({
 		"mfussenegger/nvim-dap",
