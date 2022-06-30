@@ -2,6 +2,18 @@
 -- plugins
 --
 local fn = vim.fn
+-- local home = os.getenv("HOME")
+local function stat(name, type)
+	local stats = vim.loop.fs_stat(name)
+	return stats and stats.type == type
+end
+
+local install_path = fn.stdpath("data").."/site/pack/packer/start/packer.nvim"
+if not stat(install_path, "directory") then
+	print("Cloning packer...")
+  Packer_bootstrap = fn.system({"git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path})
+end
+
 pcall(require, "impatient")
 pcall(require, "packer_compiled")
 require("packer").startup({ function(use)
