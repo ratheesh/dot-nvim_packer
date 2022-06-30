@@ -569,34 +569,34 @@ require("packer").startup({ function(use)
 				end
 			}}
 			dap.adapters.lldb = {
-				type = 'executable',
+				type    = 'executable',
 				command = '/usr/bin/lldb-vscode',
-				name = "lldb"
+				name    = "lldb"
 			}
 			dap.configurations.c = {
 				{
-					name = "Launch",
-					type = "lldb",
-					request = "launch",
-					program = function() return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file') end,
-					cwd = '${workspaceFolder}',
-					stopOnEntry = false,
-					args = {},
+					name          = "Launch",
+					type          = "lldb",
+					request       = "launch",
+					program       = function() return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file') end,
+					cwd           = '${workspaceFolder}',
+					stopOnEntry   = false,
+					args          = {},
 					runInTerminal = false,
 				},
 				{
-					name = "Attach",
-					type = "lldb",
+					name    = "Attach",
+					type    = "lldb",
 					request = "attach",
-					pid = require("dap.utils").pick_process,
-					args = {},
+					pid     = require("dap.utils").pick_process,
+					args    = {},
 				},
 			}
-			vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "DiagnosticError", linehl = "", numhl = "" })
+			vim.fn.sign_define("DapBreakpoint",          { text = "", texthl = "DiagnosticError", linehl = "", numhl = "" })
 			vim.fn.sign_define("DapBreakpointCondition", { text = "", texthl = "DiagnosticError", linehl = "", numhl = "" })
-			vim.fn.sign_define("DapBreakpointRejected", { text = "", texthl = "DiagnosticError", linehl = "", numhl = "" })
-			vim.fn.sign_define("DapLogPoint", { text = "", texthl = "DiagnosticHint", linehl = "", numhl = "" })
-			vim.fn.sign_define("DapStopped", { text = "", texthl = "DiagnosticInfo", linehl = "", numhl = "" })
+			vim.fn.sign_define("DapBreakpointRejected",  { text = "", texthl = "DiagnosticError", linehl = "", numhl = "" })
+			vim.fn.sign_define("DapLogPoint",            { text = "", texthl = "DiagnosticHint", linehl  = "", numhl = "" })
+			vim.fn.sign_define("DapStopped",             { text = "", texthl = "DiagnosticInfo", linehl  = "", numhl = "" })
 		end
 	})
 	use ({
@@ -687,18 +687,18 @@ use ({
 			vim.g.startify_files_number = 5
 			vim.g.startify_change_to_vcs_root = 1
 			vim.g.startify_lists = {
-				{ type = 'files', header = { '   Files' } },
-				{ type = 'dir', header = { '   MRU ' } },
-				{ type = 'sessions', header = { '   Sessions' } },
-				{ type = 'bookmarks', header = { '   Bookmarks' } },
-				{ type = 'commands', header = { '   Commands' } },
+        { type = 'files',     header = { '   Files'     } },
+        { type = 'dir',       header = { '   MRU '      } },
+        { type = 'sessions',  header = { '   Sessions'  } },
+        { type = 'bookmarks', header = { '   Bookmarks' } },
+        { type = 'commands',  header = { '   Commands'  } },
 			}
 			vim.g.startify_bookmarks = {
 				{ c = '$HOME/.vim/vimrc' },
 				{ g = '$HOME/.gitconfig' },
-				{ s = '$HOME/.screenrc' },
+				{ s = '$HOME/.screenrc'  },
 				{ t = '$HOME/.tmux.conf' },
-				{ z = '$HOME/.zshrc' },
+				{ z = '$HOME/.zshrc'     },
 			}
 		end
 	})
@@ -720,12 +720,12 @@ use ({
 	use({
 		"junegunn/vim-easy-align",
 	})
-	use({ "tpope/vim-surround", event = "VimEnter" })
-	use({ "michaeljsmith/vim-indent-object", event = "VimEnter" })
-	use({ "tpope/vim-repeat", event = "VimEnter" })
-	use({ "jeetsukumaran/vim-pythonsense", ft = { "python" }})
-	use({ "machakann/vim-swap", event = "VimEnter" })
-	use({ "ojroques/vim-oscyank", cmd = { 'OSCYank', 'OSCYankReg' } })
+	use({ "tpope/vim-surround", event = "VimEnter"                 })
+	use({ "michaeljsmith/vim-indent-object", event = "VimEnter"    })
+	use({ "tpope/vim-repeat", event = "VimEnter"                   })
+	use({ "jeetsukumaran/vim-pythonsense", ft = { "python" }       })
+	use({ "machakann/vim-swap", event = "VimEnter"                 })
+	use({ "ojroques/vim-oscyank", cmd = { 'OSCYank', 'OSCYankReg'} })
 	use({
 		"antoyo/vim-licenses",
 		config = function ()
