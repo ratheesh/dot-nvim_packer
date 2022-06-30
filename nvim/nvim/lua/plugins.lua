@@ -27,6 +27,7 @@ require("packer").startup({ function(use)
 	})
 	use({
 	"romgrk/barbar.nvim",
+	requires = {'kyazdani42/nvim-web-devicons'},
 	config = function ()
 		require("plugins.barbar")
 	end
