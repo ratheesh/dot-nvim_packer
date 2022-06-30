@@ -30,21 +30,23 @@ local map = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
 -- Move to previous/next
-map('n', '<Leader>h', '<Cmd>BufferPrevious<CR>', opts)
-map('n', '<Leader>l', '<Cmd>BufferNext<CR>',     opts)
-map('n', '<Leader>1', '<Cmd>BufferGotoBuffer 3<CR>',   opts)
-map('n', '<Leader>2', '<Cmd>BufferGotoBuffer 3<CR>',   opts)
-map('n', '<Leader>3', '<Cmd>BufferGotoBuffer 3<CR>',   opts)
-map('n', '<Leader>4', '<Cmd>BufferGotoBuffer 4<CR>',   opts)
-map('n', '<Leader>5', '<Cmd>BufferGotoBuffer 5<CR>',   opts)
-map('n', '<Leader>6', '<Cmd>BufferGotoBuffer 6<CR>',   opts)
-map('n', '<Leader>7', '<Cmd>BufferGotoBuffer 7<CR>',   opts)
-map('n', '<Leader>8', '<Cmd>BufferGotoBuffer 8<CR>',   opts)
-map('n', '<Leader>9', '<Cmd>BufferGotoBuffer 9<CR>',   opts)
-map('n', '<C-CR>',    '<Cmd>BufferLast<CR>',     opts)
-map('n', '<A-p>',     '<Cmd>BufferPin<CR>',      opts)
-map('n', '<A-d>',     '<Cmd>BufferClose<CR>',    opts)
-map('n', '<C-s>',     '<Cmd>BufferPick<CR>', opts)
+map('n' , '<Leader>h' , '<Cmd>BufferPrevious<CR>'     , opts)
+map('n' , '<Leader>l' , '<Cmd>BufferNext<CR>'         , opts)
+map('n' , '<Leader>1' , '<Cmd>BufferGotoBuffer 3<CR>' , opts)
+map('n' , '<Leader>2' , '<Cmd>BufferGotoBuffer 3<CR>' , opts)
+map('n' , '<Leader>3' , '<Cmd>BufferGotoBuffer 3<CR>' , opts)
+map('n' , '<Leader>4' , '<Cmd>BufferGotoBuffer 4<CR>' , opts)
+map('n' , '<Leader>5' , '<Cmd>BufferGotoBuffer 5<CR>' , opts)
+map('n' , '<Leader>6' , '<Cmd>BufferGotoBuffer 6<CR>' , opts)
+map('n' , '<Leader>7' , '<Cmd>BufferGotoBuffer 7<CR>' , opts)
+map('n' , '<Leader>8' , '<Cmd>BufferGotoBuffer 8<CR>' , opts)
+map('n' , '<Leader>9' , '<Cmd>BufferGotoBuffer 9<CR>' , opts)
+map('n' , '<C-CR>'    , '<Cmd>BufferLast<CR>'         , opts)
+map('n' , '<A-p>'     , '<Cmd>BufferPin<CR>'          , opts)
+map('n' , '<A-d>'     , '<Cmd>BufferClose<CR>'        , opts)
+map('n' , '<C-s>'     , '<Cmd>BufferPick<CR>'         , opts)
+map('n' , '<A->>'     , '<Cmd>BufferMoveNext<CR>'     , opts)
+map('n' , '<A-<>'     , '<Cmd>BufferMovePrevious<CR>' , opts)
 
 
 -- barbar.nvim
