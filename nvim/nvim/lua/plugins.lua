@@ -503,17 +503,17 @@ require("packer").startup({ function(use)
 	use({ "hrsh7th/cmp-buffer", after = "cmp-cmdline" })
 	use({ "hrsh7th/cmp-path", after = "cmp-buffer" })
 	use({ "kdheepak/cmp-latex-symbols", after = "cmp-path" })
-	use({
-		"echasnovski/mini.nvim",
-		after = "cmp-latex-symbols",
-		config = function()
-			require("mini.surround").setup({ search_method = "cover_or_nearest" })
-			require("mini.pairs").setup()
-		end,
-	})
+	-- use({
+	-- 	"echasnovski/mini.nvim",
+	-- 	after = "cmp-latex-symbols",
+	-- 	config = function()
+	-- 		require("mini.surround").setup({ search_method = "cover_or_nearest" })
+	-- 		require("mini.pairs").setup()
+	-- 	end,
+	-- })
 	use({
 		"numToStr/Comment.nvim",
-		after = "mini.nvim",
+		-- after = "mini.nvim",
 		config = function()
 			require("Comment").setup({
 				padding = true,
