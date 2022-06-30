@@ -6,7 +6,10 @@ require("nvim-treesitter.configs").setup({
 		"bash", "c", "cpp", "css", "html", "java", "javascript", "json",
 		"lua","python", "regex", "vim", "yaml",
 	},
-	rainbow = {
+	-- indent    = { enable = true },
+	matchup   = { enable = true },
+	autopairs = { enable = true },
+	rainbow   = {
 		enable         = true,
 		extended_mode  = true,
 		max_file_lines = 1000,
