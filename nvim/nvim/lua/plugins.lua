@@ -549,7 +549,7 @@ require("packer").startup({ function(use)
 	use({ "tweekmonster/startuptime.vim", cmd = "StartupTime" })
 	use({
 		"mfussenegger/nvim-dap",
-		rwants = { "nvim-dap-virtual-text", "DAPInstall.nvim", "nvim-dap-ui", "nvim-dap-python" },
+		wants = { "nvim-dap-virtual-text", "DAPInstall.nvim", "nvim-dap-ui", "nvim-dap-python" },
 		requires = {
 			"Pocco81/DAPInstall.nvim",
 			"theHamsta/nvim-dap-virtual-text",
@@ -559,15 +559,15 @@ require("packer").startup({ function(use)
 		module = "dap",
 		config = function()
 			local dap = require("dap")
-			dap.configurations.python = { {
-				type = "python",
-				request = "launch",
-				name = "Launch file",
-				program = "${file}",
-				pythonPath = function()
-					return "/usr/bin/python"
-				end
-			}}
+			-- dap.configurations.python = { {
+			-- 	type       = "python",
+			-- 	request    = "launch",
+			-- 	name       = "Launch file",
+			-- 	program    = "${file}",
+			-- 	pythonPath = function()
+			-- 		return "/usr/bin/python"
+			-- 	end
+			-- }}
 			dap.adapters.lldb = {
 				type    = 'executable',
 				command = '/usr/bin/lldb-vscode',
@@ -603,22 +603,13 @@ require("packer").startup({ function(use)
 		"mfussenegger/nvim-dap-python",
 		requires = "mfussenegger/nvim-dap",
 		config = function ()
-			require('dap-python').setup('/home/ratheesh/.virtualenvs/py-iitm/bin')
+			require('dap-python').setup('python', {})
 		end
 	})
 	use ({
 		"rcarriga/nvim-dap-ui",
 		config = function()
-			require("dapui").setup({
-				sidebar = {
-					elements = {
-						{ id = "scopes",      size = 0.52 },
-						{ id = "breakpoints", size = 0.16 },
-						{ id = "stacks",      size = 0.16 },
-						{ id = "watches",     size = 0.16 },
-					},
-				}
-			})
+			require("dapui").setup()
 		end,
 		module = "dapui"
 	})
