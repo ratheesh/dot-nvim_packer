@@ -1,6 +1,7 @@
--- License: MIT
+-- Copyright (c) 2022 Ratheesh
 -- plugins
---
+-- License: MIT
+
 local fn = vim.fn
 -- local home = os.getenv("HOME")
 local function stat(name, type)
