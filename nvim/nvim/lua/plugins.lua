@@ -465,11 +465,14 @@ require("packer").startup({ function(use)
 					fields = { 'kind', 'abbr', 'menu' }
 				},
 				mapping = {
-					["<C-d>"] = cmp.mapping.scroll_docs(-4),
-					["<C-f>"] = cmp.mapping.scroll_docs(4),
-					["<C-e>"] = cmp.mapping.abort(),
-					["<CR>"]  = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false }),
-					["<Tab>"] = cmp.mapping(function(fallback)
+					['<C-n>']     = cmp.mapping.select_next_item({ behavior = cmp.types.cmp.SelectBehavior.Insert }),
+					['<C-p>']     = cmp.mapping.select_prev_item({ behavior = cmp.types.cmp.SelectBehavior.Insert }),
+					["<C-d>"]     = cmp.mapping.scroll_docs(-4),
+					["<C-f>"]     = cmp.mapping.scroll_docs(4),
+					['<C-Space>'] = cmp.mapping.complete(),
+					["<C-e>"]     = cmp.mapping.abort(),
+					["<CR>"]      = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false }),
+					["<Tab>"]     = cmp.mapping(function(fallback)
 						if cmp.visible() then cmp.select_next_item()
 						elseif require("luasnip").expand_or_jumpable() then
 							vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "")
@@ -498,12 +501,12 @@ require("packer").startup({ function(use)
 			require("luasnip/loaders/from_vscode").lazy_load()
 		end,
 	})
-	use({ "saadparwaiz1/cmp_luasnip", after = "LuaSnip" })
-	use({ "hrsh7th/cmp-nvim-lua", after = "cmp_luasnip" })
-	use({ "hrsh7th/cmp-cmdline", after = "cmp-nvim-lua" })
-	use({ "hrsh7th/cmp-buffer", after = "cmp-cmdline" })
-	use({ "hrsh7th/cmp-path", after = "cmp-buffer" })
-	use({ "kdheepak/cmp-latex-symbols", after = "cmp-path" })
+	use({ "saadparwaiz1/cmp_luasnip"   , after = "LuaSnip"      })
+	use({ "hrsh7th/cmp-nvim-lua"       , after = "cmp_luasnip"  })
+	use({ "hrsh7th/cmp-cmdline"        , after = "cmp-nvim-lua" })
+	use({ "hrsh7th/cmp-buffer"         , after = "cmp-cmdline"  })
+	use({ "hrsh7th/cmp-path"           , after = "cmp-buffer"   })
+	use({ "kdheepak/cmp-latex-symbols" , after = "cmp-path"     })
 	-- use({
 	-- 	"echasnovski/mini.nvim",
 	-- 	after = "cmp-latex-symbols",
@@ -659,8 +662,8 @@ require("packer").startup({ function(use)
 		after = { 'nvim-treesitter' },
 		config = function()
 			require('treesitter-context').setup({
-				enable = true,
-				throttle = true,
+				enable    = true,
+				throttle  = true,
 				separator = '━',
 			})
 		end
