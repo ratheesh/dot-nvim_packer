@@ -23,9 +23,9 @@
 			local Hydra = require('hydra')
 			local gitsigns = require('gitsigns')
 			local hint = [[
-		_j_: next hunk   _s_: stage hunk        _d_: show deleted   _b_: blame line				^
-		_k_: prev hunk   _u_: undo stage hunk   _p_: preview hunk   _B_: blame show full  ^
-		_r_: reset hunk  _S_: stage buffer      ^ ^                 _/_: show base file   ^
+		_j_: next hunk   _s_: stage hunk        _d_: show deleted   _b_: blame line				^ ^
+		_k_: prev hunk   _u_: undo stage hunk   _p_: preview hunk   _B_: blame show full  ^ ^
+		_R_: reset hunk  _S_: stage buffer      ^ ^                 _/_: show base file   ^ ^
 		^
 		^ ^              _q_/<Esc>: exit
 		]]
@@ -39,7 +39,7 @@
 						border = 'rounded'
 					},
 					on_enter = function()
-						vim.bo.modifiable = false
+						vim.bo.modifiable = true
 						gitsigns.toggle_signs(true)
 						gitsigns.toggle_linehl(true)
 					end,
