@@ -72,5 +72,6 @@ hl(0, "BufferCurrentIndex"      ,{ fg="#e7b898", bg="#383a4c", italic = false, b
 hl(0, "BufferCurrentSign"       ,{ fg="#ec7279", bg="#383a4c", italic = false, bold = false, underline = false })
 hl(0, "BufferVisibleIndex"      ,{ fg="#988C99", bg="#383a4c", italic = false, bold = false, underline = false })
 hl(0, "BufferInactiveIndex"     ,{ fg="#988C99", bg="#383a4c", italic = false, bold = false, underline = false })
+hl(0, "BufferCurrentIcon"       ,{ fg=nil      , bg="#383a4c", italic = false, bold = false, underline = false })
 
 -- End of File
