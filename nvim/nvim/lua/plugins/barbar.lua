@@ -26,27 +26,31 @@ require'bufferline'.setup ({
 	no_name_title           = nil,
 })
 
-local map = vim.api.nvim_set_keymap
-local opts = { noremap = true, silent = true }
+local function map(mode, lhs, rhs, opts)
+	local options = { noremap = true, silent = true }
+	if opts then options = vim.tbl_extend("force", options, opts) end
+	vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+end
 
 -- Move to previous/next
-map('n' , '<Leader>h' , '<Cmd>BufferPrevious<CR>'     , opts)
-map('n' , '<Leader>l' , '<Cmd>BufferNext<CR>'         , opts)
-map('n' , '<Leader>1' , '<Cmd>BufferGotoBuffer 3<CR>' , opts)
-map('n' , '<Leader>2' , '<Cmd>BufferGotoBuffer 3<CR>' , opts)
-map('n' , '<Leader>3' , '<Cmd>BufferGotoBuffer 3<CR>' , opts)
-map('n' , '<Leader>4' , '<Cmd>BufferGotoBuffer 4<CR>' , opts)
-map('n' , '<Leader>5' , '<Cmd>BufferGotoBuffer 5<CR>' , opts)
-map('n' , '<Leader>6' , '<Cmd>BufferGotoBuffer 6<CR>' , opts)
-map('n' , '<Leader>7' , '<Cmd>BufferGotoBuffer 7<CR>' , opts)
-map('n' , '<Leader>8' , '<Cmd>BufferGotoBuffer 8<CR>' , opts)
-map('n' , '<Leader>9' , '<Cmd>BufferGotoBuffer 9<CR>' , opts)
-map('n' , '<C-CR>'    , '<Cmd>BufferLast<CR>'         , opts)
-map('n' , '<A-p>'     , '<Cmd>BufferPin<CR>'          , opts)
-map('n' , '<A-d>'     , '<Cmd>BufferClose<CR>'        , opts)
-map('n' , '<C-s>'     , '<Cmd>BufferPick<CR>'         , opts)
-map('n' , '<A->>'     , '<Cmd>BufferMoveNext<CR>'     , opts)
-map('n' , '<A-<>'     , '<Cmd>BufferMovePrevious<CR>' , opts)
+map('n' , '<Leader>h' , '<Cmd>BufferPrevious<CR>'     )
+map('n' , '<Leader>l' , '<Cmd>BufferNext<CR>'         )
+map('n' , '<Leader>1' , '<Cmd>BufferGoto 1<CR>'       )
+map('n' , '<Leader>2' , '<Cmd>BufferGoto 2<CR>'       )
+map('n' , '<Leader>3' , '<Cmd>BufferGoto 3<CR>'       )
+map('n' , '<Leader>4' , '<Cmd>BufferGoto 4<CR>'       )
+map('n' , '<Leader>5' , '<Cmd>BufferGoto 5<CR>'       )
+map('n' , '<Leader>6' , '<Cmd>BufferGoto 6<CR>'       )
+map('n' , '<Leader>7' , '<Cmd>BufferGoto 7<CR>'       )
+map('n' , '<Leader>8' , '<Cmd>BufferGoto 8<CR>'       )
+map('n' , '<Leader>9' , '<Cmd>BufferGoto 9<CR>'       )
+map('n' , '<Leader>0' , '<Cmd>BufferLast 9<CR>' 		  )
+map('n' , '<C-j>'     , '<Cmd>BufferLast<CR>'         )
+map('n' , '<A-p>'     , '<Cmd>BufferPin<CR>'          )
+map('n' , '<A-d>'     , '<Cmd>BufferClose<CR>'        )
+map('n' , '<C-s>'     , '<Cmd>BufferPick<CR>'         )
+map('n' , '<A->>'     , '<Cmd>BufferMoveNext<CR>'     )
+map('n' , '<A-<>'     , '<Cmd>BufferMovePrevious<CR>' )
 
 
 -- barbar.nvim
