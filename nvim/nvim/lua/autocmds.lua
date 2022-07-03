@@ -14,8 +14,8 @@ vim.api.nvim_create_autocmd("TextYankPost", { group = group,
 
 
 local cursorGrp = vim.api.nvim_create_augroup("cursorGrp", { clear = true })
-vim.api.nvim_create_autocmd( "InsertLeave" , { group = cursorGrp, command = "hi CursorLineNr guifg=#eeeeee guibg=#b16286" })
-vim.api.nvim_create_autocmd( "InsertEnter" , { group = cursorGrp, command = "hi CursorLineNr guifg=#eeeeee guibg=#2AA198" })
+vim.api.nvim_create_autocmd( "InsertLeave" , { group = cursorGrp, command = "hi CursorLineNr guifg=#f0f0f0 guibg=#b16286" })
+vim.api.nvim_create_autocmd( "InsertEnter" , { group = cursorGrp, command = "hi CursorLineNr guifg=#f0f0f0 guibg=#2AA198" })
 
 -- vim.api.nvim_create_autocmd(
 --   { "InsertLeave", "WinEnter" },
