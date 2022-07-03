@@ -238,5 +238,10 @@ hl(0, "WildSepRight2"     ,{ fg="#FCCC82", bg="#1A3A59", italic = false, bold = 
 
 hl(0, "VirtColumn",              { fg = colors.lightbg2, bg = colors.black })
 hl(0, "TreesitterContext",       { bg = "#343848" })
+hl(0, "iCursor" ,{ fg="#ff5555" ,bg="#ff5555" ,italic = false, bold = true, underline = false })
+hl(0, "nCursor" ,{ fg="#e0e0e0" ,bg="#e0e0e0" ,italic = false, bold = true, underline = false })
+hl(0, "vCursor" ,{ fg="#1bb1e7" ,bg="#1bb1e7" ,italic = false, bold = true, underline = false })
+hl(0, "rCursor" ,{ fg="#d65b84" ,bg="#d65b84" ,italic = false, bold = true, underline = false })
+hl(0, "oCursor" ,{ fg="#00ff00" ,bg="#00ff00" ,italic = false, bold = true, underline = false })
 
 -- End of File

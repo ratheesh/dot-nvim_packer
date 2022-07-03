@@ -38,6 +38,7 @@ vim.opt.completeopt    = "menu,menuone,noselect"
 vim.opt.showmode       = false
 vim.opt.confirm        = true
 vim.opt.laststatus     = 3
+vim.opt.guicursor      = "n:block-nCursor-blinkon0,i-ci:ver20-iCursor-blinkon0,v-ve:block-vCursor-blinkon0,o:hor30-oCursor-blinkon0,r-cr:block-rCursor-blinkon0"
 
 vim.g.mapleader                = " "
 vim.g.maplocalleader           = ","
