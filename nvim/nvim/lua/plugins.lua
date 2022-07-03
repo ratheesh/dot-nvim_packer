@@ -239,7 +239,12 @@ require("packer").startup({ function(use)
 					settings = {
 						Lua = {
 							diagnostics = {
-								disable = { "missing-parameter" }
+								disable = {
+									"missing-parameter",
+									"cast-local-type",
+									"param-type-mismatch",
+									"assign-type-mismatch"
+								}
 							}
 						}
 					}
