@@ -361,12 +361,12 @@ require("packer").startup({ function(use)
 			})
 		end,
 	})
-	use({
-		"ray-x/lsp_signature.nvim",
-		opt = false,
-		after = "trouble.nvim",
-		config = function() require("lsp_signature").setup({ doc_lines = 0, hint_enable = false }) end,
-	})
+	-- use({
+	-- 	"ray-x/lsp_signature.nvim",
+	-- 	opt = false,
+	-- 	after = "trouble.nvim",
+	-- 	config = function() require("lsp_signature").setup({ doc_lines = 0, hint_enable = false }) end,
+	-- })
 	use({
 		"j-hui/fidget.nvim",
 		config = function()
