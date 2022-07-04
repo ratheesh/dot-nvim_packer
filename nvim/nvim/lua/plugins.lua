@@ -371,10 +371,12 @@ require("packer").startup({ function(use)
 		"j-hui/fidget.nvim",
 		config = function()
 			require("fidget").setup({
-				spinner = "dots",
-				done = "✔  ",
-				commenced = "Gestartet",
-				completed = "Fertig",
+				text = {
+					spinner   = "dots",
+					done      = "",
+					commenced = "Gestartet",
+					completed = "Fertig",
+				},
 			})
 		end
 	})
