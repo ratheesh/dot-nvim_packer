@@ -20,6 +20,10 @@ pcall(require, "packer_compiled")
 require("packer").startup({ function(use)
 	use("lewis6991/impatient.nvim")
 	use("kyazdani42/nvim-web-devicons")
+	use({ "tpope/vim-repeat"    , event = "VimEnter" })
+	use({"psliwka/vim-smoothie" , event = "VimEnter" })
+	use({"majutsushi/tagbar"    , event = "VimEnter" })
+	use({"sjl/gundo.vim"        , event = "VimEnter" })
 	use({
 		"windwp/windline.nvim",
 		config = function()
