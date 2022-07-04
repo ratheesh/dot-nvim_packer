@@ -1,4 +1,6 @@
--- autocmds
+-- Copyright (c) 2022 Ratheesh <ratheeshreddy@gmail.com>
+-- License: MIT
+-- Autocommands
 
 local group = vim.api.nvim_create_augroup("AutoCommands", { clear = true })
 vim.api.nvim_create_autocmd("Filetype", { pattern = "sh", group = group,

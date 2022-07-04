@@ -1,7 +1,6 @@
+-- Copyright (c) 2022 Ratheesh <ratheeshreddy@gmail.com>
 -- License: MIT
--- Ratheesh
--- Copyright(c) 2022
--- barbar.nvim plugin config
+-- barbar Plugin Configuration
 
 require'bufferline'.setup ({
 	animation               = true,

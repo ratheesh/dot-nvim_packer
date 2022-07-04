@@ -1,5 +1,7 @@
+-- Copyright (c) 2022 Ratheesh <ratheeshreddy@gmail.com>
 -- License: MIT
--- vim-cycle plugin config
+-- vim-cycle Plugin Configuration
+
 local options = { noremap = true, silent = true }
 vim.api.nvim_set_keymap("n", "+", "<Plug>CycleNext", options)
 vim.api.nvim_set_keymap("n", "-", "<Plug>CyclePrev", options)

@@ -1,6 +1,6 @@
--- License: MiT
--- highlighting
---
+-- Copyright (c) 2022 Ratheesh <ratheeshreddy@gmail.com>
+-- License: MIT
+-- Color Configuration
 
 _G.colors = {
 	red = "#BF616A", teal = "#97B7D7", one_bg = "#373D49", lightbg = "#3B4252", blue = "#81A1C1",

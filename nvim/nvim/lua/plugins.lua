@@ -1,6 +1,6 @@
--- Copyright (c) 2022 Ratheesh
--- plugins
+-- Copyright (c) 2022 Ratheesh <ratheeshreddy@gmail.com>
 -- License: MIT
+-- Plugin Configuration
 
 local fn = vim.fn
 -- local home = os.getenv("HOME")

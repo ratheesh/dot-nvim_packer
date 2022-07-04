@@ -1,6 +1,6 @@
 -- Copyright (c) 2022 Ratheesh <ratheeshreddy@gmail.com>
--- Author: Ratheesh S
 -- License: MIT
+-- Keybindings
 
 local function map(mode, lhs, rhs, opts)
 	local options = { noremap = true, silent = true }

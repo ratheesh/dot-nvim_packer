@@ -1,7 +1,6 @@
--- Copyright (c) 2022 Ratheesh
+-- Copyright (c) 2022 Ratheesh <ratheeshreddy@gmail.com>
 -- License: MIT
-
--- Basic ViM settings
+-- Basic Settings
 
 -- vim.opt.shadafile = "NONE"
 vim.opt.shada          = "%,<300,'100,/10,:100,s100,h,f1,n$HOME/.config/nvim/shada.info"

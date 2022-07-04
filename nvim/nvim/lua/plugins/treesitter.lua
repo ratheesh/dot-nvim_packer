@@ -1,5 +1,7 @@
--- License: MiT
--- nvim-treesitter plugin settings
+-- Copyright (c) 2022 Ratheesh <ratheeshreddy@gmail.com>
+-- License: MIT
+-- nvim-treesitter Plugin Configuration
+
 require("nvim-treesitter.configs").setup({
 	highlight = { enable = true },
 	ensure_installed = {

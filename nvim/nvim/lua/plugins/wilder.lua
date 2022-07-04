@@ -1,5 +1,6 @@
+-- Copyright (c) 2022 Ratheesh <ratheeshreddy@gmail.com>
 -- License: MIT
--- wilder.nvim plugin settings
+-- wilder Plugin Configuration
 
 local wilder = require('wilder')
 wilder.setup({ modes = { ':', '/', '?' } })
