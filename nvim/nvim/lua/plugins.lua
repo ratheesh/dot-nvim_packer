@@ -37,6 +37,7 @@ require("packer").startup({ function(use)
 		require("plugins.barbar")
 	end
 	})
+	use({"chentoast/marks.nvim", config = function() require('marks').setup({}) end})
 	use("nvim-lua/plenary.nvim")
 	use({
 		"lewis6991/gitsigns.nvim",
