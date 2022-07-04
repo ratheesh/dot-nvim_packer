@@ -9,10 +9,10 @@ local function stat(name, type)
 	return stats and stats.type == type
 end
 
-local install_path = fn.stdpath("data").."/site/pack/packer/start/packer.nvim"
+local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 if not stat(install_path, "directory") then
 	print("Cloning packer...")
-  Packer_bootstrap = fn.system({"git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path})
+	Packer_bootstrap = fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
 end
 
 pcall(require, "impatient")
@@ -31,11 +31,11 @@ require("packer").startup({ function(use)
 		end,
 	})
 	use({
-	"romgrk/barbar.nvim",
-	requires = {'kyazdani42/nvim-web-devicons'},
-	config = function ()
-		require("plugins.barbar")
-	end
+		"romgrk/barbar.nvim",
+		requires = { 'kyazdani42/nvim-web-devicons' },
+		config = function()
+			require("plugins.barbar")
+		end
 	})
 	use({"chentoast/marks.nvim", config = function() require('marks').setup({}) end})
 	use("nvim-lua/plenary.nvim")
@@ -343,21 +343,21 @@ require("packer").startup({ function(use)
 				track_cursor = true,
 
 				action_keys = {
-        close          = "q",
-        cancel         = "<esc>",
-        refresh        = "r",
-        jump           = {"<cr>", "<tab>"},
-        jump_close     = {"o"},
-        toggle_mode    = "m",
-        toggle_preview = "P",
-        hover          = "K",
-        preview        = "p",
-        close_folds    = {"zM", "zm"},
-        open_folds     = {"zR", "zr"},
-        toggle_fold    = {"zA", "za"},
-        previous       = "k",
-        next           = "j"
-    },
+					close          = "q",
+					cancel         = "<esc>",
+					refresh        = "r",
+					jump           = { "<cr>", "<tab>" },
+					jump_close     = { "o" },
+					toggle_mode    = "m",
+					toggle_preview = "P",
+					hover          = "K",
+					preview        = "p",
+					close_folds    = { "zM", "zm" },
+					open_folds     = { "zR", "zr" },
+					toggle_fold    = { "zA", "za" },
+					previous       = "k",
+					next           = "j"
+				},
 			})
 		end,
 	})
@@ -445,11 +445,11 @@ require("packer").startup({ function(use)
 		after = "friendly-snippets",
 		config = function()
 			local icons = {
-				Text = "", Method = "", Function = "", Constructor = "", Field = "ﰠ",
-				Variable = "", Class = "ﴯ", Interface = "", Module = "", Property = "ﰠ",
-				Unit = "塞", Value = "", Enum = "", Keyword = "", Snippet = "",
-				Color = "", File = "", Reference = "", Folder = "", EnumMember = "",
-				Constant = "", Struct = "פּ", Event = "", Operator = "", TypeParameter = "",
+				Text     = "",  Method = "", Function  = "", Constructor = "", Field         = "ﰠ",
+				Variable = "",  Class  = "ﴯ", Interface = "", Module      = "", Property      = "ﰠ",
+				Unit     = "塞", Value = "",  Enum      = "", Keyword     = "", Snippet       = "",
+				Color    = "",  File   = "", Reference = "", Folder      = "", EnumMember    = "",
+				Constant = "",  Struct = "פּ", Event     = "", Operator    = "", TypeParameter = "",
 			}
 			local cmp = require("cmp")
 			local types = require('cmp.types')
@@ -549,15 +549,15 @@ require("packer").startup({ function(use)
 		config = function()
 			require("Comment").setup({
 				padding = true,
-				sticky = true,
-				ignore = nil,
+				sticky  = true,
+				ignore  = nil,
 				toggler = {
 					line = 'gcc',
 					block = 'gbc',
 				},
 				opleader = {
 					---Line-comment keymap
-					line = 'gc',
+					line  = 'gc',
 					---Block-comment keymap
 					block = 'gb',
 				},
@@ -569,11 +569,11 @@ require("packer").startup({ function(use)
 				},
 
 				mappings = {
-					basic = true,
-					extra = true,
+					basic    = true,
+					extra    = true,
 					extended = false,
 				},
-				pre_hook = nil,
+				pre_hook  = nil,
 				post_hook = nil,
 			})
 		end
@@ -696,22 +696,22 @@ require("packer").startup({ function(use)
 			})
 		end
 	})
-use ({
-	"windwp/nvim-autopairs",
-	config = function ()
-		require('nvim-autopairs').setup({
-			disable_filetype          = { "TelescopePrompt" , "vim" },
-			ignored_next_char         = string.gsub([[ [%w%%%'%[%"%.] ]],"%s+", ""),
-			enable_moveright          = true,
-			enable_afterquote         = true,  -- add bracket pairs after quote
-			enable_check_bracket_line = true,  --- check bracket in same line
-			check_ts                  = true,
-			map_bs                    = true,
-			map_c_w                   = true,
-			map_c_h                   = true,
-			map_cr                    = false })
-			end
-		})
+	use({
+		"windwp/nvim-autopairs",
+		config = function()
+			require('nvim-autopairs').setup({
+				disable_filetype          = { "TelescopePrompt", "vim" },
+				ignored_next_char         = string.gsub([[ [%w%%%'%[%"%.] ]], "%s+", ""),
+				enable_moveright          = true,
+				enable_afterquote         = true, -- add bracket pairs after quote
+				enable_check_bracket_line = true, --- check bracket in same line
+				check_ts                  = true,
+				map_bs                    = true,
+				map_c_w                   = true,
+				map_c_h                   = true,
+				map_cr                    = false })
+		end
+	})
 
 	use({
 		"mhinz/vim-startify",
@@ -770,18 +770,18 @@ use ({
 	use({
 		"junegunn/vim-easy-align",
 	})
-	use({ "tpope/vim-surround", event = "VimEnter"                 })
-	use({ "michaeljsmith/vim-indent-object", event = "VimEnter"    })
-	use({ "tpope/vim-repeat", event = "VimEnter"                   })
-	use({ "jeetsukumaran/vim-pythonsense", ft = { "python" }       })
-	use({ "machakann/vim-swap", event = "VimEnter"                 })
-	use({ "ojroques/vim-oscyank", cmd = { 'OSCYank', 'OSCYankReg'} })
+	use({ "tpope/vim-surround"              , event = "VimEnter" })
+	use({ "michaeljsmith/vim-indent-object" , event = "VimEnter" })
+	use({ "tpope/vim-repeat"                , event = "VimEnter" })
+	use({ "jeetsukumaran/vim-pythonsense"   , ft    = { "python" }})
+	use({ "machakann/vim-swap"              , event = "VimEnter" })
+	use({ "ojroques/vim-oscyank"            , cmd   = { 'OSCYank' , 'OSCYankReg' }})
 	use({
 		"antoyo/vim-licenses",
 		config = function ()
 			vim.g.licenses_copyright_holders_name = 'Ratheesh <ratheeshreddy@gmail.com>'
 			vim.g.licenses_authors_name           = 'Ratheesh S'
-			vim.g.licenses_default_commands       = {'gplv2', 'apache', 'mit'}
+			vim.g.licenses_default_commands       = { 'gplv2', 'apache', 'mit' }
 		end
 	})
 	use ({
@@ -798,7 +798,7 @@ use ({
 	})
 	use({
 		"bootleq/vim-cycle",
-		config = function ()
+		config = function()
 			require("plugins.vim-cycle")
 		end
 	})
