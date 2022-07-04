@@ -693,14 +693,32 @@ use ({
 	use({
 		"mhinz/vim-startify",
 		config = function()
-			vim.g.startify_files_number = 5
+		vim.g.startify_custom_header = {
+             "",
+             "                     ________ ++     ________",
+             "                    /        \\++++  /        \\",
+             "                    \\        /++++++\\        /",
+             "                     |      |++++++++/     /'",
+             "                     |      |++++++/     /'",
+             "                    +|      |++++/     /'+",
+             "                  +++|      |++/     /'+++++",
+             "                +++++|      |/     /'+++++++++",
+             "                  +++|           /'+++++++++",
+             "                    +|         /'+++++++++",
+             "                     |       /'+++++++++",
+             "                     |     /'+++++++++",
+             "                     |   /'+++++++++",
+             "                     `_/'   ++++++",
+             "                              ++",
+             }
+			vim.g.startify_files_number       = 5
 			vim.g.startify_change_to_vcs_root = 1
-			vim.g.startify_lists = {
-        { type = 'files',     header = { '   Files'     } },
-        { type = 'dir',       header = { '   MRU '      } },
-        { type = 'sessions',  header = { '   Sessions'  } },
-        { type = 'bookmarks', header = { '   Bookmarks' } },
-        { type = 'commands',  header = { '   Commands'  } },
+			vim.g.startify_lists              = {
+				{ type = 'files'     , header = { '   Files'     }},
+				{ type = 'dir'       , header = { '   MRU '      }},
+				{ type = 'sessions'  , header = { '   Sessions'  }},
+				{ type = 'bookmarks' , header = { '   Bookmarks' }},
+				{ type = 'commands'  , header = { '   Commands'  }},
 			}
 			vim.g.startify_bookmarks = {
 				{ c = '$HOME/.vim/vimrc' },
