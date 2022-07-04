@@ -94,4 +94,7 @@ map("s", "<C-h>" ,"<cmd>lua require('luasnip').jump(-1)<CR>")
 map("i", "<C-l>" ,"<cmd>lua require('luasnip').jump(1)<CR>")
 map("i", "<C-h>" ,"<cmd>lua require('luasnip').jump(-1)<CR>")
 
+-- gitsigns
+vim.api.nvim_create_user_command("Stage", function(t) require('gitsigns').stage_hunk({ t.line1, t.line2 }) end, { range = true })
+
 -- End of File
