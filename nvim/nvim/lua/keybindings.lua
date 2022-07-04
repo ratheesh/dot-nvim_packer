@@ -88,7 +88,10 @@ map("n", "<leader>B",  "<cmd>lua require('dap').set_breakpoint(vim.fn.input('Bre
 -- map("n", "<leader>dl", "<cmd>lua require('dap').run_last()<CR>")
 -- map("n", "<leader>dr", "<cmd>lua require('dap').repl.open()<CR>")
 -- map("n", "<leader>lp", "<cmd>lua require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>")
--- map("n", "<leader>dl", "<cmd>lua require('dap').run_last()<CR>")
--- map("n", "<leader>lp", "<cmd>lua require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>")
+
+map("s", "<C-l>" ,"<cmd>lua require('luasnip').jump(1)<CR>")
+map("s", "<C-h>" ,"<cmd>lua require('luasnip').jump(-1)<CR>")
+map("i", "<C-l>" ,"<cmd>lua require('luasnip').jump(1)<CR>")
+map("i", "<C-h>" ,"<cmd>lua require('luasnip').jump(-1)<CR>")
 
 -- End of File
