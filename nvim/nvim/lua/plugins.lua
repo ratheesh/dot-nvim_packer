@@ -48,18 +48,18 @@ require("packer").startup({ function(use)
 			require("plugins.treesitter")
 		end,
 	})
-	use({
-		"lukas-reineke/indent-blankline.nvim",
-		config = function()
-			require("indent_blankline").setup({
-				char = "▏",
-				show_trailing_blankline_indent = false,
-				show_first_indent_level = false,
-				buftype_exclude = { "terminal" },
-				filetype_exclude = { "help", "terminal", "dashboard", "packer", "lspinfo", "TelescopePrompt", "TelescopeResults" }
-			})
-		end,
-	})
+	-- use({
+	-- 	"lukas-reineke/indent-blankline.nvim",
+	-- 	config = function()
+	-- 		require("indent_blankline").setup({
+	-- 			char = "▏",
+	-- 			show_trailing_blankline_indent = false,
+	-- 			show_first_indent_level = false,
+	-- 			buftype_exclude = { "terminal" },
+	-- 			filetype_exclude = { "help", "terminal", "dashboard", "packer", "lspinfo", "TelescopePrompt", "TelescopeResults" }
+	-- 		})
+	-- 	end,
+	-- })
 	use({
 		"lukas-reineke/virt-column.nvim",
 		config = function()
@@ -516,14 +516,15 @@ require("packer").startup({ function(use)
 	use({ "hrsh7th/cmp-buffer"         , after = "cmp-cmdline"  })
 	use({ "hrsh7th/cmp-path"           , after = "cmp-buffer"   })
 	use({ "kdheepak/cmp-latex-symbols" , after = "cmp-path"     })
-	-- use({
-	-- 	"echasnovski/mini.nvim",
-	-- 	after = "cmp-latex-symbols",
-	-- 	config = function()
-	-- 		require("mini.surround").setup({ search_method = "cover_or_nearest" })
-	-- 		require("mini.pairs").setup()
-	-- 	end,
-	-- })
+	use({
+		"echasnovski/mini.nvim",
+		after = "cmp-latex-symbols",
+		config = function()
+			require("mini.indentscope").setup({
+				symbol = '╎',
+			})
+		end,
+	})
 	use({
 		"numToStr/Comment.nvim",
 		-- after = "mini.nvim",
