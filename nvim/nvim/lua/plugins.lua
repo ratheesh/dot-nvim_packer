@@ -599,45 +599,7 @@ require("packer").startup({ function(use)
 		},
 		module = "dap",
 		config = function()
-			local dap = require("dap")
-			-- dap.configurations.python = { {
-			-- 	type       = "python",
-			-- 	request    = "launch",
-			-- 	name       = "Launch file",
-			-- 	program    = "${file}",
-			-- 	pythonPath = function()
-			-- 		return "/usr/bin/python"
-			-- 	end
-			-- }}
-			dap.adapters.lldb = {
-				type    = 'executable',
-				command = '/usr/bin/lldb-vscode',
-				name    = "lldb"
-			}
-			dap.configurations.c = {
-				{
-					name          = "Launch",
-					type          = "lldb",
-					request       = "launch",
-					program       = function() return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file') end,
-					cwd           = '${workspaceFolder}',
-					stopOnEntry   = false,
-					args          = {},
-					runInTerminal = false,
-				},
-				{
-					name    = "Attach",
-					type    = "lldb",
-					request = "attach",
-					pid     = require("dap.utils").pick_process,
-					args    = {},
-				},
-			}
-			vim.fn.sign_define("DapBreakpoint",          { text = "", texthl = "DiagnosticError", linehl = "", numhl = "" })
-			vim.fn.sign_define("DapBreakpointCondition", { text = "", texthl = "DiagnosticError", linehl = "", numhl = "" })
-			vim.fn.sign_define("DapBreakpointRejected",  { text = "", texthl = "DiagnosticError", linehl = "", numhl = "" })
-			vim.fn.sign_define("DapLogPoint",            { text = "", texthl = "DiagnosticHint", linehl  = "", numhl = "" })
-			vim.fn.sign_define("DapStopped",             { text = "", texthl = "DiagnosticInfo", linehl  = "", numhl = "" })
+			require('plugins.nvim-dap')
 		end
 	})
 	use ({
