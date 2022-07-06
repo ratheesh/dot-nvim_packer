@@ -576,6 +576,7 @@ require("packer").startup({ function(use)
 			vim.g.Lf_WindowHeight          = 0.3
 			vim.g.Lf_PopupWidth            = 0.8
 			vim.g.Lf_PopupPosition         = { 0, 0 }
+			vim.g.Lf_CursorBlink           = 0
 			vim.g.Lf_UseVersionControlTool = 0
 			vim.g.Lf_PopupShowStatusline   = 0
 			vim.g.Lf_PopupShowBorder       = 1
