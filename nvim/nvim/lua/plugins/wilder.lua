@@ -4,12 +4,13 @@
 
 local wilder = require('wilder')
 wilder.setup({ modes = { ':', '/', '?' } })
+
 wilder.set_option('pipeline', {
-	wilder.debounce(100),
+	wilder.debounce(50),
 	wilder.branch(
 	{
 		wilder.check(function(_, x) return x == '' end),
-		wilder.history(100),
+		wilder.history(50),
 	},
 	wilder.python_file_finder_pipeline({
 		file_command = function(_, arg)
@@ -20,7 +21,7 @@ wilder.set_option('pipeline', {
 			end
 		end,
 		dir_command = { 'fd', '-td' },
-		-- filters = { 'cpsm_filter' },
+		filters = { 'cpsm_filter' },
 	}),
 	wilder.substitute_pipeline({
 		pipeline = wilder.python_search_pipeline({
@@ -32,6 +33,7 @@ wilder.set_option('pipeline', {
 	}),
 	wilder.cmdline_pipeline({
 		fuzzy = 2,
+		fuzzy_filter = wilder.lua_fzy_filter(),
 	}),
 	wilder.search_pipeline({
 		pattern = wilder.python_fuzzy_pattern({

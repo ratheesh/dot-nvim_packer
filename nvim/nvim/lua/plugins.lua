@@ -662,6 +662,7 @@ require("packer").startup({ function(use)
 	use({
 		"gelguy/wilder.nvim",
 		opt = false,
+		requires = "romgrk/fzy-lua-native",
 		-- event = "VimEnter",
 		config = function()
 			require("plugins.wilder")
