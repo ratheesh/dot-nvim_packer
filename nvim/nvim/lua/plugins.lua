@@ -334,7 +334,7 @@ require("packer").startup({ function(use)
 		config = function()
 			local wk = require("which-key")
 			wk.setup({ icons = { separator = "➡  " } })
-			wk.register({}, {})
+			-- wk.register({}, {})
 		end,
 	})
 	use({ "tweekmonster/startuptime.vim", cmd = "StartupTime" })
