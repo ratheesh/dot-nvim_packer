@@ -737,13 +737,18 @@ require("packer").startup({ function(use)
 		require('packer').sync()
 	end
 end,
-	config = {
-		compile_path = fn.stdpath('config') .. '/lua/packer_compiled.lua',
-		display = {
-			prompt_border = "rounded",
-			open_fn = function() return require("packer.util").float({ border = "rounded" }) end
-		},
+
+config = {
+	profile   = {
+		enable    = true,
+		threshold = 0,
 	},
+	compile_path = fn.stdpath('config') .. '/lua/packer_compiled.lua',
+	display = {
+		prompt_border = "rounded",
+		open_fn = function() return require("packer.util").float({ border = "rounded" }) end
+	},
+},
 })
 
 local status, _ = pcall(require, 'packer_compiled')
