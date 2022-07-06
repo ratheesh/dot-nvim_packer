@@ -716,6 +716,7 @@ require("packer").startup({ function(use)
 	})
 	use ({
 		"metakirby5/codi.vim",
+		cmd = { "Codi" },
 		config = function ()
 			-- vim.g.codi.virtual_text_prefix = ">>> "
 			-- vim.g.codi.interpreters = {
