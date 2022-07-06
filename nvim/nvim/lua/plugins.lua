@@ -549,7 +549,7 @@ require("packer").startup({ function(use)
 		},
 		module = "dap",
 		config = function()
-			require('plugins.nvim-dap')
+			require('plugins.nvim-dap').setup()
 		end
 	})
 	use ({
