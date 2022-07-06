@@ -478,12 +478,6 @@ require("packer").startup({ function(use)
 			require("luasnip/loaders/from_vscode").lazy_load()
 		end,
 	})
-	use({ "saadparwaiz1/cmp_luasnip"   , after = "LuaSnip"      })
-	use({ "hrsh7th/cmp-nvim-lua"       , after = "cmp_luasnip"  })
-	use({ "hrsh7th/cmp-cmdline"        , after = "cmp-nvim-lua" })
-	use({ "hrsh7th/cmp-buffer"         , after = "cmp-cmdline"  })
-	use({ "hrsh7th/cmp-path"           , after = "cmp-buffer"   })
-	use({ "kdheepak/cmp-latex-symbols" , after = "cmp-path"     })
 	use({
 		"echasnovski/mini.nvim",
 		after = "cmp-latex-symbols",
@@ -702,7 +696,6 @@ require("packer").startup({ function(use)
 	})
 	use({ "tpope/vim-surround"              , event = "VimEnter" })
 	use({ "michaeljsmith/vim-indent-object" , event = "VimEnter" })
-	-- use({ "tpope/vim-repeat"                , event = "VimEnter" })
 	use({ "jeetsukumaran/vim-pythonsense"   , ft    = { "python" }})
 	use({ "machakann/vim-swap"              , event = "VimEnter" })
 	use({ "ojroques/vim-oscyank"            , cmd   = { 'OSCYank' , 'OSCYankReg' }})
