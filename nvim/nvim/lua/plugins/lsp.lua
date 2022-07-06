@@ -183,7 +183,8 @@ function M.setup()
 							"missing-parameter",
 							"cast-local-type",
 							"param-type-mismatch",
-							"assign-type-mismatch"
+							"assign-type-mismatch",
+							"undefined-field"
 						}
 					}
 				}
