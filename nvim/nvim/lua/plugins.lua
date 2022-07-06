@@ -409,6 +409,10 @@ require("packer").startup({ function(use)
 		end
 	})
 	use({
+		"RRethy/nvim-treesitter-endwise",
+		after = { "nvim-treesitter" },
+	})
+	use({
 		"RRethy/nvim-treesitter-textsubjects",
 		config = function()
 			require('nvim-treesitter.configs').setup {
