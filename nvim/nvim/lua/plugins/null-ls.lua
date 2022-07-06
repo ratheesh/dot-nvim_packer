@@ -31,12 +31,12 @@ function M.setup()
 		ls.builtins.code_actions.gitrebase,
 	}
 	ls.setup({
-		debug = true,
-		debounce = 50,
+		debug             = true,
+		debounce          = 50,
 		save_after_format = false,
-		sources = sources,
-		root_dir = nls_utils.root_pattern ".git",
-		-- offsetEncoding = { "utf-8" },
+		sources           = sources,
+		root_dir          = nls_utils.root_pattern ".git",
+		filetypes         = { 'python', 'lua' },
 
 		-- on_init = function(new_client, _)
 			-- new_client.offset_encoding = 'utf-32'
