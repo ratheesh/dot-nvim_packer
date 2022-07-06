@@ -1,3 +1,7 @@
+-- Copyright (c) 2022 Ratheesh <ratheeshreddy@gmail.com>
+-- License: MIT
+-- NeoViM Config entry point
+
 -- Boot strapping packer.nvim
 local fn = vim.fn
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
