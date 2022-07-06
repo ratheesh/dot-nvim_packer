@@ -443,6 +443,28 @@ require("packer").startup({ function(use)
 	use({
 		"hrsh7th/nvim-cmp",
 		after = "friendly-snippets",
+		event = 'InsertEnter',
+		requires = {
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-path",
+			"hrsh7th/cmp-nvim-lua",
+			"ray-x/cmp-treesitter",
+			"hrsh7th/cmp-cmdline",
+			"saadparwaiz1/cmp_luasnip",
+			"hrsh7th/cmp-calc",
+			"f3fora/cmp-spell",
+			"hrsh7th/cmp-emoji",
+			"kdheepak/cmp-latex-symbols",
+			{
+				"L3MON4D3/LuaSnip",
+				wants = "friendly-snippets",
+				config = function()
+					require("config.luasnip").setup()
+				end,
+			},
+			"rafamadriz/friendly-snippets",
+			disable = false,
+		},
 		config = function()
 			require('plugins.nvim-cmp').setup()
 		end,
@@ -604,6 +626,7 @@ require("packer").startup({ function(use)
 	})
 	use({
 		"windwp/nvim-autopairs",
+		after = "nvim-cmp",
 		config = function()
 			require('nvim-autopairs').setup({
 				disable_filetype          = { "TelescopePrompt", "vim" },
