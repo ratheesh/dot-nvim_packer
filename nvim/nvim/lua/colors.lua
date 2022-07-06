@@ -245,7 +245,7 @@ hl(0 , "Lf_hl_cursorline"      , { fg = "#e0e0e0" , bg = "#1E2430" , italic = fa
 
 hl(0 , "MiniIndentscopeSymbol" , { fg = "#3F4F5B" , bg = "#1E2430" , italic = false , bold = false , underline = false })
 hl(0 , "VirtColumn"            , { fg = "#393F4B" , bg = "#1E2430" , italic = false , bold = true  , underline = false })
-hl(0 , "TreesitterContext"     , { fg = nil       , bg = "#343848" , italic = false , bold = true  , underline = false })
+hl(0 , "TreesitterContext"     , { fg = nil       , bg = "#343848" , italic = false , bold = false , underline = false })
 
 hl(0 , "MarkSignNumHL"         , { fg = "#c0c0c0" , bg = "#4a6470" , italic = false , bold = true  , underline = false })
 
