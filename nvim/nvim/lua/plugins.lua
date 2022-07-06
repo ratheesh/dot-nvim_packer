@@ -84,7 +84,7 @@ require("packer").startup({ function(use)
 		config = function() require("colorizer").setup({ "*" }, { names = false }) end,
 	})
 	use("wbthomason/packer.nvim")
-	use({ "folke/lua-dev.nvim", after = "nvim-gps" })
+	use({ "folke/lua-dev.nvim" })
 	use({ "hrsh7th/cmp-nvim-lsp", after = "lua-dev.nvim" })
 	use({
 		"neovim/nvim-lspconfig",
