@@ -24,7 +24,7 @@ map("n", "<Leader><Space>", "V")
 map("n", "<A-d>", "<cmd>bdelete<CR>")
 map("n", "<CR>", "<cmd>call append(line('.'), '')<CR>")
 map("n", "<S-CR>", "<cmd>call append(line('.')-1, '')<CR>")
-map("n", "<F4>", "<cmd>echo expand('%:p')<CR>")
+map("n", "<F2>", "<cmd>echo expand('%:p')<CR>")
 
 map("n", "<A-x>", "<C-x>")
 map("n", "<A-a>", "<C-a>")
@@ -62,12 +62,6 @@ map("n", "gR", "<cmd>TroubleToggle lsp_references<CR>")
 map("n", "<C-A-j>", "<cmd>lua require('trouble').next({skip_groups = true, jump = true})<CR>")
 map("n", "<C-A-k>", "<cmd>lua require('trouble').previous({skip_groups = true, jump = true})<CR>")
 
-map("n", "<F5>", "<cmd>lua require('dap').continue() require('dapui').open()<CR>")
-map("n", "<F6>", "<cmd>lua require('dapui').toggle()<CR>")
-map("n", "<F10>", "<cmd>lua require('dap').step_over()<CR>")
-map("n", "<F11>", "<cmd>lua require('dap').step_into()<CR>")
-map("n", "<F12>", "<cmd>lua require('dap').step_out()<CR>")
-
 map("n", "ga", "<Plug>(EasyAlign)")
 map("x", "ga", "<Plug>(EasyAlign)")
 
@@ -75,19 +69,6 @@ map('o', 'ih', '<cmd>Gitsigns select_hunk<CR>')
 map('x', 'ih', '<cmd>Gitsigns select_hunk<CR>')
 
 -- DAP
-map("n", "<F5>",       "<cmd>lua require('dap').continue() require('dapui').open()<CR>")
-map("n", "<F6>",       "<cmd>lua require('dapui').toggle()<CR>")
-map("n", "<F7>",       "<cmd>lua require('dap').step_over()<CR>")
-map("n", "<F8>",       "<cmd>lua require('dap').step_into()<CR>")
-map("n", "<F9>",       "<cmd>lua require('dap').step_out()<CR>")
-map("n", "<F10>",      "<cmd>lua require('dap').dap.terminate()<CR>")
-map("n", "<leader>dc", "<cmd>lua require('dap').dap.run_to_cursor()<CR>")
-map("n", "<leader>b",  "<cmd>lua require('dap').toggle_breakpoint()<CR>")
-map("n", "<leader>B",  "<cmd>lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>")
-
--- map("n", "<leader>dl", "<cmd>lua require('dap').run_last()<CR>")
--- map("n", "<leader>dr", "<cmd>lua require('dap').repl.open()<CR>")
--- map("n", "<leader>lp", "<cmd>lua require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>")
 
 map("s", "<C-l>" ,"<cmd>lua require('luasnip').jump(1)<CR>")
 map("s", "<C-h>" ,"<cmd>lua require('luasnip').jump(-1)<CR>")
