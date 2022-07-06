@@ -2,6 +2,8 @@
 -- License: MIT
 -- LSP Configuration
 
+local navic    = require("nvim-navic")
+
 local M = {}
 
 function M.setup()
@@ -98,6 +100,7 @@ function M.setup()
 
 		require("illuminate").on_attach(client)
 		-- require("virtualtypes").on_attach(client)
+		navic.attach(client, bufnr)
 	end
 
 	local lspconfig = require("lspconfig")

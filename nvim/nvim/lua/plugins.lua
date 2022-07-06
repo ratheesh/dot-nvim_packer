@@ -84,16 +84,6 @@ require("packer").startup({ function(use)
 		config = function() require("colorizer").setup({ "*" }, { names = false }) end,
 	})
 	use("wbthomason/packer.nvim")
-	use({
-		"SmiteshP/nvim-gps",
-		event = "CursorHold",
-		config = function()
-			require("nvim-gps").setup({
-				separator = "  ",
-				icons = { ["container-name"] = " " }
-			})
-		end,
-	})
 	use({ "folke/lua-dev.nvim", after = "nvim-gps" })
 	use({ "hrsh7th/cmp-nvim-lsp", after = "lua-dev.nvim" })
 	use({
@@ -123,6 +113,18 @@ require("packer").startup({ function(use)
 						server_uninstalled = "✗"
 					}
 				}
+			})
+		end
+	})
+	use({
+		"SmiteshP/nvim-navic",
+		requires = "neovim/nvim-lspconfig",
+		config = function()
+			require("nvim-navic").setup({
+				highlight             = false,
+				separator             = " > ",
+				depth_limit           = 30,
+				depth_limit_indicator = "..",
 			})
 		end
 	})

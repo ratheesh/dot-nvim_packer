@@ -5,7 +5,7 @@
 local windline = require('windline')
 local helper   = require('windline.helpers')
 local sep      = helper.separators
-local gps      = require("nvim-gps")
+local navic    = require("nvim-navic")
 -- local vim_components = require('windline.components.vim')
 
 local b_components = require('windline.components.basic')
@@ -35,7 +35,7 @@ local hl_list = {
   FileIcon  = { 'FileNameFg', 'FileNameBg' },
   SearchCnt = { 'SearchCntFg', 'FileNameBg' },
 
-  Gps       = { 'GpsBg', 'ActiveBg' },
+  Navic     = { 'NavicBg', 'ActiveBg' },
 
   -- Git status
   GitDiffAdded   = { 'GitAddedFg', 'ActiveBg' },
@@ -213,9 +213,9 @@ basic.file = {
   end,
 }
 
-local function gps_info()
-  if gps.is_available() then
-    local data = gps.get_location()
+local function navic_info()
+  if navic.is_available() then
+    local data = navic.get_location()
     if data == '' then
       return ''
     else
@@ -228,10 +228,10 @@ end
 basic.file_rightsep = {
   hl_colors = {
     default  = {'FileNameBg', 'ActiveBg'},
-    sep_right_file = {'FileNameBg', 'GpsBg'},
+    sep_right_file = {'FileNameBg', 'NavicBg'},
   },
   text = function()
-    if gps_info() ~= "" then
+    if navic_info() ~= "" then
       return {
         { sep.right_rounded, 'sep_right_file' },
         { '', 'default' },
@@ -265,18 +265,18 @@ basic.git = {
   end,
 }
 
-basic.gps = {
-  name = 'gps',
+basic.navic = {
+  name = 'navic',
   width = 20,
   hl_colors = {
-    GpsHL           = {'GpsFg', 'GpsBg'},
-    GpsRightSep     = {'GpsBg', 'ActiveBg'},
+    NavicHL           = {'NavicFg', 'NavicBg'},
+    NavicRightSep     = {'NavicBg', 'ActiveBg'},
     },
   text = function()
-    if gps.is_available() then
+    if navic.is_available() then
       return {
-        {  gps_info(), 'GpsHL' },
-        -- {  sep.right_rounded, 'GpsRightSep' },
+        {  navic_info(), 'NavicHL' },
+        -- {  sep.right_rounded, 'NavicRightSep' },
       }
     else
       return {
@@ -286,17 +286,17 @@ basic.gps = {
   end,
 }
 
-basic.gps_right_sep = {
-  name = 'gps',
+basic.navic_right_sep = {
+  name = 'navic',
   width = 20,
   hl_colors = {
-    GpsHL           = {'GpsFg', 'GpsBg'    },
-    GpsRightSep     = {'GpsBg', 'ActiveBg' },
+    NavicHL           = {'NavicFg', 'NavicBg'    },
+    NavicRightSep     = {'NavicBg', 'ActiveBg' },
     },
   text = function()
-    if gps_info() ~= "" then
+    if navic_info() ~= "" then
       return {
-        {  sep.right_rounded, 'GpsRightSep' },
+        {  sep.right_rounded, 'NavicRightSep' },
         { ' ', '' }
       }
     else
@@ -439,8 +439,8 @@ local default = {
     basic.file_leftsep,
     basic.file,
     basic.file_rightsep,
-    basic.gps,
-    basic.gps_right_sep,
+    basic.navic,
+    basic.navic_right_sep,
     -- { sep.right_rounded, hl_list.File },
     basic.git,
     basic.divider,
@@ -530,8 +530,8 @@ windline.setup({
     colors.LSPDiagWarnFg = "#729FCF"
     colors.LSPDiagHintFg = "#9987A4"
 
-    colors.GpsFg         = "#FEFEFE"
-    colors.GpsBg         = "#984ea3"
+    colors.NavicFg         = "#FEFEFE"
+    colors.NavicBg         = "#984ea3"
 
     colors.LSPClientFg   = "#eeeeee"
     colors.LSPClientBg   = "#356088"
