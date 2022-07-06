@@ -146,6 +146,21 @@ function M.setup()
 	-- Python
 	lspconfig.pyright.setup({ on_attach = on_attach, capabilities = capabilities })
 	lspconfig.jedi_language_server.setup({ on_attach = on_attach, capabilities = capabilities })
+	lspconfig.pyright.setup({
+		on_attach = on_attach,
+		capabilities = capabilities,
+    settings = {
+      python = {
+				disableLanguageServices  = true,
+        analysis = {
+					autoImportCompletions  = true,
+          autoSearchPaths        = true,
+          useLibraryCodeForTypes = true,
+          diagnosticMode         = 'workspace',
+        },
+      },
+    },
+	})
 
 	-- Lua
 	lspconfig.sumneko_lua.setup(require("lua-dev").setup({
