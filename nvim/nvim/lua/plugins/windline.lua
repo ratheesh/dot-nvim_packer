@@ -256,7 +256,7 @@ basic.git = {
     if git_comps.is_git(bufnr) and hide_in_width() then
       return {
         { '', ' ' },
-        { git_comps.diff_added({ format = ' %s', show_zero = false    }), 'added'   },
+        { git_comps.diff_added({ format   = ' %s', show_zero = false  }), 'added'   },
         { git_comps.diff_changed({ format = ' 柳%s', show_zero = false }), 'changed' },
         { git_comps.diff_removed({ format = '  %s', show_zero = false }), 'removed' },
       }
@@ -287,7 +287,7 @@ basic.navic = {
 }
 
 basic.navic_right_sep = {
-  name = 'navic',
+  name  = 'navic',
   width = 20,
   hl_colors = {
     NavicHL           = {'NavicFg', 'NavicBg'    },
@@ -317,8 +317,8 @@ basic.lsp_diagnos = {
     yellow = { 'yellow' , 'ActiveBg' },
     blue   = { 'blue'   , 'ActiveBg' },
   },
-  text = function(bufnr)
-    if lsp_comps.check_lsp(bufnr) then
+  text = function()
+    if lsp_comps.check_lsp then
       return {
         { lsp_comps.lsp_hint({ format    = ' %s', show_zero = false  }), 'blue'   },
         { lsp_comps.lsp_warning({ format = '  %s', show_zero = false }), 'yellow' },
@@ -349,7 +349,7 @@ basic.lsp_client = {
     sep_after        = { 'FileInfoBg', 'LSPClientBg' },
   },
   text = function()
-    if lsp_comps.check_lsp() then
+    if lsp_comps.check_lsp then
       return {
         { sep.left_rounded, 'sep_before' },
         { lsp_client_names({}), 'lsp_cl' },
