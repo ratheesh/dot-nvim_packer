@@ -4,6 +4,21 @@ local M = {}
 function M.setup()
 	local ls = require("null-ls")
 	local nls_utils = require "null-ls.utils"
+
+	local with_diagnostics_code = function(builtin)
+		return builtin.with {
+			diagnostics_format = "#{m} [#{c}]",
+		}
+	end
+
+	-- local with_root_file = function(builtin, file)
+	-- 	return builtin.with {
+	-- 		condition = function(utils)
+	-- 			return utils.root_has_file(file)
+	-- 		end,
+	-- 	}
+	-- end
+
 	local sources = {
 		-- formatting
 		ls.builtins.formatting.shfmt,
@@ -13,7 +28,7 @@ function M.setup()
 		-- ls.builtins.formatting.stylua,
 
 		-- diagnostics
-		ls.builtins.diagnostics.shellcheck,
+		with_diagnostics_code(ls.builtins.diagnostics.shellcheck),
 		ls.builtins.diagnostics.flake8,
 		ls.builtins.diagnostics.mypy,
 		ls.builtins.diagnostics.gitlint,
