@@ -333,7 +333,35 @@ require("packer").startup({ function(use)
 		after = "Comment.nvim",
 		config = function()
 			local wk = require("which-key")
-			wk.setup({ icons = { separator = "➡  " } })
+			wk.setup({
+				icons = {
+					breadcrumb = "»",
+					separator  = "➡  ",
+					group      = " ",
+				},
+				plugins = {
+					marks     = false,
+					registers = false,
+					spelling = {
+						enabled     = false,
+						suggestions = 20,
+					},
+				},
+				presets = {
+					operators    = false,
+					motions      = false,
+					text_objects = false,
+					windows      = true,
+					nav          = true,
+					z            = true,
+					g            = true,
+				},
+				key_labels = {
+					["<space>"] = "SPC",
+					["<cr>"]    = "RET",
+					["<tab>"]   = "TAB",
+				},
+			})
 			-- wk.register({}, {})
 		end,
 	})
