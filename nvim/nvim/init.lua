@@ -15,21 +15,4 @@ require('keybindings')
 require('colors')
 require('autocmds')
 
-_G.P = vim.pretty_print
-
-function _G.TroubleQuickFixPost(mode)
-	require("trouble.providers").get(vim.api.nvim_get_current_win(),
-	vim.api.nvim_get_current_buf(), function(items)
-		if #items > 0 then require("trouble").open({ mode = mode }) end
-	end, { mode = mode })
-end
-
--- function _G.vimgrepprompt()
--- 	local pattern = fn.input("vimgrep pattern: ")
--- 	if pattern and pattern ~= "" then
--- 		local ok = vim.F.npcall(vim.cmd, "vimgrep /"..pattern.."/j %")
--- 		vim.schedule(function() print(ok and " " or "No results") end)
--- 	end
--- end
-
 -- End of File

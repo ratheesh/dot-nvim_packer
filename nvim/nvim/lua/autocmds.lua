@@ -27,4 +27,14 @@ vim.api.nvim_create_autocmd( "InsertEnter" , { group = cursorGrp, command = "hi 
 --   { "InsertEnter", "WinLeave" },
 --   { pattern = "*", command = "set norelativenumber", group = cursorGrp })
 
+-- Utility functions
+_G.P = vim.pretty_print
+
+function _G.TroubleQuickFixPost(mode)
+	require("trouble.providers").get(vim.api.nvim_get_current_win(),
+	vim.api.nvim_get_current_buf(), function(items)
+		if #items > 0 then require("trouble").open({ mode = mode }) end
+	end, { mode = mode })
+end
+
 -- End of File
