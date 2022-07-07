@@ -13,6 +13,7 @@ map("n", "<C-h>", "<C-w>h")
 map("n", "<C-j>", "<C-w>j")
 map("n", "<C-k>", "<C-w>k")
 map("n", "<C-l>", "<C-w>l")
+map("n", "<C-j>", "<Cmd>e #<CR>")
 
 map("n" , "<Leader>w"       , "<cmd>w<CR>")
 map("n" , "<Leader>x"       , "<cmd>q<CR>")
