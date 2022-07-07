@@ -334,10 +334,17 @@ require("packer").startup({ function(use)
 		config = function()
 			local wk = require("which-key")
 			wk.setup({
+				window = {
+					border   = "single",
+					position = "bottom",
+					margin   = { 1, 0, 1, 0 },
+					padding  = { 2, 2, 2, 2 },
+					winblend = 0
+				},
 				icons = {
 					breadcrumb = "»",
 					separator  = "➡  ",
-					group      = " ",
+					group      = " ",
 				},
 				plugins = {
 					marks     = false,
