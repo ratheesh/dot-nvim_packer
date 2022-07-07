@@ -100,7 +100,11 @@ function M.setup()
 
 		require("illuminate").on_attach(client)
 		-- require("virtualtypes").on_attach(client)
-		navic.attach(client, bufnr)
+
+		if client.name ~= 'pyright' then
+			navic.attach(client, bufnr)
+		end
+
 	end
 
 	local lspconfig = require("lspconfig")
