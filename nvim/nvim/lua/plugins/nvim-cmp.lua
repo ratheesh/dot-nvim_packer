@@ -1,8 +1,10 @@
+-- Copyright (c) 2022 Ratheesh <ratheeshreddy@gmail.com>
+-- License: MIT
+-- nvim-cmp plugin configuration
+
 local cmp     = require('cmp')
 local types   = require('cmp.types')
-
 local luasnip = require("luasnip")
-
 
 local M = {}
 
@@ -26,47 +28,12 @@ function M.setup()
 			documentation = cmp.config.window.bordered({ winhighlight = "" }),
 		},
 		sources = {
-			{
-				name = 'nvim_lsp_signature_help',
-				priority = 100,
-				group_index = 1,
-			},
-			{
-				name = 'nvim_lsp',
-				priority = 100,
-				group_index = 1,
-			},
-			{
-				name = 'nvim_lua',
-				priority = 100,
-				group_index = 1,
-			},
-			{
-				name = 'luasnip',
-				priority = 90,
-				group_index = 2,
-			},
-			{
-				name = 'buffer',
-				priority = 80,
-				autocomplete = false,
-				group_index = 3,
-			},
-			{
-				name = 'path',
-				priority = 80,
-				group_index = 3,
-			},
-			{
-				name = 'spell',
-				priority = 50,
-				group_index = 3,
-			},
-			{
-				name = 'calc',
-				priority = 50,
-				group_index = 3,
-			},
+			{ name = "luasnip"  },
+			{ name = "path" },
+			{ name = "nvim_lsp" },
+			{ name = "buffer", keyword_length = 3 },
+			{ name = "nvim_lua" },
+			{ name = "latex_symbols" },
 		},
 		experimental = { ghost_text = true },
 		snippet = {
@@ -114,3 +81,5 @@ function M.setup()
 end
 
 return M
+
+-- End of File 
