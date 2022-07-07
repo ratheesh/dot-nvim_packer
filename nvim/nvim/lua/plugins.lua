@@ -519,7 +519,7 @@ require("packer").startup({ function(use)
 	use({
 		"gelguy/wilder.nvim",
 		opt = false,
-		requires = "romgrk/fzy-lua-native",
+		requires = { "romgrk/fzy-lua-native", "nixprime/cpsm" },
 		-- event = "VimEnter",
 		config = function()
 			require("plugins.wilder")
