@@ -545,6 +545,7 @@ require("packer").startup({ function(use)
 	use({ "michaeljsmith/vim-indent-object" , event = "VimEnter" })
 	use({ "jeetsukumaran/vim-pythonsense"   , ft    = { "python" }})
 	use({ "machakann/vim-swap"              , event = "VimEnter" })
+	use({ "mg979/vim-visual-multi" 					, event = "BufReadPre" })
 	use({ "ojroques/vim-oscyank"            , cmd   = { 'OSCYank' , 'OSCYankReg' }})
 	use({
 		"antoyo/vim-licenses",
