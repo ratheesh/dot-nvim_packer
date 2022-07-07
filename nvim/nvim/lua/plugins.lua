@@ -481,7 +481,7 @@ require("packer").startup({ function(use)
 		config = function()
 		vim.g.startify_custom_header = {
              "",
-             "                     ________ ++     ________",
+             "                     ________   ++    ________",
              "                    /        \\++++  /        \\",
              "                    \\        /++++++\\        /",
              "                     |      |++++++++/     /'",
