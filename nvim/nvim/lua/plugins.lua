@@ -288,9 +288,7 @@ require("packer").startup({ function(use)
 		"echasnovski/mini.nvim",
 		after = "cmp-latex-symbols",
 		config = function()
-			require("mini.indentscope").setup({
-				symbol = '╎',
-			})
+			require("plugins.mini").setup()
 		end,
 	})
 	use({
