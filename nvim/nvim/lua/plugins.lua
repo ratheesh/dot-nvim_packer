@@ -526,11 +526,28 @@ require("packer").startup({ function(use)
 	use({
 		"junegunn/vim-easy-align",
 	})
-	use({ "tpope/vim-surround"              , event = "VimEnter" })
-	use({ "michaeljsmith/vim-indent-object" , event = "VimEnter" })
-	use({ "jeetsukumaran/vim-pythonsense"   , ft    = { "python" }})
-	use({ "machakann/vim-swap"              , event = "VimEnter" })
-	use({ "mg979/vim-visual-multi" 					, event = "BufReadPre" })
+	-- use({ "tpope/vim-surround"              , event = "VimEnter" })
+	use ({
+    "machakann/vim-sandwich",
+		config = function ()
+			-- vim.g.sandwich.recipes = {
+			-- 	{
+			-- 		buns         = {'"', '"'},
+			-- 		quoteescape  = 1,
+			-- 		expand_range = 0,
+			-- 		nesting      = 0,
+			-- 		match_syntax = 1,
+			-- 		syntax       = { 'Constant', 'Statement', 'Special', 'String', 'Comment' },
+			-- 		inner_syntax = { 'Constant', 'PreProc'  , 'Special', 'String', 'Comment' },
+			-- 	}
+			-- }
+			-- vim.g.operator.sandwich.highlight_duration = 300
+		end
+  })
+	use({ "michaeljsmith/vim-indent-object" , event = { "VimEnter"   } 					 })
+	use({ "jeetsukumaran/vim-pythonsense"   , ft    = { "python"     } 					 })
+	use({ "machakann/vim-swap"              , event = { "VimEnter"   } 					 })
+	use({ "mg979/vim-visual-multi" 					, event = { "BufReadPre" } 					 })
 	use({ "ojroques/vim-oscyank"            , cmd   = { 'OSCYank' , 'OSCYankReg' }})
 	use({
 		"antoyo/vim-licenses",
