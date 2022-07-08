@@ -123,7 +123,7 @@ require("packer").startup({ function(use)
 			require("nvim-navic").setup({
 				highlight             = false,
 				separator             = " > ",
-				depth_limit           = 30,
+				depth_limit           = 3,
 				depth_limit_indicator = "..",
 			})
 		end
