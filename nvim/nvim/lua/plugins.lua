@@ -250,6 +250,7 @@ require("packer").startup({ function(use)
 		"hrsh7th/nvim-cmp",
 		after = "friendly-snippets",
 		event = 'InsertEnter',
+		wants = { "LuaSnip" },
 		requires = {
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
