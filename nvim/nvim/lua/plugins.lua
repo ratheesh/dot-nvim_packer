@@ -116,6 +116,7 @@ require("packer").startup({ function(use)
 			})
 		end
 	})
+	use({ 'weilbith/nvim-code-action-menu', cmd = 'CodeActionMenu' })
 	use({
 		"SmiteshP/nvim-navic",
 		requires = "neovim/nvim-lspconfig",
