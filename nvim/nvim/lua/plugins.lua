@@ -566,6 +566,7 @@ require("packer").startup({ function(use)
 			vim.g.licenses_default_commands       = { 'gplv2', 'apache', 'mit' }
 		end
 	})
+	use({ "andymass/vim-matchup" })
 	use ({
 		"metakirby5/codi.vim",
 		cmd = { "Codi" },
