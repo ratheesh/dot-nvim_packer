@@ -25,6 +25,9 @@ function M.setup()
 		ls.builtins.formatting.black,
 		ls.builtins.formatting.autopep8,
 		ls.builtins.formatting.isort,
+		ls.builtins.formatting.prettier.with({
+			filetypes = { "html", "css", "yaml", "markdown", "json" },
+		}),
 		-- ls.builtins.formatting.stylua,
 
 		-- diagnostics
