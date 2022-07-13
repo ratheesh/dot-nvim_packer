@@ -60,8 +60,6 @@ vim.g.loaded_vimball           = 1
 vim.g.loaded_vimballPlugin     = 1
 vim.g.loaded_zip               = 1
 vim.g.loaded_zipPlugin         = 1
-vim.g.do_filetype_lua          = 1
-vim.g.did_load_filetypes       = 0
 
 -- _G.colors = {
 -- 	red = "#BF616A", teal = "#97B7D7", one_bg = "#373D49", lightbg = "#3B4252", blue = "#81A1C1",
