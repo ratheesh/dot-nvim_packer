@@ -2,6 +2,22 @@
 -- License: MIT
 -- Plugin Configuration
 
+local present, impatient = pcall(require, "impatient")
+if present then
+	if impatient ~= nil then
+		impatient.enable_profile()
+	end
+end
+
+_G.lazy = function(plugin, timer)
+	if plugin then
+		timer = timer or 0
+		vim.defer_fn(function()
+			require("packer").loader(plugin)
+		end, timer)
+	end
+end
+
 local fn = vim.fn
 -- local home = os.getenv("HOME")
 local function stat(name, type)
