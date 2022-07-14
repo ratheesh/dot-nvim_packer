@@ -28,9 +28,9 @@ function M.setup()
 			documentation = cmp.config.window.bordered({ winhighlight = "" }),
 		},
 		sources = {
-			{ name = "luasnip"  },
-			{ name = "path" },
 			{ name = "nvim_lsp" },
+			{ name = "path" },
+			{ name = "luasnip"  },
 			{ name = "buffer", keyword_length = 3 },
 			{ name = "nvim_lua" },
 			{ name = "latex_symbols" },
@@ -40,11 +40,20 @@ function M.setup()
 			expand = function(args) require("luasnip").lsp_expand(args.body) end,
 		},
 		formatting = {
-			format = function(_, item)
-				item.kind = icons[item.kind]
-				return item
+			fields = { "abbr", "kind", "menu" },
+			format = function(entry, vim_item)
+				-- Kind icons
+				vim_item.kind = string.format("%s", icons[vim_item.kind])
+				-- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
+				vim_item.menu = ({
+					nvim_lsp = "[LSP]",
+					nvim_lua = "[Neovim]",
+					luasnip  = "[Snippet]",
+					buffer   = "[Buffer]",
+					path     = "[Path]",
+				})[entry.source.name]
+				return vim_item
 			end,
-			fields = { 'kind', 'abbr' }
 		},
 		mapping = {
 			['<C-n>']     = cmp.mapping.select_next_item({ behavior = types.cmp.SelectBehavior.Insert }),
