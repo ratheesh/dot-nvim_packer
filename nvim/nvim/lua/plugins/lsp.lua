@@ -101,7 +101,11 @@ function M.setup()
 		require("illuminate").on_attach(client)
 		-- require("virtualtypes").on_attach(client)
 
-		if client.name ~= 'pyright' then
+		if client.name == 'sqls' then
+        require('sqls').on_attach(client, bufnr)
+    end
+
+		if client.name ~= 'pyright' or client.name ~= "sqls" then
 			navic.attach(client, bufnr)
 		end
 
@@ -189,6 +193,12 @@ function M.setup()
 			}
 		}
 	}))
+
+	lspconfig.sqls.setup({
+		on_attach    = on_attach,
+		capabilities = capabilities
+	})
+
 	lspconfig.texlab.setup({ on_attach = on_attach, capabilities = capabilities })
 	local win = require("lspconfig.ui.windows")
 	local _default_opts = win.default_opts
