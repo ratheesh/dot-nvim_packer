@@ -144,6 +144,7 @@ require("packer").startup({ function(use)
 				depth_limit           = 3,
 				depth_limit_indicator = "..",
 			})
+			vim.g.navic_silence = true
 		end
 	})
 	use({"nanotee/sqls.nvim"})
