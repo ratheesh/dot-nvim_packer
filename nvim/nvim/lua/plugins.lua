@@ -129,6 +129,7 @@ require("packer").startup({ function(use)
 			})
 		end
 	})
+	use({"nanotee/sqls.nvim"})
 	use({
 		"https://gitlab.com/yorickpeterse/nvim-dd.git",
 		after = "null-ls.nvim",
