@@ -513,7 +513,7 @@ require("packer").startup({ function(use)
 			vim.g.startify_change_to_vcs_root = 1
 			vim.g.startify_lists              = {
 				{ type = 'files'     , header = { '   Files'     }},
-				{ type = 'dir'       , header = { '   MRU '      }},
+				{ type = 'dir'       , header = { '   MRU'       }},
 				{ type = 'sessions'  , header = { '   Sessions'  }},
 				{ type = 'bookmarks' , header = { '   Bookmarks' }},
 				{ type = 'commands'  , header = { '   Commands'  }},
