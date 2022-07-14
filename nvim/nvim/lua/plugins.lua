@@ -607,6 +607,7 @@ require("packer").startup({ function(use)
 	use({ "andymass/vim-matchup" })
 	use ({
 		"metakirby5/codi.vim",
+		ft  = { "python" },
 		cmd = { "Codi" },
 		config = function ()
 			-- vim.g.codi.virtual_text_prefix = ">>> "
