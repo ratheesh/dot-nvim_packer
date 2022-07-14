@@ -554,6 +554,26 @@ require("packer").startup({ function(use)
 			-- vim.g.operator.sandwich.highlight_duration = 300
 		end
   })
+	use({
+		"unblevable/quick-scope",
+		disable = false,
+		config = function ()
+			vim.g.qs_ignorecase         = 1
+			vim.g.qs_highlight_on_keys  = {'f', 'F', 't', 'T', 'b', 'B', ';', ','}
+			vim.g.qs_lazy_highlight     = 1
+			vim.g.qs_filetype_blacklist = {'dashboard', 'startify'}
+		end
+	})
+	use({
+		"jinh0/eyeliner.nvim",
+		disable = true,
+		config = function()
+			require('eyeliner').setup {
+				bold      = false,
+				underline = false
+			}
+		end
+	})
 	use({ "michaeljsmith/vim-indent-object" , event = { "VimEnter"   } 					 })
 	use({ "jeetsukumaran/vim-pythonsense"   , ft    = { "python"     } 					 })
 	use({ "machakann/vim-swap"              , event = { "VimEnter"   } 					 })
