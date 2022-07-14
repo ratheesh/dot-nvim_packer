@@ -15,11 +15,11 @@ require("nvim-treesitter.configs").setup({
 		enable  = true,
 	},
 	textsubjects = {
-		enable = true,
-		prev_selection = ',', -- (Optional) keymap to select the previous selection
-		keymaps = {
-			['.'] = 'textsubjects-smart',
-			[';'] = 'textsubjects-container-outer',
+		enable         = true,
+		prev_selection = ',',
+		keymaps  = {
+			['.']  = 'textsubjects-smart',
+			[';']  = 'textsubjects-container-outer',
 			['i;'] = 'textsubjects-container-inner',
 		},
 	},
@@ -27,15 +27,15 @@ require("nvim-treesitter.configs").setup({
 		enable         = true,
 		extended_mode  = true,
 		max_file_lines = 1000,
-		colors         = {
-			"#e79498",
-			"#ebcb8b",
-			"#6B717C",
-			"#FA2C77",
-			"#1DAA89",
-			"#698BB8",
-			"#bd93f9"
-		}
+		-- colors         = {
+		-- 	"#e79498",
+		-- 	"#4682B4",
+		-- 	"#e7b898",
+		-- 	"#AA4499",
+		-- 	"#FA2CA7",
+		-- 	"#B3C1A9",
+		-- 	"#81A1C1"
+		-- }
 	},
 })
 -- End of File

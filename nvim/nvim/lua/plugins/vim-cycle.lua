@@ -16,11 +16,11 @@ vim.g.cycle_default_groups_for_c = {
 
 vim.g.cycle_default_groups_for_sh = {
 	{ 'eq', 'gt', 'lt', 'le', 'ge' },
-	{ '&&', '||' },
-	{ '>=', '<=' },
-	{ '>>', '<<' },
-	{ '=>>', '<<=' },
-	{ '-n', '-z' },
+	{ '&&'  , '||'  },
+	{ '>='  , '<='  },
+	{ '>>'  , '<<'  },
+	{ '=>>' , '<<=' },
+	{ '-n'  , '-z'  },
 }
 
 vim.g.cycle_default_groups_for_gitrebase = {
@@ -28,23 +28,23 @@ vim.g.cycle_default_groups_for_gitrebase = {
 }
 
 vim.g.cycle_default_groups = {
-	{ 'true', 'false' },
-	{ 'yes', 'no' },
-	{ 'on', 'off' },
-	{ 'allow', 'deny' },
-	{ 'before', 'after' },
-	{ 'block', 'inline', 'none' },
-	{ 'define', 'undef' },
-	{ 'good', 'bad' },
-	{ 'in', 'out' },
-	{ 'left', 'right' },
-	{ 'min', 'max' },
-	{ 'on', 'off' },
-	{ 'start', 'stop' },
-	{ 'enable', 'disable' },
-	{ 'success', 'failure' },
-	{ 'up', 'down' },
-	{ 'left', 'right' },
+	{ 'true'    , 'false' },
+	{ 'yes'     , 'no'    },
+	{ 'on'      , 'off'   },
+	{ 'allow'   , 'deny'  },
+	{ 'before'  , 'after' },
+	{ 'block'   , 'inline', 'none' } ,
+	{ 'define'  , 'undef'   },
+	{ 'good'    , 'bad'     },
+	{ 'in'      , 'out'     },
+	{ 'left'    , 'right'   },
+	{ 'min'     , 'max'     },
+	{ 'on'      , 'off'     },
+	{ 'start'   , 'stop'    },
+	{ 'enable'  , 'disable' },
+	{ 'success' , 'failure' },
+	{ 'up'      , 'down'    },
+	{ 'left'    , 'right'   },
 	{ 'sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday' },
 	{ 'january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december' },
 	{ '0', '1' },
@@ -56,3 +56,4 @@ vim.g.cycle_default_groups = {
 	{ '&', '|' },
 	{'==', '!='},
 }
+-- End of File
