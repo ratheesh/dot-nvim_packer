@@ -35,7 +35,9 @@ function M.setup()
 			{ name = "nvim_lua" },
 			{ name = "latex_symbols" },
 		},
-		experimental = { ghost_text = true },
+		experimental = {
+			ghost_text = { hl_group = 'CmpGhostText' }
+		},
 		snippet = {
 			expand = function(args) require("luasnip").lsp_expand(args.body) end,
 		},
@@ -46,9 +48,9 @@ function M.setup()
 				vim_item.kind = string.format("%s", icons[vim_item.kind])
 				-- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
 				vim_item.menu = ({
+					luasnip  = "[Snippet]",
 					nvim_lsp = "[LSP]",
 					nvim_lua = "[Neovim]",
-					luasnip  = "[Snippet]",
 					buffer   = "[Buffer]",
 					path     = "[Path]",
 				})[entry.source.name]
