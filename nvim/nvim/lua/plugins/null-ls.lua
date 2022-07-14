@@ -33,7 +33,7 @@ function M.setup()
 		-- diagnostics
 		with_diagnostics_code(ls.builtins.diagnostics.shellcheck),
 		ls.builtins.diagnostics.flake8,
-		ls.builtins.diagnostics.mypy,
+		-- ls.builtins.diagnostics.mypy,
 		ls.builtins.diagnostics.gitlint,
 		-- ls.builtins.diagnostics.vale.with({ args = '--config="$XDG_CONFIG_HOME/vale/vale.ini"' }),
 
@@ -44,7 +44,7 @@ function M.setup()
 		ls.builtins.hover.dictionary,
 
 		-- code actions
-		ls.builtins.code_actions.refactoring,
+		-- ls.builtins.code_actions.refactoring,
 		ls.builtins.code_actions.gitsigns,
 		ls.builtins.code_actions.gitrebase,
 	}
@@ -65,8 +65,8 @@ function M.setup()
 					if vim.bo.filetype == 'python' then
 						vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.format()")
 					end
-				end
-			end
+		end
+end
 		})
 	end
 
