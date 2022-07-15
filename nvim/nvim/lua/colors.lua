@@ -41,7 +41,7 @@ hl(0 , "Exception"    , { fg = "#D57780" , bg = nil       , italic = false , bol
 hl(0 , "FoldColumn"   , { fg = "#97B7D7" , bg = "#3B4252" , italic = false , bold = false , underline = false })
 hl(0 , "Folded"       , { fg = "#4C566A" , bg = "#3B4252" , italic = false , bold = false , underline = false })
 hl(0 , "IncSearch"    , { fg = "#4a656e" , bg = nil       , italic = false , bold = false , underline = false })
-hl(0 , "Search"       , { fg = nil       , bg = "#4a656e" , italic = false , bold = false , underline = false })
+hl(0 , "Search"       , { fg = nil       , bg = "#485568" , italic = false , bold = false , underline = false })
 hl(0 , "Macro"        , { fg = "#D57780" , bg = nil       , italic = false , bold = false , underline = false })
 hl(0 , "MatchParen"   , { fg = nil       , bg = "#3a555e" , italic = false , bold = true  , underline = false })
 hl(0 , "ModeMsg"      , { fg = "#A3BE8C" , bg = nil       , italic = false , bold = false , underline = false })
