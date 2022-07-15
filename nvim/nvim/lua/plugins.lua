@@ -97,8 +97,8 @@ require("packer").startup({ function(use)
 		end
 	})
 	use({
-		"norcalli/nvim-colorizer.lua",
-		config = function() require("colorizer").setup({ "*" }, { names = false }) end,
+		"lilydjwg/colorizer",
+		event = "BufEnter"
 	})
 	use("wbthomason/packer.nvim")
 	use({ "folke/lua-dev.nvim" })
