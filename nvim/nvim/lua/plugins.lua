@@ -133,7 +133,11 @@ require("packer").startup({ function(use)
 			})
 		end
 	})
-	use({ 'weilbith/nvim-code-action-menu', cmd = 'CodeActionMenu' })
+	use({
+		"weilbith/nvim-code-action-menu",
+		after = "nvim-lspconfig",
+		cmd = 'CodeActionMenu'
+	})
 	use({
 		"SmiteshP/nvim-navic",
 		requires = "neovim/nvim-lspconfig",
