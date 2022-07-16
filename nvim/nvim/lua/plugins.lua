@@ -240,7 +240,7 @@ require("packer").startup({ function(use)
 			})
 		end
 	})
-	use({ "RRethy/vim-illuminate", after = "fidget.nvim" })
+	-- use({ "RRethy/vim-illuminate", after = "fidget.nvim" })
 	use({ "nvim-treesitter/playground" })
 	use({
 		"rcarriga/nvim-notify",

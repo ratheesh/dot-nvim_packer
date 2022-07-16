@@ -98,7 +98,7 @@ function M.setup()
 		-- bufmap("n", "<leader>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
 		-- bufmap("n", "<leader>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
 
-		require("illuminate").on_attach(client)
+		-- require("illuminate").on_attach(client)
 		-- require("virtualtypes").on_attach(client)
 
 		if client.name == 'sqls' then
