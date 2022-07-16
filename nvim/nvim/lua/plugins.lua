@@ -79,12 +79,21 @@ require("packer").startup({ function(use)
 	})
 	use({
 		"TimUntersberger/neogit",
-		after = "diffview.nvim",
+		after    = "diffview.nvim",
+		cmd 		 = { "Neogit" },
+		requires = {
+			"nvim-lua/plenary.nvim",
+			"sindrets/diffview.nvim"
+		},
 		config = function()
 			require("neogit").setup({
-				disable_commit_confirmation = true,
+				disable_signs = false,
+				disable_hint  = false,
+				disable_context_highlighting = false,
+				disable_commit_confirmation  = false,
 				signs = { section = { "", "" }, item = { "", "" } },
 				integrations = { diffview = true },
+				disable_builtin_notifications = false,
 			})
 		end
 	})
