@@ -6,6 +6,7 @@ local windline = require('windline')
 local helper   = require('windline.helpers')
 local sep      = helper.separators
 local navic    = require("nvim-navic")
+local Hydra    = require("hydra.statusline")
 -- local vim_components = require('windline.components.vim')
 
 local b_components = require('windline.components.basic')
@@ -75,15 +76,23 @@ basic.vi_mode = {
     InsertAfter   = { 'FileNameBg', 'ModeInsertBg' },
     VisualAfter   = { 'FileNameBg', 'ModeVisualBg' },
     ReplaceAfter  = { 'FileNameBg', 'ModeReplaceBg' },
-    CommandAfter  = { 'FileNameBg', 'ModeCommandBg' },
-  },
-  text = function()
-    return {
-      { sep.left_rounded, state.mode[2] .. 'Before' },
-      { state.mode[1] .. ' ', state.mode[2] },
-      -- { sep.left_rounded, state.mode[2] .. 'After' },
-    }
-  end,
+		CommandAfter  = { 'FileNameBg', 'ModeCommandBg' },
+	},
+
+	text = function()
+		if Hydra.is_active() then
+			return {
+				{ sep.left_rounded, state.mode[2] .. 'Before' },
+				{ ' ' ..  Hydra.get_name() .. ' ', state.mode[2] },
+			}
+		else
+			return {
+				{ sep.left_rounded, state.mode[2] .. 'Before' },
+				{ state.mode[1] .. ' ', state.mode[2] },
+				-- { sep.left_rounded, state.mode[2] .. 'After' },
+			}
+		end
+	end,
 }
 
 basic.mode_rightsep = {
@@ -185,7 +194,7 @@ end,
 
 local function is_file_ro()
   if vim.bo.readonly then
-    return ''
+    return ''
   end
   return ''
 end
@@ -530,8 +539,8 @@ windline.setup({
     colors.LSPDiagWarnFg = "#729FCF"
     colors.LSPDiagHintFg = "#9987A4"
 
-    colors.NavicFg         = "#FEFEFE"
-    colors.NavicBg         = "#984ea3"
+    colors.NavicFg       = "#FEFEFE"
+    colors.NavicBg       = "#984ea3"
 
     colors.LSPClientFg   = "#eeeeee"
     colors.LSPClientBg   = "#356088"
