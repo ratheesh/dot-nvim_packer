@@ -577,8 +577,9 @@ require("packer").startup({ function(use)
 	use({
 		"gelguy/wilder.nvim",
 		opt = false,
-		requires = { "romgrk/fzy-lua-native", "nixprime/cpsm" },
-		-- event = "VimEnter",
+		requires = { "romgrk/fzy-lua-native", "nixprime/cpsm", "kyazdani42/nvim-web-devicons"},
+		after = "nvim-web-devicons",
+		event = "CmdlineEnter",
 		config = function()
 			require("plugins.wilder")
 		end
