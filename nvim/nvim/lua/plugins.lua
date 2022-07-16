@@ -239,6 +239,7 @@ require("packer").startup({ function(use)
 	})
 	use({
 		"gbprod/yanky.nvim",
+		disable = true,
 		-- after = "dressing",
 		config = function()
 			require("yanky").setup({
@@ -487,6 +488,7 @@ require("packer").startup({ function(use)
 	})
 	use({
 		"RRethy/nvim-treesitter-textsubjects",
+		disable = true
 	})
 	use({
 		"windwp/nvim-autopairs",
