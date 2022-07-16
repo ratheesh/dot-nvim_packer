@@ -73,6 +73,22 @@ require("packer").startup({ function(use)
 		end
 	})
 	use({
+		"sindrets/diffview.nvim",
+		module = "neogit",
+		cmd    = "Neogit",
+	})
+	use({
+		"TimUntersberger/neogit",
+		after = "diffview.nvim",
+		config = function()
+			require("neogit").setup({
+				disable_commit_confirmation = true,
+				signs = { section = { "", "" }, item = { "", "" } },
+				integrations = { diffview = true },
+			})
+		end
+	})
+	use({
 		"nvim-treesitter/nvim-treesitter",
 		config = function()
 			require("plugins.treesitter")
