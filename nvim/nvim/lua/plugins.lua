@@ -169,11 +169,12 @@ require("packer").startup({ function(use)
 	})
 	use({
 		"SmiteshP/nvim-navic",
+		wants = "nvim-lspconfig",
 		requires = "neovim/nvim-lspconfig",
 		config = function()
 			require("nvim-navic").setup({
 				highlight             = false,
-				separator             = " > ",
+				separator             = "  ",
 				depth_limit           = 3,
 				depth_limit_indicator = "..",
 			})
