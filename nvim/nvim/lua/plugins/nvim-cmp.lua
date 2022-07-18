@@ -6,6 +6,17 @@ local cmp     = require('cmp')
 local types   = require('cmp.types')
 local luasnip = require("luasnip")
 
+local function check_backspace()
+  local col = vim.fn.col '.' - 1
+  return col == 0 or vim.fn.getline('.'):sub(col, col):match '%s' ~= nil
+end
+
+local feedkeys = vim.fn.feedkeys
+local replace_termcodes = vim.api.nvim_replace_termcodes
+local backspace_keys = replace_termcodes('<tab>', true, true, true)
+local snippet_next_keys = replace_termcodes('<plug>luasnip-expand-or-jump', true, true, true)
+local snippet_prev_keys = replace_termcodes('<plug>luasnip-jump-prev', true, true, true)
+
 local M = {}
 
 local has_words_before = function()
@@ -28,10 +39,11 @@ function M.setup()
 			documentation = cmp.config.window.bordered({ winhighlight = "" }),
 		},
 		sources = {
+			{ name = "luasnip"  },
 			{ name = "nvim_lsp" },
 			{ name = "path" },
-			{ name = "luasnip"  },
 			{ name = "buffer", keyword_length = 3 },
+			{ name = "tmux" },
 			{ name = "nvim_lua" },
 			{ name = "latex_symbols" },
 		},
@@ -41,6 +53,27 @@ function M.setup()
 		snippet = {
 			expand = function(args) require("luasnip").lsp_expand(args.body) end,
 		},
+		sorting = {
+			comparators = {
+				-- function(entry1, entry2)
+					--   local score1 = entry1.completion_item.score
+					--   local score2 = entry2.completion_item.score
+					--   if score1 and score2 then
+					--     return (score1 - score2) < 0
+					--   end
+					-- end,
+
+					-- The built-in comparators:
+					cmp.config.compare.offset,
+					cmp.config.compare.exact,
+					cmp.config.compare.score,
+					require('cmp-under-comparator').under,
+					cmp.config.compare.kind,
+					cmp.config.compare.sort_text,
+					cmp.config.compare.length,
+					cmp.config.compare.order,
+				},
+			},
 		formatting = {
 			fields = { "abbr", "kind", "menu" },
 			format = function(entry, vim_item)
@@ -66,11 +99,13 @@ function M.setup()
 			["<C-e>"]     = cmp.mapping.abort(),
 			['<C-y>']     = cmp.mapping.confirm({ select = true }),
 			["<CR>"]      = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false }),
-			["<Tab>"] = cmp.mapping(function(fallback)
+			['<Tab>'] 		= cmp.mapping(function(fallback)
 				if cmp.visible() then
 					cmp.select_next_item()
 				elseif luasnip.expand_or_jumpable() then
-					luasnip.expand_or_jump()
+					feedkeys(snippet_next_keys, '')
+				elseif check_backspace() then
+					feedkeys(backspace_keys, 'n')
 				elseif has_words_before() then
 					cmp.complete()
 				else
@@ -78,11 +113,11 @@ function M.setup()
 				end
 			end, { "i", "s" }),
 
-			["<S-Tab>"] = cmp.mapping(function(fallback)
+			['<S-Tab>'] = cmp.mapping(function(fallback)
 				if cmp.visible() then
 					cmp.select_prev_item()
 				elseif luasnip.jumpable(-1) then
-					luasnip.jump(-1)
+					feedkeys(snippet_prev_keys, '')
 				else
 					fallback()
 				end
