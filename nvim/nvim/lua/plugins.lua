@@ -725,6 +725,13 @@ require("packer").startup({ function(use)
 		end
 	})
 	use({
+		"winston0410/range-highlight.nvim",
+		requires = { "winston0410/cmd-parser.nvim" },
+		config = function ()
+			require("range-highlight").setup()
+		end
+	})
+	use({
 		"lewis6991/satellite.nvim",
 		config=function ()
 			require('satellite').setup {
