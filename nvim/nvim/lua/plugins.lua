@@ -456,6 +456,7 @@ require("packer").startup({ function(use)
 	use ({
 		"mfussenegger/nvim-dap-python",
 		requires = "mfussenegger/nvim-dap",
+		ft = { "python" },
 		config = function ()
 			require('dap-python').setup('python', {})
 		end
