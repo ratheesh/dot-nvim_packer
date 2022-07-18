@@ -308,4 +308,7 @@ hl(0, "OperatorSandwichAdd", { fg = "#99c794", bg = nil, italic = false, bold = 
 hl(0, "OperatorSandwichDelete", { fg = "#F06372", bg = nil, italic = false, bold = true, underline = true })
 hl(0, "OperatorSandwichChange", { fg = "#C586C0", bg = "#3E5062", italic = false, bold = true, underline = false })
 
+hl(0, "InclineNormal"  , { fg = "#E0E0E0", bg = "#6B717C", italic = false, bold = false, underline = false })
+hl(0, "InclineNormalNC", { fg = "#E0E0E0", bg = "#6B717C", italic = false, bold = false, underline = false })
+
 -- End of File
