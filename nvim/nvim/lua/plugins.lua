@@ -751,6 +751,33 @@ require("packer").startup({ function(use)
 			}
 		end
 	})
+	use({
+		"b0o/incline.nvim",
+		event = "VimEnter",
+		config = function ()
+			require('incline').setup({
+				window = {
+					zindex = 60,
+					width  = "fit",
+					placement = { horizontal = "right", vertical = "top" },
+					margin = {
+						horizontal = { left = 1, right = 0 },
+						vertical   = { bottom = 0, top = 1 },
+					},
+					padding      = { left = 1, right = 1 },
+					padding_char = " ",
+					winhighlight = {
+						Normal = "TreesitterContext",
+					},
+				},
+				hide = {
+					cursorline  = true,
+					focused_win = false,
+					only_win    = true
+				},
+			})
+		end
+	})
 	use({ 'dstein64/vim-startuptime' })
 
 	if Packer_bootstrap then
