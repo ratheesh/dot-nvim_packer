@@ -605,6 +605,7 @@ require("packer").startup({ function(use)
 	use({
 		"gelguy/wilder.nvim",
 		opt = false,
+		run = ':UpdateRemotePlugins',
 		requires = { "romgrk/fzy-lua-native", "nixprime/cpsm", "kyazdani42/nvim-web-devicons"},
 		after = "nvim-web-devicons",
 		event = "CmdlineEnter",
