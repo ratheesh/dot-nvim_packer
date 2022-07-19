@@ -1,3 +1,7 @@
+-- Copyright (c) 2022 Ratheesh <ratheeshreddy@gmail.com>
+-- License: MIT
+-- DAP Plugin Configuration
+
 local M = {}
 
 function M.setup()
