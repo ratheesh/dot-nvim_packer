@@ -540,7 +540,8 @@ require("packer").startup({ function(use)
 
 	use({
 		"mhinz/vim-startify",
-		config = function()
+		disable = true,
+		config  = function()
 		vim.g.startify_custom_header = {
              "",
              "                     ________   ++    ________",
@@ -575,6 +576,14 @@ require("packer").startup({ function(use)
 				{ t = '$HOME/.tmux.conf' },
 				{ z = '$HOME/.zshrc'     },
 			}
+		end
+	})
+	use ({
+		"goolord/alpha-nvim",
+		disable  = false,
+		requires = { 'kyazdani42/nvim-web-devicons' },
+		config   = function ()
+			require'alpha'.setup(require'alpha.themes.startify'.config)
 		end
 	})
 	-- The missing auto-completion for cmdline!

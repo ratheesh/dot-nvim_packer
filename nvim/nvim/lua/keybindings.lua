@@ -70,7 +70,8 @@ map("x", "ga", "<Plug>(EasyAlign)")
 map('o', 'ih', '<cmd>Gitsigns select_hunk<CR>')
 map('x', 'ih', '<cmd>Gitsigns select_hunk<CR>')
 
-map('n', '<leader>H', '<cmd>Startify<CR>')
+-- map('n', '<leader>H', '<cmd>Startify<CR>')
+map('n', '<leader>H', '<cmd>Alpha<CR>')
 
 map("s", "<C-l>" ,"<cmd>lua require('luasnip').jump(1)<CR>")
 map("s", "<C-h>" ,"<cmd>lua require('luasnip').jump(-1)<CR>")
