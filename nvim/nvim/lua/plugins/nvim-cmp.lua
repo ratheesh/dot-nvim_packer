@@ -39,41 +39,44 @@ function M.setup()
 			documentation = cmp.config.window.bordered({ winhighlight = "" }),
 		},
 		sources = {
-			{ name = "luasnip"  },
-			{ name = "nvim_lsp" },
-			{ name = "path" },
-			{ name = "buffer", keyword_length = 3 },
-			{ name = "tmux" },
-			{ name = "nvim_lua" },
-			{ name = "latex_symbols" },
+			{ name = "luasnip",       keyword_length = 2 },
+			{ name = "nvim_lsp",      keyword_length = 2 },
+			{ name = "path",          keyword_length = 2 },
+			{ name = "buffer",        keyword_length = 2 },
+			{ name = "tmux",          keyword_length = 2 },
+			{ name = "nvim_lua",      keyword_length = 2 },
+			{ name = "latex_symbols", keyword_length = 2 },
 		},
 		experimental = {
 			ghost_text = { hl_group = 'CmpGhostText' }
 		},
+		performance = {
+			trigger_debounce_time = 100
+		},
 		snippet = {
 			expand = function(args) require("luasnip").lsp_expand(args.body) end,
 		},
-		sorting = {
-			comparators = {
-				-- function(entry1, entry2)
-					--   local score1 = entry1.completion_item.score
-					--   local score2 = entry2.completion_item.score
-					--   if score1 and score2 then
-					--     return (score1 - score2) < 0
-					--   end
-					-- end,
-
-					-- The built-in comparators:
-					cmp.config.compare.offset,
-					cmp.config.compare.exact,
-					cmp.config.compare.score,
-					require('cmp-under-comparator').under,
-					cmp.config.compare.kind,
-					cmp.config.compare.sort_text,
-					cmp.config.compare.length,
-					cmp.config.compare.order,
-				},
-			},
+		-- sorting = {
+		-- 	comparators = {
+		-- 		-- function(entry1, entry2)
+		-- 			--   local score1 = entry1.completion_item.score
+		-- 			--   local score2 = entry2.completion_item.score
+		-- 			--   if score1 and score2 then
+		-- 			--     return (score1 - score2) < 0
+		-- 			--   end
+		-- 			-- end,
+  --
+		-- 			-- The built-in comparators:
+		-- 			cmp.config.compare.offset,
+		-- 			cmp.config.compare.exact,
+		-- 			cmp.config.compare.score,
+		-- 			require('cmp-under-comparator').under,
+		-- 			cmp.config.compare.kind,
+		-- 			cmp.config.compare.sort_text,
+		-- 			cmp.config.compare.length,
+		-- 			cmp.config.compare.order,
+		-- 		},
+		-- 	},
 		formatting = {
 			fields = { "abbr", "kind", "menu" },
 			format = function(entry, vim_item)
