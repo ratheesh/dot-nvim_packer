@@ -273,6 +273,7 @@ require("packer").startup({ function(use)
 	})
 	use({
 		"stevearc/dressing.nvim",
+		disable = true,
 		config = function() require("dressing").setup() end
 	})
 	use({
