@@ -1,3 +1,6 @@
+-- Copyright (c) 2022 Ratheesh <ratheeshreddy@gmail.com>
+-- License: MIT
+-- null-ls Configuration
 
 local M = {}
 
