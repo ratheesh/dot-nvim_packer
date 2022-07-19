@@ -42,21 +42,28 @@ require("packer").startup({ function(use)
 	use({"sjl/gundo.vim"        , event = "VimEnter" })
 	use({
 		"windwp/windline.nvim",
+		after = "hydra.nvim",
 		config = function()
 			require("plugins.windline")
 		end,
 	})
 	use({
 		"romgrk/barbar.nvim",
+		event = "VimEnter",
 		requires = { 'kyazdani42/nvim-web-devicons' },
 		config = function()
 			require("plugins.barbar")
 		end
 	})
-	use({"chentoast/marks.nvim", config = function() require('marks').setup({}) end})
+	use({
+		"chentoast/marks.nvim",
+		event = { "BufEnter" },
+		config = function() require('marks').setup({}) end
+	})
 	use("nvim-lua/plenary.nvim")
 	use({
 		"lewis6991/gitsigns.nvim",
+		event = "VimEnter",
 		config = function()
 			require("gitsigns").setup({
 				on_attach = function(bufnr)
@@ -99,6 +106,7 @@ require("packer").startup({ function(use)
 	})
 	use({
 		"nvim-treesitter/nvim-treesitter",
+		event = "VimEnter",
 		config = function()
 			require("plugins.treesitter")
 		end,
@@ -106,6 +114,7 @@ require("packer").startup({ function(use)
 	use({
 		"lukas-reineke/indent-blankline.nvim",
 		disable = true,
+		after   = { "nvim-lspconfig" },
 		config = function()
 			require("indent_blankline").setup({
 				char = "▏",
@@ -118,6 +127,7 @@ require("packer").startup({ function(use)
 	})
 	use({
 		"lukas-reineke/virt-column.nvim",
+		event = { "BufEnter" },
 		config = function()
 			require("virt-column").setup({
 				char = "│"
@@ -126,6 +136,7 @@ require("packer").startup({ function(use)
 	})
 	use({
 		"ethanholz/nvim-lastplace",
+		event = { "BufEnter" },
 		config = function()
 			require 'nvim-lastplace'.setup({
 				lastplace_ignore_buftype = { "quickfix", "nofile", "help" },
@@ -190,7 +201,7 @@ require("packer").startup({ function(use)
 			vim.g.navic_silence = true
 		end
 	})
-	use({"nanotee/sqls.nvim"})
+	use({"nanotee/sqls.nvim", ft = { "sql" }})
 	use({
 		"https://gitlab.com/yorickpeterse/nvim-dd.git",
 		after = "null-ls.nvim",
@@ -238,6 +249,7 @@ require("packer").startup({ function(use)
 	-- })
 	use({
 		"j-hui/fidget.nvim",
+		after = { "nvim-lspconfig" },
 		config = function()
 			require("fidget").setup({
 				text = {
@@ -250,7 +262,7 @@ require("packer").startup({ function(use)
 		end
 	})
 	-- use({ "RRethy/vim-illuminate", after = "fidget.nvim" })
-	use({ "nvim-treesitter/playground" })
+	use({ "nvim-treesitter/playground", after = "nvim-treesitter" })
 	use({
 		"rcarriga/nvim-notify",
 		after = "playground",
@@ -354,7 +366,7 @@ require("packer").startup({ function(use)
 	})
 	use({
 		"echasnovski/mini.nvim",
-		after = "cmp-latex-symbols",
+		event = "VimEnter",
 		config = function()
 			require("plugins.mini").setup()
 		end,
@@ -438,9 +450,10 @@ require("packer").startup({ function(use)
 			-- wk.register({}, {})
 		end,
 	})
-	use({ "tweekmonster/startuptime.vim", cmd = "StartupTime" })
+	use({ "tweekmonster/startuptime.vim"})
 	use({
 		"mfussenegger/nvim-dap",
+		event = "VimEnter",
 		wants = { "nvim-dap-virtual-text", "DAPInstall.nvim", "nvim-dap-ui", "nvim-dap-python" },
 		requires = {
 			"Pocco81/DAPInstall.nvim",
@@ -463,6 +476,7 @@ require("packer").startup({ function(use)
 	})
 	use ({
 		"rcarriga/nvim-dap-ui",
+		after = { "nvim-dap" },
 		config = function()
 			require("dapui").setup()
 		end,
@@ -470,6 +484,7 @@ require("packer").startup({ function(use)
 	})
 	use({
 		"theHamsta/nvim-dap-virtual-text",
+		after = { "nvim-dap" },
 		config = function() require("nvim-dap-virtual-text").setup() end
 	})
 	use({
@@ -599,21 +614,22 @@ require("packer").startup({ function(use)
 	})
 	use({ 'anuvyklack/hydra.nvim',
 		requires = 'anuvyklack/keymap-layer.nvim',
+		after = "gitsigns.nvim",
 		config = function()
 			require("plugins.hydra")
 		end
 	})
-	use({
-		"junegunn/vim-easy-align",
-	})
+	use({ "junegunn/vim-easy-align", event = "BufEnter", })
 	use ({
 		'dccsillag/magma-nvim',
+		ft = { "python" },
 		disable = true,
 		run = ':UpdateRemotePlugins'
 	})
 	-- use({ "tpope/vim-surround"              , event = "VimEnter" })
 	use({
 		"kylechui/nvim-surround",
+		event = "BufEnter",
 		disable = true,
 		config = function ()
 			require("nvim-surround").setup({
@@ -625,6 +641,7 @@ require("packer").startup({ function(use)
 	})
 	use ({
     "machakann/vim-sandwich",
+		event = "BufEnter",
 		disable = false,
 		config = function ()
 			vim.cmd("runtime macros/sandwich/keymap/surround.vim")
@@ -710,6 +727,7 @@ require("packer").startup({ function(use)
 	use({ "ojroques/vim-oscyank"            , cmd   = { 'OSCYank' , 'OSCYankReg' }})
 	use({
 		"antoyo/vim-licenses",
+		event = "VimEnter",
 		config = function ()
 			vim.g.licenses_copyright_holders_name = 'Ratheesh <ratheeshreddy@gmail.com>'
 			vim.g.licenses_authors_name           = 'Ratheesh S'
@@ -733,12 +751,14 @@ require("packer").startup({ function(use)
 	})
 	use({
 		"bootleq/vim-cycle",
+		event = "VimEnter",
 		config = function()
 			require("plugins.vim-cycle")
 		end
 	})
 	use({
 		"winston0410/range-highlight.nvim",
+		event = "VimEnter",
 		requires = { "winston0410/cmd-parser.nvim" },
 		config = function ()
 			require("range-highlight").setup()
@@ -746,6 +766,7 @@ require("packer").startup({ function(use)
 	})
 	use({
 		"lewis6991/satellite.nvim",
+		after = "nvim-lspconfig",
 		config=function ()
 			require('satellite').setup {
 				current_only = false,
