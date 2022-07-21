@@ -273,6 +273,7 @@ require("packer").startup({ function(use)
 	})
 	use({
 		"stevearc/dressing.nvim",
+		after = { "yanky.nvim" },
 		disable = false,
 		event = "BufEnter",
 		config = function() require("dressing").setup() end
@@ -281,7 +282,7 @@ require("packer").startup({ function(use)
 		"gbprod/yanky.nvim",
 		disable = false,
 		event = "BufEnter",
-		after = "dressing",
+		-- after = "dressing",
 		config = function()
 			require("yanky").setup({
 				highlight = {
