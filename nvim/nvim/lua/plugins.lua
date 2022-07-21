@@ -708,11 +708,13 @@ require("packer").startup({ function(use)
 			}
 		end
 	})
-	use({ "michaeljsmith/vim-indent-object" , event = { "VimEnter"   } 					 })
-	use({ "jeetsukumaran/vim-pythonsense"   , ft    = { "python"     } 					 })
-	use({ "machakann/vim-swap"              , event = { "VimEnter"   } 					 })
-	use({ "mg979/vim-visual-multi" 					, event = { "BufReadPre" } 					 })
-	use({ "ojroques/vim-oscyank"            , cmd   = { 'OSCYank' , 'OSCYankReg' }})
+	use({ "michaeljsmith/vim-indent-object",    event = { "VimEnter"   }})
+	use({ "jeetsukumaran/vim-pythonsense",      ft    = { "python"     }})
+	use({ "machakann/vim-swap",                 event = { "VimEnter"   }})
+	use({ "kana/vim-textobj-user",              event = { "BufReadPre" }})
+	use({ "mg979/vim-visual-multi",             event = { "BufReadPre" }})
+	use({ "coderifous/textobj-word-column.vim", event = { "VimEnter"   }})
+	use({ "ojroques/vim-oscyank",               cmd   = { 'OSCYank' , 'OSCYankReg' }})
 	use({
 		"antoyo/vim-licenses",
 		event = "VimEnter",
