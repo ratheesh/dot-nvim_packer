@@ -29,12 +29,15 @@ Hydra({
 			vim.bo.modifiable = true
 			gitsigns.toggle_signs(true)
 			gitsigns.toggle_linehl(true)
+			gitsigns.toggle_word_diff(true)
+			vim.cmd([[ColorClear]])
 		end,
 		on_exit = function()
 			gitsigns.toggle_signs(true)
 			gitsigns.toggle_linehl(false)
 			gitsigns.toggle_deleted(false)
 			gitsigns.toggle_word_diff(false)
+			vim.cmd([[ColorHighlight]])
 			vim.cmd 'echo' -- clear the echo area
 		end
 	},
@@ -51,19 +54,19 @@ Hydra({
 			vim.schedule(function() gitsigns.prev_hunk() end)
 			return '<Ignore>'
 		end, { expr = true } },
-		{ 's', '<cmd>Gitsigns stage_hunk<CR>', { silent = true } },
-		{ 'u', gitsigns.undo_stage_hunk, { desc = 'undo staged hunk' } },
-		{ 'S', gitsigns.stage_buffer, { desc = 'stage buffer' } },
-		{ 'R', gitsigns.reset_hunk },
-		{ 'p', gitsigns.preview_hunk },
+		{ 's', gitsigns.stage_hunk, { silent = true } },
+		{ 'u', gitsigns.undo_stage_hunk, { desc = 'Undo Staged Hunk' } },
+		{ 'S', gitsigns.stage_buffer, { desc = 'Stage buffer' } },
+		{ 'R', gitsigns.reset_hunk, { desc = 'Reset Hunk' } },
+		{ 'p', gitsigns.preview_hunk, { desc = 'Preview Hunk' } },
 		{ 'd', gitsigns.toggle_deleted, { nowait = true } },
 		{ 'D', gitsigns.toggle_word_diff, { nowait = true } },
-		{ 'b', gitsigns.blame_line },
+		{ 'b', gitsigns.blame_line, {desc = "Blame Line"} },
 		{ 'B', function() gitsigns.blame_line { full = true } end },
 		{ '/', gitsigns.show, { exit = true } },
 		{ '<Enter>', '<cmd>Neogit<CR>', { exit = true } },
-		{ '<Esc>', nil, { exit = true, nowait = true } },
-		{ 'q', nil, { exit = true, nowait = true } },
+		{ '<Esc>',   nil, { exit = true, nowait = true } },
+		{ 'q',       nil, { exit = true, nowait = true } },
 	}
 })
 
