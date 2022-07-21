@@ -46,7 +46,7 @@ function M.setup()
 			{ name = "buffer",        keyword_length = 2 },
 			{ name = "tmux",          keyword_length = 2 },
 			{ name = "nvim_lua",      keyword_length = 2 },
-			{ name = "latex_symbols", keyword_length = 2 },
+			-- { name = "latex_symbols", keyword_length = 2 },
 		},
 		experimental = {
 			ghost_text = { hl_group = 'CmpGhostText' }

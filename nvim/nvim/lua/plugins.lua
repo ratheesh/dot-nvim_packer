@@ -332,7 +332,7 @@ require("packer").startup({ function(use)
 			-- "f3fora/cmp-spell",
 			"hrsh7th/cmp-nvim-lsp-signature-help",
 			"hrsh7th/cmp-emoji",
-			"kdheepak/cmp-latex-symbols",
+			-- "kdheepak/cmp-latex-symbols",
 			"andersevenrud/cmp-tmux",
 			"petertriho/cmp-git",
 			{
