@@ -31,7 +31,8 @@ local hl = vim.api.nvim_set_hl
 
 hl(0 , "Normal"       , { fg = "#EEEEEE" , bg = "#1E2430" , italic = false , bold = false , underline = false })
 hl(0 , "NormalFloat"  , { fg = "#EEEEEE" , bg = "#1E2430" , italic = false , bold = false , underline = false })
-hl(0 , "FloatBorder"  , { fg = "#3B4252" , bg = nil       , italic = false , bold = false , underline = false })
+hl(0 , "FloatBorder"  , { fg = "#4C566A" , bg = nil       , italic = false , bold = false , underline = false })
+hl(0 , "FloatTitle"   , { fg = "#81A1C1" , bg = nil       , italic = false , bold = false , underline = false })
 hl(0 , "Bold"         , { fg = nil       , bg = nil       , italic = false , bold = true  , underline = false })
 hl(0 , "Debug"        , { fg = "#D57780" , bg = nil       , italic = false , bold = false , underline = false })
 hl(0 , "Directory"    , { fg = "#81A1C1" , bg = nil       , italic = false , bold = false , underline = false })
@@ -43,7 +44,7 @@ hl(0 , "Folded"       , { fg = "#4C566A" , bg = "#3B4252" , italic = false , bol
 hl(0 , "IncSearch"    , { fg = nil       , bg = "#485568" , italic = false , bold = false , underline = false })
 hl(0 , "Search"       , { fg = nil       , bg = "#485568" , italic = false , bold = false , underline = false })
 hl(0 , "Macro"        , { fg = "#D57780" , bg = nil       , italic = false , bold = false , underline = false })
-hl(0 , "MatchParen"   , { fg = nil       , bg = "#3a555e" , italic = false , bold = true  , underline = false })
+hl(0 , "MatchParen"   , { fg = nil       , bg = "#2a454e" , italic = false , bold = false , underline = false })
 hl(0 , "ModeMsg"      , { fg = "#A3BE8C" , bg = nil       , italic = false , bold = false , underline = false })
 hl(0 , "MoreMsg"      , { fg = "#A3BE8C" , bg = nil       , italic = false , bold = false , underline = false })
 hl(0 , "Question"     , { fg = "#81A1C1" , bg = nil       , italic = false , bold = false , underline = false })
@@ -57,7 +58,7 @@ hl(0 , "WarningMsg"   , { fg = "#D57780" , bg = nil       , italic = false , bol
 hl(0 , "WildMenu"     , { fg = "#D57780" , bg = "#EBCB8B" , italic = false , bold = false , underline = false })
 hl(0 , "Title"        , { fg = "#81A1C1" , bg = nil       , italic = false , bold = false , underline = false })
 hl(0 , "Conceal"      , { fg = "#81A1C1" , bg = "#1E2430" , italic = false , bold = false , underline = false })
-hl(0 , "Cursor"       , { fg = "#1E2430" , bg = "#D8DEE9" , italic = false , bold = false , underline = false })
+hl(0 , "Cursor"       , { fg = "#1E2430" , bg = "#F0F0F0" , italic = false , bold = false , underline = false })
 hl(0 , "NonText"      , { fg = "#4C566A" , bg = nil       , italic = false , bold = false , underline = false })
 hl(0 , "LineNr"       , { fg = "#a0a0a0" , bg = "#2a4a56" , italic = false , bold = false , underline = false })
 hl(0 , "StatusLineNC" , { fg = "#4C566A" , bg = nil       , italic = false , bold = false , underline = false })
@@ -138,10 +139,10 @@ hl(0 , "NvimInternalError"	 		, { fg = "#BF616A" , bg = nil       , italic = fal
 hl(0 , "GitSignsAdd"				 		, { fg = "#81A1C1" , bg = nil       , italic = false , bold = false , underline = false })
 hl(0 , "GitSignsChange"			 		, { fg = "#606672" , bg = nil       , italic = false , bold = false , underline = false })
 hl(0 , "GitSignsModified"		 		, { fg = "#81A1C1" , bg = nil       , italic = false , bold = false , underline = false })
-hl(0 , "GitSignsChangeLn"		 		, { fg = nil       , bg = "#3C4C5C" , italic = false , bold = false , underline = false })
-hl(0 , "GitSignsDeleteLnInline" , { fg = "#D57780" , bg = "#3B4252" , italic = false , bold = false , underline = false })
-hl(0 , "GitSignsDeleteLn" 			, { fg = "#D57780" , bg = "#3B4252" , italic = false , bold = false , underline = false })
-hl(0 , "GitSignsChangeVirtLn"   , { fg = "#EBCB8B" , bg = "#3B4252" , italic = false , bold = false , underline = false })
+hl(0 , "GitSignsChangeLn"		 		, { fg = "#A3BE8C" , bg = "#2a384e" , italic = false , bold = false , underline = false })
+hl(0 , "GitSignsDeleteLnInline" , { fg = "#D57780" , bg = "#2a384e" , italic = false , bold = false , underline = false })
+hl(0 , "GitSignsDeleteLn" 			, { fg = "#D57780" , bg = "#2a384e" , italic = false , bold = false , underline = false })
+hl(0 , "GitSignsChangeVirtLn"   , { fg = "#EBCB8B" , bg = "#2a384e" , italic = false , bold = false , underline = false })
 hl(0 , "NnnNormal"         			, { fg = nil       , bg = "#1E2430" , italic = false , bold = false , underline = false })
 
 
@@ -227,13 +228,13 @@ hl(0 , "TSKeywordOperator"  , { fg = "#AA9E76" , bg = nil , italic = true  , bol
 hl(0 , "TSOperator"         , { fg = "#C5B4C0" , bg = nil , italic = false , bold = true  , underline = false })
 
 -- rainbow
-hl(0, "rainbowcol1", { fg = "#4682B4", bg = nil, italic = false, bold = true, underline = false })
-hl(0, "rainbowcol2", { fg = "#E776A4", bg = nil, italic = false, bold = true, underline = false })
-hl(0, "rainbowcol3", { fg = "#B3C1A9", bg = nil, italic = false, bold = true, underline = false })
+hl(0, "rainbowcol1", { fg = "#e79498", bg = nil, italic = false, bold = true, underline = false })
+hl(0, "rainbowcol2", { fg = "#81A1C1", bg = nil, italic = false, bold = true, underline = false })
+hl(0, "rainbowcol3", { fg = "#d5b07B", bg = nil, italic = false, bold = true, underline = false })
 hl(0, "rainbowcol4", { fg = "#AA4499", bg = nil, italic = false, bold = true, underline = false })
-hl(0, "rainbowcol5", { fg = "#edc8b8", bg = nil, italic = false, bold = true, underline = false })
-hl(0, "rainbowcol6", { fg = "#7f7f7f", bg = nil, italic = false, bold = true, underline = false })
-hl(0, "rainbowcol7", { fg = "#FA2CA7", bg = nil, italic = false, bold = true, underline = false })
+hl(0, "rainbowcol5", { fg = "#FA2CA7", bg = nil, italic = false, bold = true, underline = false })
+hl(0, "rainbowcol6", { fg = "#B3C1A9", bg = nil, italic = false, bold = true, underline = false })
+hl(0, "rainbowcol7", { fg = "#bd93f9", bg = nil, italic = false, bold = true, underline = false })
 
 -- wilder.nvim
 hl(0 , "WildMenu"           , { fg = "#000000" , bg = "#8F575A" , italic = true  , bold = false , underline = false })
@@ -294,18 +295,18 @@ hl(0 , "StartifySection" , { fg = "#00afcb" , bg = nil , italic = true  , bold =
 hl(0 , "StartifyFooter"  , { fg = "#a0a0a0" , bg = nil , italic = false , bold = false , underline = false })
 
 -- nvim-rainbow-ts
-hl(0, "rainbowcol1", { fg = "#1692C4", bg = nil, italic = false, bold = true, underline = false })
+hl(0, "rainbowcol1", { fg = "#009fbb", bg = nil, italic = false, bold = true, underline = false })
 hl(0, "rainbowcol2", { fg = "#DE678E", bg = nil, italic = false, bold = true, underline = false })
 hl(0, "rainbowcol3", { fg = "#1DAA89", bg = nil, italic = false, bold = true, underline = false })
-hl(0, "rainbowcol5", { fg = "#9c755f", bg = nil, italic = false, bold = true, underline = false })
+hl(0, "rainbowcol5", { fg = "#ac755f", bg = nil, italic = false, bold = true, underline = false })
 hl(0, "rainbowcol4", { fg = "#bd93f9", bg = nil, italic = false, bold = true, underline = false })
-hl(0, "rainbowcol6", { fg = "#eba48e", bg = nil, italic = false, bold = true, underline = false })
-hl(0, "rainbowcol7", { fg = "#C586C0", bg = nil, italic = false, bold = true, underline = false })
+hl(0, "rainbowcol6", { fg = "#FCC077", bg = nil, italic = false, bold = true, underline = false })
+hl(0, "rainbowcol7", { fg = "#B576B0", bg = nil, italic = false, bold = true, underline = false })
 
 -- vim-sandwich
-hl(0, "OperatorSandwichBuns", { fg = "#fbb4ae", bg = "#3E5062", italic = false, bold = true, underline = true })
-hl(0, "OperatorSandwichAdd", { fg = "#99c794", bg = nil, italic = false, bold = true, underline = true })
-hl(0, "OperatorSandwichDelete", { fg = "#F06372", bg = nil, italic = false, bold = true, underline = true })
+hl(0, "OperatorSandwichBuns",   { fg = "#fbb4ae", bg = "#3E5062", italic = false, bold = true, underline = true  })
+hl(0, "OperatorSandwichAdd",    { fg = "#99c794", bg = nil 			, italic = false, bold = true, underline = true  })
+hl(0, "OperatorSandwichDelete", { fg = "#F06372", bg = nil 			, italic = false, bold = true, underline = true  })
 hl(0, "OperatorSandwichChange", { fg = "#C586C0", bg = "#3E5062", italic = false, bold = true, underline = false })
 
 hl(0, "InclineNormal"  , { fg = "#E0E0E0", bg = "#6B717C", italic = false, bold = false, underline = false })
