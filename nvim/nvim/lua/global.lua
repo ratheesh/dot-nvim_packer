@@ -2,6 +2,8 @@
 -- License: MIT
 -- Basic Settings
 
+vim.g.mapleader        = " "
+vim.g.maplocalleader   = "\\"
 -- vim.opt.shadafile = "NONE"
 vim.opt.shada          = "%,<300,'100,/10,:100,s100,h,f1,n$HOME/.config/nvim/shada.info"
 vim.opt.wrap           = false
@@ -38,9 +40,6 @@ vim.opt.showmode       = false
 vim.opt.confirm        = true
 vim.opt.laststatus     = 3
 vim.opt.guicursor      = "n:block-nCursor-blinkon0,i-ci:ver20-iCursor-blinkon0,v-ve:block-vCursor-blinkon0,o:hor30-oCursor-blinkon0,r-cr:block-rCursor-blinkon0"
-
-vim.g.mapleader                = " "
-vim.g.maplocalleader           = ","
 
 -- Disable unwanted in-built plugins
 vim.g.loaded_2html_plugin      = 1
