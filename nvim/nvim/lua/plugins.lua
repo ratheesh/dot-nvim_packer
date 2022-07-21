@@ -18,6 +18,17 @@ _G.lazy = function(plugin, timer)
 	end
 end
 
+_G.__luacache_config = {
+	chunks = {
+		enable = true,
+		path = vim.fn.stdpath('cache')..'/luacache_chunks',
+	},
+	modpaths = {
+		enable = true,
+		path = vim.fn.stdpath('cache')..'/luacache_modpaths',
+	}
+}
+
 local fn = vim.fn
 -- local home = os.getenv("HOME")
 local function stat(name, type)
