@@ -273,40 +273,17 @@ require("packer").startup({ function(use)
 	})
 	use({
 		"stevearc/dressing.nvim",
-		disable = true,
+		disable = false,
+		event = "BufEnter",
 		config = function() require("dressing").setup() end
 	})
 	use({
 		"gbprod/yanky.nvim",
-		disable = true,
-		-- after = "dressing",
+		disable = false,
+		event = "BufEnter",
+		after = "dressing",
 		config = function()
 			require("yanky").setup({
-				ring = {
-					history_length = 10,
-					storage = "shada",
-					sync_with_numbered_registers = true,
-				},
-				picker = {
-					-- select = {
-					-- 	action = {
-					-- 		default = actions.put("p"),
-					-- 		i = {
-					-- 			["<c-p>"] = actions.put("p"),
-					-- 			["<c-k>"] = actions.put("P"),
-					-- 			["<c-x>"] = actions.delete(),
-					-- 		},
-					-- 		n = {
-					-- 			p = actions.put("p"),
-					-- 			P = actions.put("P"),
-					-- 			d = actions.delete(),
-					-- 		},
-					-- 	},
-					-- },
-				},
-				system_clipboard = {
-					sync_with_ring = true,
-				},
 				highlight = {
 					on_put = true,
 					on_yank = true,
@@ -316,6 +293,14 @@ require("packer").startup({ function(use)
 					enabled = true,
 				},
 			})
+			vim.keymap.set("n", "p",  "<Plug>(YankyPutAfter)",   {})
+			vim.keymap.set("n", "P",  "<Plug>(YankyPutBefore)",  {})
+			vim.keymap.set("x", "p",  "<Plug>(YankyPutAfter)",   {})
+			vim.keymap.set("x", "P",  "<Plug>(YankyPutBefore)",  {})
+			vim.keymap.set("n", "gp", "<Plug>(YankyGPutAfter)",  {})
+			vim.keymap.set("n", "gP", "<Plug>(YankyGPutBefore)", {})
+			vim.keymap.set("x", "gp", "<Plug>(YankyGPutAfter)",  {})
+			vim.keymap.set("x", "gP", "<Plug>(YankyGPutBefore)", {})
 		end
 	})
 	use({
