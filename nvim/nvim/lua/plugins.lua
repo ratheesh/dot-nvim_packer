@@ -49,7 +49,8 @@ require("packer").startup({ function(use)
 	})
 	use({
 		"romgrk/barbar.nvim",
-		event = "VimEnter",
+		-- event = "VimEnter",
+		after = "alpha-nvim",
 		requires = { 'kyazdani42/nvim-web-devicons' },
 		config = function()
 			require("plugins.barbar")
@@ -191,6 +192,7 @@ require("packer").startup({ function(use)
 		"SmiteshP/nvim-navic",
 		wants = "nvim-lspconfig",
 		requires = "neovim/nvim-lspconfig",
+		after = "nvim-lspconfig",
 		config = function()
 			require("nvim-navic").setup({
 				highlight             = false,
@@ -365,7 +367,7 @@ require("packer").startup({ function(use)
 	})
 	use({
 		"numToStr/Comment.nvim",
-		-- after = "mini.nvim",
+		after = "mini.nvim",
 		config = function()
 			require("Comment").setup({
 				padding = true,
@@ -588,6 +590,7 @@ require("packer").startup({ function(use)
 	use ({
 		"goolord/alpha-nvim",
 		disable  = false,
+		event = "VimEnter",
 		requires = { 'kyazdani42/nvim-web-devicons' },
 		config   = function ()
 			require'alpha'.setup(require'alpha.themes.startify'.config)
