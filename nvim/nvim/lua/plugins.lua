@@ -338,6 +338,7 @@ require("packer").startup({ function(use)
 			"saadparwaiz1/cmp_luasnip",
 			"hrsh7th/cmp-calc",
 			"f3fora/cmp-spell",
+			"hrsh7th/cmp-nvim-lsp-signature-help",
 			"hrsh7th/cmp-emoji",
 			"kdheepak/cmp-latex-symbols",
 			"andersevenrud/cmp-tmux",
