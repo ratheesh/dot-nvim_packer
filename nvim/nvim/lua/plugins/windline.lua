@@ -211,7 +211,7 @@ basic.file = {
   text = function()
     return {
       { ' ', 'FileName' },
-      {b_components.cache_file_icon({ default = '' }), 'FileIcon'},
+      {b_components.cache_file_icon({ default = '' }), 'FileIcon'},
       { ' ', '' },
       { b_components.cache_file_name('[No Name]', 'unique'), 'FileName' },
       -- { b_components.file_icon(''), 'FileIcon' },
