@@ -227,6 +227,10 @@ hl(0 , "TSInclude"          , { fg = "#BC70A4" , bg = nil , italic = false , bol
 hl(0 , "TSKeywordOperator"  , { fg = "#AA9E76" , bg = nil , italic = true  , bold = true  , underline = false })
 hl(0 , "TSOperator"         , { fg = "#C5B4C0" , bg = nil , italic = false , bold = true  , underline = false })
 
+-- Fidget
+hl(0 , "FidgetTask"         , { fg = "#81A1C1" , bg = nil , italic = false , bold = false  , underline = false })
+hl(0 , "FidgetTitle"        , { fg = "#B3C1A9" , bg = nil , italic = true  , bold = false  , underline = false })
+
 -- rainbow
 hl(0, "rainbowcol1", { fg = "#e79498", bg = nil, italic = false, bold = true, underline = false })
 hl(0, "rainbowcol2", { fg = "#81A1C1", bg = nil, italic = false, bold = true, underline = false })
