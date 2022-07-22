@@ -72,7 +72,7 @@ require("packer").startup({ function(use)
 		event = { "BufEnter" },
 		config = function() require('marks').setup({}) end
 	})
-	use("nvim-lua/plenary.nvim")
+	use({ "nvim-lua/plenary.nvim", event = "VimEnter" })
 	use({
 		"lewis6991/gitsigns.nvim",
 		event = "VimEnter",
@@ -159,10 +159,10 @@ require("packer").startup({ function(use)
 	})
 	use({
 		"lilydjwg/colorizer",
-		event = "BufEnter"
+		ft = { "text", "lua" }
 	})
-	use("wbthomason/packer.nvim")
-	use({ "folke/lua-dev.nvim" })
+	use({ "wbthomason/packer.nvim", event = "VimEnter" })
+	use({ "folke/lua-dev.nvim", event = "VimEnter" })
 	use({ "hrsh7th/cmp-nvim-lsp", after = "lua-dev.nvim" })
 	use({
 		"neovim/nvim-lspconfig",
@@ -288,20 +288,18 @@ require("packer").startup({ function(use)
 		"stevearc/dressing.nvim",
 		after = { "yanky.nvim" },
 		disable = false,
-		event = "BufEnter",
 		config = function() require("dressing").setup() end
 	})
 	use({
 		"gbprod/yanky.nvim",
 		disable = false,
-		event = "BufEnter",
-		-- after = "dressing",
+		cmd = "YankyRingHistory",
 		config = function()
 			require("yanky").setup({
 				highlight = {
 					on_put = true,
 					on_yank = true,
-					timer = 200,
+					timer = 100,
 				},
 				preserve_cursor_position = {
 					enabled = true,
@@ -629,8 +627,8 @@ require("packer").startup({ function(use)
 	use({ "junegunn/vim-easy-align", event = "BufEnter", })
 	use ({
 		'dccsillag/magma-nvim',
-		ft = { "python" },
 		disable = true,
+		ft = { "python" },
 		run = ':UpdateRemotePlugins'
 	})
 	-- use({ "tpope/vim-surround"              , event = "VimEnter" })
@@ -709,7 +707,7 @@ require("packer").startup({ function(use)
   })
 	use({
 		"unblevable/quick-scope",
-		disable = false,
+		disable = true,
 		config = function ()
 			vim.g.qs_ignorecase         = 1
 			vim.g.qs_highlight_on_keys  = {'f', 'F', 't', 'T', 'b', 'B', ';', ','}
@@ -727,23 +725,23 @@ require("packer").startup({ function(use)
 			}
 		end
 	})
-	use({ "michaeljsmith/vim-indent-object",    event = { "VimEnter"   }})
+	-- use({ "michaeljsmith/vim-indent-object",    event = { "VimEnter"   }})
 	use({ "jeetsukumaran/vim-pythonsense",      ft    = { "python"     }})
-	use({ "machakann/vim-swap",                 event = { "VimEnter"   }})
+	-- use({ "machakann/vim-swap",                 event = { "VimEnter"   }})
 	use({ "kana/vim-textobj-user",              event = { "BufReadPre" }})
-	use({ "mg979/vim-visual-multi",             event = { "BufReadPre" }})
+	-- use({ "mg979/vim-visual-multi",             event = { "BufReadPre" }})
 	use({ "coderifous/textobj-word-column.vim", event = { "VimEnter"   }})
 	use({ "ojroques/vim-oscyank",               cmd   = { 'OSCYank' , 'OSCYankReg' }})
 	use({
 		"antoyo/vim-licenses",
-		event = "VimEnter",
+		cmd = { "gplv2", "apache", "mit" },
 		config = function ()
 			vim.g.licenses_copyright_holders_name = 'Ratheesh <ratheeshreddy@gmail.com>'
 			vim.g.licenses_authors_name           = 'Ratheesh S'
 			vim.g.licenses_default_commands       = { 'gplv2', 'apache', 'mit' }
 		end
 	})
-	use({ "andymass/vim-matchup" })
+	use({ "andymass/vim-matchup", event = { "VimEnter" }})
 	use ({
 		"metakirby5/codi.vim",
 		ft  = { "python" },
@@ -767,6 +765,7 @@ require("packer").startup({ function(use)
 	})
 	use({
 		"winston0410/range-highlight.nvim",
+		disable = true,
 		event = "VimEnter",
 		requires = { "winston0410/cmd-parser.nvim" },
 		config = function ()
