@@ -635,7 +635,7 @@ require("packer").startup({ function(use)
 	use({
 		"kylechui/nvim-surround",
 		event = "BufEnter",
-		disable = true,
+		disable = false,
 		config = function ()
 			require("nvim-surround").setup({
 				highlight_motion = {
@@ -647,7 +647,7 @@ require("packer").startup({ function(use)
 	use ({
     "machakann/vim-sandwich",
 		event = "BufEnter",
-		disable = false,
+		disable = true,
 		config = function ()
 			vim.cmd("runtime macros/sandwich/keymap/surround.vim")
 			vim.g.sandwich_recipes = {
