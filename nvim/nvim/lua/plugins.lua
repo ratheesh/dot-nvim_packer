@@ -60,7 +60,6 @@ require("packer").startup({ function(use)
 	})
 	use({
 		"romgrk/barbar.nvim",
-		-- event = "VimEnter",
 		after = "alpha-nvim",
 		requires = { 'kyazdani42/nvim-web-devicons' },
 		config = function()
@@ -139,7 +138,7 @@ require("packer").startup({ function(use)
 	})
 	use({
 		"lukas-reineke/virt-column.nvim",
-		event = { "BufEnter" },
+		event = { "BufWinEnter" },
 		config = function()
 			require("virt-column").setup({
 				char = "│"
@@ -161,12 +160,13 @@ require("packer").startup({ function(use)
 		"lilydjwg/colorizer",
 		ft = { "text", "lua" }
 	})
-	use({ "wbthomason/packer.nvim", event = "VimEnter" })
+	use({ "wbthomason/packer.nvim" })
 	use({ "folke/lua-dev.nvim", event = "VimEnter" })
 	use({ "hrsh7th/cmp-nvim-lsp", after = "lua-dev.nvim" })
 	use({
 		"neovim/nvim-lspconfig",
-		after = "cmp-nvim-lsp",
+		-- after = "cmp-nvim-lsp",
+		event = "VimEnter",
 		config = function()
 			require("plugins.lsp").setup()
 		end,
@@ -254,12 +254,24 @@ require("packer").startup({ function(use)
 			})
 		end,
 	})
-	-- use({
-	-- 	"ray-x/lsp_signature.nvim",
-	-- 	opt = false,
-	-- 	after = "trouble.nvim",
-	-- 	config = function() require("lsp_signature").setup({ doc_lines = 0, hint_enable = false }) end,
-	-- })
+	use({
+		"ray-x/lsp_signature.nvim",
+		after = "nvim-lspconfig",
+		config = function()
+			require("lsp_signature").setup({
+				wrap            = true,
+				floating_window = true,
+				doc_lines       = 0,
+				hint_enable     = true,
+				hint_prefix     = "🐼 ",
+				hint_scheme     = "String",
+				hi_parameter    = "LspSignatureActiveParameter",
+				handler_opts    = {
+					border = "rounded"
+				}
+			})
+		end,
+	})
 	use({
 		"j-hui/fidget.nvim",
 		after = { "nvim-lspconfig" },
@@ -278,7 +290,7 @@ require("packer").startup({ function(use)
 	use({ "nvim-treesitter/playground", after = "nvim-treesitter" })
 	use({
 		"rcarriga/nvim-notify",
-		after = "playground",
+		event = "VimEnter",
 		config = function()
 			require("notify").setup({ max_width = 40 })
 			vim.notify = require("notify")
@@ -293,7 +305,7 @@ require("packer").startup({ function(use)
 	use({
 		"gbprod/yanky.nvim",
 		disable = false,
-		cmd = "YankyRingHistory",
+		cmd = { "YankyRingHistory" },
 		config = function()
 			require("yanky").setup({
 				highlight = {
@@ -319,7 +331,7 @@ require("packer").startup({ function(use)
 		"antoinemadec/FixCursorHold.nvim",
 		after = "nvim-notify",
 	})
-	use({ "rafamadriz/friendly-snippets", event = { "InsertEnter", "CmdlineEnter" } })
+	use({ "rafamadriz/friendly-snippets", event = { "InsertEnter", "CmdlineEnter" }})
 	use({
 		"hrsh7th/nvim-cmp",
 		after = "friendly-snippets",
@@ -328,22 +340,22 @@ require("packer").startup({ function(use)
 		requires = {
 			-- "f3fora/cmp-spell",
 			"hrsh7th/cmp-nvim-lsp",
-			"hrsh7th/cmp-nvim-lsp-document-symbol",
+			-- "hrsh7th/cmp-nvim-lsp-document-symbol",
 			"petertriho/cmp-git",
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
-			"hrsh7th/cmp-nvim-lua",
-			"ray-x/cmp-treesitter",
-			"hrsh7th/cmp-cmdline",
-			"lukas-reineke/cmp-under-comparator",
+			-- "hrsh7th/cmp-nvim-lua",
+			-- "ray-x/cmp-treesitter",
+			-- "hrsh7th/cmp-cmdline",
+			-- "lukas-reineke/cmp-under-comparator",
 			"saadparwaiz1/cmp_luasnip",
-			"hrsh7th/cmp-calc",
+			-- "hrsh7th/cmp-calc",
 			-- "f3fora/cmp-spell",
-			"hrsh7th/cmp-nvim-lsp-signature-help",
-			"hrsh7th/cmp-emoji",
+			-- "hrsh7th/cmp-nvim-lsp-signature-help",
+			-- "hrsh7th/cmp-emoji",
 			-- "kdheepak/cmp-latex-symbols",
-			"andersevenrud/cmp-tmux",
-			"petertriho/cmp-git",
+			-- "andersevenrud/cmp-tmux",
+			-- "petertriho/cmp-git",
 			{
 				"L3MON4D3/LuaSnip",
 				wants = "friendly-snippets",
@@ -376,7 +388,8 @@ require("packer").startup({ function(use)
 	})
 	use({
 		"numToStr/Comment.nvim",
-		after = "mini.nvim",
+		-- event = "VimEnter",
+		keys = { "gc", "gcc", "gbc" },
 		config = function()
 			require("Comment").setup({
 				padding = true,
@@ -411,7 +424,7 @@ require("packer").startup({ function(use)
 	})
 	use({
 		"folke/which-key.nvim",
-		after = "Comment.nvim",
+		event = "VimEnter",
 		config = function()
 			local wk = require("which-key")
 			wk.setup({
@@ -453,7 +466,7 @@ require("packer").startup({ function(use)
 			-- wk.register({}, {})
 		end,
 	})
-	use({ "tweekmonster/startuptime.vim"})
+	-- use({ "tweekmonster/startuptime.vim"})
 	use({
 		"mfussenegger/nvim-dap",
 		event = "VimEnter",
@@ -540,7 +553,7 @@ require("packer").startup({ function(use)
 	})
 	use({
 		"windwp/nvim-autopairs",
-		after = "nvim-cmp",
+		event = "InsertEnter",
 		config = function()
 			require('nvim-autopairs').setup({
 				disable_filetype          = { "TelescopePrompt", "vim" },
