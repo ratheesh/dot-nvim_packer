@@ -17,7 +17,7 @@ map("n", "<C-j>", "<Cmd>e #<CR>")
 map("n", "gV", "`[v`]")
 
 map("n" , "<Leader>w", "<cmd>w<CR>")
-map("n" , "<Leader>x", "<cmd>q<CR>")
+map("n" , "<Leader>x", "<cmd>xall<CR>")
 map("n" , "<Leader>;", ":", { desc = "Enter Cmd Mode" })
 map("x" , "<Leader>;", ":", { desc = "Enter Cmd Mode" })
 map("n" , "<BS>", "<cmd>nohlsearch<CR>")
