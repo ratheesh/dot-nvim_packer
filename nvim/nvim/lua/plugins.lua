@@ -301,13 +301,7 @@ require("packer").startup({ function(use)
 		after = "nvim-lspconfig",
 		config = function()
 			require("lsp_lines").setup()
-			-- local virtual_lines_enabled = true
-			-- vim.set.map('n', '<leader>dt', '', {
-			-- 	callback = function()
-			-- 		virtual_lines_enabled = not virtual_lines_enabled
-			-- 		vim.diagnostic.config({ virtual_lines = virtual_lines_enabled, virtual_text = not virtual_lines_enabled })
-			-- 	end,
-			-- })
+			vim.keymap.set( "", "<Leader>L", require("lsp_lines").toggle, { desc = "Toggle lsp_lines" })
 		end,
 	})
 	-- use({ "RRethy/vim-illuminate", after = "fidget.nvim" })
