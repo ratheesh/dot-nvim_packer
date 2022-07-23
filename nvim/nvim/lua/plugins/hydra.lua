@@ -7,7 +7,7 @@ local gitsigns = require('gitsigns')
 local hint = [[
  _j_: next hunk       _k_: prev hunk       ^ ^
  _d_: show deleted    _D_: Word diff       ^ ^
- _u_: undo stage hunk _R_: reset hunk      ^ ^
+ _u_: undo stage hunk _r_: reset hunk      ^ ^
  _b_: blame line      _B_: blame show full ^ ^
  _s_: stage hunk      _S_: stage buffer    ^ ^
  _/_: show base file  _p_: preview hunk    ^ ^
@@ -57,7 +57,7 @@ Hydra({
 		{ 's', gitsigns.stage_hunk, { silent = true } },
 		{ 'u', gitsigns.undo_stage_hunk, { desc = 'Undo Staged Hunk' } },
 		{ 'S', gitsigns.stage_buffer, { desc = 'Stage buffer' } },
-		{ 'R', gitsigns.reset_hunk, { desc = 'Reset Hunk' } },
+		{ 'r', gitsigns.reset_hunk, { desc = 'Reset Hunk' } },
 		{ 'p', gitsigns.preview_hunk, { desc = 'Preview Hunk' } },
 		{ 'd', gitsigns.toggle_deleted, { nowait = true } },
 		{ 'D', gitsigns.toggle_word_diff, { nowait = true } },
