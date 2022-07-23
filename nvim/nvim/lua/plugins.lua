@@ -297,6 +297,20 @@ require("packer").startup({ function(use)
 			})
 		end
 	})
+	use({
+		"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+		after = "nvim-lspconfig",
+		config = function()
+			require("lsp_lines").setup()
+			-- local virtual_lines_enabled = true
+			-- vim.set.map('n', '<leader>dt', '', {
+			-- 	callback = function()
+			-- 		virtual_lines_enabled = not virtual_lines_enabled
+			-- 		vim.diagnostic.config({ virtual_lines = virtual_lines_enabled, virtual_text = not virtual_lines_enabled })
+			-- 	end,
+			-- })
+		end,
+	})
 	-- use({ "RRethy/vim-illuminate", after = "fidget.nvim" })
 	use({ "nvim-treesitter/playground", after = "nvim-treesitter" })
 	use({
