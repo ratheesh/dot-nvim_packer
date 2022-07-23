@@ -535,7 +535,8 @@ require("packer").startup({ function(use)
 		config = function()
 			vim.g.Lf_WindowPosition        = 'popup'
 			vim.g.Lf_WorkingDirectoryMode  = 'Ac'
-			vim.g.Lf_ShowDevIcons          = 0
+			vim.g.Lf_ShowDevIcons          = 1
+			vim.g.Lf_ShowHidden 					 = 1
 			vim.g.Lf_DefaultMode           = 'NameOnly'
 			vim.g.Lf_WindowHeight          = 0.3
 			vim.g.Lf_PopupWidth            = 0.8
