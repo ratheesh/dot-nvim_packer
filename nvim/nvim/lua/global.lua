@@ -5,7 +5,7 @@
 vim.g.mapleader        = " "
 vim.g.maplocalleader   = "\\"
 -- vim.opt.shadafile = "NONE"
-vim.opt.shada          = "%,<300,'100,/10,:100,s100,h,f1,n$HOME/.config/nvim/shada.info"
+vim.opt.shada          = "%,<100,'30,/15,:10,s10,h,f1,n$HOME/.config/nvim/shada.info"
 vim.opt.wrap           = false
 vim.opt.list           = true
 vim.opt.listchars      = { tab = "  ", extends = "", precedes = "" }
