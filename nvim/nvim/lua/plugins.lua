@@ -2,6 +2,11 @@
 -- License: MIT
 -- Plugin Configuration
 
+-- local fn = vim.fn
+local packer_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+local packer_compiled_path = vim.fn.stdpath("config") .. "/lua/packer_compiled.lua"
+local packer_bootstrap = false
+
 local present, impatient = pcall(require, "impatient")
 if present then
 	if impatient ~= nil then
@@ -29,21 +34,27 @@ _G.__luacache_config = {
 	}
 }
 
-local fn = vim.fn
--- local home = os.getenv("HOME")
-local function stat(name, type)
-	local stats = vim.loop.fs_stat(name)
-	return stats and stats.type == type
+-- Bootstrap and install packer.
+if vim.fn.empty(vim.fn.glob(packer_path)) > 0 then
+  packer_bootstrap = true
+  vim.fn.system({ "rm", "-f", packer_compiled_path })
+  vim.fn.system({
+    "git", "clone", "--depth", "1",
+    "https://github.com/wbthomason/packer.nvim",
+    packer_path,
+  })
+  print("Bootstrapping Packer, please wait until installation is finished")
+  vim.cmd("packadd packer.nvim")
 end
 
-local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-if not stat(install_path, "directory") then
-	print("Cloning packer...")
-	Packer_bootstrap = fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
+if vim.fn.filereadable(packer_compiled_path) == 1 then
+  -- Speed up loading of Lua modules. Note, this needs to happen BEFORE Lua
+  -- plugins are loaded.
+  require("impatient")
+  -- Due to impatient, the packer_compiled file needs to be directly required.
+  require("packer_compiled")
 end
 
-pcall(require, "impatient")
-pcall(require, "packer_compiled")
 require("packer").startup({ function(use)
 	use("lewis6991/impatient.nvim")
 	use("kyazdani42/nvim-web-devicons")
@@ -842,19 +853,26 @@ require("packer").startup({ function(use)
 	})
 	use({ 'dstein64/vim-startuptime' })
 
-	if Packer_bootstrap then
+	if packer_bootstrap then
 		require('packer').sync()
 	end
 end,
 
 config = {
+	keybindings = {
+		quit          = '<Esc>',
+		toggle_info   = '<CR>',
+		diff          = 'd',
+		prompt_revert = 'r',
+	},
 	profile   = {
 		enable    = true,
 		threshold = 0,
 	},
-	compile_path = fn.stdpath('config') .. '/lua/packer_compiled.lua',
+	compile_path = vim.fn.stdpath('config') .. '/lua/packer_compiled.lua',
 	display = {
-		prompt_border = "rounded",
+		prompt_border   = "rounded",
+		non_interactive = false,
 		open_fn = function() return require("packer.util").float({ border = "rounded" }) end
 	},
 },
