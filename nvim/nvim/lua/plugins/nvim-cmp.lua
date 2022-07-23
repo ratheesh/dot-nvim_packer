@@ -39,9 +39,10 @@ function M.setup()
 			documentation = cmp.config.window.bordered({ winhighlight = "" }),
 		},
 		sources = {
-			{ name = 'nvim_lsp_signature_help' },
+			-- { name = 'nvim_lsp_signature_help' },
 			{ name = "luasnip",       keyword_length = 2 },
 			{ name = "nvim_lsp",      keyword_length = 2 },
+			{ name = "treesitter",    keyword_length = 2 },
 			{ name = "path",          keyword_length = 2 },
 			{ name = "buffer",        keyword_length = 2 },
 			{ name = "tmux",          keyword_length = 2 },

@@ -369,7 +369,7 @@ require("packer").startup({ function(use)
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
 			-- "hrsh7th/cmp-nvim-lua",
-			-- "ray-x/cmp-treesitter",
+			"ray-x/cmp-treesitter",
 			-- "hrsh7th/cmp-cmdline",
 			-- "lukas-reineke/cmp-under-comparator",
 			"saadparwaiz1/cmp_luasnip",
