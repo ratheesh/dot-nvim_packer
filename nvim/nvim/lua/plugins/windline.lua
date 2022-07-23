@@ -339,14 +339,17 @@ basic.lsp_diagnos = {
 }
 
 local function lsp_client_names(component)
-    local clients = {}
-    local icon = component.icon or ' '
+	local clients = {}
+	local icon = component.icon or ' '
+	for _, client in pairs(vim.lsp.get_active_clients({bufnr = 0})) do
+		table.insert(clients, client.name)
+	end
 
-    for _, client in pairs(vim.lsp.get_active_clients({bufnr = 0})) do
-        table.insert(clients, client.name)
-    end
-
-    return icon .. '(' .. table.concat(clients, ',') .. ')'
+	if next(clients) == nil then
+		return icon .. ' Keine!'
+	else
+		return icon .. '(' .. table.concat(clients, ',') .. ')'
+	end
 end
 
 -- local lsp_server_name = lsp_comps.lsp_name()
