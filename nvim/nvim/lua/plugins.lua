@@ -269,8 +269,9 @@ require("packer").startup({ function(use)
 		after = "nvim-lspconfig",
 		config = function()
 			require("lsp_signature").setup({
+				bind 						= true,
 				wrap            = true,
-				floating_window = true,
+				floating_window = false,
 				doc_lines       = 0,
 				hint_enable     = true,
 				hint_prefix     = "🐼 ",
