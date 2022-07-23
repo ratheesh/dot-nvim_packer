@@ -238,7 +238,7 @@ require("packer").startup({ function(use)
 		after = "nvim-dd.git",
 		config = function()
 			require("trouble").setup({
-				auto_open    = true,
+				auto_open    = false,
 				auto_close   = true,
 				padding      = false,
 				height       = 5,
