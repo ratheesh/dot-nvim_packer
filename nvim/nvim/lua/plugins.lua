@@ -418,7 +418,7 @@ require("packer").startup({ function(use)
 	use({
 		"numToStr/Comment.nvim",
 		-- event = "VimEnter",
-		keys = { "gc", "gcc", "gbc" },
+	keys = { "gc", "gcc", "gb", "gbc", "<A-;>" },
 		config = function()
 			require("Comment").setup({
 				padding = true,
