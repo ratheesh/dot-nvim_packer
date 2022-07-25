@@ -357,17 +357,17 @@ require("packer").startup({ function(use)
 		event = 'InsertEnter',
 		wants = { "LuaSnip" },
 		requires = {
-			-- "f3fora/cmp-spell",
 			"hrsh7th/cmp-nvim-lsp",
-			-- "hrsh7th/cmp-nvim-lsp-document-symbol",
 			"petertriho/cmp-git",
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
+			"saadparwaiz1/cmp_luasnip",
+			-- "f3fora/cmp-spell",
 			-- "hrsh7th/cmp-nvim-lua",
-			"ray-x/cmp-treesitter",
+			-- "ray-x/cmp-treesitter",
 			-- "hrsh7th/cmp-cmdline",
 			-- "lukas-reineke/cmp-under-comparator",
-			"saadparwaiz1/cmp_luasnip",
+			-- "hrsh7th/cmp-nvim-lsp-document-symbol",
 			-- "hrsh7th/cmp-calc",
 			-- "f3fora/cmp-spell",
 			-- "hrsh7th/cmp-nvim-lsp-signature-help",
@@ -378,9 +378,9 @@ require("packer").startup({ function(use)
 			{
 				"L3MON4D3/LuaSnip",
 				wants = "friendly-snippets",
-				config = function()
-					require("config.luasnip").setup()
-				end,
+				-- config = function()
+				-- 	require("config.luasnip").setup()
+				-- end,
 			},
 			"rafamadriz/friendly-snippets",
 			disable = false,
