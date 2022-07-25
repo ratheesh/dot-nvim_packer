@@ -1,9 +1,9 @@
 # About
-These are my neovim config file.
+These are my current [NeoViM](https://github.com/neovim/neovim/) config files.
 
-THIS IS CURRENTLY IN DRAFT STAGE AND NOT YET READY FOR DAILY USAGE
+For more info on setup and usage, refer to the [Wiki Page](https://github.com/ratheesh/dot-nvim/wiki/My-NeoViM-Configuration-WiKi!).
 
-Currently runs only on Linux platform.
+Tested only on `Ubuntu(Linux)` platform.
 
 # License
 This is licensed under The MIT License (MIT)
