@@ -120,11 +120,11 @@ function M.setup()
 	capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 	-- capabilities.offsetEncoding = { "utf-16" }
 
-	lspconfig.vimls.setup({ on_attach = on_attach, capabilities = capabilities })
-	lspconfig.bashls.setup({ on_attach = on_attach, capabilities = capabilities })
+	lspconfig.vimls.setup({ on_init = on_init, on_attach = on_attach, capabilities = capabilities })
+	lspconfig.bashls.setup({ on_init = on_init, on_attach = on_attach, capabilities = capabilities })
 
 	-- C/Cpp
-	-- lspconfig.clangd.setup({ on_attach = on_attach, capabilities = capabilities })
+	-- lspconfig.clangd.setup({ on_init = on_init, on_attach = on_attach, capabilities = capabilities })
 	lspconfig.ccls.setup({
 		on_init = on_init,
 		on_attach = on_attach,
