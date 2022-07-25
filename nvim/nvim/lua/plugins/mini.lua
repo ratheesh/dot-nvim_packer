@@ -44,8 +44,8 @@ function M.setup()
 	-- 	vim.api.nvim_set_keymap('x', 'S', [[:<C-u>lua MiniSurround.add('visual')<CR>]], { noremap = true }),
 	-- 	-- vim.api.nvim_set_keymap('n', 'yss', 'ys_', { noremap = false }) -- line
 	-- })
-	require('mini.trailspace').setup({
-	})
+	-- require('mini.trailspace').setup({
+	-- })
 end
 
 return M

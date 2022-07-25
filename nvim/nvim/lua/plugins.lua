@@ -59,8 +59,8 @@ require("packer").startup({ function(use)
 	use("lewis6991/impatient.nvim")
 	use({ "kyazdani42/nvim-web-devicons", event = "VimEnter" })
 	use({ "tpope/vim-repeat",             event = "VimEnter" })
-	use({ "psliwka/vim-smoothie",         event = "VimEnter" })
-	use({ "sjl/gundo.vim",                event = "VimEnter" })
+	use({ "psliwka/vim-smoothie",         keys = {'<c-u>', '<c-d>' }})
+	use({ "sjl/gundo.vim",                cmd = { "GundoHide", "GundoShow", "GundoToggle" }})
 	use({
 		"windwp/windline.nvim",
 		after = "hydra.nvim",
@@ -78,13 +78,14 @@ require("packer").startup({ function(use)
 	})
 	use({
 		"chentoast/marks.nvim",
-		event = { "BufEnter" },
+		event = { "VimEnter" },
 		config = function() require('marks').setup({}) end
 	})
 	use({ "nvim-lua/plenary.nvim", event = "VimEnter" })
 	use({
 		"lewis6991/gitsigns.nvim",
 		event = "VimEnter",
+		wants = "colorizer",
 		config = function()
 			require("gitsigns").setup({
 				on_attach = function(bufnr)
@@ -167,7 +168,7 @@ require("packer").startup({ function(use)
 	})
 	use({
 		"ethanholz/nvim-lastplace",
-		event = { "BufEnter" },
+		event = { "VimEnter" },
 		config = function()
 			require 'nvim-lastplace'.setup({
 				lastplace_ignore_buftype = { "quickfix", "nofile", "help" },
@@ -178,11 +179,12 @@ require("packer").startup({ function(use)
 	})
 	use({
 		"lilydjwg/colorizer",
-		ft = { "text", "lua" }
+		after = "gitsigns.nvim",
+		-- ft = { "text", "lua", "markdown", "help" }
 	})
 	use({ "wbthomason/packer.nvim" })
 	use({ "folke/lua-dev.nvim", event = "VimEnter" })
-	use({ "hrsh7th/cmp-nvim-lsp", after = "lua-dev.nvim" })
+	-- use({ "hrsh7th/cmp-nvim-lsp", after = "lua-dev.nvim" })
 	use({
 		"neovim/nvim-lspconfig",
 		-- after = "cmp-nvim-lsp",
@@ -200,10 +202,11 @@ require("packer").startup({ function(use)
 	})
 	use({
 		"williamboman/nvim-lsp-installer",
-		after = "nvim-lspconfig",
+		-- after = "nvim-lspconfig",
+		cmd = { "LspInstall", "LspInstallLog", "LspInstallInfo", "LspPrintInstalled", "LspUninstall", "LspUninstallAll" },
 		config = function()
 			require("nvim-lsp-installer").setup({
-				automatic_installation = true,
+				automatic_installation = false,
 				ui = {
 					icons = {
 						server_installed = "✓",
@@ -216,8 +219,8 @@ require("packer").startup({ function(use)
 	})
 	use({
 		"weilbith/nvim-code-action-menu",
-		after = "nvim-lspconfig",
-		cmd = 'CodeActionMenu'
+		-- after = "nvim-lspconfig",
+		cmd = { "CodeActionMenu" }
 	})
 	use({
 		"SmiteshP/nvim-navic",
@@ -276,7 +279,8 @@ require("packer").startup({ function(use)
 	})
 	use({
 		"ray-x/lsp_signature.nvim",
-		after = "nvim-lspconfig",
+		event = "InsertEnter",
+		wants = "nvim-lspconfig",
 		config = function()
 			require("lsp_signature").setup({
 				bind 						= true,
@@ -360,18 +364,19 @@ require("packer").startup({ function(use)
 		"antoinemadec/FixCursorHold.nvim",
 		after = "nvim-notify",
 	})
-	use({ "rafamadriz/friendly-snippets", event = { "InsertEnter", "CmdlineEnter" }})
+	use({ "rafamadriz/friendly-snippets", event = { "InsertEnter" }})
 	use({
 		"hrsh7th/nvim-cmp",
-		after = "friendly-snippets",
+		disable = false,
+		-- after = "friendly-snippets",
 		event = 'InsertEnter',
 		wants = { "LuaSnip" },
 		requires = {
-			"hrsh7th/cmp-nvim-lsp",
-			"petertriho/cmp-git",
-			"hrsh7th/cmp-buffer",
-			"hrsh7th/cmp-path",
-			"saadparwaiz1/cmp_luasnip",
+			{ "hrsh7th/cmp-nvim-lsp",     after = "nvim-cmp" },
+			{ "petertriho/cmp-git",       after = "nvim-cmp" },
+			{ "hrsh7th/cmp-buffer",       after = "nvim-cmp" },
+			{ "hrsh7th/cmp-path",         after = "nvim-cmp" },
+			{ "saadparwaiz1/cmp_luasnip", after = "nvim-cmp" },
 			-- "f3fora/cmp-spell",
 			-- "hrsh7th/cmp-nvim-lua",
 			-- "ray-x/cmp-treesitter",
@@ -385,15 +390,15 @@ require("packer").startup({ function(use)
 			-- "kdheepak/cmp-latex-symbols",
 			-- "andersevenrud/cmp-tmux",
 			-- "petertriho/cmp-git",
-			{
-				"L3MON4D3/LuaSnip",
-				wants = "friendly-snippets",
+			-- {
+			-- 	"L3MON4D3/LuaSnip",
+			-- 	after = "nvim-cmp",
+			-- 	wants = "friendly-snippets",
 				-- config = function()
 				-- 	require("config.luasnip").setup()
 				-- end,
-			},
-			"rafamadriz/friendly-snippets",
-			disable = false,
+			-- },
+			-- { "rafamadriz/friendly-snippets", after = "nvim-cmp" },
 		},
 		config = function()
 			require('plugins.nvim-cmp').setup()
@@ -401,6 +406,7 @@ require("packer").startup({ function(use)
 	})
 	use({
 		"L3MON4D3/LuaSnip",
+		opt   = true,
 		wants = "friendly-snippets",
 		after = "nvim-cmp",
 		config = function()
@@ -499,7 +505,9 @@ require("packer").startup({ function(use)
 	-- use({ "tweekmonster/startuptime.vim"})
 	use({
 		"mfussenegger/nvim-dap",
-		event = "VimEnter",
+		opt   = true,
+		ft = { "python" },
+		-- event = "VimEnter",
 		wants = { "nvim-dap-virtual-text", "DAPInstall.nvim", "nvim-dap-ui", "nvim-dap-python" },
 		requires = {
 			"Pocco81/DAPInstall.nvim",
@@ -576,7 +584,8 @@ require("packer").startup({ function(use)
 	})
 	use({
 		"RRethy/nvim-treesitter-endwise",
-		after = { "nvim-treesitter" },
+		wants = { "nvim-treesitter" },
+		event = "InsertEnter"
 	})
 	use({
 		"RRethy/nvim-treesitter-textsubjects",
@@ -643,7 +652,7 @@ require("packer").startup({ function(use)
 	use ({
 		"goolord/alpha-nvim",
 		disable  = false,
-		event = "VimEnter",
+		event    = "VimEnter",
 		requires = { 'kyazdani42/nvim-web-devicons' },
 		config   = function ()
 			require'alpha'.setup(require'alpha.themes.startify'.config)
@@ -652,11 +661,15 @@ require("packer").startup({ function(use)
 	-- The missing auto-completion for cmdline!
 	use({
 		"gelguy/wilder.nvim",
-		opt = false,
-		run = ':UpdateRemotePlugins',
-		requires = { "romgrk/fzy-lua-native", "nixprime/cpsm", "kyazdani42/nvim-web-devicons"},
-		after = "nvim-web-devicons",
+		-- opt = false,
 		event = "CmdlineEnter",
+		-- wants = "nvim-web-devicons",
+		run = ':UpdateRemotePlugins',
+		requires = {
+			{ "romgrk/fzy-lua-native", event = "CmdlineEnter" },
+			{ "nixprime/cpsm",         event = "CmdlineEnter" },
+			"kyazdani42/nvim-web-devicons"
+		},
 		config = function()
 			require("plugins.wilder")
 		end
@@ -668,7 +681,7 @@ require("packer").startup({ function(use)
 			require("plugins.hydra")
 		end
 	})
-	use({ "junegunn/vim-easy-align", event = "BufEnter", })
+	use({ "junegunn/vim-easy-align", event = "BufReadPre" })
 	use ({
 		'dccsillag/magma-nvim',
 		disable = true,
@@ -678,7 +691,7 @@ require("packer").startup({ function(use)
 	-- use({ "tpope/vim-surround"              , event = "VimEnter" })
 	use({
 		"kylechui/nvim-surround",
-		event = "BufEnter",
+		event = "InsertEnter",
 		disable = false,
 		config = function ()
 			require("nvim-surround").setup({
@@ -690,7 +703,7 @@ require("packer").startup({ function(use)
 	})
 	use ({
     "machakann/vim-sandwich",
-		event = "BufEnter",
+		event = "InsertEnter",
 		disable = true,
 		config = function ()
 			vim.cmd("runtime macros/sandwich/keymap/surround.vim")
@@ -770,11 +783,11 @@ require("packer").startup({ function(use)
 		end
 	})
 	-- use({ "michaeljsmith/vim-indent-object",    event = { "VimEnter"   }})
-	use({ "jeetsukumaran/vim-pythonsense",      ft    = { "python"     }})
-	-- use({ "machakann/vim-swap",                 event = { "VimEnter"   }})
-	use({ "kana/vim-textobj-user",              event = { "BufReadPre" }})
 	-- use({ "mg979/vim-visual-multi",             event = { "BufReadPre" }})
-	use({ "coderifous/textobj-word-column.vim", event = { "VimEnter"   }})
+	-- use({ "machakann/vim-swap",                 event = { "VimEnter"   }})
+	use({ "jeetsukumaran/vim-pythonsense",      ft    = { "python"     }})
+	use({ "kana/vim-textobj-user",              event = { "BufReadPre" }})
+	use({ "coderifous/textobj-word-column.vim", keys  = { "vic", "viC" }})
 	use({ "ojroques/vim-oscyank",               cmd   = { 'OSCYank' , 'OSCYankReg' }})
 	use({
 		"antoyo/vim-licenses",
@@ -821,7 +834,8 @@ require("packer").startup({ function(use)
 	})
 	use({
 		"bootleq/vim-cycle",
-		event = "VimEnter",
+		-- event = "VimEnter",
+		keys = { '+', '-' },
 		config = function()
 			require("plugins.vim-cycle")
 		end
@@ -890,7 +904,7 @@ require("packer").startup({ function(use)
 			})
 		end
 	})
-	use({ 'dstein64/vim-startuptime' })
+	use({ 'dstein64/vim-startuptime', cmd = { "StartupTime" }})
 
 	if packer_bootstrap then
 		require('packer').sync()
