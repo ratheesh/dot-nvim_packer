@@ -14,6 +14,10 @@ vim.api.nvim_create_autocmd("QuickFixCmdPost", { pattern = "l*", group = group,
 vim.api.nvim_create_autocmd("TextYankPost", { group = group,
 	callback = function() vim.highlight.on_yank({ higroup="IncSearch", timeout=300 }) end })
 
+-- set the colorcolumn to 72 for gitcommit filetype
+local colorcolGrp = vim.api.nvim_create_augroup("colorcolGrp", { clear = true })
+vim.api.nvim_create_autocmd("Filetype", { pattern = "gitcommit", group = colorcolGrp, command = "setlocal colorcolumn=72" })
+
 
 local cursorGrp = vim.api.nvim_create_augroup("cursorGrp", { clear = true })
 vim.api.nvim_create_autocmd( "InsertLeave" , { group = cursorGrp, command = "hi CursorLineNr guifg=#f0f0f0 guibg=#b16286" })
