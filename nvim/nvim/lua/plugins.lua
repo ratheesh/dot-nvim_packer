@@ -453,7 +453,8 @@ require("packer").startup({ function(use)
 	})
 	use({
 		"folke/which-key.nvim",
-		event = "VimEnter",
+		-- event = "VimEnter",
+		keys = { "<space>" },
 		config = function()
 			local wk = require("which-key")
 			wk.setup({
