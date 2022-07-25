@@ -148,11 +148,21 @@ require("packer").startup({ function(use)
 	})
 	use({
 		"lukas-reineke/virt-column.nvim",
+		disable = true,
 		event = { "BufWinEnter" },
 		config = function()
 			require("virt-column").setup({
 				char = "│"
 			})
+		end
+	})
+	use({
+		"xiyaowong/virtcolumn.nvim",
+		disable = false,
+		event = "VimEnter",
+		config = function ()
+			vim.g.virtcolumn_char     = '▕'
+			vim.g.virtcolumn_priority = 10
 		end
 	})
 	use({
