@@ -51,6 +51,7 @@ function M.setup()
 		ls.builtins.code_actions.gitsigns,
 		ls.builtins.code_actions.gitrebase,
 	}
+
 	ls.setup({
 		debug             = true,
 		debounce          = 50,
@@ -59,18 +60,19 @@ function M.setup()
 		root_dir          = nls_utils.root_pattern ".git",
 		filetypes         = { 'python', 'lua' },
 
-		-- on_init = function(new_client, _)
-			-- new_client.offset_encoding = 'utf-32'
-			-- end,
+		on_init = function(new_client, _)
+			new_client.offset_encoding = 'utf-32'
+		end,
 
-			on_attach = function(client)
-				if client.server_capabilities.documentFormattingProvider then
-					if vim.bo.filetype == 'python' then
-						vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.format()")
-					end
+		on_attach = function(client)
+			if client.server_capabilities.documentFormattingProvider then
+				if vim.bo.filetype == 'python' then
+					vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.format()")
+				end
+			end
 		end
+	})
+
 end
-		})
-	end
 
 	return M

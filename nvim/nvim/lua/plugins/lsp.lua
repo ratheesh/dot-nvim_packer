@@ -75,6 +75,10 @@ function M.setup()
 	}
 	vim.diagnostic.config({ virtual_text = false, float = { show_header = false, border = "rounded" }})
 
+	local function on_init(client, _)
+		client.offset_encoding = 'utf-32'
+	end
+
 	local function on_attach(client, bufnr)
 		local function bufmap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
 
@@ -122,6 +126,7 @@ function M.setup()
 	-- C/Cpp
 	-- lspconfig.clangd.setup({ on_attach = on_attach, capabilities = capabilities })
 	lspconfig.ccls.setup({
+		on_init = on_init,
 		on_attach = on_attach,
 		capabilities = capabilities,
 		init_options = {
@@ -161,8 +166,9 @@ function M.setup()
 	})
 
 	-- Python
-	lspconfig.jedi_language_server.setup({ on_attach = on_attach, capabilities = capabilities })
+	lspconfig.jedi_language_server.setup({ on_init = on_init, on_attach = on_attach, capabilities = capabilities })
 	lspconfig.pyright.setup({
+		on_init = on_init,
 		on_attach    = on_attach,
 		capabilities = capabilities,
 		settings = {
@@ -175,6 +181,7 @@ function M.setup()
 	-- Lua
 	lspconfig.sumneko_lua.setup(require("lua-dev").setup({
 		lspconfig = {
+			on_init = on_init,
 			on_attach = on_attach,
 			capabilities = capabilities,
 			cmd = { "lua-language-server" },
@@ -194,12 +201,9 @@ function M.setup()
 		}
 	}))
 
-	lspconfig.sqls.setup({
-		on_attach    = on_attach,
-		capabilities = capabilities
-	})
+	lspconfig.sqls.setup({ on_init = on_init, on_attach = on_attach, capabilities = capabilities })
+	-- lspconfig.texlab.setup({ on_attach = on_attach, capabilities = capabilities })
 
-	lspconfig.texlab.setup({ on_attach = on_attach, capabilities = capabilities })
 	local win = require("lspconfig.ui.windows")
 	local _default_opts = win.default_opts
 	win.default_opts = function(options)

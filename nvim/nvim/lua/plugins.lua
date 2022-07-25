@@ -895,8 +895,7 @@ end
 -- Avoid notification of few annoying repeatitive messages
 local notify = vim.notify
 vim.notify = function(msg, ...)
-	if msg:match("warning: multiple different client offset_encodings") or
-		msg:match("Reason: breakpoint") or msg:match("Reason: step") then
+	if msg:match("Reason: breakpoint") or msg:match("Reason: step") then
 		return
 	end
 
