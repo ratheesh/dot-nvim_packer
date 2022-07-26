@@ -584,6 +584,13 @@ require("packer").startup({ function(use)
 			})
 		end
 	})
+	use ({
+		"lewis6991/spellsitter.nvim",
+		event = "BufReadPre",
+		config = function()
+			require("spellsitter").setup()
+		end
+	})
 	use({
 		"RRethy/nvim-treesitter-endwise",
 		wants = { "nvim-treesitter" },
