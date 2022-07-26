@@ -208,9 +208,10 @@ require("packer").startup({ function(use)
 			require("nvim-lsp-installer").setup({
 				automatic_installation = false,
 				ui = {
+					border = "rounded",
 					icons = {
-						server_installed = "✓",
-						server_pending = "➜",
+						server_installed   = "✓",
+						server_pending     = "➜",
 						server_uninstalled = "✗"
 					}
 				}
