@@ -332,7 +332,8 @@ require("packer").startup({ function(use)
 	})
 	use({
 		"stevearc/dressing.nvim",
-		after = { "yanky.nvim" },
+		-- after = { "yanky.nvim" },
+		event = "BufReadPre",
 		disable = false,
 		config = function() require("dressing").setup() end
 	})
@@ -668,7 +669,7 @@ require("packer").startup({ function(use)
 		run = ':UpdateRemotePlugins',
 		requires = {
 			{ "romgrk/fzy-lua-native", event = "CmdlineEnter" },
-			{ "nixprime/cpsm",         event = "CmdlineEnter" },
+			-- { "nixprime/cpsm",         event = "CmdlineEnter" },
 			"kyazdani42/nvim-web-devicons"
 		},
 		config = function()
