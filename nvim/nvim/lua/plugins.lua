@@ -690,7 +690,10 @@ require("packer").startup({ function(use)
 			require("plugins.hydra")
 		end
 	})
-	use({ "junegunn/vim-easy-align", event = "BufReadPre" })
+	use({
+		"junegunn/vim-easy-align",
+		cmd = { "EasyAlign", "LiveEasyAlign" },
+	})
 	use ({
 		'dccsillag/magma-nvim',
 		disable = true,
