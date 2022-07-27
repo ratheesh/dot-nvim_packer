@@ -832,7 +832,7 @@ require("packer").startup({ function(use)
 		config = function ()
 			vim.g.slime_target = "tmux"
 			vim.g.slime_default_config = {socket_name = "default", target_pane = "{last}"}
-			-- vim.cmd([[ let g:slime_default_config = { 'socket_name': get(split($TMUX, ','), 0), 'target_pane': '{top-right}' } ]])
+			vim.cmd([[ let g:slime_default_config = { 'socket_name': get(split($TMUX, ','), 0), 'target_pane': '{top-right}' } ]])
 			vim.g.slime_bracketed_paste = 0
 		end
 	})
