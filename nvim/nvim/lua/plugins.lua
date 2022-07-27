@@ -202,6 +202,7 @@ require("packer").startup({ function(use)
 	})
 	use({
 		"williamboman/nvim-lsp-installer",
+		disable = true,
 		-- after = "nvim-lspconfig",
 		cmd = { "LspInstall", "LspInstallLog", "LspInstallInfo", "LspPrintInstalled", "LspUninstall", "LspUninstallAll" },
 		config = function()
@@ -215,6 +216,34 @@ require("packer").startup({ function(use)
 						server_uninstalled = "✗"
 					}
 				}
+			})
+		end
+	})
+	use({
+		"williamboman/mason.nvim",
+		requires = "neovim/nvim-lspconfig",
+		cmd = { "Mason", "MasonInstall", "MasonUninstall", "MasonUninstallAll", "MasonLog" },
+		config = function ()
+			require("mason").setup({
+				automatic_installation = false,
+				ui = {
+					border = "rounded",
+					icons = {
+						package_installed   = "✓",
+						package_pending     = "➜",
+						package_uninstalled = "✗"
+					}
+				}
+			})
+		end
+	})
+	use({
+		"williamboman/mason-lspconfig.nvim",
+		after = "mason.nvim",
+		cmd = { "LspInstall", "LspUninstall"},
+		config = function ()
+			require("mason-lspconfig").setup({
+				automatic_installation = false,
 			})
 		end
 	})
