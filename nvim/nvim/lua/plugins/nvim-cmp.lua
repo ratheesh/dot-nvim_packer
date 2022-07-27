@@ -16,6 +16,7 @@ local replace_termcodes = vim.api.nvim_replace_termcodes
 local backspace_keys = replace_termcodes('<tab>', true, true, true)
 local snippet_next_keys = replace_termcodes('<plug>luasnip-expand-or-jump', true, true, true)
 local snippet_prev_keys = replace_termcodes('<plug>luasnip-jump-prev', true, true, true)
+local mapping = cmp.mapping
 
 local M = {}
 
@@ -40,13 +41,14 @@ function M.setup()
 		},
 		sources = {
 			-- { name = 'nvim_lsp_signature_help' },
-			{ name = "luasnip",       keyword_length = 2 },
-			{ name = "nvim_lsp",      keyword_length = 2 },
-			{ name = "treesitter",    keyword_length = 2 },
-			{ name = "path",          keyword_length = 2 },
-			{ name = "buffer",        keyword_length = 2 },
-			{ name = "tmux",          keyword_length = 2 },
-			{ name = "nvim_lua",      keyword_length = 2 },
+			{ name = "luasnip",             keyword_length = 2 },
+			{ name = "nvim_lsp",            keyword_length = 2 },
+			{ name = "conventionalcommits", keyword_length = 2 },
+			{ name = "treesitter",          keyword_length = 2 },
+			{ name = "path",             		keyword_length = 2 },
+			{ name = "buffer",           		keyword_length = 2 },
+			{ name = "tmux",                keyword_length = 2 },
+			{ name = "nvim_lua",            keyword_length = 2 },
 			-- { name = "latex_symbols", keyword_length = 2 },
 		},
 		experimental = {
@@ -96,15 +98,15 @@ function M.setup()
 			end,
 		},
 		mapping = {
-			['<C-n>']     = cmp.mapping.select_next_item({ behavior = types.cmp.SelectBehavior.Insert }),
-			['<C-p>']     = cmp.mapping.select_prev_item({ behavior = types.cmp.SelectBehavior.Insert }),
-			["<C-d>"]     = cmp.mapping.scroll_docs(-4),
-			["<C-f>"]     = cmp.mapping.scroll_docs(4),
-			['<C-Space>'] = cmp.mapping.complete(),
-			["<C-e>"]     = cmp.mapping.abort(),
-			['<C-y>']     = cmp.mapping.confirm({ select = true }),
-			["<CR>"]      = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false }),
-			['<Tab>'] 		= cmp.mapping(function(fallback)
+			['<C-n>']     = mapping.select_next_item({ behavior = types.cmp.SelectBehavior.Insert }),
+			['<C-p>']     = mapping.select_prev_item({ behavior = types.cmp.SelectBehavior.Insert }),
+			["<C-u>"]     = mapping(mapping.scroll_docs(-4), { "i" }),
+			["<C-d>"]     = mapping(mapping.scroll_docs(4),  { "i" }),
+			['<C-Space>'] = mapping.complete(),
+			["<C-e>"]     = mapping.abort(),
+			['<C-y>']     = mapping.confirm({ select = true }),
+			["<CR>"]      = mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false }),
+			['<Tab>'] 		= mapping(function(fallback)
 				if cmp.visible() then
 					cmp.select_next_item()
 				elseif luasnip.expand_or_jumpable() then
