@@ -2,6 +2,8 @@
 -- License: MIT
 -- Keybindings
 
+local gitsigns = require('gitsigns')
+
 local function map(mode, lhs, rhs, opts)
 	local options = { noremap = true, silent = true }
 	if opts then options = vim.tbl_extend("force", options, opts) end
@@ -67,8 +69,8 @@ map("n", "<C-A-k>", "<cmd>lua require('trouble').previous({skip_groups = true, j
 map("n", "ga", "<Plug>(EasyAlign)", { desc = "Easy Align" })
 map("x", "ga", "<Plug>(EasyAlign)", { desc = "Easy Align" })
 
-map('o', 'ih', '<cmd>Gitsigns select_hunk<CR>')
-map('x', 'ih', '<cmd>Gitsigns select_hunk<CR>')
+map('o', 'ih', 'gitsigns.select_hunk')
+map('x', 'ih', 'gitsigns.select_hunk')
 
 -- map('n', '<leader>H', '<cmd>Startify<CR>')
 map('n', '<leader>H', '<cmd>Alpha<CR>')
@@ -82,8 +84,8 @@ map("x", "<leader>s" ,"<Plug>(sqls-execute-query)", { desc = "Exec SQL Query" })
 map("n", "<leader>s" ,"<Plug>(sqls-execute-query)", { desc = "Exec SQL Query" })
 
 -- gitsigns
-vim.api.nvim_create_user_command("Stage", function(t) require('gitsigns').stage_hunk({ t.line1, t.line2 }) end, { range = true })
-vim.api.nvim_create_user_command("Reset", function(t) require('gitsigns').reset_hunk({ t.line1, t.line2 }) end, { range = true })
+vim.api.nvim_create_user_command("Stage", function(t) gitsigns.stage_hunk({ t.line1, t.line2 }) end, { range = true })
+vim.api.nvim_create_user_command("Reset", function(t) gitsigns.reset_hunk({ t.line1, t.line2 }) end, { range = true })
 
 vim.api.nvim_create_autocmd('User', {
 	pattern = 'SqlsConnectionChoice',
