@@ -10,7 +10,7 @@ vim.opt.wrap           = false
 vim.opt.list           = true
 vim.opt.listchars      = { tab = "  ", extends = "", precedes = "" }
 vim.opt.scrolloff      = 5
--- vim.opt.whichwrap   = "<,>,\[,\]"
+vim.opt.whichwrap:append "<,>,[,]"
 vim.opt.title          = true
 vim.opt.clipboard      = "unnamedplus"
 vim.opt.cmdheight      = 1
@@ -59,6 +59,7 @@ vim.g.loaded_vimball           = 1
 vim.g.loaded_vimballPlugin     = 1
 vim.g.loaded_zip               = 1
 vim.g.loaded_zipPlugin         = 1
+vim.g.loaded_matchit           = 1
 
 -- _G.colors = {
 -- 	red = "#BF616A", teal = "#97B7D7", one_bg = "#373D49", lightbg = "#3B4252", blue = "#81A1C1",
