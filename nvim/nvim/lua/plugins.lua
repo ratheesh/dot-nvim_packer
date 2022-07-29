@@ -931,15 +931,32 @@ require("packer").startup({ function(use)
 	})
 	use({
 		"b0o/incline.nvim",
-		event = "VimEnter",
+		event = "BufWinEnter",
+		after = "nvim-web-devicons",
 		config = function ()
 			require('incline').setup({
+				render = function(props)
+					local bufname = vim.api.nvim_buf_get_name(props.buf)
+					if bufname == '' then
+						return '[no name]'
+					else
+						bufname = vim.fn.fnamemodify(bufname, ':t')
+					end
+
+					local icon = require("nvim-web-devicons").get_icon(bufname, nil, { default = true })
+					local max_len = vim.api.nvim_win_get_width(props.win) / 2
+					if #bufname > max_len then
+						return icon .. " …" .. string.sub(bufname, #bufname - max_len, -1)
+					else
+						return icon .. " " .. bufname
+					end
+				end,
 				window = {
 					zindex = 60,
 					width  = "fit",
 					placement = { horizontal = "right", vertical = "top" },
 					margin = {
-						horizontal = { left = 1, right = 0 },
+						horizontal = { left = 1, right = 1 },
 						vertical   = { bottom = 0, top = 1 },
 					},
 					padding      = { left = 1, right = 1 },
@@ -948,10 +965,17 @@ require("packer").startup({ function(use)
 						Normal = "TreesitterContext",
 					},
 				},
+				ignore = {
+					floating_wins = true,
+					unlisted_buffers = true,
+					filetypes = {},
+					buftypes = 'special',
+					wintypes = 'special',
+				},
 				hide = {
 					cursorline  = true,
 					focused_win = false,
-					only_win    = true
+					only_win    = false
 				},
 			})
 		end
