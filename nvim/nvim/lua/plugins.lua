@@ -891,6 +891,7 @@ require("packer").startup({ function(use)
 			require("range-highlight").setup()
 		end
 	})
+	use({ "ratheesh/hiPairs", event = 'BufWinEnter' })
 	use({
 		"dhruvasagar/vim-table-mode",
 		cmd = { "TableModeToggle" , "TableModeEnable", "TableModeDisable", "TableModeRealign" },
