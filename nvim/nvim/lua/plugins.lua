@@ -892,6 +892,15 @@ require("packer").startup({ function(use)
 		end
 	})
 	use({
+		"dhruvasagar/vim-table-mode",
+		cmd = { "TableModeToggle" , "TableModeEnable", "TableModeDisable", "TableModeRealign" },
+		config = function ()
+			vim.g.table_mode_corner_corner   = '+'
+			vim.g.table_mode_header_fillchar = '='
+			vim.b.table_mode_corner          = '+'
+		end
+	})
+	use({
 		"lewis6991/satellite.nvim",
 		after = "nvim-lspconfig",
 		config=function ()
