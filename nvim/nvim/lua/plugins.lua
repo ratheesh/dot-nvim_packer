@@ -370,6 +370,7 @@ require("packer").startup({ function(use)
 	use({
 		"gbprod/yanky.nvim",
 		disable = false,
+		after = "dressing.nvim",
 		cmd = { "YankyRingHistory" },
 		config = function()
 			require("yanky").setup({
@@ -538,7 +539,8 @@ require("packer").startup({ function(use)
 	-- use({ "tweekmonster/startuptime.vim"})
 	use({
 		"mfussenegger/nvim-dap",
-		opt   = true,
+		-- opt   = true,
+		after = "dressing.nvim",
 		ft = { "python" },
 		-- event = "VimEnter",
 		wants = { "nvim-dap-virtual-text", "DAPInstall.nvim", "nvim-dap-ui", "nvim-dap-python" },
