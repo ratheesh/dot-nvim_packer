@@ -343,6 +343,7 @@ require("packer").startup({ function(use)
 	})
 	use({
 		"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+		disable = true,
 		after = "nvim-lspconfig",
 		config = function()
 			require("lsp_lines").setup()
