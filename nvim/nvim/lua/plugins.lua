@@ -97,7 +97,10 @@ require("packer").startup({ function(use)
 					end
 
 					map({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
-				end
+				end,
+				diff_opts = {
+					internal = true,
+				},
 			})
 		end
 	})
