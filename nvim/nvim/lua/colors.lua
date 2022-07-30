@@ -250,15 +250,6 @@ hl(0 , "pythonTSComment"    , { fg = "#909090" , bg = nil , italic = true  , bol
 hl(0 , "FidgetTask"         , { fg = "#81A1C1" , bg = nil , italic = false , bold = false  , underline = false })
 hl(0 , "FidgetTitle"        , { fg = "#B3C1A9" , bg = nil , italic = true  , bold = false  , underline = false })
 
--- rainbow
-hl(0, "rainbowcol1", { fg = "#e79498", bg = nil, italic = false, bold = true, underline = false })
-hl(0, "rainbowcol2", { fg = "#81A1C1", bg = nil, italic = false, bold = true, underline = false })
-hl(0, "rainbowcol3", { fg = "#d5b07B", bg = nil, italic = false, bold = true, underline = false })
-hl(0, "rainbowcol4", { fg = "#AA4499", bg = nil, italic = false, bold = true, underline = false })
-hl(0, "rainbowcol5", { fg = "#FA2CA7", bg = nil, italic = false, bold = true, underline = false })
-hl(0, "rainbowcol6", { fg = "#B3C1A9", bg = nil, italic = false, bold = true, underline = false })
-hl(0, "rainbowcol7", { fg = "#bd93f9", bg = nil, italic = false, bold = true, underline = false })
-
 -- wilder.nvim
 hl(0 , "WildMenu"           , { fg = "#000000" , bg = "#8F575A" , italic = true  , bold = false , underline = false })
 hl(0 , "WildStatus"         , { fg = "#c0c0c0" , bg = "#1A3A59" , italic = false , bold = false , underline = false })
@@ -293,7 +284,7 @@ hl(0, "MiniIndentscopeSymbol", { fg = "#3F4F5B", bg = "#1E2430", italic = false,
 hl(0, "MiniSurround", { fg = "#FC0697", bg = nil, italic = false, bold = false, underline = false })
 
 -- VirtColumn
-hl(0, "VirtColumn", { fg = "#393F4B", bg = "#1E2430", italic = false, bold = true, underline = false })
+hl(0, "VirtColumn", { fg = "#393F4B", bg = nil, italic = false, bold = true, underline = false })
 
 -- nvim-treesitter-context
 hl(0, "TreesitterContext", { fg = nil, bg = "#343848", italic = false, bold = false, underline = false })
@@ -320,16 +311,26 @@ hl(0 , "StartifyHeader"  , { fg = "#6E7179" , bg = nil , italic = false , bold =
 hl(0 , "StartifySection" , { fg = "#00afcb" , bg = nil , italic = true  , bold = false , underline = false })
 hl(0 , "StartifyFooter"  , { fg = "#a0a0a0" , bg = nil , italic = false , bold = false , underline = false })
 
+
+-- rainbow
+-- hl(0, "rainbowcol1", { fg = "#e79498", bg = nil, italic = false, bold = true, underline = false })
+-- hl(0, "rainbowcol2", { fg = "#81A1C1", bg = nil, italic = false, bold = true, underline = false })
+-- hl(0, "rainbowcol3", { fg = "#d5b07B", bg = nil, italic = false, bold = true, underline = false })
+-- hl(0, "rainbowcol4", { fg = "#AA4499", bg = nil, italic = false, bold = true, underline = false })
+-- hl(0, "rainbowcol5", { fg = "#FA2CA7", bg = nil, italic = false, bold = true, underline = false })
+-- hl(0, "rainbowcol6", { fg = "#B3C1A9", bg = nil, italic = false, bold = true, underline = false })
+-- hl(0, "rainbowcol7", { fg = "#bd93f9", bg = nil, italic = false, bold = true, underline = false })
+
 -- nvim-rainbow-ts
-hl(0, "rainbowcol1", { fg = "#009fbb", bg = nil, italic = false, bold = true, underline = false })
-hl(0, "rainbowcol2", { fg = "#DE678E", bg = nil, italic = false, bold = true, underline = false })
-hl(0, "rainbowcol3", { fg = "#1DAA89", bg = nil, italic = false, bold = true, underline = false })
-hl(0, "rainbowcol5", { fg = "#ac755f", bg = nil, italic = false, bold = true, underline = false })
-hl(0, "rainbowcol4", { fg = "#bd93f9", bg = nil, italic = false, bold = true, underline = false })
-hl(0, "rainbowcol6", { fg = "#FCC077", bg = nil, italic = false, bold = true, underline = false })
+hl(0, "rainbowcol1", { fg = "#307fbb", bg = nil, italic = false, bold = true, underline = false })
+hl(0, "rainbowcol2", { fg = "#DA2C97", bg = nil, italic = false, bold = true, underline = false })
+hl(0, "rainbowcol3", { fg = "#307fbb", bg = nil, italic = false, bold = true, underline = false })
+hl(0, "rainbowcol4", { fg = "#CA54A9", bg = nil, italic = false, bold = true, underline = false })
+hl(0, "rainbowcol5", { fg = "#1DAA89", bg = nil, italic = false, bold = true, underline = false })
+hl(0, "rainbowcol6", { fg = "#d7a898", bg = nil, italic = false, bold = true, underline = false })
 hl(0, "rainbowcol7", { fg = "#B576B0", bg = nil, italic = false, bold = true, underline = false })
 
-hl(0 , "ScrollView"    , { fg = nil       , bg = "#4C5464" , italic = false , bold = false , underline = false })
+hl(0 , "ScrollView"    , { fg = nil       , bg = "#444864" , italic = false , bold = false , underline = false })
 hl(0 , "SearchCurrent" , { fg = "#FB391F" , bg = nil       , italic = false , bold = true  , underline = false })
 hl(0 , "SearchSV"      , { fg = "#FCC077" , bg = nil       , italic = false , bold = false , underline = false })
 
