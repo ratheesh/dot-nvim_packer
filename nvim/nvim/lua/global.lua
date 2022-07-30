@@ -5,7 +5,7 @@
 vim.g.mapleader        = " "
 vim.g.maplocalleader   = "\\"
 -- vim.opt.shadafile = "NONE"
-vim.opt.shada          = "%,<100,'30,/15,:10,s10,h,f1,n$HOME/.config/nvim/shada.info"
+vim.opt.shada          = "%,<100,'50,/15,:10,s10,h,f1"
 vim.opt.wrap           = false
 vim.opt.list           = true
 vim.opt.listchars      = { tab = "  ", extends = "", precedes = "" }
@@ -29,8 +29,11 @@ vim.opt.splitbelow     = true
 vim.opt.splitright     = true
 vim.opt.termguicolors  = true
 vim.opt.timeoutlen     = 750
-vim.opt.undofile       = true
 vim.opt.updatetime     = 250
+vim.opt.undofile       = true
+-- vim.opt.undodir 			 = vim.fn.stdpath("data") .. '/undo'
+vim.opt.undolevels     = 500
+vim.opt.undoreload     = 200
 vim.opt.shell          = "/bin/bash"
 vim.opt.lazyredraw     = true
 vim.opt.mouse          = "a"
@@ -39,7 +42,7 @@ vim.opt.completeopt    = "menu,menuone,noselect"
 vim.opt.showmode       = false
 vim.opt.confirm        = true
 vim.opt.laststatus     = 3
-vim.opt.guicursor      = "n:block-nCursor-blinkon0,i-ci:ver20-iCursor-blinkon0,v-ve:block-vCursor-blinkon0,o:hor30-oCursor-blinkon0,r-cr:block-rCursor-blinkon0"
+vim.opt.guicursor      = "n:block-nCursor-blinkon0,i-ci:ver30-iCursor-blinkon0,v-ve:block-vCursor-blinkon0,o:hor30-oCursor-blinkon0,r-cr:block-rCursor-blinkon0"
 
 -- Disable unwanted in-built plugins
 vim.g.loaded_2html_plugin      = 1
