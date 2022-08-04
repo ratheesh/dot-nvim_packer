@@ -942,20 +942,13 @@ require("packer").startup({ function(use)
 		config = function ()
 			require('incline').setup({
 				render = function(props)
-					local bufname = vim.api.nvim_buf_get_name(props.buf)
-					if bufname == '' then
-						return '[no name]'
-					else
-						bufname = vim.fn.fnamemodify(bufname, ':t')
-					end
-
-					local icon = require("nvim-web-devicons").get_icon(bufname, nil, { default = true })
-					local max_len = vim.api.nvim_win_get_width(props.win) / 2
-					if #bufname > max_len then
-						return icon .. " …" .. string.sub(bufname, #bufname - max_len, -1)
-					else
-						return icon .. " " .. bufname
-					end
+					local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ':t')
+					local icon, icon_color = require('nvim-web-devicons').get_icon_color(filename)
+					return {
+						{ icon, guifg = icon_color },
+						{ ' ' },
+						{ filename,  guifg = "#F06372", guibg = nil, gui = "italic" },
+					}
 				end,
 				window = {
 					zindex = 60,
