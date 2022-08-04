@@ -58,8 +58,8 @@ end
 require("packer").startup({ function(use)
 	use("lewis6991/impatient.nvim")
 	use({ "kyazdani42/nvim-web-devicons", event = "VimEnter" })
-	use({ "tpope/vim-repeat",             event = "VimEnter" })
-	use({ "psliwka/vim-smoothie",         keys = {'<c-u>', '<c-d>' }})
+	use({ "tpope/vim-repeat",             event = "CursorHold" })
+	use({ "psliwka/vim-smoothie",         keys = { '<c-u>', '<c-d>' }})
 	use({
 		"mbbill/undotree",
 		cmd = { "UndotreeToggle" },
@@ -85,14 +85,14 @@ require("packer").startup({ function(use)
 	})
 	use({
 		"chentoast/marks.nvim",
-		event = { "VimEnter" },
+		event = { "CursorHold" },
 		config = function() require('marks').setup({}) end
 	})
 	use({ "nvim-lua/plenary.nvim", event = "VimEnter" })
 	use({
 		"lewis6991/gitsigns.nvim",
 		event = "VimEnter",
-		wants = "colorizer",
+		-- wants = "colorizer",
 		config = function()
 			require("gitsigns").setup({
 				on_attach = function(bufnr)
@@ -103,7 +103,7 @@ require("packer").startup({ function(use)
 						vim.keymap.set(mode, l, r, opts)
 					end
 
-					map({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
+					map({'o', 'x'}, 'ih', 'gitsigns.select_hunk()')
 				end,
 				diff_opts = {
 					internal = true,
@@ -189,15 +189,16 @@ require("packer").startup({ function(use)
 	})
 	use({
 		"lilydjwg/colorizer",
-		after = "gitsigns.nvim",
+		event = "CursorHold",
+		-- after = "gitsigns.nvim",
 		-- ft = { "text", "lua", "markdown", "help" }
 	})
 	use({ "wbthomason/packer.nvim" })
 	use({ "folke/lua-dev.nvim", event = "VimEnter" })
-	-- use({ "hrsh7th/cmp-nvim-lsp", after = "lua-dev.nvim" })
+	use({ "hrsh7th/cmp-nvim-lsp", event = "LspAttach" })
 	use({
 		"neovim/nvim-lspconfig",
-		-- after = "cmp-nvim-lsp",
+		after = "cmp-nvim-lsp",
 		event = "VimEnter",
 		config = function()
 			require("plugins.lsp").setup()
@@ -205,7 +206,8 @@ require("packer").startup({ function(use)
 	})
 	use({
 		"jose-elias-alvarez/null-ls.nvim",
-		after = "nvim-lspconfig",
+		event = "LspAttach",
+		-- after = "nvim-lspconfig",
 		config = function()
 			require("plugins.null-ls").setup()
 		end,
@@ -264,9 +266,10 @@ require("packer").startup({ function(use)
 	})
 	use({
 		"SmiteshP/nvim-navic",
+		event = "LspAttach",
 		wants = "nvim-lspconfig",
 		requires = "neovim/nvim-lspconfig",
-		after = "nvim-lspconfig",
+		-- after = "nvim-lspconfig",
 		config = function()
 			require("nvim-navic").setup({
 				highlight             = false,
@@ -288,6 +291,7 @@ require("packer").startup({ function(use)
 	use({
 		-- "bellini666/trouble.nvim",
 		"folke/trouble.nvim",
+		event = "LspAttach",
 		after = "nvim-dd.git",
 		config = function()
 			require("trouble").setup({
@@ -319,7 +323,7 @@ require("packer").startup({ function(use)
 	})
 	use({
 		"ray-x/lsp_signature.nvim",
-		event = "InsertEnter",
+		event = "LspAttach",
 		wants = "nvim-lspconfig",
 		config = function()
 			require("lsp_signature").setup({
@@ -339,8 +343,9 @@ require("packer").startup({ function(use)
 	})
 	use({
 		"j-hui/fidget.nvim",
+		opt   = true,
 		event = "LspAttach",
-		after = { "nvim-lspconfig" },
+		-- after = { "nvim-lspconfig" },
 		config = function()
 			require("fidget").setup({
 				text = {
@@ -367,7 +372,7 @@ require("packer").startup({ function(use)
 		end,
 	})
 	-- use({ "RRethy/vim-illuminate", after = "fidget.nvim" })
-	use({ "nvim-treesitter/playground", after = "nvim-treesitter" })
+	use({ "nvim-treesitter/playground", event = "LspAttach" })
 	use({
 		"rcarriga/nvim-notify",
 		event = "VimEnter",
@@ -379,14 +384,14 @@ require("packer").startup({ function(use)
 	use({
 		"stevearc/dressing.nvim",
 		-- after = { "yanky.nvim" },
-		event = "BufReadPre",
+		event = "VimEnter",
 		disable = false,
 		config = function() require("dressing").setup() end
 	})
 	use({
 		"gbprod/yanky.nvim",
 		disable = false,
-		after = "dressing.nvim",
+		-- after = "dressing.nvim",
 		cmd = { "YankyRingHistory" },
 		config = function()
 			require("yanky").setup({
@@ -466,15 +471,15 @@ require("packer").startup({ function(use)
 	})
 	use({
 		"echasnovski/mini.nvim",
-		event = "VimEnter",
+		event = "CursorHold",
 		config = function()
 			require("plugins.mini").setup()
 		end,
 	})
 	use({
 		"numToStr/Comment.nvim",
-		-- event = "VimEnter",
-	keys = { "gc", "gcc", "gb", "gbc", "<A-;>" },
+		event = "CursorHold",
+		keys = { "gc", "gcc", "gb", "gbc", "<A-;>" },
 		config = function()
 			require("Comment").setup({
 				padding = true,
@@ -515,7 +520,7 @@ require("packer").startup({ function(use)
 			local wk = require("which-key")
 			wk.setup({
 				window = {
-					border   = "single",
+					border   = "rounded",
 					position = "bottom",
 					margin   = { 1, 0, 1, 0 },
 					padding  = { 2, 2, 2, 2 },
@@ -555,13 +560,13 @@ require("packer").startup({ function(use)
 	-- use({ "tweekmonster/startuptime.vim"})
 	use({
 		"mfussenegger/nvim-dap",
-		-- opt   = true,
-		after = "dressing.nvim",
+		opt   = true,
+		-- keys  = { "<f5>" },
 		ft = { "python" },
 		-- event = "VimEnter",
-		wants = { "nvim-dap-virtual-text", "DAPInstall.nvim", "nvim-dap-ui", "nvim-dap-python" },
+		wants = { "dressing.nvim", "nvim-dap-virtual-text", "nvim-dap-ui", "nvim-dap-python" },
 		requires = {
-			"Pocco81/DAPInstall.nvim",
+			-- "Pocco81/DAPInstall.nvim",
 			"theHamsta/nvim-dap-virtual-text",
 			"rcarriga/nvim-dap-ui",
 			"mfussenegger/nvim-dap-python",
@@ -573,8 +578,9 @@ require("packer").startup({ function(use)
 	})
 	use ({
 		"mfussenegger/nvim-dap-python",
+		after = { "nvim-dap" },
 		requires = "mfussenegger/nvim-dap",
-		ft = { "python" },
+		-- ft = { "python" },
 		config = function ()
 			require('dap-python').setup('python', {})
 		end
@@ -616,15 +622,17 @@ require("packer").startup({ function(use)
 	})
 
 	if vim.g.is_linux then
-		use({ "ojroques/vim-oscyank", cmd = { 'OSCYank', 'OSCYankReg' } })
+		use({ "ojroques/vim-oscyank", cmd = { 'OSCYank', 'OSCYankReg' }})
 	end
 	use({
 		'p00f/nvim-ts-rainbow',
-		after = { 'nvim-treesitter' },
+		after = "nvim-treesitter",
+		requires = { 'nvim-treesitter' },
 	})
 	use({
 		'romgrk/nvim-treesitter-context',
-		after = { 'nvim-treesitter' },
+		event = "CursorHold",
+		requires = { 'nvim-treesitter' },
 		config = function()
 			require('treesitter-context').setup({
 				enable    = true,
@@ -635,15 +643,15 @@ require("packer").startup({ function(use)
 	})
 	use ({
 		"lewis6991/spellsitter.nvim",
-		event = "BufReadPre",
+		event = "CursorHold",
 		config = function()
 			require("spellsitter").setup()
 		end
 	})
 	use({
 		"RRethy/nvim-treesitter-endwise",
-		wants = { "nvim-treesitter" },
-		event = "InsertEnter"
+		event = "InsertEnter",
+		requires = { "nvim-treesitter" },
 	})
 	use({
 		"RRethy/nvim-treesitter-textsubjects",
@@ -733,16 +741,14 @@ require("packer").startup({ function(use)
 		end
 	})
 	use({ 'anuvyklack/hydra.nvim',
+		event = "VimEnter",
 		requires = 'anuvyklack/keymap-layer.nvim',
 		after = "gitsigns.nvim",
 		config = function()
 			require("plugins.hydra")
 		end
 	})
-	use({
-		"junegunn/vim-easy-align",
-		cmd = { "EasyAlign", "LiveEasyAlign" },
-	})
+	use({ "junegunn/vim-easy-align", keys = { "ga" } })
 	use ({
 		'dccsillag/magma-nvim',
 		disable = true,
@@ -752,7 +758,8 @@ require("packer").startup({ function(use)
 	-- use({ "tpope/vim-surround"              , event = "VimEnter" })
 	use({
 		"kylechui/nvim-surround",
-		event = "InsertEnter",
+		-- event = "InsertEnter",
+		keys = {{'n', 'ys'}, {'n', 'ds'}, {'n', 'cs'}, {'x', 'S'}},
 		disable = false,
 		config = function ()
 			require("nvim-surround").setup({
@@ -844,10 +851,10 @@ require("packer").startup({ function(use)
 		end
 	})
 	-- use({ "michaeljsmith/vim-indent-object",    event = { "VimEnter"   }})
-	-- use({ "mg979/vim-visual-multi",             event = { "BufReadPre" }})
+	-- use({ "mg979/vim-visual-multi",             event = { "VimEnter" }})
 	-- use({ "machakann/vim-swap",                 event = { "VimEnter"   }})
-	use({ "jeetsukumaran/vim-pythonsense",      ft    = { "python"     }})
-	use({ "kana/vim-textobj-user",              event = { "BufReadPre" }})
+	-- use({ "jeetsukumaran/vim-pythonsense",      ft    = { "python"     }})
+	use({ "kana/vim-textobj-user",              event = { "CursorHold" }})
 	use({ "coderifous/textobj-word-column.vim", keys  = { "vic", "viC" }})
 	use({ "ojroques/vim-oscyank",               cmd   = { 'OSCYank' , 'OSCYankReg' }})
 	use({
@@ -859,7 +866,7 @@ require("packer").startup({ function(use)
 			vim.g.licenses_default_commands       = { 'gplv2', 'apache', 'mit' }
 		end
 	})
-	use({ "andymass/vim-matchup", event = { "VimEnter" }})
+	use({ "andymass/vim-matchup", keys = { "%" }, event = { "CursorMoved" }})
 	use ({
 		"metakirby5/codi.vim",
 		ft  = { "python" },
@@ -910,7 +917,7 @@ require("packer").startup({ function(use)
 			require("range-highlight").setup()
 		end
 	})
-	use({ "ratheesh/hiPairs", event = 'BufWinEnter' })
+	use({ "ratheesh/hiPairs", disable = false, event = "LspAttach" })
 	use({
 		"dhruvasagar/vim-table-mode",
 		cmd = { "TableModeToggle" , "TableModeEnable", "TableModeDisable", "TableModeRealign" },
@@ -922,7 +929,8 @@ require("packer").startup({ function(use)
 	})
 	use({
 		"lewis6991/satellite.nvim",
-		after = "nvim-lspconfig",
+		event = "CursorHold",
+		requires = "nvim-lspconfig",
 		config=function ()
 			require('satellite').setup {
 				current_only = false,
@@ -951,7 +959,7 @@ require("packer").startup({ function(use)
 	use({
 		"b0o/incline.nvim",
 		event = "BufWinEnter",
-		after = "nvim-web-devicons",
+		-- after = "nvim-web-devicons",
 		config = function ()
 			require('incline').setup({
 				render = function(props)
