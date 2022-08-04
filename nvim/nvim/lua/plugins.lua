@@ -60,7 +60,14 @@ require("packer").startup({ function(use)
 	use({ "kyazdani42/nvim-web-devicons", event = "VimEnter" })
 	use({ "tpope/vim-repeat",             event = "VimEnter" })
 	use({ "psliwka/vim-smoothie",         keys = {'<c-u>', '<c-d>' }})
-	use({ "sjl/gundo.vim",                cmd = { "GundoHide", "GundoShow", "GundoToggle" }})
+	use({
+		"mbbill/undotree",
+		cmd = { "UndotreeToggle" },
+		config = function ()
+			vim.g.undotree_WindowLayout    = 4
+			vim.g.undotree_ShortIndicators = 1
+		end
+	})
 	use({
 		"windwp/windline.nvim",
 		after = "hydra.nvim",
