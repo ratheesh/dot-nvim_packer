@@ -332,14 +332,20 @@ require("packer").startup({ function(use)
 	})
 	use({
 		"j-hui/fidget.nvim",
+		event = "LspAttach",
 		after = { "nvim-lspconfig" },
 		config = function()
 			require("fidget").setup({
 				text = {
-					spinner   = "dots",
+					spinner   = "moon",
 					done      = "",
 					commenced = "Gestartet",
 					completed = "Fertig",
+				},
+				timer = {
+					spinner_rate = 250,
+					fidget_decay = 2000,
+					task_decay   = 1000,
 				},
 			})
 		end
