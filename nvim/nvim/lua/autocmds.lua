@@ -18,18 +18,20 @@ vim.api.nvim_create_autocmd("TextYankPost", { group = group,
 local colorcolGrp = vim.api.nvim_create_augroup("colorcolGrp", { clear = true })
 vim.api.nvim_create_autocmd("Filetype", { pattern = "gitcommit", group = colorcolGrp, command = "setlocal colorcolumn=72" })
 
-
+-- Change the current line number bg color in insert and non-insert mode
 local cursorGrp = vim.api.nvim_create_augroup("cursorGrp", { clear = true })
 vim.api.nvim_create_autocmd( "InsertLeave" , { group = cursorGrp, command = "hi CursorLineNr guifg=#f0f0f0 guibg=#b16286" })
 vim.api.nvim_create_autocmd( "InsertEnter" , { group = cursorGrp, command = "hi CursorLineNr guifg=#f0f0f0 guibg=#2AA198" })
 
--- vim.api.nvim_create_autocmd(
---   { "InsertLeave", "WinEnter" },
---   { pattern = "*", command = "set relativenumber", group = cursorGrp })
---
--- vim.api.nvim_create_autocmd(
---   { "InsertEnter", "WinLeave" },
---   { pattern = "*", command = "set norelativenumber", group = cursorGrp })
+-- Enable relative number only in non-insert mode
+vim.api.nvim_create_autocmd(
+  { "InsertLeave", "WinEnter" },
+  { pattern = "*", command = "set relativenumber", group = cursorGrp })
+
+vim.api.nvim_create_autocmd(
+  { "InsertEnter", "WinLeave" },
+  { pattern = "*", command = "set norelativenumber", group = cursorGrp })
+
 -- Notification for packer compilation/sync completion
 local packerGrp = vim.api.nvim_create_augroup("packerGrp", { clear = true })
 vim.api.nvim_create_autocmd("User" , { pattern = "PackerComplete", group = packerGrp, command = "lua vim.notify(\"Packer Sync Done!\", info)" })
