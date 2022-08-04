@@ -275,7 +275,7 @@ require("packer").startup({ function(use)
 				highlight             = false,
 				separator             = "  ",
 				depth_limit           = 3,
-				depth_limit_indicator = "..",
+				depth_limit_indicator = "…",
 			})
 			vim.g.navic_silence = true
 		end
