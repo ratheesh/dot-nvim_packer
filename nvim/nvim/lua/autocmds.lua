@@ -30,6 +30,10 @@ vim.api.nvim_create_autocmd( "InsertEnter" , { group = cursorGrp, command = "hi 
 -- vim.api.nvim_create_autocmd(
 --   { "InsertEnter", "WinLeave" },
 --   { pattern = "*", command = "set norelativenumber", group = cursorGrp })
+-- Notification for packer compilation/sync completion
+local packerGrp = vim.api.nvim_create_augroup("packerGrp", { clear = true })
+vim.api.nvim_create_autocmd("User" , { pattern = "PackerComplete", group = packerGrp, command = "lua vim.notify(\"Packer Sync Done!\", info)" })
+vim.api.nvim_create_autocmd("User" , { pattern = "PackerCompileDone", group = packerGrp, command = "lua vim.notify(\"Packer Compilation Done!\", info)" })
 
 -- Utility functions
 _G.P = vim.pretty_print
