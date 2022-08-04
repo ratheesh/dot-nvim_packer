@@ -108,6 +108,13 @@ require("packer").startup({ function(use)
 				diff_opts = {
 					internal = true,
 				},
+				preview_config = {
+					border   = "rounded",
+					style    = "minimal",
+					relative = "cursor",
+					row      = 0,
+					col      = 1
+				}
 			})
 		end
 	})
