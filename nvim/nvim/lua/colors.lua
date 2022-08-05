@@ -253,8 +253,8 @@ hl(0 , "FidgetTitle"        , { fg = "#8F575A" , bg = nil , italic = false  , bo
 -- wilder.nvim
 hl(0 , "WildMenu"           , { fg = "#000000" , bg = "#8F575A" , italic = true  , bold = false , underline = false })
 hl(0 , "WildStatus"         , { fg = "#c0c0c0" , bg = "#1A3A59" , italic = false , bold = false , underline = false })
-hl(0 , "WildSelected"       , { fg = "#F0F0F0" , bg = "#3d506c" , italic = true  , bold = false , underline = false })
-hl(0 , "WildSelectedAccent" , { fg = "#FCCC82" , bg = "#3d506c" , italic = true  , bold = true  , underline = true  })
+hl(0 , "WildSelected"       , { fg = "#2AD198" , bg = "#3d506c" , italic = true  , bold = false , underline = false })
+hl(0 , "WildSelectedAccent" , { fg = "#d78488" , bg = "#3d506c" , italic = true  , bold = true  , underline = false })
 hl(0 , "WildMode"           , { fg = "#f0f0f0" , bg = "#6B717C" , italic = true  , bold = false , underline = false })
 hl(0 , "WildSeparator"      , { fg = "#bd93f9" , bg = "#1A3A59" , italic = false , bold = false , underline = false })
 hl(0 , "WildAccent"         , { fg = "#ec7279" , bg = "#1A3A59" , italic = false , bold = true  , underline = true  })
@@ -280,7 +280,7 @@ hl(0 , "Lf_hl_popup_prompt"    , { fg = "#FA2C77" , bg = "#1E2430" , italic = fa
 hl(0 , "Lf_hl_cursorline"      , { fg = "#e0e0e0" , bg = nil       , italic = false , bold = false , underline = false })
 
 -- mini.nvim
-hl(0, "MiniIndentscopeSymbol", { fg = "#3F4F5B", bg = "#1E2430", italic = false, bold = false, underline = false })
+hl(0, "MiniIndentscopeSymbol", { fg = "#3F4F5B", bg = nil, italic = false, bold = false, underline = false })
 hl(0, "MiniSurround", { fg = "#FC0697", bg = nil, italic = false, bold = false, underline = false })
 
 -- VirtColumn
