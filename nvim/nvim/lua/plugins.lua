@@ -403,6 +403,7 @@ require("packer").startup({ function(use)
 	use({
 		"gbprod/yanky.nvim",
 		disable = false,
+		requires = "dressing.nvim",
 		-- after = "dressing.nvim",
 		cmd = { "YankyRingHistory" },
 		config = function()
@@ -769,7 +770,7 @@ require("packer").startup({ function(use)
 			require("plugins.hydra")
 		end
 	})
-	use({ "junegunn/vim-easy-align", keys = { "ga" } })
+	use({ "junegunn/vim-easy-align", event = { "CursorHold" }})
 	use ({
 		'dccsillag/magma-nvim',
 		disable = true,
@@ -875,8 +876,12 @@ require("packer").startup({ function(use)
 	-- use({ "mg979/vim-visual-multi",             event = { "VimEnter" }})
 	-- use({ "machakann/vim-swap",                 event = { "VimEnter"   }})
 	-- use({ "jeetsukumaran/vim-pythonsense",      ft    = { "python"     }})
-	use({ "kana/vim-textobj-user",              event = { "CursorHold" }})
-	use({ "coderifous/textobj-word-column.vim", keys  = { "vic", "viC" }})
+	use({ "kana/vim-textobj-user",              opt = true})
+	use({
+		"coderifous/textobj-word-column.vim",
+		requires = "vim-textobj-user",
+		keys  = { "vic", "viC" }
+	})
 	use({ "ojroques/vim-oscyank",               cmd   = { 'OSCYank' , 'OSCYankReg' }})
 	use({
 		"antoyo/vim-licenses",
