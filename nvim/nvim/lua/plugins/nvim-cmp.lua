@@ -82,20 +82,22 @@ function M.setup()
 		-- 		},
 		-- 	},
 		formatting = {
-			fields = { "abbr", "kind", "menu" },
-			format = function(entry, vim_item)
-				-- Kind icons
-				vim_item.kind = string.format("%s", icons[vim_item.kind])
-				-- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
-				vim_item.menu = ({
-					luasnip  = "[Snippet]",
-					nvim_lsp = "[LSP]",
-					nvim_lua = "[Neovim]",
-					buffer   = "[Buffer]",
-					path     = "[Path]",
-				})[entry.source.name]
-				return vim_item
-			end,
+			format = require('lspkind').cmp_format({
+				preset     = 'codicons',
+				mode       = 'symbol',
+				symbol_map = icons,
+				maxwidth   = 50,
+				before = function (entry, vim_item)
+					vim_item.menu = ({
+						luasnip  = "[Snippet]",
+						nvim_lsp = "[LSP]",
+						nvim_lua = "[Neovim]",
+						buffer   = "[Buffer]",
+						path     = "[Path]",
+					})[entry.source.name]
+					return vim_item
+				end
+			})
 		},
 		mapping = {
 			['<C-n>']     = mapping.select_next_item({ behavior = types.cmp.SelectBehavior.Insert }),

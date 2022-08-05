@@ -431,6 +431,7 @@ require("packer").startup({ function(use)
 		after = "nvim-notify",
 	})
 	use({ "rafamadriz/friendly-snippets", event = { "InsertEnter" }})
+	use({ "onsails/lspkind.nvim", after = { "nvim-cmp" }})
 	use({
 		"hrsh7th/nvim-cmp",
 		disable = false,
@@ -466,6 +467,8 @@ require("packer").startup({ function(use)
 				-- end,
 			-- },
 			-- { "rafamadriz/friendly-snippets", after = "nvim-cmp" },
+
+			{ "onsails/lspkind.nvim", after = "nvim-cmp" },
 		},
 		config = function()
 			require('plugins.nvim-cmp').setup()
