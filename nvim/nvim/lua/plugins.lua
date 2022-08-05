@@ -446,7 +446,7 @@ require("packer").startup({ function(use)
 			-- { "davidsierradz/cmp-conventionalcommits", 	event = "nvim-cmp" },
 			-- "f3fora/cmp-spell",
 			{ "hrsh7th/cmp-nvim-lua", after = "nvim-cmp" },
-			{ "ray-x/cmp-treesitter", after = "nvim-cmp" },
+			-- { "ray-x/cmp-treesitter", after = "nvim-cmp" },
 			-- "hrsh7th/cmp-cmdline",
 			-- "lukas-reineke/cmp-under-comparator",
 			-- "hrsh7th/cmp-nvim-lsp-document-symbol",
@@ -455,7 +455,7 @@ require("packer").startup({ function(use)
 			-- "hrsh7th/cmp-nvim-lsp-signature-help",
 			-- "hrsh7th/cmp-emoji",
 			-- "kdheepak/cmp-latex-symbols",
-			{ "andersevenrud/cmp-tmux", after = "nvim-cmp" },
+			-- { "andersevenrud/cmp-tmux", after = "nvim-cmp" },
 			-- "petertriho/cmp-git",
 			-- {
 			-- 	"L3MON4D3/LuaSnip",

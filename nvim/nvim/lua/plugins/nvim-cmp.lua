@@ -2,8 +2,8 @@
 -- License: MIT
 -- nvim-cmp plugin configuration
 
-local cmp     = require('cmp')
-local types   = require('cmp.types')
+local cmp     = require("cmp")
+local types   = require("cmp.types")
 local luasnip = require("luasnip")
 
 local function check_backspace()
@@ -45,10 +45,10 @@ function M.setup()
 			{ name = "luasnip",             keyword_length = 2 },
 			{ name = "nvim_lsp",            keyword_length = 2 },
 			{ name = "buffer",           		keyword_length = 2 },
-			{ name = "conventionalcommits", keyword_length = 2 },
-			{ name = "treesitter",          keyword_length = 2 },
-			-- { name = "tmux",                keyword_length = 2 },
 			{ name = "nvim_lua",            keyword_length = 2 },
+			-- { name = "conventionalcommits", keyword_length = 2 },
+			-- { name = "treesitter",          keyword_length = 2 },
+			-- { name = "tmux",                keyword_length = 2 },
 			-- { name = "latex_symbols", keyword_length = 2 },
 		},
 		experimental = {
