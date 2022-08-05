@@ -485,6 +485,12 @@ require("packer").startup({ function(use)
 		end,
 	})
 	use({
+		"AckslD/nvim-FeMaco.lua",
+		disable = true,
+		ft = { "markdown" },
+		config = function () end
+	})
+	use({
 		"echasnovski/mini.nvim",
 		event = "CursorHold",
 		config = function()
