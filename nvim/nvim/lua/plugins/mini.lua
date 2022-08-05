@@ -5,7 +5,7 @@
 local M = {}
 
 function M.setup()
-	require("mini.ai").setup({})
+	-- require("mini.ai").setup({})
 	require("mini.indentscope").setup({
 		symbol = '╎',
 	})
