@@ -30,15 +30,19 @@ Hydra({
 			gitsigns.toggle_signs(true)
 			gitsigns.toggle_linehl(true)
 			gitsigns.toggle_word_diff(true)
-			vim.cmd([[ColorClear]])
+			if package.loaded['colorizer'] ~= nil then
+				vim.cmd([[ColorClear]])
+			end
 		end,
 		on_exit = function()
 			gitsigns.toggle_signs(true)
 			gitsigns.toggle_linehl(false)
 			gitsigns.toggle_deleted(false)
 			gitsigns.toggle_word_diff(false)
-			vim.cmd([[ColorHighlight]])
-			vim.cmd 'echo' -- clear the echo area
+			if package.loaded['colorizer'] ~= nil then
+				vim.cmd([[ColorHighlight]])
+				vim.cmd 'echo' -- clear the echo area
+			end
 		end
 	},
 	mode = { 'n', 'x' },
