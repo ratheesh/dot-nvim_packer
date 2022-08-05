@@ -151,6 +151,11 @@ require("packer").startup({ function(use)
 		end,
 	})
 	use({
+		"nvim-treesitter/nvim-treesitter-textobjects",
+		requires = "nvim-treesitter",
+		after = "nvim-treesitter",
+	})
+	use({
 		"lukas-reineke/indent-blankline.nvim",
 		disable = true,
 		after   = { "nvim-lspconfig" },

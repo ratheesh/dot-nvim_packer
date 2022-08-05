@@ -15,12 +15,39 @@ require("nvim-treesitter.configs").setup({
 		enable  = true,
 	},
 	textsubjects = {
-		enable         = true,
+		enable         = false,
 		prev_selection = ',',
 		keymaps  = {
 			['.']  = 'textsubjects-smart',
 			[';']  = 'textsubjects-container-outer',
 			['i;'] = 'textsubjects-container-inner',
+		},
+	},
+	textobjects = {
+		select = {
+			enable    = true,
+			lookahead = true,
+			keymaps = {
+				-- You can use the capture groups defined in textobjects.scm
+				["af"] = "@function.outer",
+				["if"] = "@function.inner",
+				["ac"] = "@class.outer",
+				["ic"] = "@class.inner",
+			},
+			selection_modes = {
+				['@function.outer']   = 'V', -- linewise
+				['@sparameter.outer'] = 'v', -- charwise
+				['@class.outer']      = '<c-v>', -- blockwise
+			},
+		},
+		swap = {
+			enable = false,
+			swap_next = {
+				["ap"] = "@parameter.inner",
+			},
+			swap_previous = {
+				-- ["an"] = "@parameter.inner",
+			},
 		},
 	},
 	rainbow   = {
