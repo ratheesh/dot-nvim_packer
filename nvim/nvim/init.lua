@@ -11,8 +11,14 @@ end
 
 require('global')
 require('plugins')
-require('keybindings')
 require('colors')
-require('autocmds')
 
--- End of File
+vim.defer_fn(function()
+	require('keybindings')
+	require('autocmds')
+	vim.cmd([[
+	PackerLoad incline.nvim
+	]])
+end, 30)
+
+	-- End of File

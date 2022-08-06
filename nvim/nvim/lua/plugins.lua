@@ -984,6 +984,7 @@ require("packer").startup({ function(use)
 	})
 	use({
 		"b0o/incline.nvim",
+		opt = true,
 		event = "BufWinEnter",
 		-- after = "nvim-web-devicons",
 		config = function ()
@@ -994,7 +995,7 @@ require("packer").startup({ function(use)
 					return {
 						{ icon, guifg = icon_color },
 						{ ' ' },
-						{ filename,  guifg = "#F06372", guibg = nil, gui = "italic" },
+						{ filename,  guifg = "#E23D75", guibg = nil, gui = "italic" },
 					}
 				end,
 				window = {
@@ -1021,7 +1022,7 @@ require("packer").startup({ function(use)
 				hide = {
 					cursorline  = true,
 					focused_win = false,
-					only_win    = false
+					only_win    = true
 				},
 			})
 		end
