@@ -579,7 +579,7 @@ require("packer").startup({ function(use)
 			-- wk.register({}, {})
 		end,
 	})
-	-- use({ "tweekmonster/startuptime.vim"})
+	use({ 'tweekmonster/startuptime.vim', cmd = { "StartupTime" }})
 	use({
 		"mfussenegger/nvim-dap",
 		opt   = true,
@@ -1027,7 +1027,7 @@ require("packer").startup({ function(use)
 			})
 		end
 	})
-	use({ 'dstein64/vim-startuptime', cmd = { "StartupTime" }})
+	-- use({ 'dstein64/vim-startuptime', cmd = { "StartupTime" }})
 
 	if packer_bootstrap then
 		require('packer').sync()
