@@ -376,11 +376,12 @@ require("packer").startup({ function(use)
 	})
 	use({
 		"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-		disable = true,
-		after = "nvim-lspconfig",
+		disable = false,
+		event = "LspAttach",
 		config = function()
 			require("lsp_lines").setup()
 			vim.keymap.set( "", "<Leader>L", require("lsp_lines").toggle, { desc = "Toggle lsp_lines" })
+			vim.defer_fn(function() vim.diagnostic.config({ virtual_lines = false }) end, 50)
 		end,
 	})
 	-- use({ "RRethy/vim-illuminate", after = "fidget.nvim" })
