@@ -21,4 +21,4 @@ vim.defer_fn(function()
 	]])
 end, 30)
 
-	-- End of File
+-- End of File

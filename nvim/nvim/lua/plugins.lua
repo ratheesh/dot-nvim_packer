@@ -398,6 +398,7 @@ require("packer").startup({ function(use)
 	use({
 		"stevearc/dressing.nvim",
 		-- after = { "yanky.nvim" },
+		opt = true,
 		event = "VimEnter",
 		disable = false,
 		config = function() require("dressing").setup() end
