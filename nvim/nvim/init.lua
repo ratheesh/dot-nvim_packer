@@ -9,7 +9,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
   Packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
 end
 
-require('global')
+-- require('global')
 require('plugins')
 require('colors')
 

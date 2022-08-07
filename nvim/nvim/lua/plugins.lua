@@ -53,6 +53,7 @@ if vim.fn.filereadable(packer_compiled_path) == 1 then
   require("impatient")
   -- Due to impatient, the packer_compiled file needs to be directly required.
   require("packer_compiled")
+	require("global")
 end
 
 require("packer").startup({ function(use)
