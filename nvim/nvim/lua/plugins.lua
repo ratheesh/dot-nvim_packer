@@ -799,8 +799,8 @@ require("packer").startup({ function(use)
 		disable = false,
 		config = function ()
 			require("nvim-surround").setup({
-				highlight_motion = {
-				duration = 0,
+				highlight = {
+					duration = 0,
 			}
 		})
 	end
