@@ -1008,7 +1008,7 @@ require("packer").startup({ function(use)
 					return {
 						{ icon, guifg = icon_color },
 						{ ' ' },
-						{ filename,  guifg = "#E23D75", guibg = nil, gui = "italic" },
+						{ filename,  guifg = "#AC6BF1", guibg = nil, gui = "italic" },
 					}
 				end,
 				window = {
