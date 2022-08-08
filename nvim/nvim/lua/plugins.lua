@@ -104,7 +104,8 @@ require("packer").startup({ function(use)
 						vim.keymap.set(mode, l, r, opts)
 					end
 
-					map({'o', 'x'}, 'ih', 'gitsigns.select_hunk()')
+					map({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
+					-- map({'o', 'x'}, 'ih', 'gitsigns.select_hunk()')
 				end,
 				diff_opts = {
 					internal = true,
