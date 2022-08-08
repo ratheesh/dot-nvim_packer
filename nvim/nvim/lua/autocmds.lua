@@ -37,6 +37,14 @@ local packerGrp = vim.api.nvim_create_augroup("packerGrp", { clear = true })
 vim.api.nvim_create_autocmd("User" , { pattern = "PackerComplete", group = packerGrp, command = "lua vim.notify(\"Packer Sync Done!\", info)" })
 vim.api.nvim_create_autocmd("User" , { pattern = "PackerCompileDone", group = packerGrp, command = "lua vim.notify(\"Packer Compilation Done!\", info)" })
 
+-- sqls
+vim.api.nvim_create_autocmd('User', {
+	pattern = 'SqlsConnectionChoice',
+	callback = function(event)
+		vim.notify(event.data.choice)
+	end,
+})
+
 -- Utility functions
 _G.P = vim.pretty_print
 

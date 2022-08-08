@@ -87,10 +87,4 @@ map("n", "<leader>s" ,"<Plug>(sqls-execute-query)", { desc = "Exec SQL Query" })
 vim.api.nvim_create_user_command("Stage", function(t) gitsigns.stage_hunk({ t.line1, t.line2 }) end, { range = true })
 vim.api.nvim_create_user_command("Reset", function(t) gitsigns.reset_hunk({ t.line1, t.line2 }) end, { range = true })
 
-vim.api.nvim_create_autocmd('User', {
-	pattern = 'SqlsConnectionChoice',
-	callback = function(event)
-		vim.notify(event.data.choice)
-	end,
-})
 -- End of File
