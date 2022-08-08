@@ -4,10 +4,11 @@
 
 local gitsigns = require('gitsigns')
 
-local function map(mode, lhs, rhs, opts)
-	local options = { noremap = true, silent = true }
-	if opts then options = vim.tbl_extend("force", options, opts) end
-	vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+-- works only with NVIM 0.7+
+local function map(mode, l, r, opts)
+	opts = opts or {}
+	-- opts.buffer = bufnr
+	vim.keymap.set(mode, l, r, opts)
 end
 
 map("n", "<Esc>", "<cmd>noh<CR>")
@@ -21,7 +22,7 @@ map("n", "gV", "`[v`]")
 map("n" , "<Leader>w", "<cmd>w<CR>")
 map("n" , "<Leader>x", "<cmd>xall<CR>")
 map("n" , "<Leader>;", ":", { desc = "Enter Cmd Mode" })
-map("x" , "<Leader>;", ":", { desc = "Enter Cmd Mode" })
+map({ "n", "x" } , "<Leader>;", ":", { desc = "Enter Cmd Mode" })
 map("n" , "<BS>", "<cmd>nohlsearch<CR>")
 map("n" , "<Leader><BS>", "<C-V>", { desc = "Enter Visual Block Mode" })
 map("n" , "<Leader><Space>" , "V", { desc = "Enter Visual Mode" })
@@ -46,7 +47,6 @@ map("v" , "K", ":m '<-2<CR>gv=gv")
 map("v" , "J", ":m '>+1<CR>gv=gv")
 map("i" , "<C-k>", "<Esc>:m .-2<CR>==")
 map("i" , "<C-j>", "<Esc>:m .+1<CR>==")
--- map("i" , "           , " , " , <C-g>u")
 map("i" , ".", ".<C-g>u")
 map("i" , "!", "!<C-g>u")
 map("i" , "?", "?<C-g>u")
@@ -61,22 +61,15 @@ map("n", "gR", "<cmd>TroubleToggle lsp_references<CR>")
 map("n", "<C-A-j>", "<cmd>lua require('trouble').next({skip_groups = true, jump = true})<CR>")
 map("n", "<C-A-k>", "<cmd>lua require('trouble').previous({skip_groups = true, jump = true})<CR>")
 
-map("n", "ga", "<Plug>(EasyAlign)", { desc = "Easy Align" })
-map("x", "ga", "<Plug>(EasyAlign)", { desc = "Easy Align" })
-
-map('o', 'ih', 'gitsigns.select_hunk')
-map('x', 'ih', 'gitsigns.select_hunk')
+map({ "n", "x" }, "ga", "<Plug>(EasyAlign)", { desc = "Easy Align" })
 
 -- map('n', '<leader>H', '<cmd>Startify<CR>')
 map('n', '<leader>H', '<cmd>Alpha<CR>')
 
-map("s", "<C-l>", "<cmd>lua require('luasnip').jump(1)<CR>")
-map("s", "<C-h>", "<cmd>lua require('luasnip').jump(-1)<CR>")
-map("i", "<C-l>", "<cmd>lua require('luasnip').jump(1)<CR>")
-map("i", "<C-h>", "<cmd>lua require('luasnip').jump(-1)<CR>")
+map({ "i", "s" }, "<C-l>", "<cmd>lua require('luasnip').jump(1)<CR>")
+map({ "i", "s" }, "<C-h>", "<cmd>lua require('luasnip').jump(-1)<CR>")
 
-map("x", "<leader>s" ,"<Plug>(sqls-execute-query)", { desc = "Exec SQL Query" })
-map("n", "<leader>s" ,"<Plug>(sqls-execute-query)", { desc = "Exec SQL Query" })
+map({ "n", "x" }, "<leader>s" ,"<Plug>(sqls-execute-query)", { desc = "Exec SQL Query" })
 
 -- gitsigns
 vim.api.nvim_create_user_command("Stage", function(t) gitsigns.stage_hunk({ t.line1, t.line2 }) end, { range = true })
