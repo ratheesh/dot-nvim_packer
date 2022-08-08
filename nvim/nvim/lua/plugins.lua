@@ -184,7 +184,8 @@ require("packer").startup({ function(use)
 	use({
 		"xiyaowong/virtcolumn.nvim",
 		disable = false,
-		event = "VimEnter",
+		event   = "LspAttach",
+		ft      = { "gitcommit" },
 		config = function ()
 			vim.g.virtcolumn_char     = '│'
 			vim.g.virtcolumn_priority = 10
@@ -398,11 +399,12 @@ require("packer").startup({ function(use)
 	})
 	use({
 		"stevearc/dressing.nvim",
-		-- after = { "yanky.nvim" },
-		opt = true,
-		event = "VimEnter",
 		disable = false,
-		config = function() require("dressing").setup() end
+		opt     = true,
+		event   = "VimEnter",
+		-- module  = "dressing",
+		-- after   = { "yanky.nvim" },
+		config  = function() require("dressing").setup() end
 	})
 	use({
 		"gbprod/yanky.nvim",
@@ -662,7 +664,8 @@ require("packer").startup({ function(use)
 	end
 	use({
 		'p00f/nvim-ts-rainbow',
-		after = "nvim-treesitter",
+		event = "LspAttach",
+		-- after = "nvim-treesitter",
 		requires = { 'nvim-treesitter' },
 	})
 	use({
