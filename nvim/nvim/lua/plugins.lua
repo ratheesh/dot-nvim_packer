@@ -898,11 +898,11 @@ require("packer").startup({ function(use)
 	use({ "ojroques/vim-oscyank",               cmd   = { 'OSCYank' , 'OSCYankReg' }})
 	use({
 		"antoyo/vim-licenses",
-		cmd = { "gplv2", "apache", "mit" },
+		cmd = { "Gplv2", "Apache", "Mit" },
 		config = function ()
 			vim.g.licenses_copyright_holders_name = 'Ratheesh <ratheeshreddy@gmail.com>'
 			vim.g.licenses_authors_name           = 'Ratheesh S'
-			vim.g.licenses_default_commands       = { 'gplv2', 'apache', 'mit' }
+			vim.g.licenses_default_commands       = { 'Gplv2', 'Apache', 'Mit' }
 		end
 	})
 	use({ "andymass/vim-matchup", keys = { "%" }, event = { "CursorMoved" }})
