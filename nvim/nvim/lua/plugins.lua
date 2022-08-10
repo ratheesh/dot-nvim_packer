@@ -232,11 +232,12 @@ require("packer").startup({ function(use)
 	})
 	use({ "wbthomason/packer.nvim" })
 	use({ "folke/lua-dev.nvim", event = "VimEnter" })
-	use({ "hrsh7th/cmp-nvim-lsp", event = "LspAttach" })
+	use({ "hrsh7th/cmp-nvim-lsp", event = "VimEnter" })
 	use({
 		"neovim/nvim-lspconfig",
-		after = "cmp-nvim-lsp",
-		event = "VimEnter",
+		requires = "cmp-nvim-lsp",
+		after    = "cmp-nvim-lsp",
+		-- event = "VimEnter",
 		config = function()
 			require("plugins.lsp").setup()
 		end,
@@ -303,10 +304,10 @@ require("packer").startup({ function(use)
 	})
 	use({
 		"SmiteshP/nvim-navic",
-		event = "LspAttach",
+		-- event = "LspAttach",
 		wants = "nvim-lspconfig",
 		requires = "neovim/nvim-lspconfig",
-		-- after = "nvim-lspconfig",
+		after = "nvim-lspconfig",
 		config = function()
 			require("nvim-navic").setup({
 				highlight             = false,
@@ -460,7 +461,7 @@ require("packer").startup({ function(use)
 		after = "nvim-notify",
 	})
 	use({ "rafamadriz/friendly-snippets", event = { "InsertEnter" }})
-	use({ "onsails/lspkind.nvim", after = { "nvim-cmp" }})
+	use({ "onsails/lspkind.nvim", event =  "InsertEnter" })
 	use({
 		"hrsh7th/nvim-cmp",
 		disable = false,
@@ -468,7 +469,7 @@ require("packer").startup({ function(use)
 		event = 'InsertEnter',
 		wants = { "LuaSnip" },
 		requires = {
-			{ "hrsh7th/cmp-nvim-lsp"},
+			{ "hrsh7th/cmp-nvim-lsp" },
 			-- { "petertriho/cmp-git",       event = "VimEnter" },
 			{ "hrsh7th/cmp-buffer",       after = "nvim-cmp" },
 			{ "hrsh7th/cmp-path",         after = "nvim-cmp" },
