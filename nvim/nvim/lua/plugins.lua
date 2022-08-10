@@ -247,6 +247,7 @@ require("packer").startup({ function(use)
 	use({
 		"jose-elias-alvarez/null-ls.nvim",
 		event = "LspAttach",
+		ft = { "gitcommit", "python", "c", "cpp", "java", "html", "css", "json", "sh", "vim" },
 		-- after = "nvim-lspconfig",
 		config = function()
 			require("plugins.null-ls").setup()

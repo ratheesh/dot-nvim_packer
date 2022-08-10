@@ -37,7 +37,9 @@ function M.setup()
 		with_diagnostics_code(ls.builtins.diagnostics.shellcheck),
 		ls.builtins.diagnostics.flake8,
 		-- ls.builtins.diagnostics.mypy,
-		ls.builtins.diagnostics.gitlint,
+		ls.builtins.diagnostics.gitlint.with {
+      extra_args = { '--contrib=contrib-title-conventional-commits', '--ignore=body-is-missing' },
+    },
 		-- ls.builtins.diagnostics.vale.with({ args = '--config="$XDG_CONFIG_HOME/vale/vale.ini"' }),
 
 		-- completion
@@ -47,7 +49,7 @@ function M.setup()
 		ls.builtins.hover.dictionary,
 
 		-- code actions
-		-- ls.builtins.code_actions.refactoring,
+		ls.builtins.code_actions.refactoring,
 		ls.builtins.code_actions.gitsigns,
 		ls.builtins.code_actions.gitrebase,
 	}
@@ -58,7 +60,7 @@ function M.setup()
 		save_after_format = false,
 		sources           = sources,
 		root_dir          = nls_utils.root_pattern ".git",
-		filetypes         = { 'python', 'lua' },
+		-- filetypes         = { "python", "lua", 'gitcommit', "c", "cpp", "html",  },
 
 		on_init = function(new_client, _)
 			new_client.offset_encoding = 'utf-32'
@@ -75,4 +77,5 @@ function M.setup()
 
 end
 
-	return M
+return M
+-- End of File
