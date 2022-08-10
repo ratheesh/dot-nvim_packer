@@ -38,6 +38,7 @@ end
 if vim.fn.empty(vim.fn.glob(packer_path)) > 0 then
   packer_bootstrap = true
   vim.fn.system({ "rm", "-f", packer_compiled_path })
+	print("Bootstrapping Packer!, Cloning new copy to", packer_path)
   vim.fn.system({
     "git", "clone", "--depth", "1",
     "https://github.com/wbthomason/packer.nvim",
