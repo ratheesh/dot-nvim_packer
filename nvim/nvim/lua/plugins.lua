@@ -71,7 +71,7 @@ require("packer").startup({ function(use)
 	})
 	use({
 		"windwp/windline.nvim",
-		after = "hydra.nvim",
+		after = { "hydra.nvim", "nvim-navic" },
 		config = function()
 			require("plugins.windline")
 		end,
@@ -226,7 +226,8 @@ require("packer").startup({ function(use)
 	})
 	use({
 		"lilydjwg/colorizer",
-		event = "CursorHold",
+		event  = "VimEnter",
+		module = "colorizer",
 		-- after = "gitsigns.nvim",
 		-- ft = { "text", "lua", "markdown", "help" }
 	})
@@ -804,7 +805,7 @@ require("packer").startup({ function(use)
 	})
 	use({ 'anuvyklack/hydra.nvim',
 		event = "VimEnter",
-		requires = 'anuvyklack/keymap-layer.nvim',
+		requires = { "anuvyklack/keymap-layer.nvim", "colorizer" },
 		after = "gitsigns.nvim",
 		config = function()
 			require("plugins.hydra")
