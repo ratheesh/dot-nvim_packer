@@ -146,6 +146,28 @@ require("packer").startup({ function(use)
 		end
 	})
 	use({
+		"lewis6991/hover.nvim",
+		event = "LspAttach",
+		require = "nvim-lspconfig",
+		config = function()
+			require('hover').setup {
+				init = function()
+					-- Require providers
+					require('hover.providers.lsp')
+					require('hover.providers.man')
+					-- require('hover.providers.gh')
+					-- require('hover.providers.dictionary')
+				end,
+				preview_opts = {
+					border = "rounded",
+				},
+				title = true
+			}
+			vim.keymap.set('n', 'K', require('hover').hover, { desc = 'hover.nvim' })
+			-- vim.keymap.set('n', 'gK', require('hover').hover_select, { desc='hover.nvim (select)' })
+		end
+	})
+	use({
 		"nvim-treesitter/nvim-treesitter",
 		event = "VimEnter",
 		config = function()
