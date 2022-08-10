@@ -828,7 +828,7 @@ require("packer").startup({ function(use)
 		config = function ()
 			require("nvim-surround").setup({
 				highlight = {
-					duration = 0,
+					duration = 300,
 			}
 		})
 	end
