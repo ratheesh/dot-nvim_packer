@@ -971,6 +971,28 @@ require("packer").startup({ function(use)
 		end
 	})
 	use({
+		"nvim-neorg/neorg",
+		disable  = false,
+		opt      = true,
+		ft       = { "norg" },
+		requires = { "nvim-treesitter/nvim-treesitter", "nvim-lua/plenary.nvim" },
+		config   = function()
+			require('neorg').setup({
+				load = {
+					["core.defaults"]    = {},
+					["core.norg.dirman"] = {
+						config = {
+							workspaces = {
+								journal = "~/notes/work",
+								home    = "~/notes/home",
+							}
+						}
+					}
+				}
+			})
+		end,
+	})
+	use({
 		"lewis6991/satellite.nvim",
 		event = "CursorHold",
 		requires = "nvim-lspconfig",
