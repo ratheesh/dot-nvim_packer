@@ -36,8 +36,12 @@ local icons = {
 function M.setup()
 	cmp.setup({
 		window = {
-			completion    = cmp.config.window.bordered({ winhighlight = "" }),
-			documentation = cmp.config.window.bordered({ winhighlight = "" }),
+			completion    = cmp.config.window.bordered({
+				winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None"
+			}),
+			documentation = cmp.config.window.bordered({
+				winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None"
+			}),
 		},
 		sources = {
 			-- { name = 'nvim_lsp_signature_help' },
