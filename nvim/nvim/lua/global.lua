@@ -5,8 +5,8 @@
 vim.g.mapleader        = " "
 vim.g.maplocalleader   = "\\"
 -- vim.opt.shadafile = "NONE"
-vim.opt.shada          = "%,<100,'50,/15,:10,s10,h,f1"
-vim.opt.wrap           = false
+vim.opt.shada          = "%,<25,'15,/15,:10,s10,h,f1"
+vim.opt.wrap           = true
 vim.opt.list           = true
 vim.opt.listchars      = { tab = "  ", extends = "", precedes = "" }
 vim.opt.scrolloff      = 5
@@ -38,6 +38,7 @@ vim.opt.shell          = "/bin/bash"
 vim.opt.lazyredraw     = true
 vim.opt.mouse          = "a"
 vim.opt.pumheight      = 12
+vim.opt.pumblend       = 10
 vim.opt.completeopt    = "menu,menuone,noselect"
 vim.opt.showmode       = false
 vim.opt.confirm        = true
