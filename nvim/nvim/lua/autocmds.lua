@@ -34,8 +34,14 @@ vim.api.nvim_create_autocmd(
 
 -- Notification for packer compilation/sync completion
 local packerGrp = vim.api.nvim_create_augroup("packerGrp", { clear = true })
-vim.api.nvim_create_autocmd("User" , { pattern = "PackerComplete", group = packerGrp, command = "lua vim.notify(\"Packer Sync Done!\", info)" })
-vim.api.nvim_create_autocmd("User" , { pattern = "PackerCompileDone", group = packerGrp, command = "lua vim.notify(\"Packer Compilation Done!\", info)" })
+-- vim.api.nvim_create_autocmd("User" , { pattern = "PackerComplete", group = packerGrp,
+-- command = "lua vim.notify(\"Packer Sync Done!\", info)" })
+vim.api.nvim_create_autocmd("User" , { pattern = "PackerCompileDone", group = packerGrp,
+callback = function(_)
+	vim.notify( (" Compiled at %s"):format(os.date()), vim.log.levels.INFO,
+	{ title = "Packer" })
+end
+})
 
 -- sqls
 vim.api.nvim_create_autocmd('User', {
