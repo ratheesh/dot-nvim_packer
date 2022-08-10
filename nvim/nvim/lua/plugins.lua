@@ -7,6 +7,17 @@ local packer_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.nv
 local packer_compiled_path = vim.fn.stdpath("config") .. "/lua/packer_compiled.lua"
 local packer_bootstrap = false
 
+_G.__luacache_config = {
+	chunks = {
+		enable = true,
+		path = vim.fn.stdpath('cache') .. '/luacache_chunks',
+	},
+	modpaths = {
+		enable = true,
+		path = vim.fn.stdpath('cache') .. '/luacache_modpaths',
+	}
+}
+
 local present, impatient = pcall(require, "impatient")
 if present then
 	if impatient ~= nil then
@@ -22,17 +33,6 @@ _G.lazy = function(plugin, timer)
 		end, timer)
 	end
 end
-
-_G.__luacache_config = {
-	chunks = {
-		enable = true,
-		path = vim.fn.stdpath('cache')..'/luacache_chunks',
-	},
-	modpaths = {
-		enable = true,
-		path = vim.fn.stdpath('cache')..'/luacache_modpaths',
-	}
-}
 
 -- Bootstrap and install packer.
 if vim.fn.empty(vim.fn.glob(packer_path)) > 0 then
