@@ -1048,7 +1048,7 @@ require("packer").startup({ function(use)
 	use({
 		"b0o/incline.nvim",
 		opt = true,
-		event = "BufWinEnter",
+		event = "WinNew",
 		-- after = "nvim-web-devicons",
 		config = function ()
 			require('incline').setup({
