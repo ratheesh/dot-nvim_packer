@@ -52,7 +52,7 @@ hl(0 , "Substitute"   , { fg = "#3B4252" , bg = "#EBCB8B" , italic = false , bol
 hl(0 , "SpecialKey"   , { fg = "#4C566A" , bg = nil       , italic = false , bold = false , underline = false })
 hl(0 , "TooLong"      , { fg = "#D57780" , bg = nil       , italic = false , bold = false , underline = false })
 hl(0 , "Underlined"   , { fg = "#D57780" , bg = nil       , italic = false , bold = false , underline = false })
-hl(0 , "Visual"       , { fg = nil       , bg = "#434C5E" , italic = false , bold = false , underline = false })
+hl(0 , "Visual"       , { fg = nil       , bg = "#38485E" , italic = false , bold = false , underline = false })
 hl(0 , "VisualNOS"    , { fg = "#D57780" , bg = nil       , italic = false , bold = false , underline = false })
 hl(0 , "WarningMsg"   , { fg = "#D57780" , bg = nil       , italic = false , bold = false , underline = false })
 hl(0 , "WildMenu"     , { fg = "#D57780" , bg = "#EBCB8B" , italic = false , bold = false , underline = false })
@@ -65,13 +65,14 @@ hl(0 , "StatusLineNC" , { fg = "#4C566A" , bg = nil       , italic = false , bol
 hl(0 , "SignColumn"   , { fg = "#4C566A" , bg = nil       , italic = false , bold = false , underline = false })
 hl(0 , "StatusLine"   , { fg = "#434C5E" , bg = nil       , italic = false , bold = false , underline = false })
 hl(0 , "VertSplit"    , { fg = "#434C5E" , bg = nil       , italic = false , bold = false , underline = false })
+hl(0 , "ColorColumn"  , { fg = nil       , bg = nil 			, italic = false , bold = false , underline = false })
 hl(0 , "CursorColumn" , { fg = nil       , bg = "#2C373D" , italic = false , bold = false , underline = false })
 hl(0 , "CursorLine"   , { fg = nil       , bg = "#153450" , italic = false , bold = false , underline = false })
 hl(0 , "CursorLineNr" , { fg = "#f0f0f0" , bg = "#b16286" , italic = false , bold = false , underline = false })
 hl(0 , "QuickFixLine" , { fg = nil       , bg = "#3B4252" , italic = false , bold = false , underline = false })
 hl(0 , "Pmenu"        , { fg = "#373D49" , bg = "#1E2430" , italic = false , bold = false , underline = false })
 hl(0 , "PmenuSbar"    , { fg = "#b16286" , bg = nil       , italic = false , bold = false , underline = false })
-hl(0 , "PmenuSel"     , { fg = "#f0f0f0" , bg = "#6E7179" , italic = false , bold = false , underline = false })
+hl(0 , "PmenuSel"     , { fg = "#c0c0c0" , bg = "#45525F" , italic = false , bold = false , underline = false })
 hl(0 , "PmenuThumb"   , { fg = "#a0a0a0" , bg = "#4B515C" , italic = false , bold = false , underline = false })
 hl(0 , "TabLine"      , { fg = "#4C566A" , bg = "#3B4252" , italic = false , bold = false , underline = false })
 hl(0 , "TabLineFill"  , { fg = "#4C566A" , bg = "#3B4252" , italic = false , bold = false , underline = false })
@@ -139,24 +140,35 @@ hl(0 , "EndOfBuffer"				 		, { fg = "#1E2430" , bg = nil       , italic = false 
 hl(0 , "NvimInternalError"	 		, { fg = "#BF616A" , bg = nil       , italic = false , bold = false , underline = false })
 
 -- Gitsigns
+-- sign column
 hl(0 , "GitSignsAdd"                , { fg = "#81A1C1" , bg = nil       , italic = false , bold = false , underline = false })
 hl(0 , "GitSignsChange"             , { fg = "#606672" , bg = nil       , italic = false , bold = false , underline = false })
 hl(0 , "GitSignsModified"           , { fg = "#C586C0" , bg = nil       , italic = false , bold = false , underline = false })
 
-hl(0 , "GitSignsChangeLn"           , { fg = "#A0A0A0" , bg = "#2a384e" , italic = false , bold = false , underline = false })
+-- buffer
 hl(0 , "GitSignsAddLn"              , { fg = "#A3BE8C" , bg = "#2a384e" , italic = false , bold = false , underline = false })
+hl(0 , "GitSignsChangeLn"           , { fg = "#A3BE8C" , bg = "#2a384e" , italic = false , bold = false , underline = false })
 hl(0 , "GitSignsDeleteLn"           , { fg = "#D57780" , bg = "#2a384e" , italic = false , bold = false , underline = false })
 
-hl(0 , "GitSignsAddInline"          , { fg = "#A3BE8C" , bg = "#2a384e" , italic = false , bold = false , underline = false })
-hl(0 , "GitSignsChangeInline"       , { fg = "#A0A0A0" , bg = "#2a384e" , italic = false , bold = false , underline = false })
+-- virtual lines
+hl(0 , "GitSignsAddVirtLn"    			, { fg = "#A3BE8C" , bg = "#2a384e" , italic = false , bold = false , underline = false })
+hl(0 , "GitSignsChangeVirtLn" 			, { fg = "#A3BE8C" , bg = "#2a384e" , italic = false , bold = false , underline = false })
+hl(0 , "GitSignsDeleteVirtLn" 			, { fg = "#D57780" , bg = "#2a384e" , italic = false , bold = false , underline = false })
+
+--------------- word diff highlighting ---------------------
+-- preview hunk
+hl(0 , "GitSignsAddInline"          , { fg = "#A3BE8C" , bg = "#606672" , italic = false , bold = false , underline = false })
+hl(0 , "GitSignsChangeInline"       , { fg = "#A0A0A0" , bg = "#606672" , italic = false , bold = false , underline = false })
 hl(0 , "GitSignsDeleteInline"       , { fg = "#D57780" , bg = "#606672" , italic = false , bold = false , underline = false })
 
-hl(0 , "GitSignsAddLnInline"        , { fg = "#A3BE8C" , bg = "#606672" , italic = false , bold = false , underline = false })
-hl(0 , "GitSignsChangeLnInline"     , { fg = "#A0A0A0" , bg = "#606672" , italic = false , bold = false , underline = false })
+-- buffer
+hl(0 , "GitSignsAddLnInline"        , { fg = "#A3BE8C" , bg = "#f0f0f0" , italic = false , bold = false , underline = false })
+hl(0 , "GitSignsChangeLnInline"     , { fg = "#A0A0A0" , bg = "#f0f0f0" , italic = false , bold = false , underline = false })
 hl(0 , "GitSignsDeleteLnInline"     , { fg = "#D57780" , bg = "#606672" , italic = false , bold = false , underline = false })
 
-hl(0 , "GitSignsAddVirtLnInline"    , { fg = "#A3BE8C" , bg = "#606672" , italic = false , bold = false , underline = false })
-hl(0 , "GitSignsChangeVirtLnInline" , { fg = "#A0A0A0" , bg = "#606672" , italic = false , bold = false , underline = false })
+-- virtual lines
+hl(0 , "GitSignsAddVirtLnInline"    , { fg = "#A3BE8C" , bg = "#f0f0f0" , italic = false , bold = false , underline = false })
+hl(0 , "GitSignsChangeVirtLnInline" , { fg = "#A3BE8C" , bg = "#f0f0f0" , italic = false , bold = false , underline = false })
 hl(0 , "GitSignsDeleteVirtLnInline" , { fg = "#D57780" , bg = "#606672" , italic = false , bold = false , underline = false })
 
 -- hl(0 , "NnnNormal"         			, { fg = nil       , bg = "#1E2430" , italic = false , bold = false , underline = false })
@@ -253,8 +265,8 @@ hl(0 , "FidgetTitle"        , { fg = "#8F575A" , bg = nil , italic = false  , bo
 -- wilder.nvim
 hl(0 , "WildMenu"           , { fg = "#000000" , bg = "#8F575A" , italic = true  , bold = false , underline = false })
 hl(0 , "WildStatus"         , { fg = "#c0c0c0" , bg = "#1A3A59" , italic = false , bold = false , underline = false })
-hl(0 , "WildSelected"       , { fg = "#2AD198" , bg = "#3d506c" , italic = true  , bold = false , underline = false })
-hl(0 , "WildSelectedAccent" , { fg = "#d78488" , bg = "#3d506c" , italic = true  , bold = true  , underline = false })
+hl(0 , "WildSelected"       , { fg = "#d5b07B" , bg = "#3d506c" , italic = true  , bold = false , underline = false })
+hl(0 , "WildSelectedAccent" , { fg = "#2AD198" , bg = "#3d506c" , italic = true  , bold = true  , underline = true  })
 hl(0 , "WildMode"           , { fg = "#f0f0f0" , bg = "#6B717C" , italic = true  , bold = false , underline = false })
 hl(0 , "WildSeparator"      , { fg = "#bd93f9" , bg = "#1A3A59" , italic = false , bold = false , underline = false })
 hl(0 , "WildAccent"         , { fg = "#ec7279" , bg = "#1A3A59" , italic = false , bold = true  , underline = true  })
@@ -288,6 +300,7 @@ hl(0, "VirtColumn", { fg = "#393F4B", bg = nil, italic = false, bold = true, und
 
 -- nvim-treesitter-context
 hl(0, "TreesitterContext", { fg = nil, bg = "#3A3A49", italic = false, bold = false, underline = false })
+
 -- nvim-surround
 hl(0, "NvimSurroundHighlightTextObject",
 	{ fg = "#FCCC82", bg = "#1A3A59", italic = true, bold = false, underline = false })

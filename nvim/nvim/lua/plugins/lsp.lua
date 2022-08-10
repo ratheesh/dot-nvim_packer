@@ -124,7 +124,20 @@ function M.setup()
 	lspconfig.bashls.setup({ on_init = on_init, on_attach = on_attach, capabilities = capabilities })
 
 	-- C/Cpp
-	-- lspconfig.clangd.setup({ on_init = on_init, on_attach = on_attach, capabilities = capabilities })
+	--[[ lspconfig.clangd.setup({
+		on_init      = on_init,
+		on_attach    = on_attach,
+		capabilities = capabilities,
+		cmd = { '/bin/clangd', '--background-index', '--header-insertion=iwyu',
+		'--suggest-missing-includes', '--cross-file-rename',
+		'--completion-style=detailed', '--pch-storage=memory', '--clang-tidy',
+		'--header-insertion-decorators', '--all-scopes-completion' };
+		filetypes = { "c", "cpp", "objc", "objcpp" };
+		flags = {
+			debounce_text_changes = 150,
+		};
+	}) ]]
+
 	lspconfig.ccls.setup({
 		on_init = on_init,
 		on_attach = on_attach,
@@ -154,7 +167,7 @@ function M.setup()
 
 			completion = {
 				placeholder   = true;
-				detailedLabel = false;
+				detailedLabel = true;
 				spellChecking = true;
 				-- filterAndSort = false;
 			};
