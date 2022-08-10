@@ -18,12 +18,12 @@ Hydra({
 	name = "Git",
 	hint = hint,
 	config = {
-		color = 'pink',
+		color = "pink",
 		invoke_on_body = true,
 		hint = {
 			offset   = 1,
 			position = 'middle-right',
-			border   = 'rounded'
+			border   = "rounded"
 		},
 		on_enter = function()
 			vim.bo.modifiable = true
@@ -41,7 +41,7 @@ Hydra({
 			gitsigns.toggle_word_diff(false)
 			if package.loaded['colorizer'] ~= nil then
 				vim.cmd([[ColorHighlight]])
-				vim.cmd 'echo' -- clear the echo area
+				vim.cmd "echo" -- clear the echo area
 			end
 		end
 	},
