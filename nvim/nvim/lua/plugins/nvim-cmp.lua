@@ -88,7 +88,7 @@ function M.setup()
 				preset     = 'codicons',
 				mode       = 'symbol',
 				symbol_map = icons,
-				maxwidth   = 50,
+				maxwidth   = 60,
 				before = function (entry, vim_item)
 					vim_item.menu = ({
 						luasnip  = "[Snippet]",
