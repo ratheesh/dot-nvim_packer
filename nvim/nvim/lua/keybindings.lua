@@ -67,7 +67,7 @@ map("n", "gR", "<cmd>TroubleToggle lsp_references<CR>")
 map("n", "<C-A-j>", "<cmd>lua require('trouble').next({skip_groups = true, jump = true})<CR>")
 map("n", "<C-A-k>", "<cmd>lua require('trouble').previous({skip_groups = true, jump = true})<CR>")
 
-map({ "n", "x" }, "ga", "<Plug>(EasyAlign)", { desc = "Easy Align" })
+-- map({ "n", "x" }, "ga", "<Plug>(EasyAlign)", { desc = "Easy Align" })
 
 -- map('n', '<leader>H', '<cmd>Startify<CR>')
 map('n', '<leader>H', '<cmd>Alpha<CR>')

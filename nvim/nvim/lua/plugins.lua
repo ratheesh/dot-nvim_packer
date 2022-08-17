@@ -845,7 +845,21 @@ require("packer").startup({ function(use)
 			require("plugins.hydra")
 		end
 	})
-	use({ "junegunn/vim-easy-align", event = { "CursorHold" }})
+	use({
+		"junegunn/vim-easy-align",
+		disable = false,
+		keys = { "ga" },
+		cmd = { "EasyAlign", "LiveEasyAlign" },
+		config = function ()
+			local function map(mode, l, r, opts)
+				opts = opts or {}
+				vim.keymap.set(mode, l, r, opts)
+			end
+			map({ "n", "x" }, "ga", "<Plug>(EasyAlign)", { desc = "Easy Align" })
+		end
+		-- event = { "CursorHold" }
+
+	})
 	use ({
 		'dccsillag/magma-nvim',
 		disable = true,
