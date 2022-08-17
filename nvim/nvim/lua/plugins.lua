@@ -1003,10 +1003,38 @@ require("packer").startup({ function(use)
 	})
 	use({
 		"bootleq/vim-cycle",
+		disable = true,
 		-- event = "VimEnter",
 		keys = { '+', '-' },
 		config = function()
 			require("plugins.vim-cycle")
+		end
+	})
+	use({
+		"nguyenvukhang/nvim-toggler",
+		opt     = true,
+		disable = false,
+		keys    = { '-' },
+		config  = function ()
+			require('nvim-toggler').setup({
+				['1']       = '0',
+				['True']    = 'False',
+				['yes']     = 'no',
+				['allow']   = 'deny',
+				['before']  = 'after',
+				['block']   = 'inline',
+				['define']  = 'undef',
+				['good']    = 'bad',
+				['in']      = 'out',
+				['min']     = 'max',
+				['on']      = 'off',
+				['start']   = 'stop',
+				['enable']  = 'disable',
+				['success'] = 'failure',
+				['up']      = 'down',
+				['left']    = 'right',
+			})
+			vim.keymap.set({ 'n', 'v' }, '-', require('nvim-toggler').toggle)
 		end
 	})
 	use({
