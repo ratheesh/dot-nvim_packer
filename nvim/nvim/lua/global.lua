@@ -8,7 +8,7 @@ vim.g.maplocalleader   = "\\"
 vim.opt.shada          = "%,<25,'15,/15,:10,s10,h,f1"
 vim.opt.wrap           = true
 vim.opt.list           = true
-vim.opt.listchars      = { tab = "  ", extends = "", precedes = "" }
+vim.opt.listchars      = { trail = "•", tab = "  ", extends = "", precedes = "" }
 vim.opt.scrolloff      = 5
 vim.opt.whichwrap:append "<,>,[,]"
 vim.opt.title          = true
