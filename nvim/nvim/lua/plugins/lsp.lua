@@ -75,9 +75,7 @@ function M.setup()
 	}
 	vim.diagnostic.config({ virtual_text = false, float = { show_header = false, border = "rounded" }})
 
-	local function on_init(client, _)
-		client.offset_encoding = 'utf-32'
-	end
+	local function on_init(client, _) client.offset_encoding = "utf-32" end
 
 	local function on_attach(client, bufnr)
 		local function bufmap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
@@ -86,9 +84,9 @@ function M.setup()
 		bufmap("n" , "gD"         , "<cmd>lua vim.lsp.buf.declaration()<CR>"       , opts)
 		bufmap("n" , "gd"         , "<cmd>lua vim.lsp.buf.definition()<CR>"        , opts)
 		bufmap("n" , "K"          , "<cmd>lua vim.lsp.buf.hover()<CR>"             , opts)
-		bufmap("n" , "gi"         , "<cmd>lua vim.lsp.buf.implementation()<CR>"    , opts)
-		bufmap("n" , "gk"         , "<cmd>lua vim.lsp.buf.signature_help()<CR>"    , opts)
-		bufmap("n" , "<leader>D"  , "<cmd>lua vim.lsp.buf.type_definition()<CR>"   , opts)
+		-- bufmap("n" , "<leader>gi"         , "<cmd>lua vim.lsp.buf.implementation()<CR>"    , opts)
+		-- bufmap("n" , "gk"         , "<cmd>lua vim.lsp.buf.signature_help()<CR>"    , opts)
+		-- bufmap("n" , "<leader>D"  , "<cmd>lua vim.lsp.buf.type_definition()<CR>"   , opts)
 		bufmap("n" , "<leader>rn" , "<cmd>lua vim.lsp.buf.rename.float()<CR>"      , opts)
 		bufmap("n" , "<leader>ca" , "<cmd>lua vim.lsp.buf.code_action()<CR>"       , opts)
 		bufmap("v" , "<leader>ca" , "<cmd>lua vim.lsp.buf.range_code_action()<CR>" , opts)
@@ -118,27 +116,37 @@ function M.setup()
 	local lspconfig = require("lspconfig")
 	local capabilities = vim.lsp.protocol.make_client_capabilities()
 	capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
-	-- capabilities.offsetEncoding = { "utf-16" }
+	capabilities.textDocument.completion.completionItem.resolveSupport = {
+		properties = { "documentation", "detail", "additionalTextEdits" },
+	}
+	-- capabilities.offsetEncoding = "utf-32"
 
 	lspconfig.vimls.setup({ on_init = on_init, on_attach = on_attach, capabilities = capabilities })
 	lspconfig.bashls.setup({ on_init = on_init, on_attach = on_attach, capabilities = capabilities })
 
 	-- C/Cpp
-	--[[ lspconfig.clangd.setup({
+	lspconfig.clangd.setup({
 		on_init      = on_init,
 		on_attach    = on_attach,
 		capabilities = capabilities,
 		cmd = { '/bin/clangd', '--background-index', '--header-insertion=iwyu',
-		'--suggest-missing-includes', '--cross-file-rename',
-		'--completion-style=detailed', '--pch-storage=memory', '--clang-tidy',
-		'--header-insertion-decorators', '--all-scopes-completion' };
-		filetypes = { "c", "cpp", "objc", "objcpp" };
+			'--suggest-missing-includes', '--cross-file-rename',
+			'--completion-style=detailed', '--pch-storage=memory', '--clang-tidy',
+			'--header-insertion-decorators', '--all-scopes-completion',
+			'--offset-encoding=utf-32' },
+		filetypes = { "c", "cpp", "objc", "objcpp" },
 		flags = {
 			debounce_text_changes = 150,
 		};
-	}) ]]
+		init_options = {
+			clangdFileStatus     = true,
+			usePlaceholders      = true,
+			completeUnimported   = true,
+			semanticHighlighting = true,
+		};
+	})
 
-	lspconfig.ccls.setup({
+	--[[ lspconfig.ccls.setup({
 		on_init = on_init,
 		on_attach = on_attach,
 		capabilities = capabilities,
@@ -176,7 +184,7 @@ function M.setup()
 				trackDependency = 1
 			},
 		},
-	})
+	}) ]]
 
 	-- Python
 	lspconfig.jedi_language_server.setup({ on_init = on_init, on_attach = on_attach, capabilities = capabilities })
