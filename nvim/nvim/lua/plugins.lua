@@ -1060,7 +1060,7 @@ require("packer").startup({ function(use)
 			require("range-highlight").setup()
 		end
 	})
-	use({ "ratheesh/hiPairs", disable = false, event = "LspAttach" })
+	use({ "ratheesh/hiPairs", disable = true, event = "LspAttach" })
 	use({
 		"dhruvasagar/vim-table-mode",
 		cmd = { "TableModeToggle" , "TableModeEnable", "TableModeDisable", "TableModeRealign" },
@@ -1072,7 +1072,7 @@ require("packer").startup({ function(use)
 	})
 	use({
 		"nvim-neorg/neorg",
-		disable  = false,
+		disable  = true,
 		opt      = true,
 		ft       = { "norg" },
 		requires = { "nvim-treesitter/nvim-treesitter", "nvim-lua/plenary.nvim" },
