@@ -3,7 +3,10 @@
 -- nvim-treesitter Plugin Configuration
 
 require("nvim-treesitter.configs").setup({
-	highlight = { enable = true },
+	highlight = {
+		enable = true,
+		additional_vim_regex_highlighting = true,
+	},
 	ensure_installed = {
 		"bash", "c", "cpp", "css", "html", "java", "javascript", "json",
 		"lua","python", "regex", "vim", "yaml", "norg",
