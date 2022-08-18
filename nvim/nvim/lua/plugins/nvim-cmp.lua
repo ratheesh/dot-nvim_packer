@@ -48,7 +48,7 @@ function M.setup()
 			{ name = "nvim_lsp", keyword_length = 2 },
 			{ name = "buffer",   keyword_length = 2 },
 			{ name = "nvim_lua", keyword_length = 2 },
-			-- { name = "conventionalcommits", keyword_length = 2 },
+			{ name = "conventionalcommits", keyword_length = 2 },
 			-- { name = "treesitter",          keyword_length = 2 },
 			-- { name = "tmux",                keyword_length = 2 },
 			-- { name = "latex_symbols", keyword_length = 2 },
