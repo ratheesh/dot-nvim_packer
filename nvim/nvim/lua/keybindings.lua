@@ -52,10 +52,10 @@ map("i", "!", "!<C-g>u")
 map("i", "?", "?<C-g>u")
 
 -- Leaderf 
-map("n", "<leader>fo", ":Leaderf file<CR>")
-map("n", "<leader>fr", ":Leaderf mru<CR>")
-map("n", "<leader>ft", ":Leaderf bufTag<CR>")
-map("n", "<leader>d/", ":LeaderfRgInteractive<CR>")
+map("n", "<leader>fo", "<cmd>Leaderf file<CR>")
+map("n", "<leader>fr", "<cmd>Leaderf mru<CR>")
+map("n", "<leader>ft", "<cmd>Leaderf bufTag<CR>")
+map("n", "<leader>d/", "<cmd>LeaderfRgInteractive<CR>")
 
 map("n", "<F3>", "<cmd>TroubleToggle<CR>")
 -- map("n", "<leader>xw", "<cmd>TroubleToggle lsp_workspace_diagnostics<CR>")

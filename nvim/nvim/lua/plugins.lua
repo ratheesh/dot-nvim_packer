@@ -659,7 +659,7 @@ require("packer").startup({ function(use)
 	use({
 		"Yggdroot/LeaderF",
 		cmd = { "Leaderf", "LeaderfRgInteractive" },
-		run = ":LeaderfInstallCExtension",
+		run = "<cmd>LeaderfInstallCExtension<cr>",
 		config = function()
 			vim.g.Lf_WindowPosition        = 'popup'
 			vim.g.Lf_WorkingDirectoryMode  = 'Ac'
