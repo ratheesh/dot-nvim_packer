@@ -189,7 +189,7 @@ hl(0 , "CmpItemKindFunction"   		, { fg = "#00A7CF" , bg = nil , italic = true  
 hl(0 , "CmpItemKindMethod"     		, { fg = "#C586C0" , bg = nil , italic = true  , bold = false , underline = false })
 hl(0 , "CmpItemKindKeyword"    		, { fg = "#fbb4ae" , bg = nil , italic = true  , bold = false , underline = false })
 hl(0 , "CmpItemKindSnippet"    		, { fg = "#9467bd" , bg = nil , italic = true  , bold = false , underline = false })
-hl(0 , "CmpGhostText"          		, { fg = "#686878" , bg = nil , italic = true  , bold = false , underline = false })
+hl(0 , "CmpGhostText"          		, { fg = "#707080" , bg = nil , italic = true  , bold = false , underline = false })
 hl(0 , "CmpItemKindConstructor"   , { fg = "#A3BE8C" , bg = nil , italic = false , bold = false , underline = false })
 hl(0 , "CmpItemKindField"         , { fg = "#9467bd" , bg = nil , italic = false , bold = false , underline = false })
 hl(0 , "CmpItemKindClass"         , { fg = "#9c755f" , bg = nil , italic = false , bold = false , underline = false })
