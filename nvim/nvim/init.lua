@@ -16,9 +16,9 @@ require('colors')
 vim.defer_fn(function()
 	require('keybindings')
 	require('autocmds')
-	vim.cmd([[
-	PackerLoad incline.nvim
-	]])
+	-- vim.cmd([[
+	-- PackerLoad incline.nvim
+	-- ]])
 end, 30)
 
 -- End of File
