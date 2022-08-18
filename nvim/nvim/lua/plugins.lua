@@ -802,7 +802,7 @@ require("packer").startup({ function(use)
 				[[     \/_/\/_/\/____/\/___/  \/__/    \/_/\/_/\/_/\/_/]],
 			}
 			startify.section.top_buttons.val = {
-				startify.button( "e", "  New file" , ":ene <BAR> startinsert <CR>"),
+				startify.button( "e", "  New file" , "<cmd>ene <BAR> startinsert <CR>"),
 			}
 			startify.nvim_web_devicons.enabled = true
 			startify.section.bottom_buttons.val = {
@@ -827,7 +827,7 @@ require("packer").startup({ function(use)
 		-- opt = false,
 		event = "CmdlineEnter",
 		-- wants = "nvim-web-devicons",
-		run = ':UpdateRemotePlugins',
+		run = '<cmd>UpdateRemotePlugins<cr>',
 		requires = {
 			{ "romgrk/fzy-lua-native", event = "CmdlineEnter" },
 			-- { "nixprime/cpsm",         event = "CmdlineEnter" },
@@ -864,7 +864,7 @@ require("packer").startup({ function(use)
 		'dccsillag/magma-nvim',
 		disable = true,
 		ft = { "python" },
-		run = ':UpdateRemotePlugins'
+		run = '<cmd>UpdateRemotePlugins<cr>'
 	})
 	-- use({ "tpope/vim-surround"              , event = "VimEnter" })
 	use({
