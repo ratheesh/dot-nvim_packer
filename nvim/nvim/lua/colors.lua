@@ -31,7 +31,7 @@ local hl = vim.api.nvim_set_hl
 
 hl(0 , "Normal"       , { fg = "#EEEEEE" , bg = "#1E2430" , italic = false , bold = false , underline = false })
 hl(0 , "NormalFloat"  , { fg = "#EEEEEE" , bg = "#1E2430" , italic = false , bold = false , underline = false })
-hl(0 , "FloatBorder"  , { fg = "#4C566A" , bg = nil       , italic = false , bold = false , underline = false })
+hl(0 , "FloatBorder"  , { fg = "#4C566A" , bg = nil       , italic = false , bold = true  , underline = false })
 hl(0 , "FloatTitle"   , { fg = "#81A1C1" , bg = nil       , italic = false , bold = false , underline = false })
 hl(0 , "Bold"         , { fg = nil       , bg = nil       , italic = false , bold = true  , underline = false })
 hl(0 , "Debug"        , { fg = "#D57780" , bg = nil       , italic = false , bold = false , underline = false })
@@ -72,7 +72,7 @@ hl(0 , "CursorLineNr" , { fg = "#f0f0f0" , bg = "#b16286" , italic = false , bol
 hl(0 , "QuickFixLine" , { fg = nil       , bg = "#3B4252" , italic = false , bold = false , underline = false })
 hl(0 , "Pmenu"        , { fg = "#373D49" , bg = "#1E2430" , italic = false , bold = false , underline = false })
 hl(0 , "PmenuSbar"    , { fg = "#b16286" , bg = nil       , italic = false , bold = false , underline = false })
-hl(0 , "PmenuSel"     , { fg = "#c0c0c0" , bg = "#45525F" , italic = false , bold = false , underline = false })
+hl(0 , "PmenuSel"     , { fg = nil 			 , bg = "#45525F" , italic = false , bold = false , underline = false })
 hl(0 , "PmenuThumb"   , { fg = "#a0a0a0" , bg = "#4B515C" , italic = false , bold = false , underline = false })
 hl(0 , "TabLine"      , { fg = "#4C566A" , bg = "#3B4252" , italic = false , bold = false , underline = false })
 hl(0 , "TabLineFill"  , { fg = "#4C566A" , bg = "#3B4252" , italic = false , bold = false , underline = false })
@@ -173,8 +173,8 @@ hl(0 , "GitSignsDeleteVirtLnInline" , { fg = "#D57780" , bg = "#606672" , italic
 
 -- hl(0 , "NnnNormal"         			, { fg = nil       , bg = "#1E2430" , italic = false , bold = false , underline = false })
 
-
 -- nvim-cmp
+hl(0 , "CmpDocNormal"           	, { fg = "#b0b0b0" , bg = nil , italic = false , bold = false , underline = false })
 hl(0 , "CmpItemAbbr"           		, { fg = "#909090" , bg = nil , italic = false , bold = false , underline = false })
 hl(0 , "CmpItemAbbrMatchFuzzy" 		, { fg = "#F06372" , bg = nil , italic = false , bold = false , underline = false })
 hl(0 , "CmpItemAbbrMatch"      		, { fg = "#4d708c" , bg = nil , italic = false , bold = false , underline = false })
@@ -189,7 +189,7 @@ hl(0 , "CmpItemKindFunction"   		, { fg = "#00A7CF" , bg = nil , italic = true  
 hl(0 , "CmpItemKindMethod"     		, { fg = "#C586C0" , bg = nil , italic = true  , bold = false , underline = false })
 hl(0 , "CmpItemKindKeyword"    		, { fg = "#fbb4ae" , bg = nil , italic = true  , bold = false , underline = false })
 hl(0 , "CmpItemKindSnippet"    		, { fg = "#9467bd" , bg = nil , italic = true  , bold = false , underline = false })
-hl(0 , "CmpGhostText"          		, { fg = "#808080" , bg = nil , italic = true  , bold = false , underline = false })
+hl(0 , "CmpGhostText"          		, { fg = "#686878" , bg = nil , italic = true  , bold = false , underline = false })
 hl(0 , "CmpItemKindConstructor"   , { fg = "#A3BE8C" , bg = nil , italic = false , bold = false , underline = false })
 hl(0 , "CmpItemKindField"         , { fg = "#9467bd" , bg = nil , italic = false , bold = false , underline = false })
 hl(0 , "CmpItemKindClass"         , { fg = "#9c755f" , bg = nil , italic = false , bold = false , underline = false })
@@ -199,13 +199,13 @@ hl(0 , "CmpItemKindUnit"          , { fg = "#9c755f" , bg = nil , italic = false
 hl(0 , "CmpItemKindValue"         , { fg = "#EBCB8B" , bg = nil , italic = false , bold = false , underline = false })
 hl(0 , "CmpItemKindEnum"          , { fg = "#9467bd" , bg = nil , italic = false , bold = false , underline = false })
 hl(0 , "CmpItemKindColor"         , { fg = "#97B7D7" , bg = nil , italic = false , bold = false , underline = false })
-hl(0 , "CmpItemKindFile"          , { fg = "#90717D" , bg = nil , italic = false , bold = false , underline = false })
+hl(0 , "CmpItemKindFile"          , { fg = "#E0AF8F" , bg = nil , italic = false , bold = false , underline = false })
 hl(0 , "CmpItemKindReference"     , { fg = "#97B7D7" , bg = nil , italic = false , bold = false , underline = false })
 hl(0 , "CmpItemKindFolder"        , { fg = "#E0AF8F" , bg = nil , italic = false , bold = false , underline = false })
 hl(0 , "CmpItemKindEnumMember"    , { fg = "#3D7BBF" , bg = nil , italic = false , bold = false , underline = false })
 hl(0 , "CmpItemKindConstant"      , { fg = "#6B717C" , bg = nil , italic = false , bold = false , underline = false })
 hl(0 , "CmpItemKindStruct"        , { fg = "#af7aa1" , bg = nil , italic = false , bold = false , underline = false })
-hl(0 , "CmpItemKindEvent"         , { fg = "#97B7D7" , bg = nil , italic = false , bold = false , underline = false })
+hl(0 , "CmpItemKindEvent"         , { fg = "#3D7BBF" , bg = nil , italic = false , bold = false , underline = false })
 hl(0 , "CmpItemKindOperator"      , { fg = "#ef8d97" , bg = nil , italic = false , bold = false , underline = false })
 hl(0 , "CmpItemKindTypeParameter" , { fg = "#97B7D7" , bg = nil , italic = false , bold = false , underline = false })
 
@@ -266,7 +266,7 @@ hl(0 , "FidgetTitle"        , { fg = "#8F575A" , bg = nil , italic = false  , bo
 hl(0 , "WildMenu"           , { fg = "#000000" , bg = "#8F575A" , italic = true  , bold = false , underline = false })
 hl(0 , "WildStatus"         , { fg = "#c0c0c0" , bg = "#1A3A59" , italic = false , bold = false , underline = false })
 hl(0 , "WildSelected"       , { fg = "#d5b07B" , bg = "#3d506c" , italic = true  , bold = false , underline = false })
-hl(0 , "WildSelectedAccent" , { fg = "#2AD198" , bg = "#3d506c" , italic = true  , bold = true  , underline = true  })
+hl(0 , "WildSelectedAccent" , { fg = "#2AD198" , bg = "#3d506c" , italic = true  , bold = true  , underline = false })
 hl(0 , "WildMode"           , { fg = "#f0f0f0" , bg = "#6B717C" , italic = true  , bold = false , underline = false })
 hl(0 , "WildSeparator"      , { fg = "#bd93f9" , bg = "#1A3A59" , italic = false , bold = false , underline = false })
 hl(0 , "WildAccent"         , { fg = "#ec7279" , bg = "#1A3A59" , italic = false , bold = true  , underline = true  })
@@ -285,18 +285,19 @@ hl(0, "rCursor", { fg = "#d65b84", bg = "#d65b84", italic = false, bold = true, 
 hl(0, "oCursor", { fg = "#00ff00", bg = "#00ff00", italic = false, bold = true, underline = false })
 
 -- LeaderF
-hl(0 , "Lf_hl_popup_window"    , { fg = "#e0e0e0" , bg = "#1E2430" , italic = false , bold = false , underline = false })
-hl(0 , "Lf_hl_popup_inputText" , { fg = "#e0e0e0" , bg = "#1E2430" , italic = false , bold = false , underline = false })
+hl(0 , "Lf_hl_popup_window"    , { fg = "#c0c0c0" , bg = "#1E2430" , italic = false , bold = false , underline = false })
+hl(0 , "Lf_hl_popup_inputText" , { fg = "#c0c0c0" , bg = "#1E2430" , italic = false , bold = false , underline = false })
 hl(0 , "Lf_hl_popupBorder"     , { fg = "#e79498" , bg = "#1E2430" , italic = false , bold = false , underline = false })
 hl(0 , "Lf_hl_popup_prompt"    , { fg = "#FA2C77" , bg = "#1E2430" , italic = false , bold = true  , underline = false })
-hl(0 , "Lf_hl_cursorline"      , { fg = "#e0e0e0" , bg = nil       , italic = false , bold = false , underline = false })
+hl(0 , "Lf_hl_cursorline"      , { fg = "#858ba8" , bg = nil       , italic = false , bold = false , underline = false })
+hl(0 , "Lf_hl_match"      		 , { fg = "#EB6D7F" , bg = nil       , italic = true  , bold = false , underline = false })
 
 -- mini.nvim
 hl(0, "MiniIndentscopeSymbol", { fg = "#3F4F5B", bg = nil, italic = false, bold = false, underline = false })
-hl(0, "MiniSurround", { fg = "#FC0697", bg = nil, italic = false, bold = false, underline = false })
+hl(0, "MiniSurround", { fg = "#ec7279", bg = nil, italic = false, bold = false, underline = false })
 
 -- VirtColumn
-hl(0, "VirtColumn", { fg = "#393F4B", bg = nil, italic = false, bold = true, underline = false })
+-- hl(0, "VirtColumn", { fg = "#393F4B", bg = nil, italic = false, bold = true, underline = false })
 
 -- nvim-treesitter-context
 hl(0, "TreesitterContext", { fg = nil, bg = "#3A3A49", italic = false, bold = false, underline = false })
@@ -335,9 +336,9 @@ hl(0 , "StartifyFooter"  , { fg = "#a0a0a0" , bg = nil , italic = false , bold =
 
 -- nvim-rainbow-ts - #65C3AD #E8C060 #33AFFF #2AA198
 hl(0, "rainbowcol1", { fg = "#307fbb", bg = nil, italic = false, bold = true, underline = false })
-hl(0, "rainbowcol2", { fg = "#DA2C97", bg = nil, italic = false, bold = true, underline = false })
+hl(0, "rainbowcol2", { fg = "#BD5061", bg = nil, italic = false, bold = true, underline = false })
 hl(0, "rainbowcol3", { fg = "#29A794", bg = nil, italic = false, bold = true, underline = false })
-hl(0, "rainbowcol4", { fg = "#D85893", bg = nil, italic = false, bold = true, underline = false })
+hl(0, "rainbowcol4", { fg = "#AA759F", bg = nil, italic = false, bold = true, underline = false })
 hl(0, "rainbowcol5", { fg = "#d5b07B", bg = nil, italic = false, bold = true, underline = false })
 hl(0, "rainbowcol6", { fg = "#1f77b4", bg = nil, italic = false, bold = true, underline = false })
 hl(0, "rainbowcol7", { fg = "#d78488", bg = nil, italic = false, bold = true, underline = false })
