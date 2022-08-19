@@ -65,6 +65,7 @@ require("packer").startup({ function(use)
 	use({
 		"mbbill/undotree",
 		cmd = { "UndotreeToggle" },
+		keys = { "<space>u" },
 		config = function ()
 			vim.g.undotree_WindowLayout    = 4
 			vim.g.undotree_ShortIndicators = 1

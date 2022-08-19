@@ -72,6 +72,9 @@ map("n", "<C-A-k>", "<cmd>lua require('trouble').previous({skip_groups = true, j
 -- map('n', '<leader>H', '<cmd>Startify<CR>')
 map('n', '<leader>H', '<cmd>Alpha<CR>')
 
+-- Undotree
+map("n", "<leader>u", "<cmd>UndotreeToggle<CR>")
+
 map({ "i", "s" }, "<C-l>", "<cmd>lua require('luasnip').jump(1)<CR>")
 map({ "i", "s" }, "<C-h>", "<cmd>lua require('luasnip').jump(-1)<CR>")
 
