@@ -429,6 +429,17 @@ require("packer").startup({ function(use)
 		end
 	})
 	use({
+		"mfussenegger/nvim-jdtls",
+		ft = { "java" }
+	})
+	use({
+		"simrat39/symbols-outline.nvim",
+		disable = false,
+		config = function ()
+			require("symbols-outline").setup()
+		end
+	})
+	use({
 		"stevearc/dressing.nvim",
 		disable = false,
 		opt     = true,
