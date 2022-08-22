@@ -1036,7 +1036,7 @@ require("packer").startup({ function(use)
 	})
 	use({
 		"bootleq/vim-cycle",
-		disable = true,
+		disable = false,
 		-- event = "VimEnter",
 		keys = { '+', '-' },
 		config = function()
@@ -1050,7 +1050,7 @@ require("packer").startup({ function(use)
 	use({
 		"nguyenvukhang/nvim-toggler",
 		opt     = true,
-		disable = false,
+		disable = true,
 		keys    = { '-' },
 		config  = function ()
 			require('nvim-toggler').setup({
