@@ -148,6 +148,13 @@ require("packer").startup({ function(use)
 		end
 	})
 	use({
+		"akinsho/git-conflict.nvim",
+		disable = true,
+		config = function ()
+			require('git-conflict').setup()
+		end
+	})
+	use({
 		"lewis6991/hover.nvim",
 		event = "LspAttach",
 		require = "nvim-lspconfig",
@@ -1035,6 +1042,10 @@ require("packer").startup({ function(use)
 		config = function()
 			require("plugins.vim-cycle")
 		end
+	})
+	use({
+		"AndrewRadev/splitjoin.vim",
+		keys = { "gS", "gJ" },
 	})
 	use({
 		"nguyenvukhang/nvim-toggler",
