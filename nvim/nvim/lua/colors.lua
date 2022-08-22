@@ -72,7 +72,7 @@ hl(0 , "CursorLineNr" , { fg = "#f0f0f0" , bg = "#b16286" , italic = false , bol
 hl(0 , "QuickFixLine" , { fg = nil       , bg = "#3B4252" , italic = false , bold = false , underline = false })
 hl(0 , "Pmenu"        , { fg = "#373D49" , bg = "#1E2430" , italic = false , bold = false , underline = false })
 hl(0 , "PmenuSbar"    , { fg = "#b16286" , bg = nil       , italic = false , bold = false , underline = false })
-hl(0 , "PmenuSel"     , { fg = nil 			 , bg = "#45525F" , italic = false , bold = false , underline = false })
+hl(0 , "PmenuSel"     , { fg = nil 			 , bg = "#25384F" , italic = false , bold = false , underline = false })
 hl(0 , "PmenuThumb"   , { fg = "#a0a0a0" , bg = "#4B515C" , italic = false , bold = false , underline = false })
 hl(0 , "TabLine"      , { fg = "#4C566A" , bg = "#3B4252" , italic = false , bold = false , underline = false })
 hl(0 , "TabLineFill"  , { fg = "#4C566A" , bg = "#3B4252" , italic = false , bold = false , underline = false })
@@ -246,7 +246,7 @@ hl(0 , "TSSymbol"           , { fg = "#a0a0a0" , bg = nil , italic = false , bol
 hl(0 , "TSBoolean"          , { fg = "#a0a0a0" , bg = nil , italic = false , bold = false , underline = false })
 hl(0 , "TSFloat"            , { fg = "#a0a0a0" , bg = nil , italic = false , bold = false , underline = false })
 hl(0 , "TSField"            , { fg = "#a0a0a0" , bg = nil , italic = false , bold = false , underline = false })
-hl(0 , "TSParameter"        , { fg = "#B6819E" , bg = nil , italic = false , bold = false , underline = false })
+hl(0 , "TSParameter"        , { fg = "#B6819E" , bg = nil , italic = true  , bold = false , underline = false })
 hl(0 , "TSPunctDelimiter"   , { fg = "#a0a0a0" , bg = nil , italic = false , bold = false , underline = false })
 hl(0 , "TSConstBuiltin"     , { fg = "#a0a0a0" , bg = nil , italic = false , bold = false , underline = false })
 hl(0 , "TSKeywordFunction"  , { fg = "#B38376" , bg = nil , italic = false , bold = false , underline = false })
@@ -336,7 +336,7 @@ hl(0 , "StartifyFooter"  , { fg = "#a0a0a0" , bg = nil , italic = false , bold =
 
 -- nvim-rainbow-ts - #65C3AD #E8C060 #33AFFF #2AA198
 hl(0, "rainbowcol1", { fg = "#307fbb", bg = nil, italic = false, bold = true, underline = false })
-hl(0, "rainbowcol2", { fg = "#BD5061", bg = nil, italic = false, bold = true, underline = false })
+hl(0, "rainbowcol2", { fg = "#AD50A1", bg = nil, italic = false, bold = true, underline = false })
 hl(0, "rainbowcol3", { fg = "#29A794", bg = nil, italic = false, bold = true, underline = false })
 hl(0, "rainbowcol4", { fg = "#AA759F", bg = nil, italic = false, bold = true, underline = false })
 hl(0, "rainbowcol5", { fg = "#d5b07B", bg = nil, italic = false, bold = true, underline = false })
