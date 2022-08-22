@@ -393,7 +393,7 @@ require("packer").startup({ function(use)
 	use({
 		"j-hui/fidget.nvim",
 		opt   = true,
-		branch = "menu-border",
+		-- branch = "menu-border",
 		event = "LspAttach",
 		-- after = { "nvim-lspconfig" },
 		config = function()
