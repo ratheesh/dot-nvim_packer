@@ -825,7 +825,7 @@ require("packer").startup({ function(use)
 			}
 			startify.nvim_web_devicons.enabled = true
 			startify.section.bottom_buttons.val = {
-				startify.button( "q", "  Quit this Screen" , "<cmd>BufferClose<CR>"),
+				startify.button( "q", "  Quit this Screen" , "<cmd>bdelete<CR>"),
 				startify.button( "X", "  Quit NV!M" , "<cmd>qall<CR>"),
 			}
 			startify.section.footer = {
