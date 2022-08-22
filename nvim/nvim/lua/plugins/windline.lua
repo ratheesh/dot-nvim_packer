@@ -199,6 +199,7 @@ local function is_file_ro()
   return ''
 end
 
+local icon_comp = b_components.cache_file_icon({ default = '', hl_colors = {'FileNameFg','FileNameBg'} })
 basic.file = {
   name = 'file',
   hl_colors = {
@@ -208,12 +209,13 @@ basic.file = {
     FileRO       = { 'FileNameROFg', 'FileNameBg'  },
     FileIcon     = hl_list.FileIcon
   },
-  text = function()
+  text = function(bufnr)
     return {
       { ' ', 'FileName' },
-      {b_components.cache_file_icon({ default = '' }), 'FileIcon'},
+			icon_comp(bufnr),
+      -- {b_components.cache_file_icon({ default = '' }), 'FileIcon'},
       { ' ', '' },
-      { b_components.cache_file_name('[No Name]', 'unique'), 'FileName' },
+      { b_components.cache_file_name('Keine!', 'unique'), 'FileName' },
       -- { b_components.file_icon(''), 'FileIcon' },
       -- { b_components.file_name(''), 'FileName' },
       { b_components.file_modified('✱ '), 'FileModified' },
@@ -525,9 +527,9 @@ windline.setup({
 
     -- termguicolors
     colors.FileFg        = "#F4C493"
-    colors.FileBg        = "#505C74"
+    colors.FileBg        = "#404C64"
     colors.FileNameFg    = "#FEFEFE"
-    colors.FileNameBg    = "#505C74"
+    colors.FileNameBg    = "#404C64"
     colors.FileNameModFg = "#00AFDB"
     colors.FileNameROFg  = "#EC5F67"
 
