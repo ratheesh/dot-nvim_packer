@@ -304,7 +304,9 @@ require("packer").startup({ function(use)
 		cmd = { "LspInstall", "LspUninstall"},
 		config = function ()
 			require("mason-lspconfig").setup({
-				automatic_installation = false,
+				ensure_installed = { "sumneko_lua", "clangd", "tailwindcss", "html",
+				"bashls", "jedi_language_server", "pyls" },
+				automatic_installation = true,
 			})
 		end
 	})
