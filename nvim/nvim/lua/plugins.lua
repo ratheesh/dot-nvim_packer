@@ -59,9 +59,31 @@ end
 
 require("packer").startup({ function(use)
 	use("lewis6991/impatient.nvim")
-	use({ "kyazdani42/nvim-web-devicons", event = "VimEnter" })
-	use({ "tpope/vim-repeat",             event = "CursorHold" })
-	use({ "psliwka/vim-smoothie",         keys = { '<c-u>', '<c-d>' }})
+	use({
+		"kyazdani42/nvim-web-devicons",
+		event = "VimEnter",
+		config = function()
+			require'nvim-web-devicons'.setup {
+				override = {
+					sh = {
+						icon = "",
+						color = "#f781bf",
+						name = "sh"
+					},
+					lua = {
+						icon = "",
+						color = "#AF676A",
+						name = "lua"
+					},
+					md = {
+						icon = " ",
+						color = "#EC318C",
+						name = "md"
+					}
+				}
+			}
+		end
+	})
 	use({
 		"mbbill/undotree",
 		cmd = { "UndotreeToggle" },
