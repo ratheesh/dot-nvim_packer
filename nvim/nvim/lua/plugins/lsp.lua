@@ -204,6 +204,19 @@ function M.setup()
 		on_init      = on_init,
 		on_attach    = on_attach,
 		capabilities = capabilities,
+		settings = {
+			html = {
+				format = {
+					templating     = true,
+					wrapLineLength = 120,
+					wrapAttributes = 'auto',
+				},
+				hover = {
+					documentation = true,
+					references    = true,
+				},
+			},
+		},
 	})
 
 	-- css
