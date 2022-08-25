@@ -2,7 +2,7 @@
 -- License: MIT
 -- LSP Configuration
 
-local navic    = require("nvim-navic")
+-- local navic    = require("nvim-navic")
 
 local M = {}
 
@@ -107,9 +107,9 @@ function M.setup()
         require('sqls').on_attach(client, bufnr)
     end
 
-		if client.name ~= 'pyright' or client.name ~= "sqls" then
+		--[[ if client.name ~= 'pyright' or client.name ~= "sqls" then
 			navic.attach(client, bufnr)
-		end
+		end ]]
 
 	end
 
