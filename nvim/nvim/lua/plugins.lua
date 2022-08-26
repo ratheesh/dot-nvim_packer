@@ -772,6 +772,7 @@ require("packer").startup({ function(use)
 	use({
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",
+		module = { "nvim-autopairs.completion.cmp", "nvim-autopairs" },
 		config = function()
 			require('nvim-autopairs').setup({
 				disable_filetype          = { "TelescopePrompt", "vim" },
@@ -783,7 +784,9 @@ require("packer").startup({ function(use)
 				map_bs                    = true,
 				map_c_w                   = true,
 				map_c_h                   = true,
-				map_cr                    = false })
+				map_cr                    = false
+			})
+			require("nvim-autopairs").add_rules(require "nvim-autopairs.rules.endwise-lua")
 		end
 	})
 
