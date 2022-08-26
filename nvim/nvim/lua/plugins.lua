@@ -789,7 +789,14 @@ require("packer").startup({ function(use)
 			require("nvim-autopairs").add_rules(require "nvim-autopairs.rules.endwise-lua")
 		end
 	})
-
+	use ({
+		"windwp/nvim-ts-autotag",
+		wants  = "nvim-treesitter",
+		event  = "InsertEnter",
+		config = function()
+			require("nvim-ts-autotag").setup { enable = true }
+		end,
+	})
 	use({
 		"mhinz/vim-startify",
 		disable = true,
