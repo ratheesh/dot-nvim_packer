@@ -53,10 +53,10 @@ map('n' , '<A-<>'     , '<Cmd>BufferMovePrevious<CR>' , { desc = "Move Buffer Le
 
 -- barbar.nvim
 local hl = vim.api.nvim_set_hl
-hl(0, "BufferCurrent"           ,{ fg = "#99c794", bg = "#383a4c", italic = true,  bold = false, underline = false })
-hl(0, "BufferCurrentMod"        ,{ fg = "#99c794", bg = "#383a4c", italic = false, bold = false, underline = false })
+hl(0, "BufferCurrent"           ,{ fg = "#99c794", bg = "#404a5c", italic = true,  bold = false, underline = false })
+hl(0, "BufferCurrentMod"        ,{ fg = "#E79498", bg = "#404a5c", italic = true,  bold = false, underline = false })
 hl(0, "BufferInActive"          ,{ fg = "#99c794", bg = "#383a4c", italic = false, bold = false, underline = false })
-hl(0, "BufferCurrentTarget"     ,{ fg = "#FA2C77", bg = "#383a4c", italic = true , bold = true , underline = true  })
+hl(0, "BufferCurrentTarget"     ,{ fg = "#FA2C77", bg = "#404a5c", italic = true , bold = true , underline = true  })
 hl(0, "BufferVisible"           ,{ fg = "#99c794", bg = "#383a4c", italic = false, bold = false, underline = false })
 hl(0, "BufferVisibleMod"        ,{ fg = "#EFEAD8", bg = "#383a4c", italic = false, bold = false, underline = false })
 hl(0, "BufferVisibleSign"       ,{ fg = "#988C99", bg = "#383a4c", italic = false, bold = false, underline = false })
@@ -67,11 +67,12 @@ hl(0, "BufferInactiveSign"      ,{ fg = "#ec7279", bg = "#383a4c", italic = fals
 hl(0, "BufferInactiveTarget"    ,{ fg = "#FA2C77", bg = "#383a4c", italic = true , bold = true , underline = true  })
 hl(0, "BufferTabLineSel"        ,{ fg = "#EFEAD8", bg = "#383a4c", italic = false, bold = false, underline = false })
 hl(0, "BufferTabLineFill"       ,{ fg = "#EFEAD8", bg = "#383a4c", italic = false, bold = false, underline = false })
-hl(0, "BufferCurrentIndex"      ,{ fg = "#e7b898", bg = "#383a4c", italic = false, bold = false, underline = false })
-hl(0, "BufferCurrentSign"       ,{ fg = "#ec7279", bg = "#383a4c", italic = false, bold = false, underline = false })
+hl(0, "BufferTabPageFill"       ,{ fg = "#EFEAD8", bg = "#1E2430", italic = false, bold = false, underline = false })
+hl(0, "BufferCurrentIndex"      ,{ fg = "#e7b898", bg = "#404a5c", italic = false, bold = false, underline = false })
+hl(0, "BufferCurrentSign"       ,{ fg = "#ec7279", bg = "#404a5c", italic = false, bold = false, underline = false })
 hl(0, "BufferVisibleIndex"      ,{ fg = "#988C99", bg = "#383a4c", italic = false, bold = false, underline = false })
 hl(0, "BufferInactiveIndex"     ,{ fg = "#988C99", bg = "#383a4c", italic = false, bold = false, underline = false })
-hl(0, "BufferCurrentIcon"       ,{ fg = nil      , bg = "#383a4c", italic = false, bold = false, underline = false })
+hl(0, "BufferCurrentIcon"       ,{ fg = nil      , bg = "#404a5c", italic = false, bold = false, underline = false })
 hl(0, "BufferVisibleIcon"       ,{ fg = nil      , bg = "#383a4c", italic = false, bold = false, underline = false })
 hl(0, "BufferInactiveIcon"      ,{ fg = nil      , bg = "#383a4c", italic = false, bold = false, underline = false })
 
