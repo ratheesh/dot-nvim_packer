@@ -339,15 +339,15 @@ require("packer").startup({ function(use)
 	})
 	use({
 		"SmiteshP/nvim-navic",
-		-- event = "LspAttach",
-		wants = "nvim-lspconfig",
+		disable = true,
+		event = "LspAttach",
 		requires = "neovim/nvim-lspconfig",
 		after = "nvim-lspconfig",
 		config = function()
 			require("nvim-navic").setup({
 				highlight             = false,
 				separator             = "  ",
-				depth_limit           = 3,
+				depth_limit           = 2,
 				depth_limit_indicator = "…",
 			})
 			vim.g.navic_silence = true
@@ -465,7 +465,7 @@ require("packer").startup({ function(use)
 	})
 	use({
 		"simrat39/symbols-outline.nvim",
-		disable = false,
+		disable = true,
 		config = function ()
 			require("symbols-outline").setup()
 		end
