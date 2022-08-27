@@ -72,14 +72,19 @@ require("packer").startup({ function(use)
 					},
 					lua = {
 						icon = "",
-						color = "#AF676A",
+						color = "#A070C8",
 						name = "lua"
 					},
 					md = {
 						icon = " ",
 						color = "#EC318C",
 						name = "md"
-					}
+					},
+					java = {
+						icon = "",
+						color = "#B3C1A9",
+						name = "java"
+					},
 				}
 			}
 		end
