@@ -335,13 +335,13 @@ hl(0 , "StartifyFooter"  , { fg = "#a0a0a0" , bg = nil , italic = false , bold =
 -- hl(0, "rainbowcol7", { fg = "#bd93f9", bg = nil, italic = false, bold = true, underline = false })
 
 -- nvim-rainbow-ts - #65C3AD #E8C060 #33AFFF #2AA198
-hl(0, "rainbowcol1", { fg = "#307fbb", bg = nil, italic = false, bold = true, underline = false })
-hl(0, "rainbowcol2", { fg = "#AD50A1", bg = nil, italic = false, bold = true, underline = false })
-hl(0, "rainbowcol3", { fg = "#29A794", bg = nil, italic = false, bold = true, underline = false })
-hl(0, "rainbowcol4", { fg = "#AA759F", bg = nil, italic = false, bold = true, underline = false })
-hl(0, "rainbowcol5", { fg = "#d5b07B", bg = nil, italic = false, bold = true, underline = false })
-hl(0, "rainbowcol6", { fg = "#1f77b4", bg = nil, italic = false, bold = true, underline = false })
-hl(0, "rainbowcol7", { fg = "#d78488", bg = nil, italic = false, bold = true, underline = false })
+hl(0, "rainbowcol1", { fg = "#307fbb", bg = nil, italic = false, bold = false, underline = false })
+hl(0, "rainbowcol2", { fg = "#AD50A1", bg = nil, italic = false, bold = false, underline = false })
+hl(0, "rainbowcol3", { fg = "#29A794", bg = nil, italic = false, bold = false, underline = false })
+hl(0, "rainbowcol4", { fg = "#AA759F", bg = nil, italic = false, bold = false, underline = false })
+hl(0, "rainbowcol5", { fg = "#d5b07B", bg = nil, italic = false, bold = false, underline = false })
+hl(0, "rainbowcol6", { fg = "#1f77b4", bg = nil, italic = false, bold = false, underline = false })
+hl(0, "rainbowcol7", { fg = "#d78488", bg = nil, italic = false, bold = false, underline = false })
 
 hl(0 , "ScrollView"    , { fg = nil       , bg = "#444864" , italic = false , bold = false , underline = false })
 hl(0 , "SearchCurrent" , { fg = "#FB391F" , bg = nil       , italic = false , bold = true  , underline = false })
