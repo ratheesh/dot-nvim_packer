@@ -154,7 +154,7 @@ basic.paste_mode = {
 basic.projectname = {
 	name = 'projectname',
 	hl_colors = {
-		sep_right     = { 'ProjectNameFg', 'FileNameBg'    },
+		sep_right     = { 'ProjectNameBg', 'FileNameBg'    },
 		project       = { 'ProjectNameFg', 'ProjectNameBg' },
 		sep_left      = { 'ProjectNameBg', 'NormalBg'      },
 		sep_left_file = { 'FileNameBg', 'NormalBg'         },
@@ -165,8 +165,8 @@ basic.projectname = {
 			return {
 				{ sep.left_rounded, 'sep_left' },
 				{ git_comps.git_branch({icon = ' '}), 'project' },
-				{ ' ', '' },
-				{ ' ', 'FileName' }
+				-- { ' ', '' },
+				{ sep.right_rounded..' ', 'sep_right' }
 			}
 		else
 			if vim.bo.filetype == 'alpha' then
@@ -504,7 +504,7 @@ windline.setup({
 		colors.LSPClientBg   = "#356088"
 
 		colors.ProjectNameFg = "#F0F0F0"
-		colors.ProjectNameBg = "#6B717C"
+		colors.ProjectNameBg = "#607d8b"
 
 		colors.FileInfoFg    = "#000000"
 		colors.FileInfoBg    = "#D3869B"
