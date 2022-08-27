@@ -62,7 +62,7 @@ function M.setup()
 		snippet = {
 			expand = function(args) require("luasnip").lsp_expand(args.body) end,
 		},
-		sorting = {
+		--[[ sorting = {
 			comparators = {
 				cmp.config.compare.offset,
 				cmp.config.compare.exact,
@@ -72,7 +72,7 @@ function M.setup()
 				cmp.config.compare.length,
 				cmp.config.compare.order,
 			},
-		},
+		}, ]]
 		formatting = {
 			format = require('lspkind').cmp_format({
 				preset     = 'codicons',
@@ -132,4 +132,4 @@ cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done { map_char = { tex = 
 
 return M
 
--- End of File 
+-- End of File
