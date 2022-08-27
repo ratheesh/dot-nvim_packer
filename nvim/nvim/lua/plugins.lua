@@ -84,6 +84,8 @@ require("packer").startup({ function(use)
 			}
 		end
 	})
+	use({ "tpope/vim-repeat",     event = "CursorHold"      })
+	use({ "psliwka/vim-smoothie", keys = { '<c-u>', '<c-d>' }})
 	use({
 		"mbbill/undotree",
 		cmd = { "UndotreeToggle" },
@@ -95,7 +97,7 @@ require("packer").startup({ function(use)
 	})
 	use({
 		"windwp/windline.nvim",
-		after = { "hydra.nvim", "nvim-navic" },
+		after = { "hydra.nvim" },
 		config = function()
 			require("plugins.windline")
 		end,
@@ -200,13 +202,15 @@ require("packer").startup({ function(use)
 	})
 	use({
 		"nvim-treesitter/nvim-treesitter",
-		event = "VimEnter",
+		opt = true,
+		module = "treesitter",
 		config = function()
 			require("plugins.treesitter")
 		end,
 	})
 	use({
 		"nvim-treesitter/nvim-treesitter-textobjects",
+		event = "CursorHold",
 		requires = "nvim-treesitter",
 		after = "nvim-treesitter",
 	})
@@ -246,7 +250,8 @@ require("packer").startup({ function(use)
 	})
 	use({
 		"ethanholz/nvim-lastplace",
-		event = { "VimEnter" },
+		after = "nvim-treesitter",
+		-- event = { "VimEnter" },
 		config = function()
 			require 'nvim-lastplace'.setup({
 				lastplace_ignore_buftype = { "quickfix", "nofile", "help" },
@@ -257,7 +262,7 @@ require("packer").startup({ function(use)
 	})
 	use({
 		"lilydjwg/colorizer",
-		event  = "VimEnter",
+		after  = "nvim-treesitter",
 		module = "colorizer",
 		-- after = "gitsigns.nvim",
 		-- ft = { "text", "lua", "markdown", "help" }
@@ -1034,7 +1039,7 @@ require("packer").startup({ function(use)
 			vim.g.licenses_default_commands       = { 'Gplv2', 'Apache', 'Mit' }
 		end
 	})
-	use({ "andymass/vim-matchup", keys = { "%" }, event = { "CursorMoved" }})
+	use({ "andymass/vim-matchup", keys = { "%" }, event = { "CursorHold" }})
 	use ({
 		"metakirby5/codi.vim",
 		ft  = { "python" },
