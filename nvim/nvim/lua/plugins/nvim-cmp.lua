@@ -76,7 +76,7 @@ function M.setup()
 		formatting = {
 			format = require('lspkind').cmp_format({
 				preset     = 'codicons',
-				mode       = 'symbol',
+				mode       = 'symbol_text',
 				symbol_map = icons,
 				maxwidth   = 60,
 				before = function (entry, vim_item)
