@@ -125,16 +125,14 @@ function M.setup()
 	lspconfig.bashls.setup({ on_init = on_init, on_attach = on_attach, capabilities = capabilities })
 
 	-- C/Cpp
-	lspconfig.clangd.setup({
+	--[[ lspconfig.clangd.setup({
 		on_init      = on_init,
 		on_attach    = on_attach,
 		capabilities = capabilities,
 		cmd = { '/bin/clangd', '--background-index', '--header-insertion=iwyu',
-			'--suggest-missing-includes', '--cross-file-rename',
 			'--completion-style=detailed', '--pch-storage=memory', '--clang-tidy',
 			'--header-insertion-decorators', '--all-scopes-completion',
 			'--offset-encoding=utf-32' },
-		filetypes = { "c", "cpp", "objc", "objcpp" },
 		flags = {
 			debounce_text_changes = 150,
 		};
@@ -144,9 +142,9 @@ function M.setup()
 			completeUnimported   = true,
 			semanticHighlighting = true,
 		};
-	})
+	}) ]]
 
-	--[[ lspconfig.ccls.setup({
+	lspconfig.ccls.setup({
 		on_init = on_init,
 		on_attach = on_attach,
 		capabilities = capabilities,
@@ -184,7 +182,7 @@ function M.setup()
 				trackDependency = 1
 			},
 		},
-	}) ]]
+	})
 
 	-- Python
 	lspconfig.jedi_language_server.setup({ on_init = on_init, on_attach = on_attach, capabilities = capabilities })
@@ -262,3 +260,4 @@ function M.setup()
 end
 
 return M
+-- End of File
