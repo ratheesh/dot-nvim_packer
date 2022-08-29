@@ -567,8 +567,9 @@ require("packer").startup({ function(use)
 	use({
 		"L3MON4D3/LuaSnip",
 		opt   = true,
-		wants = "friendly-snippets",
-		after = "nvim-cmp",
+		requires = "rafamadriz/friendly-snippets",
+		-- after = "nvim-cmp",
+		event = "InsertEnter",
 		config = function()
 			require("luasnip").config.set_config({ history = true, updateevents = "TextChanged,TextChangedI", })
 			require("luasnip/loaders/from_vscode").lazy_load()
@@ -768,6 +769,12 @@ require("packer").startup({ function(use)
 		event = "CursorHold",
 		config = function()
 			require("spellsitter").setup()
+		end
+	})
+	use ({
+		'lewis6991/spaceless.nvim',
+		config = function()
+			require('spaceless').setup()
 		end
 	})
 	use({
