@@ -811,8 +811,9 @@ require("packer").startup({ function(use)
 	})
 	use ({
 		"windwp/nvim-ts-autotag",
+		ft = { "html", "javascript", "xml", "markdown" },
 		wants  = "nvim-treesitter",
-		event  = "InsertEnter",
+		-- event  = "InsertEnter",
 		config = function()
 			require("nvim-ts-autotag").setup { enable = true }
 		end,
