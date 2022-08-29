@@ -766,7 +766,9 @@ require("packer").startup({ function(use)
 	})
 	use ({
 		"lewis6991/spellsitter.nvim",
-		event = "CursorHold",
+		opt = true,
+		ft  = { 'text' },
+		-- event = "CursorHold",
 		config = function()
 			require("spellsitter").setup()
 		end
