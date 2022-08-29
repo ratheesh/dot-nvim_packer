@@ -336,7 +336,7 @@ basic.fileinfo = {
 	hl_colors = {
 		sep_before = { 'FileInfoBg' , 'NormalBg'   },
 		sep_after  = { 'FileInfoBg' , 'NormalBg'   },
-		sep        = { 'black'      , 'FileInfoBg' },
+		sep        = { 'black'      , 'FileInfoBg', 'bold' },
 		file_type  = { 'FileInfoFg' , 'FileInfoBg' },
 		FileIcon   = hl_list.FileIcon
 	},
@@ -357,7 +357,7 @@ basic.indent = {
 	hl_colors = {
 		sep_before = { 'IndentBg', 'NormalBg' },
 		sep_after  = { 'IndentBg', 'NormalBg' },
-		sep        = { 'white', 	 'IndentBg' },
+		sep        = { 'black', 	 'IndentBg', 'bold' },
 		color      = { 'IndentFg', 'IndentBg' },
 	},
 	text = function()
