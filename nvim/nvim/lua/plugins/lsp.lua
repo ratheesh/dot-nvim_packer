@@ -125,7 +125,7 @@ function M.setup()
 	lspconfig.bashls.setup({ on_init = on_init, on_attach = on_attach, capabilities = capabilities })
 
 	-- C/Cpp
-	--[[ lspconfig.clangd.setup({
+	lspconfig.clangd.setup({
 		on_init      = on_init,
 		on_attach    = on_attach,
 		capabilities = capabilities,
@@ -142,9 +142,9 @@ function M.setup()
 			completeUnimported   = true,
 			semanticHighlighting = true,
 		};
-	}) ]]
+	})
 
-	lspconfig.ccls.setup({
+	--[[ lspconfig.ccls.setup({
 		on_init = on_init,
 		on_attach = on_attach,
 		capabilities = capabilities,
@@ -182,7 +182,7 @@ function M.setup()
 				trackDependency = 1
 			},
 		},
-	})
+	}) ]]
 
 	-- Python
 	lspconfig.jedi_language_server.setup({ on_init = on_init, on_attach = on_attach, capabilities = capabilities })
