@@ -23,25 +23,25 @@ local hl_list = {
 	LeftSpace = { 'ActiveFg', 'ActiveBg' },
 
 	-- Mode
-	ModeNormal  = {'ModeNormalFg'  , 'ModeNormalBg'  , 'bold' },
-	ModeInsert  = {'ModeInsertFg'  , 'ModeInsertBg'  , 'bold' },
-	ModeVisual  = {'ModeVisualFg'  , 'ModeVisualBg'  , 'bold' },
-	ModeReplace = {'ModeReplaceFg' , 'ModeReplaceBg' , 'bold' },
-	ModeCommand = {'ModeCommandFg' , 'ModeCommandBg' , 'bold' },
+	ModeNormal  = {'ModeNormalFg'  , 'ModeNormalBg'  },
+	ModeInsert  = {'ModeInsertFg'  , 'ModeInsertBg'  },
+	ModeVisual  = {'ModeVisualFg'  , 'ModeVisualBg'  },
+	ModeReplace = {'ModeReplaceFg' , 'ModeReplaceBg' },
+	ModeCommand = {'ModeCommandFg' , 'ModeCommandBg' },
 
 	-- File
-	File      = { 'FileNameBg', 'ActiveBg', 'italic' },
-	FileIcon  = { 'FileNameFg', 'FileNameBg' },
+	File      = { 'FileNameBg',  'ActiveBg',     'italic' },
+	FileIcon  = { 'FileNameFg',  'FileNameBg' },
 	SearchCnt = { 'SearchCntFg', 'FileNameBg' },
 
 	-- Navic     = { 'NavicBg', 'ActiveBg' },
 
 	-- Git status
-	GitDiffAdded   = { 'GitAddedFg', 'ActiveBg'   },
+	GitDiffAdded   = { 'GitAddedFg',   'ActiveBg' },
 	GitDiffRemoved = { 'GitRemovedFg', 'ActiveBg' },
 	GitDiffChanged = { 'GitChangedFg', 'ActiveBg' },
 
-	-- spell right sep
+-- spell right sep
 	PasteRightProjSep = { 'PasteModeBg', 'NormalBg' },
 	PasteRightFileSep = { 'PasteModeBg', 'NormalBg' },
 }
