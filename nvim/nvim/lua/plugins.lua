@@ -135,7 +135,7 @@ require("packer").startup({ function(use)
 						vim.keymap.set(mode, l, r, opts)
 					end
 
-					map({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
+					map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
 					-- map({'o', 'x'}, 'ih', 'gitsigns.select_hunk()')
 				end,
 				diff_opts = {
@@ -951,55 +951,55 @@ require("packer").startup({ function(use)
 			vim.cmd("runtime macros/sandwich/keymap/surround.vim")
 			vim.g.sandwich_recipes = {
 				{
-					buns         = {'{ ', ' }'},
+					buns         = { '{ ', ' }' },
 					nesting      = 1,
 					match_syntax = 1,
-					kind         = {'add', 'replace'},
-					action       = {'add'},
-					input        = {'{'}
+					kind         = { 'add', 'replace' },
+					action       = { 'add' },
+					input        = { '{' }
 				},
 				{
-					buns         = {'[ ', ' ]'},
+					buns         = { '[ ', ' ]' },
 					nesting      = 1,
 					match_syntax = 1,
-					kind         = {'add', 'replace'},
-					action       = {'add'},
-					input        = {'['}
+					kind         = { 'add', 'replace' },
+					action       = { 'add' },
+					input        = { '[' }
 				},
 				{
-					buns         = {'( ', ' )'},
+					buns         = { '( ', ' )' },
 					nesting      = 1,
 					match_syntax = 1,
-					kind         = {'add', 'replace'},
-					action       = {'add'},
-					input        = {'('}
+					kind         = { 'add', 'replace' },
+					action       = { 'add' },
+					input        = { '(' }
 				},
 				{
-					buns         = {'{\\s*', '\\s*}'},
+					buns         = { '{\\s*', '\\s*}' },
 					nesting      = 1,
 					regex        = 1,
 					match_syntax = 1,
-					kind         = {'delete', 'replace', 'textobj'},
-					action       = {'delete'},
-					input        = {'{'}
+					kind         = { 'delete', 'replace', 'textobj' },
+					action       = { 'delete' },
+					input        = { '{' }
 				},
 				{
-					buns         = {'[\\s*', '\\s*]'},
+					buns         = { '[\\s*', '\\s*]' },
 					nesting      = 1,
 					regex        = 1,
 					match_syntax = 1,
-					kind         = {'delete', 'replace', 'textobj'},
-					action       = {'delete'},
-					input        = {'['}
+					kind         = { 'delete', 'replace', 'textobj' },
+					action       = { 'delete' },
+					input        = { '[' }
 				},
 				{
-					buns         = {'(\\s*', '\\s*)'},
+					buns         = { '(\\s*', '\\s*)' },
 					nesting      = 1,
 					regex        = 1,
 					match_syntax = 1,
-					kind         = {'delete', 'replace', 'textobj'},
-					action       = {'delete'},
-					input        = {'('}
+					kind         = { 'delete', 'replace', 'textobj' },
+					action       = { 'delete' },
+					input        = { '(' }
 				},
 			}
 		end
@@ -1009,9 +1009,9 @@ require("packer").startup({ function(use)
 		disable = true,
 		config = function ()
 			vim.g.qs_ignorecase         = 1
-			vim.g.qs_highlight_on_keys  = {'f', 'F', 't', 'T', 'b', 'B', ';', ','}
+			vim.g.qs_highlight_on_keys  = { 'f', 'F', 't', 'T', 'b', 'B', ';', ',' }
 			vim.g.qs_lazy_highlight     = 1
-			vim.g.qs_filetype_blacklist = {'dashboard', 'startify'}
+			vim.g.qs_filetype_blacklist = { 'dashboard', 'startify' }
 		end
 	})
 	use({
@@ -1065,7 +1065,7 @@ require("packer").startup({ function(use)
 		ft = { "python" },
 		config = function ()
 			vim.g.slime_target = "tmux"
-			vim.g.slime_default_config = {socket_name = "default", target_pane = "{last}"}
+			vim.g.slime_default_config = { socket_name = "default", target_pane = "{last}" }
 			vim.cmd([[ let g:slime_default_config = { 'socket_name': get(split($TMUX, ','), 0), 'target_pane': '{top-right}' } ]])
 			vim.g.slime_bracketed_paste = 0
 		end
