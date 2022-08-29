@@ -45,7 +45,7 @@ function M.setup()
 		-- ls.builtins.diagnostics.vale.with({ args = '--config="$XDG_CONFIG_HOME/vale/vale.ini"' }),
 
 		-- completion
-		ls.builtins.completion.spell,
+		-- ls.builtins.completion.spell,
 
 		-- hover
 		ls.builtins.hover.dictionary,
