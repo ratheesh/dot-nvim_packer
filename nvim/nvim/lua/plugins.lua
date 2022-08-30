@@ -1212,7 +1212,7 @@ require("packer").startup({ function(use)
 					return {
 						{ icon, guifg = icon_color },
 						{ ' ' },
-						{ filename,  guifg = "#AC6BF1", guibg = nil, gui = "italic" },
+						{ filename,  guifg = "#B6919E", guibg = nil, gui = "italic" },
 					}
 				end,
 				window = {
