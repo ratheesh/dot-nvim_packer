@@ -269,7 +269,7 @@ hl(0 , "WildSelected"       , { fg = "#d5b07B" , bg = "#3d506c" , italic = true 
 hl(0 , "WildSelectedAccent" , { fg = "#2AD198" , bg = "#3d506c" , italic = true  , bold = true  , underline = false })
 hl(0 , "WildMode"           , { fg = "#f0f0f0" , bg = "#6B717C" , italic = true  , bold = false , underline = false })
 hl(0 , "WildSeparator"      , { fg = "#bd93f9" , bg = "#1A3A59" , italic = false , bold = false , underline = false })
-hl(0 , "WildAccent"         , { fg = "#ec7279" , bg = "#1A3A59" , italic = false , bold = true  , underline = true  })
+hl(0 , "WildAccent"         , { fg = "#ec7279" , bg = "#1A3A59" , italic = false , bold = false , underline = false })
 hl(0 , "WildIndex"          , { fg = "#f0f0f0" , bg = "#4d708c" , italic = false , bold = false , underline = false })
 hl(0 , "WildSepLeft"        , { fg = "#FCCC82" , bg = "#1A3A59" , italic = false , bold = false , underline = false })
 hl(0 , "WildSepRight2"      , { fg = "#FCCC82" , bg = "#1A3A59" , italic = false , bold = false , underline = false })
