@@ -1,2 +1,6 @@
+**/.git/
+**/.svn/
 packer_compiled.lua
 shada.info
+*.patch
+*.diff
