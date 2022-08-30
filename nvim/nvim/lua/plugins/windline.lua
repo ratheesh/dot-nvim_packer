@@ -177,6 +177,9 @@ basic.projectname = {
 				}
 			end
 		end
+	end,
+	click = function ()
+		vim.cmd('Neogit')
 	end
 }
 
@@ -329,6 +332,9 @@ basic.lsp_client = {
 			return
 		end
 	end,
+	click = function ()
+		vim.cmd('LspInfo')
+	end
 }
 
 basic.fileinfo = {
