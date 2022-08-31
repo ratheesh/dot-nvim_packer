@@ -283,6 +283,7 @@ require("packer").startup({ function(use)
 		-- event = "VimEnter",
 		config = function()
 			require("plugins.lsp").setup()
+			require('lspconfig.ui.windows').default_options.border = 'rounded'
 		end,
 	})
 	use({

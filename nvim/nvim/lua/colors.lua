@@ -358,4 +358,6 @@ hl(0, "InclineNormal"  , { fg = "#E0E0E0", bg = "#444864", italic = false, bold 
 hl(0, "InclineNormalNC", { fg = "#E0E0E0", bg = "#444864", italic = false, bold = false, underline = false })
 
 hl(0 , "hiPairs_matchPair" , { fg = nil       , bg = nil , italic = false , bold = false , underline = true })
+
+hl(0 , "LspInfoBorder"  	 , { fg = "#4C566A" , bg = nil , italic = false , bold = true  , underline = false })
 -- End of File
