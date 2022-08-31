@@ -85,6 +85,11 @@ require("packer").startup({ function(use)
 						color = "#B3C1A9",
 						name = "java"
 					},
+					python = {
+						icon = " ",
+						color = "#f781bf",
+						name = "py"
+					},
 				}
 			}
 		end
