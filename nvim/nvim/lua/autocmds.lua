@@ -12,7 +12,7 @@ vim.api.nvim_create_autocmd("QuickFixCmdPost", { pattern = "[^l]*", group = grou
 vim.api.nvim_create_autocmd("QuickFixCmdPost", { pattern = "l*", group = group,
 	callback = function() TroubleQuickFixPost("loclist") end })
 vim.api.nvim_create_autocmd("TextYankPost", { group = group,
-	callback = function() vim.highlight.on_yank({ higroup="IncSearch", timeout=300 }) end })
+	callback = function() vim.highlight.on_yank({ higroup="IncSearch", timeout=150 }) end })
 
 -- set the colorcolumn to 72 for gitcommit filetype
 local colorcolGrp = vim.api.nvim_create_augroup("colorcolGrp", { clear = true })
