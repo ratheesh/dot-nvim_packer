@@ -186,6 +186,27 @@ function M.setup()
 
 	-- Python
 	lspconfig.jedi_language_server.setup({ on_init = on_init, on_attach = on_attach, capabilities = capabilities })
+	--[[ lspconfig.pylsp.setup({
+		on_init = on_init,
+		on_attach = on_attach,
+		capabilities = capabilities,
+		settings = {
+			pylsp = {
+				plugins = {
+					pycodestyle = {
+						ignore = {'W391'},
+						maxLineLength = 100
+					},
+					jedi_completion = {
+						enabled = true,
+						fuzzy   = true,
+						eager   = true,
+					}
+				}
+			}
+		}
+	}) ]]
+
 	lspconfig.pyright.setup({
 		on_init = on_init,
 		on_attach    = on_attach,
