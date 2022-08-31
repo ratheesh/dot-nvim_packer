@@ -44,6 +44,7 @@ vim.opt.showmode       = false
 vim.opt.confirm        = true
 vim.opt.laststatus     = 3
 vim.opt.guicursor      = "n:block-nCursor-blinkon0,i-ci:ver30-iCursor-blinkon0,v-ve:block-vCursor-blinkon0,o:hor30-oCursor-blinkon0,r-cr:block-rCursor-blinkon0"
+vim.opt.wildignore     = { '*.o', '*.a', '__pycache__', '.git', '.svn' }
 
 -- Disable in-built plugins
 vim.g.loaded_2html_plugin      = 1
