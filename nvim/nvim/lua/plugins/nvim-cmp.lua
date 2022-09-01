@@ -5,6 +5,7 @@
 local cmp     = require("cmp")
 local types   = require("cmp.types")
 local luasnip = require("luasnip")
+local kind    = cmp.lsp.CompletionItemKind
 
 local function check_backspace()
   local col = vim.fn.col '.' - 1
@@ -99,7 +100,12 @@ function M.setup()
 			['<C-Space>'] = mapping.complete(),
 			["<C-e>"]     = mapping.abort(),
 			['<C-y>']     = mapping.confirm({ select = true }),
-			["<CR>"]      = mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false }),
+			-- ["<CR>"]      = mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false }), -- nvim-autopairs
+			["<CR>"] = cmp.mapping(function() -- smart-pairs
+				if not cmp.confirm({ select = false }) then
+					require("pairs.enter").type()
+				end
+			end),
 			['<Tab>'] 		= mapping(function(fallback)
 				if cmp.visible() then
 					cmp.select_next_item()
@@ -127,8 +133,16 @@ function M.setup()
 	})
 end
 
-local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done { map_char = { tex = "" } })
+--[[ local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done { map_char = { tex = "" } }) ]]
+
+cmp.event:on("confirm_done", function(event)
+  local item = event.entry:get_completion_item()
+  local parensDisabled = item.data and item.data.funcParensDisabled or false
+  -- if not parensDisabled and (item.kind == kind.Method or item.kind == kind.Function) then
+  --   require("pairs.bracket").type_left("(")
+  -- end
+end)
 
 return M
 
