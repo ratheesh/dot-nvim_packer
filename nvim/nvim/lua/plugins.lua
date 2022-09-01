@@ -782,6 +782,7 @@ require("packer").startup({ function(use)
 	})
 	use ({
 		'lewis6991/spaceless.nvim',
+		event = 'InsertEnter',
 		config = function()
 			require('spaceless').setup()
 		end
