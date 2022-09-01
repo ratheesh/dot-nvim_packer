@@ -1107,6 +1107,7 @@ require("packer").startup({ function(use)
 	})
 	use({
 		"AndrewRadev/splitjoin.vim",
+		disable = true,
 		keys = { "gS", "gJ" },
 	})
 	use({
