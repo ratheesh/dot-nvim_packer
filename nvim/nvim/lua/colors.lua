@@ -145,33 +145,26 @@ hl(0 , "GitSignsAdd"                , { fg = "#81A1C1" , bg = nil       , italic
 hl(0 , "GitSignsChange"             , { fg = "#606672" , bg = nil       , italic = false , bold = true , underline = false })
 hl(0 , "GitSignsModified"           , { fg = "#C586C0" , bg = nil       , italic = false , bold = true , underline = false })
 
--- buffer
-hl(0 , "GitSignsAddLn"              , { fg = "#A3BE8C" , bg = "#2a384e" , italic = false , bold = false , underline = false })
-hl(0 , "GitSignsChangeLn"           , { fg = "#A3BE8C" , bg = "#2a384e" , italic = false , bold = false , underline = false })
-hl(0 , "GitSignsDeleteLn"           , { fg = "#D57780" , bg = "#2a384e" , italic = false , bold = false , underline = false })
-
--- virtual lines
-hl(0 , "GitSignsAddVirtLn"    			, { fg = "#A3BE8C" , bg = "#2a384e" , italic = false , bold = false , underline = false })
-hl(0 , "GitSignsChangeVirtLn" 			, { fg = "#A3BE8C" , bg = "#2a384e" , italic = false , bold = false , underline = false })
-hl(0 , "GitSignsDeleteVirtLn" 			, { fg = "#D57780" , bg = "#2a384e" , italic = false , bold = false , underline = false })
-
---------------- word diff highlighting ---------------------
 -- preview hunk
+hl(0 , "GitSignsAddPreview"         , { fg = "#A3BE8C" , bg = "#2a384e" , italic = false , bold = false , underline = false })
+hl(0 , "GitSignsChangePreview"      , { fg = "#A3BE8C" , bg = "#2a384e" , italic = false , bold = false , underline = false })
+hl(0 , "GitSignsDeletePreview"      , { fg = "#D57780" , bg = "#2a384e" , italic = false , bold = false , underline = false })
+
+hl(0 , "GitSignsAddLn"        			, { fg = "#A3BE8C" , bg = "#2a384e" , italic = false , bold = false , underline = false })
+hl(0 , "GitSignsChangeLn"     			, { fg = "#A3BE8C" , bg = "#2a384e" , italic = false , bold = false , underline = false })
+hl(0 , "GitSignsDeleteLn"     			, { fg = "#D57780" , bg = "#2a384e" , italic = false , bold = false , underline = false })
+-- buffer
+hl(0 , "GitSignsAddLine"        		, { fg = "#A3BE8C" , bg = "#606672" , italic = false , bold = false , underline = false })
+hl(0 , "GitSignsChangeLine"     		, { fg = "#A3BE8C" , bg = "#606672" , italic = false , bold = false , underline = false })
+hl(0 , "GitSignsDeleteLine"     		, { fg = "#D57780" , bg = "#606672" , italic = false , bold = false , underline = false })
+
 hl(0 , "GitSignsAddInline"          , { fg = "#A3BE8C" , bg = "#606672" , italic = false , bold = false , underline = false })
-hl(0 , "GitSignsChangeInline"       , { fg = "#A0A0A0" , bg = "#606672" , italic = false , bold = false , underline = false })
+hl(0 , "GitSignsChangeInline"       , { fg = "#A3BE8C" , bg = "#606672" , italic = false , bold = false , underline = false })
 hl(0 , "GitSignsDeleteInline"       , { fg = "#D57780" , bg = "#606672" , italic = false , bold = false , underline = false })
 
--- buffer
-hl(0 , "GitSignsAddLnInline"        , { fg = "#A3BE8C" , bg = "#f0f0f0" , italic = false , bold = false , underline = false })
-hl(0 , "GitSignsChangeLnInline"     , { fg = "#A0A0A0" , bg = "#f0f0f0" , italic = false , bold = false , underline = false })
-hl(0 , "GitSignsDeleteLnInline"     , { fg = "#D57780" , bg = "#606672" , italic = false , bold = false , underline = false })
-
--- virtual lines
-hl(0 , "GitSignsAddVirtLnInline"    , { fg = "#A3BE8C" , bg = "#f0f0f0" , italic = false , bold = false , underline = false })
-hl(0 , "GitSignsChangeVirtLnInline" , { fg = "#A3BE8C" , bg = "#f0f0f0" , italic = false , bold = false , underline = false })
-hl(0 , "GitSignsDeleteVirtLnInline" , { fg = "#D57780" , bg = "#606672" , italic = false , bold = false , underline = false })
-
--- hl(0 , "NnnNormal"         			, { fg = nil       , bg = "#1E2430" , italic = false , bold = false , underline = false })
+hl(0 , "GitSignsAddLnInline"        , { fg = "#A3BE8C" , bg = "#606672" , italic = false , bold = false , underline = true })
+hl(0 , "GitSignsChangeLnInline"     , { fg = "#A3BE8C" , bg = "#606672" , italic = false , bold = false , underline = true })
+hl(0 , "GitSignsDeleteLnInline"     , { fg = "#D57780" , bg = "#606672" , italic = false , bold = false , underline = true })
 
 -- nvim-cmp
 hl(0 , "CmpDocNormal"           	, { fg = "#b0b0b0" , bg = nil , italic = false , bold = false , underline = false })
