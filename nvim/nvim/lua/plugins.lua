@@ -1206,6 +1206,19 @@ require("packer").startup({ function(use)
 		end
 	})
 	use({
+		'majutsushi/tagbar',
+		after = 'nvim-lspconfig',
+		cmd = { 'TagbarToggle', 'Tagbar' },
+		keys = { '<f4>' },
+		config = function ()
+			vim.g.tagbar_sort             = 0;
+			vim.g.tagbar_indent           = 1;
+			vim.g.tagbar_expand           = 0;
+			vim.g.tagbar_show_linenumbers = 0;
+			vim.g.tagbar_autoshowtag      = 1;
+		end
+	})
+	use({
 		"b0o/incline.nvim",
 		opt = true,
 		event = "WinNew",
