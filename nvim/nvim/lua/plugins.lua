@@ -920,7 +920,7 @@ require("packer").startup({ function(use)
 	})
 	use({ 'anuvyklack/hydra.nvim',
 		event = "VimEnter",
-		requires = { "anuvyklack/keymap-layer.nvim", "colorizer" },
+		requires = { "anuvyklack/keymap-layer.nvim", "lilydjwg/colorizer" },
 		after = "gitsigns.nvim",
 		config = function()
 			require("plugins.hydra")
