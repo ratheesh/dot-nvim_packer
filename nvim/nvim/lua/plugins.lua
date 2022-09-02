@@ -141,7 +141,6 @@ require('packer').startup({ function(use)
 					end
 
 					map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
-					-- map({'o', 'x'}, 'ih', 'gitsigns.select_hunk()')
 				end,
 				diff_opts = {
 					internal = true,
@@ -244,8 +243,6 @@ require('packer').startup({ function(use)
 		'lilydjwg/colorizer',
 		after  = 'nvim-treesitter',
 		module = 'colorizer',
-		-- after = 'gitsigns.nvim',
-		-- ft = { 'text', 'lua', 'markdown', 'help' }
 	})
 	use({ 'wbthomason/packer.nvim' })
 	use({ 'folke/lua-dev.nvim', event = 'VimEnter' })
@@ -301,7 +298,6 @@ require('packer').startup({ function(use)
 	})
 	use({
 		'weilbith/nvim-code-action-menu',
-		-- after = "nvim-lspconfig",
 		cmd = { 'CodeActionMenu' }
 	})
 	use({"nanotee/sqls.nvim", ft = { 'sql' }})
@@ -313,7 +309,6 @@ require('packer').startup({ function(use)
 		end
 	})
 	use({
-		-- 'bellini666/trouble.nvim',
 		'folke/trouble.nvim',
 		event = 'LspAttach',
 		after = 'nvim-dd.git',
@@ -419,17 +414,13 @@ require('packer').startup({ function(use)
 		disable = false,
 		opt     = true,
 		event   = 'VimEnter',
-		-- module  = 'dressing',
-		-- after   = { 'yanky.nvim' },
 		config  = function() require('dressing').setup() end
 	})
 	use({
 		'antoinemadec/FixCursorHold.nvim',
 		event = { 'CursorHold' },
-		-- after = 'nvim-notify',
 	})
 	use({ 'rafamadriz/friendly-snippets', event = { 'InsertEnter' }})
-	-- use({ 'onsails/lspkind.nvim', event =  'InsertEnter' })
 	use({
 		'hrsh7th/nvim-cmp',
 		disable = false,
@@ -481,9 +472,7 @@ require('packer').startup({ function(use)
 					block = 'gbc',
 				},
 				opleader = {
-					---Line-comment keymap
 					line  = 'gc',
-					---Block-comment keymap
 					block = 'gb',
 				},
 
@@ -545,7 +534,7 @@ require('packer').startup({ function(use)
 					['<tab>']   = 'TAB',
 				},
 			})
-			-- wk.register({}, {})
+		-- wk.register({}, {})
 		end,
 	})
 	use({ 'tweekmonster/startuptime.vim', cmd = { 'StartupTime' }})
@@ -571,7 +560,6 @@ require('packer').startup({ function(use)
 		'mfussenegger/nvim-dap-python',
 		after = { 'nvim-dap' },
 		requires = 'mfussenegger/nvim-dap',
-		-- ft = { 'python' },
 		config = function ()
 			require('dap-python').setup('python', {})
 		end
@@ -750,8 +738,6 @@ require('packer').startup({ function(use)
 			startify.section.footer = {
 				{ type = 'text', val = 'footer' },
 			}
-			-- ignore filetypes in MRU
-
 			startify.mru_opts.ignore = function(path, _)
 				return
 				(string.find(path, 'COMMIT_EDITMSG'))
@@ -762,13 +748,10 @@ require('packer').startup({ function(use)
 	-- The missing auto-completion for cmdline!
 	use({
 		'gelguy/wilder.nvim',
-		-- opt = false,
 		event = 'CmdlineEnter',
-		-- wants = 'nvim-web-devicons',
 		run = '<cmd>UpdateRemotePlugins<cr>',
 		requires = {
 			{ 'romgrk/fzy-lua-native', event = 'CmdlineEnter' },
-			-- { 'nixprime/cpsm',         event = 'CmdlineEnter' },
 			'kyazdani42/nvim-web-devicons'
 		},
 		config = function()
@@ -827,13 +810,6 @@ require('packer').startup({ function(use)
 		ft  = { 'python' },
 		cmd = { 'Codi' },
 		config = function ()
-			-- vim.g.codi.virtual_text_prefix = '>>> '
-			-- vim.g.codi.interpreters = {
-			-- 	python= {
-			-- 		bin = 'python',
-			-- 		prompt= '^(>>>|...) '
-			-- 	}
-			-- }
 		end
 	})
 	use({
@@ -961,7 +937,6 @@ require('packer').startup({ function(use)
 			})
 		end
 	})
-	-- use({ 'dstein64/vim-startuptime', cmd = { 'StartupTime' }})
 
 	if packer_bootstrap then
 		require('packer').sync()
