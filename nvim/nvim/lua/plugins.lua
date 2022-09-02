@@ -525,7 +525,8 @@ require("packer").startup({ function(use)
 	})
 	use({
 		"antoinemadec/FixCursorHold.nvim",
-		after = "nvim-notify",
+		event = { 'CursorHold' },
+		-- after = "nvim-notify",
 	})
 	use({ "rafamadriz/friendly-snippets", event = { "InsertEnter" }})
 	use({ "onsails/lspkind.nvim", event =  "InsertEnter" })
