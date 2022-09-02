@@ -182,13 +182,6 @@ require('packer').startup({ function(use)
 		end
 	})
 	use({
-		'akinsho/git-conflict.nvim',
-		disable = true,
-		config = function ()
-			require('git-conflict').setup()
-		end
-	})
-	use({
 		'lewis6991/hover.nvim',
 		event = 'LspAttach',
 		require = 'nvim-lspconfig',
@@ -224,30 +217,6 @@ require('packer').startup({ function(use)
 		event = 'CursorHold',
 		requires = 'nvim-treesitter',
 		after = 'nvim-treesitter',
-	})
-	use({
-		'lukas-reineke/indent-blankline.nvim',
-		disable = true,
-		after   = { 'nvim-lspconfig' },
-		config = function()
-			require('indent_blankline').setup({
-				char = '▏',
-				show_trailing_blankline_indent = false,
-				show_first_indent_level = false,
-				buftype_exclude = { 'terminal' },
-				filetype_exclude = { 'help', 'terminal', 'dashboard', 'packer', 'lspinfo', 'TelescopePrompt', 'TelescopeResults' }
-			})
-		end,
-	})
-	use({
-		'lukas-reineke/virt-column.nvim',
-		disable = true,
-		event = { 'BufWinEnter' },
-		config = function()
-			require('virt-column').setup({
-				char = '│'
-			})
-		end
 	})
 	use({
 		'xiyaowong/virtcolumn.nvim',
@@ -301,25 +270,6 @@ require('packer').startup({ function(use)
 		end,
 	})
 	use({
-		'williamboman/nvim-lsp-installer',
-		disable = true,
-		-- after = 'nvim-lspconfig',
-		cmd = { 'LspInstall', 'LspInstallLog', 'LspInstallInfo', 'LspPrintInstalled', 'LspUninstall', 'LspUninstallAll' },
-		config = function()
-			require('nvim-lsp-installer').setup({
-				automatic_installation = false,
-				ui = {
-					border = 'rounded',
-					icons = {
-						server_installed   = '✓',
-						server_pending     = '➜',
-						server_uninstalled = '✗'
-					}
-				}
-			})
-		end
-	})
-	use({
 		'williamboman/mason.nvim',
 		requires = 'neovim/nvim-lspconfig',
 		cmd = { 'Mason', 'MasonInstall', 'MasonUninstall', 'MasonUninstallAll', 'MasonLog' },
@@ -353,22 +303,6 @@ require('packer').startup({ function(use)
 		'weilbith/nvim-code-action-menu',
 		-- after = "nvim-lspconfig",
 		cmd = { 'CodeActionMenu' }
-	})
-	use({
-		'SmiteshP/nvim-navic',
-		disable = true,
-		event = 'LspAttach',
-		requires = 'neovim/nvim-lspconfig',
-		after = 'nvim-lspconfig',
-		config = function()
-			require('nvim-navic').setup({
-				highlight             = false,
-				separator             = '  ',
-				depth_limit           = 2,
-				depth_limit_indicator = '…',
-			})
-			vim.g.navic_silence = true
-		end
 	})
 	use({"nanotee/sqls.nvim", ft = { 'sql' }})
 	use({
@@ -481,13 +415,6 @@ require('packer').startup({ function(use)
 		ft = { 'java' }
 	})
 	use({
-		'simrat39/symbols-outline.nvim',
-		disable = true,
-		config = function ()
-			require('symbols-outline').setup()
-		end
-	})
-	use({
 		'stevearc/dressing.nvim',
 		disable = false,
 		opt     = true,
@@ -495,33 +422,6 @@ require('packer').startup({ function(use)
 		-- module  = 'dressing',
 		-- after   = { 'yanky.nvim' },
 		config  = function() require('dressing').setup() end
-	})
-	use({
-		'gbprod/yanky.nvim',
-		disable = true,
-		requires = 'dressing.nvim',
-		-- after = 'dressing.nvim',
-		cmd = { 'YankyRingHistory' },
-		config = function()
-			require('yanky').setup({
-				highlight = {
-					on_put = true,
-					on_yank = true,
-					timer = 100,
-				},
-				preserve_cursor_position = {
-					enabled = true,
-				},
-			})
-			vim.keymap.set('n', 'p',  '<Plug>(YankyPutAfter)',   {})
-			vim.keymap.set('n', 'P',  '<Plug>(YankyPutBefore)',  {})
-			vim.keymap.set('x', 'p',  '<Plug>(YankyPutAfter)',   {})
-			vim.keymap.set('x', 'P',  '<Plug>(YankyPutBefore)',  {})
-			vim.keymap.set('n', 'gp', '<Plug>(YankyGPutAfter)',  {})
-			vim.keymap.set('n', 'gP', '<Plug>(YankyGPutBefore)', {})
-			vim.keymap.set('x', 'gp', '<Plug>(YankyGPutAfter)',  {})
-			vim.keymap.set('x', 'gP', '<Plug>(YankyGPutBefore)', {})
-		end
 	})
 	use({
 		'antoinemadec/FixCursorHold.nvim',
@@ -559,12 +459,6 @@ require('packer').startup({ function(use)
 			require('luasnip').config.set_config({ history = true, updateevents = 'TextChanged,TextChangedI', })
 			require('luasnip/loaders/from_vscode').lazy_load()
 		end,
-	})
-	use({
-		'AckslD/nvim-FeMaco.lua',
-		disable = true,
-		ft = { 'markdown' },
-		config = function () end
 	})
 	use({
 		'echasnovski/mini.nvim',
@@ -771,10 +665,6 @@ require('packer').startup({ function(use)
 		requires = { 'nvim-treesitter' },
 	})
 	use({
-		'RRethy/nvim-treesitter-textsubjects',
-		disable = true
-	})
-	use({
 		'windwp/nvim-autopairs',
 		event = 'InsertEnter',
 		module = { 'nvim-autopairs.completion.cmp', 'nvim-autopairs' },
@@ -831,46 +721,6 @@ require('packer').startup({ function(use)
 		config = function()
 			require('nvim-ts-autotag').setup()
 		end,
-	})
-	use({
-		'mhinz/vim-startify',
-		disable = true,
-		config  = function()
-		vim.g.startify_custom_header = {
-             "",
-             "                     ________   ++    ________",
-             "                    /        \\++++  /        \\",
-             "                    \\        /++++++\\        /",
-             "                     |      |++++++++/     /'",
-             "                     |      |++++++/     /'",
-             "                    +|      |++++/     /'+",
-             "                  +++|      |++/     /'+++++",
-             "                +++++|      |/     /'+++++++++",
-             "                  +++|           /'+++++++++",
-             "                    +|         /'+++++++++",
-             "                     |       /'+++++++++",
-             "                     |     /'+++++++++",
-             "                     |   /'+++++++++",
-             "                     `_/'   ++++++",
-             "                              ++",
-             }
-			vim.g.startify_files_number       = 5
-			vim.g.startify_change_to_vcs_root = 1
-			vim.g.startify_lists              = {
-				{ type = 'files'     , header = { '   Files'     }},
-				{ type = 'dir'       , header = { '   MRU'       }},
-				{ type = 'sessions'  , header = { '   Sessions'  }},
-				{ type = 'bookmarks' , header = { '   Bookmarks' }},
-				{ type = 'commands'  , header = { '   Commands'  }},
-			}
-			vim.g.startify_bookmarks = {
-				{ c = '$HOME/.vim/vimrc' },
-				{ g = '$HOME/.gitconfig' },
-				{ s = '$HOME/.screenrc'  },
-				{ t = '$HOME/.tmux.conf' },
-				{ z = '$HOME/.zshrc'     },
-			}
-		end
 	})
 	use ({
 		'goolord/alpha-nvim',
@@ -948,13 +798,6 @@ require('packer').startup({ function(use)
 		-- event = { 'CursorHold' }
 
 	})
-	use ({
-		'dccsillag/magma-nvim',
-		disable = true,
-		ft = { 'python' },
-		run = '<cmd>UpdateRemotePlugins<cr>'
-	})
-	-- use({ 'tpope/vim-surround'              , event = 'VimEnter' })
 	use({
 		'kylechui/nvim-surround',
 		-- event = 'InsertEnter',
@@ -968,98 +811,7 @@ require('packer').startup({ function(use)
 		})
 	end
 	})
-	use ({
-    'machakann/vim-sandwich',
-		event = 'InsertEnter',
-		disable = true,
-		config = function ()
-			vim.cmd("runtime macros/sandwich/keymap/surround.vim")
-			vim.g.sandwich_recipes = {
-				{
-					buns         = { '{ ', ' }' },
-					nesting      = 1,
-					match_syntax = 1,
-					kind         = { 'add', 'replace' },
-					action       = { 'add' },
-					input        = { '{' }
-				},
-				{
-					buns         = { '[ ', ' ]' },
-					nesting      = 1,
-					match_syntax = 1,
-					kind         = { 'add', 'replace' },
-					action       = { 'add' },
-					input        = { '[' }
-				},
-				{
-					buns         = { '( ', ' )' },
-					nesting      = 1,
-					match_syntax = 1,
-					kind         = { 'add', 'replace' },
-					action       = { 'add' },
-					input        = { '(' }
-				},
-				{
-					buns         = { '{\\s*', '\\s*}' },
-					nesting      = 1,
-					regex        = 1,
-					match_syntax = 1,
-					kind         = { 'delete', 'replace', 'textobj' },
-					action       = { 'delete' },
-					input        = { '{' }
-				},
-				{
-					buns         = { '[\\s*', '\\s*]' },
-					nesting      = 1,
-					regex        = 1,
-					match_syntax = 1,
-					kind         = { 'delete', 'replace', 'textobj' },
-					action       = { 'delete' },
-					input        = { '[' }
-				},
-				{
-					buns         = { '(\\s*', '\\s*)' },
-					nesting      = 1,
-					regex        = 1,
-					match_syntax = 1,
-					kind         = { 'delete', 'replace', 'textobj' },
-					action       = { 'delete' },
-					input        = { '(' }
-				},
-			}
-		end
-  })
-	use({
-		"unblevable/quick-scope",
-		disable = true,
-		config = function ()
-			vim.g.qs_ignorecase         = 1
-			vim.g.qs_highlight_on_keys  = { 'f', 'F', 't', 'T', 'b', 'B', ';', ',' }
-			vim.g.qs_lazy_highlight     = 1
-			vim.g.qs_filetype_blacklist = { 'dashboard', 'startify' }
-		end
-	})
-	use({
-		'jinh0/eyeliner.nvim',
-		disable = true,
-		config = function()
-			require('eyeliner').setup {
-				bold      = false,
-				underline = false
-			}
-		end
-	})
-	-- use({ 'michaeljsmith/vim-indent-object',    event = { 'VimEnter'   }})
-	-- use({ 'mg979/vim-visual-multi',             event = { 'VimEnter' }})
-	-- use({ 'machakann/vim-swap',                 event = { 'VimEnter'   }})
-	-- use({ 'jeetsukumaran/vim-pythonsense',      ft    = { 'python'     }})
-	use({ 'kana/vim-textobj-user',              opt = true})
-	use({
-		'coderifous/textobj-word-column.vim',
-		requires = 'vim-textobj-user',
-		keys  = { 'vic', 'viC' }
-	})
-	use({ 'ojroques/vim-oscyank',               cmd   = { 'OSCYank' , 'OSCYankReg' }})
+	use({ 'ojroques/vim-oscyank', cmd   = { 'OSCYank' , 'OSCYankReg' }})
 	use({
 		'antoyo/vim-licenses',
 		cmd = { 'Gplv2', 'Apache', 'Mit' },
@@ -1113,48 +865,6 @@ require('packer').startup({ function(use)
 		end
 	})
 	use({
-		'AndrewRadev/splitjoin.vim',
-		disable = true,
-		keys = { 'gS', 'gJ' },
-	})
-	use({
-		'nguyenvukhang/nvim-toggler',
-		opt     = true,
-		disable = true,
-		keys    = { '-' },
-		config  = function ()
-			require('nvim-toggler').setup({
-				['1']       = '0',
-				['True']    = 'False',
-				['yes']     = 'no',
-				['allow']   = 'deny',
-				['before']  = 'after',
-				['block']   = 'inline',
-				['define']  = 'undef',
-				['good']    = 'bad',
-				['in']      = 'out',
-				['min']     = 'max',
-				['on']      = 'off',
-				['start']   = 'stop',
-				['enable']  = 'disable',
-				['success'] = 'failure',
-				['up']      = 'down',
-				['left']    = 'right',
-			})
-			vim.keymap.set({ 'n', 'v' }, '-', require('nvim-toggler').toggle)
-		end
-	})
-	use({
-		'winston0410/range-highlight.nvim',
-		disable = true,
-		event = 'VimEnter',
-		requires = { "winston0410/cmd-parser.nvim" },
-		config = function ()
-			require('range-highlight').setup()
-		end
-	})
-	use({ 'ratheesh/hiPairs', disable = true, event = 'LspAttach' })
-	use({
 		'dhruvasagar/vim-table-mode',
 		cmd = { 'TableModeToggle' , 'TableModeEnable', 'TableModeDisable', 'TableModeRealign' },
 		config = function ()
@@ -1162,28 +872,6 @@ require('packer').startup({ function(use)
 			vim.g.table_mode_header_fillchar = '='
 			vim.b.table_mode_corner          = '+'
 		end
-	})
-	use({
-		'nvim-neorg/neorg',
-		disable  = true,
-		opt      = true,
-		ft       = { 'norg' },
-		requires = { 'nvim-treesitter/nvim-treesitter', 'nvim-lua/plenary.nvim' },
-		config   = function()
-			require('neorg').setup({
-				load = {
-					['core.defaults']    = {},
-					['core.norg.dirman'] = {
-						config = {
-							workspaces = {
-								journal = '~/notes/work',
-								home    = '~/notes/home',
-							}
-						}
-					}
-				}
-			})
-		end,
 	})
 	use({
 		'lewis6991/satellite.nvim',
