@@ -1238,7 +1238,8 @@ require("packer").startup({ function(use)
 	})
 	use({
 		'majutsushi/tagbar',
-		after = 'nvim-lspconfig',
+		disable = false,
+		opt = true,
 		cmd = { 'TagbarToggle', 'Tagbar' },
 		keys = { '<f4>' },
 		config = function ()
