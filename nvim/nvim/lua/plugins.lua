@@ -852,7 +852,7 @@ require("packer").startup({ function(use)
 		wants  = "nvim-treesitter",
 		-- event  = "InsertEnter",
 		config = function()
-			require("nvim-ts-autotag").setup { enable = true }
+			require("nvim-ts-autotag").setup()
 		end,
 	})
 	use({
