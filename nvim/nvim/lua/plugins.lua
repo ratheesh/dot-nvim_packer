@@ -18,7 +18,7 @@ _G.__luacache_config = {
 	}
 }
 
-local present, impatient = pcall(require, "impatient")
+local present, impatient = pcall(require, 'impatient')
 if present then
 	if impatient ~= nil then
 		impatient.enable_profile()
@@ -37,101 +37,101 @@ end
 -- Bootstrap and install packer.
 if vim.fn.empty(vim.fn.glob(packer_path)) > 0 then
   packer_bootstrap = true
-  vim.fn.system({ "rm", "-f", packer_compiled_path })
+  vim.fn.system({ 'rm', '-f', packer_compiled_path })
 	print("Bootstrapping Packer!, Cloning new copy to", packer_path)
   vim.fn.system({
-    "git", "clone", "--depth", "1",
-    "https://github.com/wbthomason/packer.nvim",
+    'git', 'clone', '--depth', '1',
+    'https://github.com/wbthomason/packer.nvim',
     packer_path,
   })
-  print("Bootstrapping Packer, please wait until installation is finished")
-  vim.cmd("packadd packer.nvim")
+  print('Bootstrapping Packer, please wait until installation is finished')
+  vim.cmd('packadd packer.nvim')
 end
 
 if vim.fn.filereadable(packer_compiled_path) == 1 then
   -- Speed up loading of Lua modules. Note, this needs to happen BEFORE Lua
   -- plugins are loaded.
-  require("impatient")
+  require('impatient')
   -- Due to impatient, the packer_compiled file needs to be directly required.
-  require("packer_compiled")
-	require("global")
+  require('packer_compiled')
+	require('global')
 end
 
-require("packer").startup({ function(use)
+require('packer').startup({ function(use)
 	use("lewis6991/impatient.nvim")
 	use({
-		"kyazdani42/nvim-web-devicons",
-		event = "VimEnter",
+		'kyazdani42/nvim-web-devicons',
+		event = 'VimEnter',
 		config = function()
 			require'nvim-web-devicons'.setup {
 				override = {
 					sh = {
-						icon = "",
-						color = "#f781bf",
-						name = "sh"
+						icon = '',
+						color = '#f781bf',
+						name = 'sh'
 					},
 					lua = {
-						icon = "",
-						color = "#A070C8",
-						name = "lua"
+						icon = '',
+						color = '#A070C8',
+						name = 'lua'
 					},
 					md = {
-						icon = " ",
-						color = "#EC318C",
-						name = "md"
+						icon = ' ',
+						color = '#EC318C',
+						name = 'md'
 					},
 					java = {
-						icon = "",
-						color = "#B3C1A9",
-						name = "java"
+						icon = '',
+						color = '#B3C1A9',
+						name = 'java'
 					},
 					python = {
-						icon = " ",
-						color = "#f781bf",
-						name = "py"
+						icon = ' ',
+						color = '#f781bf',
+						name = 'py'
 					},
 				}
 			}
 		end
 	})
-	use({ "tpope/vim-repeat",     event = "CursorHold"      })
-	use({ "psliwka/vim-smoothie", keys = { '<c-u>', '<c-d>' }})
+	use({ 'tpope/vim-repeat',     event = 'CursorHold'      })
+	use({ 'psliwka/vim-smoothie', keys = { '<c-u>', '<c-d>' }})
 	use({
-		"mbbill/undotree",
-		cmd = { "UndotreeToggle" },
-		keys = { "<space>u" },
+		'mbbill/undotree',
+		cmd = { 'UndotreeToggle' },
+		keys = { '<space>u' },
 		config = function ()
 			vim.g.undotree_WindowLayout    = 4
 			vim.g.undotree_ShortIndicators = 1
 		end
 	})
 	use({
-		"windwp/windline.nvim",
-		after = { "hydra.nvim" },
+		'windwp/windline.nvim',
+		after = { 'hydra.nvim' },
 		config = function()
-			require("plugins.windline")
+			require('plugins.windline')
 		end,
 	})
 	use({
-		"romgrk/barbar.nvim",
-		after = "alpha-nvim",
+		'romgrk/barbar.nvim',
+		after = 'alpha-nvim',
 		requires = { 'kyazdani42/nvim-web-devicons' },
 		config = function()
-			require("plugins.barbar")
+			require('plugins.barbar')
 		end
 	})
 	use({
-		"chentoast/marks.nvim",
-		event = { "CursorHold" },
+		'chentoast/marks.nvim',
+		event = { 'CursorHold' },
 		config = function() require('marks').setup({}) end
 	})
-	use({ "nvim-lua/plenary.nvim", event = "VimEnter" })
+	use({ 'nvim-lua/plenary.nvim', event = 'VimEnter' })
 	use({
-		"lewis6991/gitsigns.nvim",
-		event = "VimEnter",
-		-- wants = "colorizer",
+		'lewis6991/gitsigns.nvim',
+		event = 'VimEnter',
+		-- wants = 'colorizer',
 		config = function()
-			require("gitsigns").setup({
+			require('gitsigns').setup({
 				on_attach = function(bufnr)
 					-- local gs = package.loaded.gitsigns
 					local function map(mode, l, r, opts)
@@ -147,9 +147,9 @@ require("packer").startup({ function(use)
 					internal = true,
 				},
 				preview_config = {
-					border   = "rounded",
-					style    = "minimal",
-					relative = "cursor",
+					border   = 'rounded',
+					style    = 'minimal',
+					relative = 'cursor',
 					row      = 0,
 					col      = 1
 				}
@@ -157,41 +157,41 @@ require("packer").startup({ function(use)
 		end
 	})
 	use({
-		"sindrets/diffview.nvim",
-		module = "neogit",
-		cmd    = "Neogit",
+		'sindrets/diffview.nvim',
+		module = 'neogit',
+		cmd    = 'Neogit',
 	})
 	use({
-		"TimUntersberger/neogit",
-		after    = "diffview.nvim",
-		cmd 		 = { "Neogit" },
+		'TimUntersberger/neogit',
+		after    = 'diffview.nvim',
+		cmd 		 = { 'Neogit' },
 		requires = {
-			"nvim-lua/plenary.nvim",
-			"sindrets/diffview.nvim"
+			'nvim-lua/plenary.nvim',
+			'sindrets/diffview.nvim'
 		},
 		config = function()
-			require("neogit").setup({
+			require('neogit').setup({
 				disable_signs = false,
 				disable_hint  = false,
 				disable_context_highlighting = false,
 				disable_commit_confirmation  = false,
-				signs = { section = { "", "" }, item = { "", "" } },
+				signs = { section = { '', '' }, item = { '', '' } },
 				integrations = { diffview = true },
 				disable_builtin_notifications = false,
 			})
 		end
 	})
 	use({
-		"akinsho/git-conflict.nvim",
+		'akinsho/git-conflict.nvim',
 		disable = true,
 		config = function ()
 			require('git-conflict').setup()
 		end
 	})
 	use({
-		"lewis6991/hover.nvim",
-		event = "LspAttach",
-		require = "nvim-lspconfig",
+		'lewis6991/hover.nvim',
+		event = 'LspAttach',
+		require = 'nvim-lspconfig',
 		config = function()
 			require('hover').setup {
 				init = function()
@@ -202,7 +202,7 @@ require("packer").startup({ function(use)
 					-- require('hover.providers.dictionary')
 				end,
 				preview_opts = {
-					border = "rounded",
+					border = 'rounded',
 				},
 				title = true
 			}
@@ -211,242 +211,242 @@ require("packer").startup({ function(use)
 		end
 	})
 	use({
-		"nvim-treesitter/nvim-treesitter",
+		'nvim-treesitter/nvim-treesitter',
 		opt = true,
-		run = ":TSUpdate",
-		module = "treesitter",
+		run = ':TSUpdate',
+		module = 'treesitter',
 		config = function()
-			require("plugins.treesitter")
+			require('plugins.treesitter')
 		end,
 	})
 	use({
-		"nvim-treesitter/nvim-treesitter-textobjects",
-		event = "CursorHold",
-		requires = "nvim-treesitter",
-		after = "nvim-treesitter",
+		'nvim-treesitter/nvim-treesitter-textobjects',
+		event = 'CursorHold',
+		requires = 'nvim-treesitter',
+		after = 'nvim-treesitter',
 	})
 	use({
-		"lukas-reineke/indent-blankline.nvim",
+		'lukas-reineke/indent-blankline.nvim',
 		disable = true,
-		after   = { "nvim-lspconfig" },
+		after   = { 'nvim-lspconfig' },
 		config = function()
-			require("indent_blankline").setup({
-				char = "▏",
+			require('indent_blankline').setup({
+				char = '▏',
 				show_trailing_blankline_indent = false,
 				show_first_indent_level = false,
-				buftype_exclude = { "terminal" },
-				filetype_exclude = { "help", "terminal", "dashboard", "packer", "lspinfo", "TelescopePrompt", "TelescopeResults" }
+				buftype_exclude = { 'terminal' },
+				filetype_exclude = { 'help', 'terminal', 'dashboard', 'packer', 'lspinfo', 'TelescopePrompt', 'TelescopeResults' }
 			})
 		end,
 	})
 	use({
-		"lukas-reineke/virt-column.nvim",
+		'lukas-reineke/virt-column.nvim',
 		disable = true,
-		event = { "BufWinEnter" },
+		event = { 'BufWinEnter' },
 		config = function()
-			require("virt-column").setup({
-				char = "│"
+			require('virt-column').setup({
+				char = '│'
 			})
 		end
 	})
 	use({
-		"xiyaowong/virtcolumn.nvim",
+		'xiyaowong/virtcolumn.nvim',
 		disable = false,
-		event   = "LspAttach",
-		ft      = { "gitcommit" },
+		event   = 'LspAttach',
+		ft      = { 'gitcommit' },
 		config = function ()
 			vim.g.virtcolumn_char     = '│'
 			vim.g.virtcolumn_priority = 10
 		end
 	})
 	use({
-		"ethanholz/nvim-lastplace",
-		after = "nvim-treesitter",
-		-- event = { "VimEnter" },
+		'ethanholz/nvim-lastplace',
+		after = 'nvim-treesitter',
+		-- event = { 'VimEnter' },
 		config = function()
 			require 'nvim-lastplace'.setup({
-				lastplace_ignore_buftype = { "quickfix", "nofile", "help" },
-				lastplace_ignore_filetype = { "gitcommit", "gitrebase", "svn", "hgcommit" },
+				lastplace_ignore_buftype = { 'quickfix', 'nofile', 'help' },
+				lastplace_ignore_filetype = { 'gitcommit', 'gitrebase', 'svn', 'hgcommit' },
 				lastplace_open_folds = true
 			})
 		end
 	})
 	use({
-		"lilydjwg/colorizer",
-		after  = "nvim-treesitter",
-		module = "colorizer",
-		-- after = "gitsigns.nvim",
-		-- ft = { "text", "lua", "markdown", "help" }
+		'lilydjwg/colorizer',
+		after  = 'nvim-treesitter',
+		module = 'colorizer',
+		-- after = 'gitsigns.nvim',
+		-- ft = { 'text', 'lua', 'markdown', 'help' }
 	})
-	use({ "wbthomason/packer.nvim" })
-	use({ "folke/lua-dev.nvim", event = "VimEnter" })
-	use({ "hrsh7th/cmp-nvim-lsp", event = "VimEnter" })
+	use({ 'wbthomason/packer.nvim' })
+	use({ 'folke/lua-dev.nvim', event = 'VimEnter' })
+	use({ 'hrsh7th/cmp-nvim-lsp', event = 'VimEnter' })
 	use({
-		"neovim/nvim-lspconfig",
-		requires = "cmp-nvim-lsp",
-		after    = "cmp-nvim-lsp",
-		-- event = "VimEnter",
+		'neovim/nvim-lspconfig',
+		requires = 'cmp-nvim-lsp',
+		after    = 'cmp-nvim-lsp',
+		-- event = 'VimEnter',
 		config = function()
-			require("plugins.lsp").setup()
+			require('plugins.lsp').setup()
 			require('lspconfig.ui.windows').default_options.border = 'rounded'
 		end,
 	})
 	use({
-		"jose-elias-alvarez/null-ls.nvim",
-		event = "LspAttach",
-		ft = { "gitcommit", "python", "c", "cpp", "java", "html", "css", "json", "sh", "vim" },
-		-- after = "nvim-lspconfig",
+		'jose-elias-alvarez/null-ls.nvim',
+		event = 'LspAttach',
+		ft = { 'gitcommit', 'python', 'c', 'cpp', 'java', 'html', 'css', 'json', 'sh', 'vim' },
+		-- after = 'nvim-lspconfig',
 		config = function()
 			require("plugins.null-ls").setup()
 		end,
 	})
 	use({
-		"williamboman/nvim-lsp-installer",
+		'williamboman/nvim-lsp-installer',
 		disable = true,
-		-- after = "nvim-lspconfig",
-		cmd = { "LspInstall", "LspInstallLog", "LspInstallInfo", "LspPrintInstalled", "LspUninstall", "LspUninstallAll" },
+		-- after = 'nvim-lspconfig',
+		cmd = { 'LspInstall', 'LspInstallLog', 'LspInstallInfo', 'LspPrintInstalled', 'LspUninstall', 'LspUninstallAll' },
 		config = function()
-			require("nvim-lsp-installer").setup({
+			require('nvim-lsp-installer').setup({
 				automatic_installation = false,
 				ui = {
-					border = "rounded",
+					border = 'rounded',
 					icons = {
-						server_installed   = "✓",
-						server_pending     = "➜",
-						server_uninstalled = "✗"
+						server_installed   = '✓',
+						server_pending     = '➜',
+						server_uninstalled = '✗'
 					}
 				}
 			})
 		end
 	})
 	use({
-		"williamboman/mason.nvim",
-		requires = "neovim/nvim-lspconfig",
-		cmd = { "Mason", "MasonInstall", "MasonUninstall", "MasonUninstallAll", "MasonLog" },
+		'williamboman/mason.nvim',
+		requires = 'neovim/nvim-lspconfig',
+		cmd = { 'Mason', 'MasonInstall', 'MasonUninstall', 'MasonUninstallAll', 'MasonLog' },
 		config = function ()
-			require("mason").setup({
+			require('mason').setup({
 				automatic_installation = false,
 				ui = {
-					border = "rounded",
+					border = 'rounded',
 					icons = {
-						package_installed   = "✓",
-						package_pending     = "➜",
-						package_uninstalled = "✗"
+						package_installed   = '✓',
+						package_pending     = '➜',
+						package_uninstalled = '✗'
 					}
 				}
 			})
 		end
 	})
 	use({
-		"williamboman/mason-lspconfig.nvim",
-		after = "mason.nvim",
-		cmd = { "LspInstall", "LspUninstall"},
+		'williamboman/mason-lspconfig.nvim',
+		after = 'mason.nvim',
+		cmd = { 'LspInstall', 'LspUninstall'},
 		config = function ()
-			require("mason-lspconfig").setup({
-				ensure_installed = { "sumneko_lua", "clangd", "tailwindcss", "html",
-				"bashls", "jedi_language_server", "pyls" },
+			require('mason-lspconfig').setup({
+				ensure_installed = { 'sumneko_lua', 'clangd', 'tailwindcss', 'html',
+				"bashls", 'jedi_language_server', 'pyls' },
 				automatic_installation = true,
 			})
 		end
 	})
 	use({
-		"weilbith/nvim-code-action-menu",
+		'weilbith/nvim-code-action-menu',
 		-- after = "nvim-lspconfig",
-		cmd = { "CodeActionMenu" }
+		cmd = { 'CodeActionMenu' }
 	})
 	use({
-		"SmiteshP/nvim-navic",
+		'SmiteshP/nvim-navic',
 		disable = true,
-		event = "LspAttach",
-		requires = "neovim/nvim-lspconfig",
-		after = "nvim-lspconfig",
+		event = 'LspAttach',
+		requires = 'neovim/nvim-lspconfig',
+		after = 'nvim-lspconfig',
 		config = function()
-			require("nvim-navic").setup({
+			require('nvim-navic').setup({
 				highlight             = false,
-				separator             = "  ",
+				separator             = '  ',
 				depth_limit           = 2,
-				depth_limit_indicator = "…",
+				depth_limit_indicator = '…',
 			})
 			vim.g.navic_silence = true
 		end
 	})
-	use({"nanotee/sqls.nvim", ft = { "sql" }})
+	use({"nanotee/sqls.nvim", ft = { 'sql' }})
 	use({
-		"https://gitlab.com/yorickpeterse/nvim-dd.git",
-		after = "null-ls.nvim",
+		'https://gitlab.com/yorickpeterse/nvim-dd.git',
+		after = 'null-ls.nvim',
 		config = function()
-			require("dd").setup({ timeout = 1 })
+			require('dd').setup({ timeout = 1 })
 		end
 	})
 	use({
-		-- "bellini666/trouble.nvim",
-		"folke/trouble.nvim",
-		event = "LspAttach",
-		after = "nvim-dd.git",
+		-- 'bellini666/trouble.nvim',
+		'folke/trouble.nvim',
+		event = 'LspAttach',
+		after = 'nvim-dd.git',
 		config = function()
-			require("trouble").setup({
+			require('trouble').setup({
 				auto_open    = false,
 				auto_close   = true,
 				padding      = false,
 				height       = 5,
-				signs        = { error = "", warning = "", hint = "", information = "", other = "", },
+				signs        = { error = '', warning = '', hint = '', information = '', other = '', },
 				track_cursor = true,
 
 				action_keys = {
-					close          = "q",
-					cancel         = "<esc>",
-					refresh        = "r",
-					jump           = { "<cr>", "<tab>" },
-					jump_close     = { "o" },
-					toggle_mode    = "m",
-					toggle_preview = "P",
-					hover          = "K",
-					preview        = "p",
-					close_folds    = { "zM", "zm" },
-					open_folds     = { "zR", "zr" },
-					toggle_fold    = { "zA", "za" },
-					previous       = "k",
-					next           = "j"
+					close          = 'q',
+					cancel         = '<esc>',
+					refresh        = 'r',
+					jump           = { '<cr>', '<tab>' },
+					jump_close     = { 'o' },
+					toggle_mode    = 'm',
+					toggle_preview = 'P',
+					hover          = 'K',
+					preview        = 'p',
+					close_folds    = { 'zM', 'zm' },
+					open_folds     = { 'zR', 'zr' },
+					toggle_fold    = { 'zA', 'za' },
+					previous       = 'k',
+					next           = 'j'
 				},
 			})
 		end,
 	})
 	use({
-		"ray-x/lsp_signature.nvim",
-		event = "LspAttach",
-		wants = "nvim-lspconfig",
+		'ray-x/lsp_signature.nvim',
+		event = 'LspAttach',
+		wants = 'nvim-lspconfig',
 		config = function()
-			require("lsp_signature").setup({
+			require('lsp_signature').setup({
 				bind 						= true,
 				wrap            = true,
 				floating_window = false,
 				doc_lines       = 0,
 				hint_enable     = true,
-				hint_prefix     = "🐼 ",
-				hint_scheme     = "String",
-				hi_parameter    = "LspSignatureActiveParameter",
+				hint_prefix     = '🐼 ',
+				hint_scheme     = 'String',
+				hi_parameter    = 'LspSignatureActiveParameter',
 				handler_opts    = {
-					border = "rounded"
+					border = 'rounded'
 				}
 			})
 		end,
 	})
 	use({
-		"j-hui/fidget.nvim",
+		'j-hui/fidget.nvim',
 		opt   = true,
-		-- branch = "menu-border",
-		event = "LspAttach",
-		-- after = { "nvim-lspconfig" },
+		-- branch = 'menu-border',
+		event = 'LspAttach',
+		-- after = { 'nvim-lspconfig' },
 		config = function()
-			require("fidget").setup({
+			require('fidget').setup({
 				text = {
-					spinner   = "moon",
-					done      = "",
-					commenced = "Gestartet",
-					completed = "Fertig",
+					spinner   = 'moon',
+					done      = '',
+					commenced = 'Gestartet',
+					completed = 'Fertig',
 				},
 				window = {
-					border = "rounded",
+					border = 'rounded',
 				},
 				timer = {
 					spinner_rate = 250,
@@ -457,53 +457,53 @@ require("packer").startup({ function(use)
 		end
 	})
 	use({
-		"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+		'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
 		disable = false,
-		event = "LspAttach",
+		event = 'LspAttach',
 		config = function()
-			require("lsp_lines").setup()
-			vim.keymap.set( "", "<Leader>L", require("lsp_lines").toggle, { desc = "Toggle lsp_lines" })
+			require('lsp_lines').setup()
+			vim.keymap.set( '', '<Leader>L', require('lsp_lines').toggle, { desc = 'Toggle lsp_lines' })
 			vim.defer_fn(function() vim.diagnostic.config({ virtual_lines = false }) end, 50)
 		end,
 	})
-	-- use({ "RRethy/vim-illuminate", after = "fidget.nvim" })
-	use({ "nvim-treesitter/playground", event = "LspAttach" })
+	-- use({ 'RRethy/vim-illuminate', after = 'fidget.nvim' })
+	use({ 'nvim-treesitter/playground', event = 'LspAttach' })
 	use({
-		"rcarriga/nvim-notify",
-		event = "VimEnter",
+		'rcarriga/nvim-notify',
+		event = 'VimEnter',
 		config = function()
-			require("notify").setup({ max_width = 40 })
-			vim.notify = require("notify")
+			require('notify').setup({ max_width = 40 })
+			vim.notify = require('notify')
 		end
 	})
 	use({
-		"mfussenegger/nvim-jdtls",
-		ft = { "java" }
+		'mfussenegger/nvim-jdtls',
+		ft = { 'java' }
 	})
 	use({
-		"simrat39/symbols-outline.nvim",
+		'simrat39/symbols-outline.nvim',
 		disable = true,
 		config = function ()
-			require("symbols-outline").setup()
+			require('symbols-outline').setup()
 		end
 	})
 	use({
-		"stevearc/dressing.nvim",
+		'stevearc/dressing.nvim',
 		disable = false,
 		opt     = true,
-		event   = "VimEnter",
-		-- module  = "dressing",
-		-- after   = { "yanky.nvim" },
-		config  = function() require("dressing").setup() end
+		event   = 'VimEnter',
+		-- module  = 'dressing',
+		-- after   = { 'yanky.nvim' },
+		config  = function() require('dressing').setup() end
 	})
 	use({
-		"gbprod/yanky.nvim",
-		disable = false,
-		requires = "dressing.nvim",
-		-- after = "dressing.nvim",
-		cmd = { "YankyRingHistory" },
+		'gbprod/yanky.nvim',
+		disable = true,
+		requires = 'dressing.nvim',
+		-- after = 'dressing.nvim',
+		cmd = { 'YankyRingHistory' },
 		config = function()
-			require("yanky").setup({
+			require('yanky').setup({
 				highlight = {
 					on_put = true,
 					on_yank = true,
@@ -513,95 +513,72 @@ require("packer").startup({ function(use)
 					enabled = true,
 				},
 			})
-			vim.keymap.set("n", "p",  "<Plug>(YankyPutAfter)",   {})
-			vim.keymap.set("n", "P",  "<Plug>(YankyPutBefore)",  {})
-			vim.keymap.set("x", "p",  "<Plug>(YankyPutAfter)",   {})
-			vim.keymap.set("x", "P",  "<Plug>(YankyPutBefore)",  {})
-			vim.keymap.set("n", "gp", "<Plug>(YankyGPutAfter)",  {})
-			vim.keymap.set("n", "gP", "<Plug>(YankyGPutBefore)", {})
-			vim.keymap.set("x", "gp", "<Plug>(YankyGPutAfter)",  {})
-			vim.keymap.set("x", "gP", "<Plug>(YankyGPutBefore)", {})
+			vim.keymap.set('n', 'p',  '<Plug>(YankyPutAfter)',   {})
+			vim.keymap.set('n', 'P',  '<Plug>(YankyPutBefore)',  {})
+			vim.keymap.set('x', 'p',  '<Plug>(YankyPutAfter)',   {})
+			vim.keymap.set('x', 'P',  '<Plug>(YankyPutBefore)',  {})
+			vim.keymap.set('n', 'gp', '<Plug>(YankyGPutAfter)',  {})
+			vim.keymap.set('n', 'gP', '<Plug>(YankyGPutBefore)', {})
+			vim.keymap.set('x', 'gp', '<Plug>(YankyGPutAfter)',  {})
+			vim.keymap.set('x', 'gP', '<Plug>(YankyGPutBefore)', {})
 		end
 	})
 	use({
-		"antoinemadec/FixCursorHold.nvim",
+		'antoinemadec/FixCursorHold.nvim',
 		event = { 'CursorHold' },
-		-- after = "nvim-notify",
+		-- after = 'nvim-notify',
 	})
-	use({ "rafamadriz/friendly-snippets", event = { "InsertEnter" }})
-	use({ "onsails/lspkind.nvim", event =  "InsertEnter" })
+	use({ 'rafamadriz/friendly-snippets', event = { 'InsertEnter' }})
+	-- use({ 'onsails/lspkind.nvim', event =  'InsertEnter' })
 	use({
-		"hrsh7th/nvim-cmp",
+		'hrsh7th/nvim-cmp',
 		disable = false,
-		-- after = "friendly-snippets",
+		-- after = 'friendly-snippets',
 		event = 'InsertEnter',
-		wants = { "LuaSnip" },
+		wants = { 'LuaSnip' },
 		requires = {
-			{ "hrsh7th/cmp-nvim-lsp" },
-			-- { "petertriho/cmp-git",       event = "VimEnter" },
-			{ "hrsh7th/cmp-buffer",       after = "nvim-cmp" },
-			{ "hrsh7th/cmp-path",         after = "nvim-cmp" },
-			{ "saadparwaiz1/cmp_luasnip", after = "nvim-cmp" },
-			{ "davidsierradz/cmp-conventionalcommits", 	after = "nvim-cmp" },
-			-- "f3fora/cmp-spell",
-			{ "hrsh7th/cmp-nvim-lua", after = "nvim-cmp" },
-			-- { "ray-x/cmp-treesitter", after = "nvim-cmp" },
-			-- "hrsh7th/cmp-cmdline",
-			-- "lukas-reineke/cmp-under-comparator",
-			-- "hrsh7th/cmp-nvim-lsp-document-symbol",
-			-- "hrsh7th/cmp-calc",
-			-- "f3fora/cmp-spell",
-			-- "hrsh7th/cmp-nvim-lsp-signature-help",
-			-- "hrsh7th/cmp-emoji",
-			-- "kdheepak/cmp-latex-symbols",
-			-- { "andersevenrud/cmp-tmux", after = "nvim-cmp" },
-			-- "petertriho/cmp-git",
-			-- {
-			-- 	"L3MON4D3/LuaSnip",
-			-- 	after = "nvim-cmp",
-			-- 	wants = "friendly-snippets",
-				-- config = function()
-				-- 	require("config.luasnip").setup()
-				-- end,
-			-- },
-			-- { "rafamadriz/friendly-snippets", after = "nvim-cmp" },
-
-			{ "onsails/lspkind.nvim", after = "nvim-cmp" },
+			{ 'hrsh7th/cmp-nvim-lsp'                         },
+			{ 'hrsh7th/cmp-buffer',       after = 'nvim-cmp' },
+			{ 'hrsh7th/cmp-path',         after = 'nvim-cmp' },
+			{ 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' },
+			{ 'hrsh7th/cmp-nvim-lua',     after = 'nvim-cmp' },
+			{ 'onsails/lspkind.nvim',     after = 'nvim-cmp' },
+			{ 'davidsierradz/cmp-conventionalcommits', 	after = 'nvim-cmp' },
 		},
 		config = function()
 			require('plugins.nvim-cmp').setup()
 		end,
 	})
 	use({
-		"L3MON4D3/LuaSnip",
+		'L3MON4D3/LuaSnip',
 		opt   = true,
-		requires = "rafamadriz/friendly-snippets",
-		-- after = "nvim-cmp",
-		event = "InsertEnter",
+		requires = { 'rafamadriz/friendly-snippets' },
+		-- after = 'nvim-cmp',
+		event = 'InsertEnter',
 		config = function()
-			require("luasnip").config.set_config({ history = true, updateevents = "TextChanged,TextChangedI", })
-			require("luasnip/loaders/from_vscode").lazy_load()
+			require('luasnip').config.set_config({ history = true, updateevents = 'TextChanged,TextChangedI', })
+			require('luasnip/loaders/from_vscode').lazy_load()
 		end,
 	})
 	use({
-		"AckslD/nvim-FeMaco.lua",
+		'AckslD/nvim-FeMaco.lua',
 		disable = true,
-		ft = { "markdown" },
+		ft = { 'markdown' },
 		config = function () end
 	})
 	use({
-		"echasnovski/mini.nvim",
-		event = "CursorHold",
+		'echasnovski/mini.nvim',
+		event = 'CursorHold',
 		config = function()
-			require("plugins.mini").setup()
+			require('plugins.mini').setup()
 		end,
 	})
 	use({
-		"numToStr/Comment.nvim",
-		event = "CursorHold",
-		keys = { "gc", "gcc", "gb", "gbc", "<A-;>" },
+		'numToStr/Comment.nvim',
+		event = 'CursorHold',
+		keys = { 'gc', 'gcc', 'gb', 'gbc', '<A-;>' },
 		config = function()
-			require("Comment").setup({
+			require('Comment').setup({
 				padding = true,
 				sticky  = true,
 				ignore  = nil,
@@ -633,23 +610,23 @@ require("packer").startup({ function(use)
 		end
 	})
 	use({
-		"folke/which-key.nvim",
-		-- event = "VimEnter",
-		keys = { "<space>" },
+		'folke/which-key.nvim',
+		-- event = 'VimEnter',
+		keys = { '<space>' },
 		config = function()
-			local wk = require("which-key")
+			local wk = require('which-key')
 			wk.setup({
 				window = {
-					border   = "rounded",
-					position = "bottom",
+					border   = 'rounded',
+					position = 'bottom',
 					margin   = { 1, 0, 1, 0 },
 					padding  = { 2, 2, 2, 2 },
 					winblend = 0
 				},
 				icons = {
-					breadcrumb = "»",
-					separator  = "➡  ",
-					group      = " ",
+					breadcrumb = '»',
+					separator  = '➡  ',
+					group      = ' ',
 				},
 				plugins = {
 					marks     = false,
@@ -669,59 +646,59 @@ require("packer").startup({ function(use)
 					g            = true,
 				},
 				key_labels = {
-					["<space>"] = "SPC",
-					["<cr>"]    = "RET",
-					["<tab>"]   = "TAB",
+					['<space>'] = 'SPC',
+					['<cr>']    = 'RET',
+					['<tab>']   = 'TAB',
 				},
 			})
 			-- wk.register({}, {})
 		end,
 	})
-	use({ 'tweekmonster/startuptime.vim', cmd = { "StartupTime" }})
+	use({ 'tweekmonster/startuptime.vim', cmd = { 'StartupTime' }})
 	use({
-		"mfussenegger/nvim-dap",
+		'mfussenegger/nvim-dap',
 		opt   = true,
-		-- keys  = { "<f5>" },
-		ft = { "python" },
-		-- event = "VimEnter",
-		wants = { "dressing.nvim", "nvim-dap-virtual-text", "nvim-dap-ui", "nvim-dap-python" },
+		-- keys  = { '<f5>' },
+		ft = { 'python' },
+		-- event = 'VimEnter',
+		wants = { 'dressing.nvim', 'nvim-dap-virtual-text', 'nvim-dap-ui', 'nvim-dap-python' },
 		requires = {
-			-- "Pocco81/DAPInstall.nvim",
-			"theHamsta/nvim-dap-virtual-text",
-			"rcarriga/nvim-dap-ui",
-			"mfussenegger/nvim-dap-python",
+			-- 'Pocco81/DAPInstall.nvim',
+			'theHamsta/nvim-dap-virtual-text',
+			'rcarriga/nvim-dap-ui',
+			'mfussenegger/nvim-dap-python',
 		},
-		module = "dap",
+		module = 'dap',
 		config = function()
 			require('plugins.nvim-dap').setup()
 		end
 	})
 	use ({
-		"mfussenegger/nvim-dap-python",
-		after = { "nvim-dap" },
-		requires = "mfussenegger/nvim-dap",
-		-- ft = { "python" },
+		'mfussenegger/nvim-dap-python',
+		after = { 'nvim-dap' },
+		requires = 'mfussenegger/nvim-dap',
+		-- ft = { 'python' },
 		config = function ()
 			require('dap-python').setup('python', {})
 		end
 	})
 	use ({
-		"rcarriga/nvim-dap-ui",
-		after = { "nvim-dap" },
+		'rcarriga/nvim-dap-ui',
+		after = { 'nvim-dap' },
 		config = function()
-			require("dapui").setup()
+			require('dapui').setup()
 		end,
-		module = "dapui"
+		module = 'dapui'
 	})
 	use({
-		"theHamsta/nvim-dap-virtual-text",
-		after = { "nvim-dap" },
-		config = function() require("nvim-dap-virtual-text").setup() end
+		'theHamsta/nvim-dap-virtual-text',
+		after = { 'nvim-dap' },
+		config = function() require('nvim-dap-virtual-text').setup() end
 	})
 	use({
-		"Yggdroot/LeaderF",
-		cmd = { "Leaderf", "LeaderfRgInteractive" },
-		run = "<cmd>LeaderfInstallCExtension<cr>",
+		'Yggdroot/LeaderF',
+		cmd = { 'Leaderf', 'LeaderfRgInteractive' },
+		run = '<cmd>LeaderfInstallCExtension<cr>',
 		config = function()
 			vim.g.Lf_WindowPosition        = 'popup'
 			vim.g.Lf_WorkingDirectoryMode  = 'Ac'
@@ -735,34 +712,34 @@ require("packer").startup({ function(use)
 			vim.g.Lf_UseVersionControlTool = 0
 			vim.g.Lf_PopupShowStatusline   = 0
 			vim.g.Lf_PopupShowBorder       = 1
-			vim.g.Lf_PopupBorders          = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" }
+			vim.g.Lf_PopupBorders          = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' }
 			vim.g.Lf_ShowRelativePath      = 0
-			vim.g.Lf_StlSeparator          = { left = "", right = "", font = "" }
+			vim.g.Lf_StlSeparator          = { left = '', right = '', font = '' }
 
 			local function map(mode, l, r, opts)
 				opts = opts or {}
 				-- opts.buffer = bufnr
 				vim.keymap.set(mode, l, r, opts)
 			end
-			map("n", "<leader>fo", "<cmd>Leaderf file<CR>")
-			map("n", "<leader>fr", "<cmd>Leaderf mru<CR>")
-			map("n", "<leader>ft", "<cmd>Leaderf bufTag<CR>")
-			map("n", "<leader>d/", "<cmd>LeaderfRgInteractive<CR>")
+			map('n', '<leader>fo', '<cmd>Leaderf file<CR>')
+			map('n', '<leader>fr', '<cmd>Leaderf mru<CR>')
+			map('n', '<leader>ft', '<cmd>Leaderf bufTag<CR>')
+			map('n', '<leader>d/', '<cmd>LeaderfRgInteractive<CR>')
 		end
 	})
 
 	if vim.g.is_linux then
-		use({ "ojroques/vim-oscyank", cmd = { 'OSCYank', 'OSCYankReg' }})
+		use({ 'ojroques/vim-oscyank', cmd = { 'OSCYank', 'OSCYankReg' }})
 	end
 	use({
 		'p00f/nvim-ts-rainbow',
-		event = "LspAttach",
-		-- after = "nvim-treesitter",
+		event = 'LspAttach',
+		-- after = 'nvim-treesitter',
 		requires = { 'nvim-treesitter' },
 	})
 	use({
 		'romgrk/nvim-treesitter-context',
-		event = "CursorHold",
+		event = 'CursorHold',
 		requires = { 'nvim-treesitter' },
 		config = function()
 			require('treesitter-context').setup({
@@ -773,10 +750,10 @@ require("packer").startup({ function(use)
 		end
 	})
 	use ({
-		"lewis6991/spellsitter.nvim",
+		'lewis6991/spellsitter.nvim',
 		opt = true,
 		ft  = { 'text' },
-		-- event = "CursorHold",
+		-- event = 'CursorHold',
 		config = function()
 			require("spellsitter").setup()
 		end
@@ -789,21 +766,21 @@ require("packer").startup({ function(use)
 		end
 	})
 	use({
-		"RRethy/nvim-treesitter-endwise",
+		'RRethy/nvim-treesitter-endwise',
 		event = "InsertEnter",
-		requires = { "nvim-treesitter" },
+		requires = { 'nvim-treesitter' },
 	})
 	use({
-		"RRethy/nvim-treesitter-textsubjects",
+		'RRethy/nvim-treesitter-textsubjects',
 		disable = true
 	})
 	use({
-		"windwp/nvim-autopairs",
-		event = "InsertEnter",
-		module = { "nvim-autopairs.completion.cmp", "nvim-autopairs" },
+		'windwp/nvim-autopairs',
+		event = 'InsertEnter',
+		module = { 'nvim-autopairs.completion.cmp', 'nvim-autopairs' },
 		config = function()
 			require('nvim-autopairs').setup({
-				disable_filetype          = { "TelescopePrompt", "vim" },
+				disable_filetype          = { 'TelescopePrompt', 'vim' },
 				ignored_next_char         = string.gsub([[ [%w%%%'%[%"%.] ]], "%s+", ""),
 				enable_moveright          = true,
 				enable_afterquote         = true, -- add bracket pairs after quote
@@ -814,7 +791,7 @@ require("packer").startup({ function(use)
 				map_c_h                   = true,
 				map_cr                    = false
 			})
-			require("nvim-autopairs").add_rules(require "nvim-autopairs.rules.endwise-lua")
+			require('nvim-autopairs').add_rules(require 'nvim-autopairs.rules.endwise-lua')
 
 			local npairs = require'nvim-autopairs'
 			local Rule   = require'nvim-autopairs.rule'
@@ -847,16 +824,16 @@ require("packer").startup({ function(use)
 		end
 	})
 	use ({
-		"windwp/nvim-ts-autotag",
-		ft = { "html", "javascript", "xml", "markdown" },
-		wants  = "nvim-treesitter",
-		-- event  = "InsertEnter",
+		'windwp/nvim-ts-autotag',
+		ft = { 'html', 'javascript', 'xml', 'markdown' },
+		wants  = 'nvim-treesitter',
+		-- event  = 'InsertEnter',
 		config = function()
-			require("nvim-ts-autotag").setup()
+			require('nvim-ts-autotag').setup()
 		end,
 	})
 	use({
-		"mhinz/vim-startify",
+		'mhinz/vim-startify',
 		disable = true,
 		config  = function()
 		vim.g.startify_custom_header = {
@@ -896,9 +873,9 @@ require("packer").startup({ function(use)
 		end
 	})
 	use ({
-		"goolord/alpha-nvim",
+		'goolord/alpha-nvim',
 		disable  = false,
-		event    = "VimEnter",
+		event    = 'VimEnter',
 		requires = { 'kyazdani42/nvim-web-devicons' },
 		config   = function ()
 			-- require'alpha'.setup(require'alpha.themes.startify'.config)
@@ -913,78 +890,78 @@ require("packer").startup({ function(use)
 				[[     \/_/\/_/\/____/\/___/  \/__/    \/_/\/_/\/_/\/_/]],
 			}
 			startify.section.top_buttons.val = {
-				startify.button( "e", "  New file" , "<cmd>ene <BAR> startinsert <CR>"),
+				startify.button( 'e', '  New file' , '<cmd>ene <BAR> startinsert <CR>'),
 			}
 			startify.nvim_web_devicons.enabled = true
 			startify.section.bottom_buttons.val = {
-				startify.button( "q", "  Quit this Screen" , "<cmd>bdelete<CR>"),
-				startify.button( "X", "  Quit NV!M" , "<cmd>qall<CR>"),
+				startify.button( 'q', '  Quit this Screen' , '<cmd>bdelete<CR>'),
+				startify.button( 'X', '  Quit NV!M' , '<cmd>qall<CR>'),
 			}
 			startify.section.footer = {
-				{ type = "text", val = "footer" },
+				{ type = 'text', val = 'footer' },
 			}
 			-- ignore filetypes in MRU
 
 			startify.mru_opts.ignore = function(path, _)
 				return
-				(string.find(path, "COMMIT_EDITMSG"))
+				(string.find(path, 'COMMIT_EDITMSG'))
 			end
 			alpha.setup(startify.config)
 		end
 	})
 	-- The missing auto-completion for cmdline!
 	use({
-		"gelguy/wilder.nvim",
+		'gelguy/wilder.nvim',
 		-- opt = false,
-		event = "CmdlineEnter",
-		-- wants = "nvim-web-devicons",
+		event = 'CmdlineEnter',
+		-- wants = 'nvim-web-devicons',
 		run = '<cmd>UpdateRemotePlugins<cr>',
 		requires = {
-			{ "romgrk/fzy-lua-native", event = "CmdlineEnter" },
-			-- { "nixprime/cpsm",         event = "CmdlineEnter" },
-			"kyazdani42/nvim-web-devicons"
+			{ 'romgrk/fzy-lua-native', event = 'CmdlineEnter' },
+			-- { 'nixprime/cpsm',         event = 'CmdlineEnter' },
+			'kyazdani42/nvim-web-devicons'
 		},
 		config = function()
-			require("plugins.wilder")
+			require('plugins.wilder')
 		end
 	})
 	use({ 'anuvyklack/hydra.nvim',
-		event = "VimEnter",
-		requires = { "anuvyklack/keymap-layer.nvim", "lilydjwg/colorizer" },
-		after = "gitsigns.nvim",
+		event = 'VimEnter',
+		requires = { 'anuvyklack/keymap-layer.nvim', 'lilydjwg/colorizer' },
+		after = 'gitsigns.nvim',
 		config = function()
-			require("plugins.hydra")
+			require('plugins.hydra')
 		end
 	})
 	use({
-		"junegunn/vim-easy-align",
+		'junegunn/vim-easy-align',
 		disable = false,
-		keys = { "ga" },
-		cmd = { "EasyAlign", "LiveEasyAlign" },
+		keys = { 'ga' },
+		cmd = { 'EasyAlign', 'LiveEasyAlign' },
 		config = function ()
 			local function map(mode, l, r, opts)
 				opts = opts or {}
 				vim.keymap.set(mode, l, r, opts)
 			end
-			map({ "n", "x" }, "ga", "<Plug>(EasyAlign)", { desc = "Easy Align" })
+			map({ 'n', 'x' }, 'ga', '<Plug>(EasyAlign)', { desc = 'Easy Align' })
 		end
-		-- event = { "CursorHold" }
+		-- event = { 'CursorHold' }
 
 	})
 	use ({
 		'dccsillag/magma-nvim',
 		disable = true,
-		ft = { "python" },
+		ft = { 'python' },
 		run = '<cmd>UpdateRemotePlugins<cr>'
 	})
-	-- use({ "tpope/vim-surround"              , event = "VimEnter" })
+	-- use({ 'tpope/vim-surround'              , event = 'VimEnter' })
 	use({
-		"kylechui/nvim-surround",
-		-- event = "InsertEnter",
+		'kylechui/nvim-surround',
+		-- event = 'InsertEnter',
 		keys = {{'n', 'ys'}, {'n', 'ds'}, {'n', 'cs'}, {'x', 'S'}},
 		disable = false,
 		config = function ()
-			require("nvim-surround").setup({
+			require('nvim-surround').setup({
 				highlight = {
 					duration = 300,
 			}
@@ -992,8 +969,8 @@ require("packer").startup({ function(use)
 	end
 	})
 	use ({
-    "machakann/vim-sandwich",
-		event = "InsertEnter",
+    'machakann/vim-sandwich',
+		event = 'InsertEnter',
 		disable = true,
 		config = function ()
 			vim.cmd("runtime macros/sandwich/keymap/surround.vim")
@@ -1063,7 +1040,7 @@ require("packer").startup({ function(use)
 		end
 	})
 	use({
-		"jinh0/eyeliner.nvim",
+		'jinh0/eyeliner.nvim',
 		disable = true,
 		config = function()
 			require('eyeliner').setup {
@@ -1072,33 +1049,33 @@ require("packer").startup({ function(use)
 			}
 		end
 	})
-	-- use({ "michaeljsmith/vim-indent-object",    event = { "VimEnter"   }})
-	-- use({ "mg979/vim-visual-multi",             event = { "VimEnter" }})
-	-- use({ "machakann/vim-swap",                 event = { "VimEnter"   }})
-	-- use({ "jeetsukumaran/vim-pythonsense",      ft    = { "python"     }})
-	use({ "kana/vim-textobj-user",              opt = true})
+	-- use({ 'michaeljsmith/vim-indent-object',    event = { 'VimEnter'   }})
+	-- use({ 'mg979/vim-visual-multi',             event = { 'VimEnter' }})
+	-- use({ 'machakann/vim-swap',                 event = { 'VimEnter'   }})
+	-- use({ 'jeetsukumaran/vim-pythonsense',      ft    = { 'python'     }})
+	use({ 'kana/vim-textobj-user',              opt = true})
 	use({
-		"coderifous/textobj-word-column.vim",
-		requires = "vim-textobj-user",
-		keys  = { "vic", "viC" }
+		'coderifous/textobj-word-column.vim',
+		requires = 'vim-textobj-user',
+		keys  = { 'vic', 'viC' }
 	})
-	use({ "ojroques/vim-oscyank",               cmd   = { 'OSCYank' , 'OSCYankReg' }})
+	use({ 'ojroques/vim-oscyank',               cmd   = { 'OSCYank' , 'OSCYankReg' }})
 	use({
-		"antoyo/vim-licenses",
-		cmd = { "Gplv2", "Apache", "Mit" },
+		'antoyo/vim-licenses',
+		cmd = { 'Gplv2', 'Apache', 'Mit' },
 		config = function ()
 			vim.g.licenses_copyright_holders_name = 'Ratheesh <ratheeshreddy@gmail.com>'
 			vim.g.licenses_authors_name           = 'Ratheesh S'
 			vim.g.licenses_default_commands       = { 'Gplv2', 'Apache', 'Mit' }
 		end
 	})
-	use({ "andymass/vim-matchup", keys = { "%" }, event = { "CursorHold" }})
+	use({ 'andymass/vim-matchup', keys = { '%' }, event = { 'CursorHold' }})
 	use ({
-		"metakirby5/codi.vim",
-		ft  = { "python" },
-		cmd = { "Codi" },
+		'metakirby5/codi.vim',
+		ft  = { 'python' },
+		cmd = { 'Codi' },
 		config = function ()
-			-- vim.g.codi.virtual_text_prefix = ">>> "
+			-- vim.g.codi.virtual_text_prefix = '>>> '
 			-- vim.g.codi.interpreters = {
 			-- 	python= {
 			-- 		bin = 'python',
@@ -1108,40 +1085,40 @@ require("packer").startup({ function(use)
 		end
 	})
 	use({
-		"jpalardy/vim-slime",
-		-- event = "VimEnter",
-		ft = { "python" },
+		'jpalardy/vim-slime',
+		-- event = 'VimEnter',
+		ft = { 'python' },
 		config = function ()
-			vim.g.slime_target = "tmux"
-			vim.g.slime_default_config = { socket_name = "default", target_pane = "{last}" }
+			vim.g.slime_target = 'tmux'
+			vim.g.slime_default_config = { socket_name = 'default', target_pane = '{last}' }
 			vim.cmd([[ let g:slime_default_config = { 'socket_name': get(split($TMUX, ','), 0), 'target_pane': '{top-right}' } ]])
 			vim.g.slime_bracketed_paste = 0
 		end
 	})
 	use({
-		"hanschen/vim-ipython-cell",
-		-- event = "VimEnter",
-		ft = { "python" },
-		requires = "vim-slime",
+		'hanschen/vim-ipython-cell',
+		-- event = 'VimEnter',
+		ft = { 'python' },
+		requires = 'vim-slime',
 		config = function()
 		end
 	})
 	use({
-		"bootleq/vim-cycle",
+		'bootleq/vim-cycle',
 		disable = false,
-		-- event = "VimEnter",
+		-- event = 'VimEnter',
 		keys = { '+', '-' },
 		config = function()
-			require("plugins.vim-cycle")
+			require('plugins.vim-cycle')
 		end
 	})
 	use({
-		"AndrewRadev/splitjoin.vim",
+		'AndrewRadev/splitjoin.vim',
 		disable = true,
-		keys = { "gS", "gJ" },
+		keys = { 'gS', 'gJ' },
 	})
 	use({
-		"nguyenvukhang/nvim-toggler",
+		'nguyenvukhang/nvim-toggler',
 		opt     = true,
 		disable = true,
 		keys    = { '-' },
@@ -1168,18 +1145,18 @@ require("packer").startup({ function(use)
 		end
 	})
 	use({
-		"winston0410/range-highlight.nvim",
+		'winston0410/range-highlight.nvim',
 		disable = true,
-		event = "VimEnter",
+		event = 'VimEnter',
 		requires = { "winston0410/cmd-parser.nvim" },
 		config = function ()
-			require("range-highlight").setup()
+			require('range-highlight').setup()
 		end
 	})
-	use({ "ratheesh/hiPairs", disable = true, event = "LspAttach" })
+	use({ 'ratheesh/hiPairs', disable = true, event = 'LspAttach' })
 	use({
-		"dhruvasagar/vim-table-mode",
-		cmd = { "TableModeToggle" , "TableModeEnable", "TableModeDisable", "TableModeRealign" },
+		'dhruvasagar/vim-table-mode',
+		cmd = { 'TableModeToggle' , 'TableModeEnable', 'TableModeDisable', 'TableModeRealign' },
 		config = function ()
 			vim.g.table_mode_corner_corner   = '+'
 			vim.g.table_mode_header_fillchar = '='
@@ -1187,20 +1164,20 @@ require("packer").startup({ function(use)
 		end
 	})
 	use({
-		"nvim-neorg/neorg",
+		'nvim-neorg/neorg',
 		disable  = true,
 		opt      = true,
-		ft       = { "norg" },
-		requires = { "nvim-treesitter/nvim-treesitter", "nvim-lua/plenary.nvim" },
+		ft       = { 'norg' },
+		requires = { 'nvim-treesitter/nvim-treesitter', 'nvim-lua/plenary.nvim' },
 		config   = function()
 			require('neorg').setup({
 				load = {
-					["core.defaults"]    = {},
-					["core.norg.dirman"] = {
+					['core.defaults']    = {},
+					['core.norg.dirman'] = {
 						config = {
 							workspaces = {
-								journal = "~/notes/work",
-								home    = "~/notes/home",
+								journal = '~/notes/work',
+								home    = '~/notes/home',
 							}
 						}
 					}
@@ -1209,9 +1186,9 @@ require("packer").startup({ function(use)
 		end,
 	})
 	use({
-		"lewis6991/satellite.nvim",
-		event = "CursorHold",
-		requires = "nvim-lspconfig",
+		'lewis6991/satellite.nvim',
+		event = 'CursorHold',
+		requires = 'nvim-lspconfig',
 		config=function ()
 			require('satellite').setup {
 				current_only = false,
@@ -1252,10 +1229,10 @@ require("packer").startup({ function(use)
 		end
 	})
 	use({
-		"b0o/incline.nvim",
+		'b0o/incline.nvim',
 		opt = true,
-		event = "WinNew",
-		-- after = "nvim-web-devicons",
+		event = 'WinNew',
+		-- after = 'nvim-web-devicons',
 		config = function ()
 			require('incline').setup({
 				render = function(props)
@@ -1264,21 +1241,21 @@ require("packer").startup({ function(use)
 					return {
 						{ icon, guifg = icon_color },
 						{ ' ' },
-						{ filename,  guifg = "#B6919E", guibg = nil, gui = "italic" },
+						{ filename,  guifg = '#B6919E', guibg = nil, gui = 'italic' },
 					}
 				end,
 				window = {
 					zindex = 60,
-					width  = "fit",
-					placement = { horizontal = "right", vertical = "top" },
+					width  = 'fit',
+					placement = { horizontal = 'right', vertical = 'top' },
 					margin = {
 						horizontal = { left = 1, right = 1 },
 						vertical   = { bottom = 0, top = 1 },
 					},
 					padding      = { left = 1, right = 1 },
-					padding_char = " ",
+					padding_char = ' ',
 					winhighlight = {
-						Normal = "TreesitterContext",
+						Normal = 'TreesitterContext',
 					},
 				},
 				ignore = {
@@ -1296,7 +1273,7 @@ require("packer").startup({ function(use)
 			})
 		end
 	})
-	-- use({ 'dstein64/vim-startuptime', cmd = { "StartupTime" }})
+	-- use({ 'dstein64/vim-startuptime', cmd = { 'StartupTime' }})
 
 	if packer_bootstrap then
 		require('packer').sync()
