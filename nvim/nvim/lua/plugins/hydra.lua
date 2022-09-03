@@ -4,6 +4,8 @@
 
 local Hydra = require('hydra')
 local gitsigns = require('gitsigns')
+local highlight = require('nvim-highlight-colors')
+
 local hint = [[
  _j_: next hunk       _k_: prev hunk       ^ ^
  _d_: show deleted    _D_: Word diff       ^ ^
@@ -30,8 +32,8 @@ Hydra({
 			gitsigns.toggle_signs(true)
 			gitsigns.toggle_linehl(true)
 			gitsigns.toggle_word_diff(true)
-			if package.loaded['colorizer'] ~= nil then
-				vim.cmd([[ColorClear]])
+			if package.loaded['nvim-highlight-colors'] ~= nil then
+				highlight.turnOff()
 			end
 		end,
 		on_exit = function()
@@ -39,9 +41,8 @@ Hydra({
 			gitsigns.toggle_linehl(false)
 			gitsigns.toggle_deleted(false)
 			gitsigns.toggle_word_diff(false)
-			if package.loaded['colorizer'] ~= nil then
-				vim.cmd([[ColorHighlight]])
-				vim.cmd "echo" -- clear the echo area
+			if package.loaded['nvim-highlight-colors'] ~= nil then
+				highlight.turnOn()
 			end
 		end
 	},
