@@ -240,7 +240,19 @@ require('packer').startup({ function(use)
 		end
 	})
 	use({
+		'brenoprata10/nvim-highlight-colors',
+		disable = false,
+		event =  { 'VimEnter' },
+		config = function ()
+			require('nvim-highlight-colors').setup ({
+				render = 'background',
+				enable_tailwind = false
+			})
+		end
+	})
+	use({
 		'lilydjwg/colorizer',
+		disable = true,
 		after  = 'nvim-treesitter',
 		module = 'colorizer',
 	})
