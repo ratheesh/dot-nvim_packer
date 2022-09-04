@@ -116,6 +116,7 @@ function M.setup()
 	local lspconfig = require("lspconfig")
 	local capabilities = vim.lsp.protocol.make_client_capabilities()
 	capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+	-- capabilities.textDocument.completion.completionItem.snippetSupport = true
 	capabilities.textDocument.completion.completionItem.resolveSupport = {
 		properties = { "documentation", "detail", "additionalTextEdits" },
 	}
@@ -248,13 +249,22 @@ function M.setup()
 	-- Lua
 	lspconfig.sumneko_lua.setup(require("lua-dev").setup({
 		lspconfig = {
-			on_init = on_init,
-			on_attach = on_attach,
+			on_init      = on_init,
+			on_attach    = on_attach,
 			capabilities = capabilities,
 			cmd = { "lua-language-server" },
 			settings = {
 				Lua = {
+					workspace = {
+						-- Make the server aware of Neovim runtime files
+						library = {
+							[vim.fn.expand('$VIMRUNTIME/lua')] = true,
+							[vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
+						},
+					},
+					telemetry = { enable = false },
 					diagnostics = {
+						globals = { 'vim' },
 						disable = {
 							"missing-parameter",
 							"cast-local-type",
