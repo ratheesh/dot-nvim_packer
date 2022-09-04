@@ -39,6 +39,9 @@ function M.setup()
 		with_diagnostics_code(ls.builtins.diagnostics.shellcheck),
 		ls.builtins.diagnostics.flake8,
 		-- ls.builtins.diagnostics.mypy,
+		-- ls.builtins.diagnostics.selene,
+		ls.builtins.diagnostics.djlint,
+		ls.builtins.diagnostics.commitlint,
 		ls.builtins.diagnostics.gitlint.with {
       extra_args = { '--contrib=contrib-title-conventional-commits', '--ignore=body-is-missing' },
     },
@@ -46,12 +49,13 @@ function M.setup()
 
 		-- completion
 		-- ls.builtins.completion.spell,
+		ls.builtins.completion.luasnip,
 
 		-- hover
 		ls.builtins.hover.dictionary,
 
 		-- code actions
-		ls.builtins.code_actions.refactoring,
+		-- ls.builtins.code_actions.refactoring,
 		ls.builtins.code_actions.gitsigns,
 		ls.builtins.code_actions.gitrebase,
 	}
@@ -75,7 +79,9 @@ function M.setup()
 					group = augroup,
 					buffer = bufnr,
 					callback = function()
-						if vim.bo.filetype == 'python' or vim.bo.filetype == 'html' then
+						if vim.bo.filetype == 'python' or vim.bo.filetype == 'html' or
+							vim.bo.filetype == 'css' or vim.bo.sh or
+							vim.bo.filetype == 'gitcommit' then
 							vim.lsp.buf.format({bufnr = bufnr})
 						end
 					end,
