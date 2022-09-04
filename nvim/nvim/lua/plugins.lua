@@ -3,8 +3,8 @@
 -- Plugin Configuration
 
 -- local fn = vim.fn
-local packer_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-local packer_compiled_path = vim.fn.stdpath("config") .. "/lua/packer_compiled.lua"
+local packer_path = vim.fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
+local packer_compiled_path = vim.fn.stdpath('config') .. '/lua/packer_compiled.lua'
 local packer_bootstrap = false
 
 _G.__luacache_config = {
@@ -29,7 +29,7 @@ _G.lazy = function(plugin, timer)
 	if plugin then
 		timer = timer or 0
 		vim.defer_fn(function()
-			require("packer").loader(plugin)
+			require('packer').loader(plugin)
 		end, timer)
 	end
 end
@@ -38,7 +38,7 @@ end
 if vim.fn.empty(vim.fn.glob(packer_path)) > 0 then
   packer_bootstrap = true
   vim.fn.system({ 'rm', '-f', packer_compiled_path })
-	print("Bootstrapping Packer!, Cloning new copy to", packer_path)
+	print('Bootstrapping Packer!, Cloning new copy to', packer_path)
   vim.fn.system({
     'git', 'clone', '--depth', '1',
     'https://github.com/wbthomason/packer.nvim',
@@ -58,7 +58,7 @@ if vim.fn.filereadable(packer_compiled_path) == 1 then
 end
 
 require('packer').startup({ function(use)
-	use("lewis6991/impatient.nvim")
+	use('lewis6991/impatient.nvim')
 	use({
 		'kyazdani42/nvim-web-devicons',
 		event = 'VimEnter',
@@ -276,7 +276,7 @@ require('packer').startup({ function(use)
 		ft = { 'gitcommit', 'python', 'c', 'cpp', 'java', 'html', 'css', 'json', 'sh', 'vim' },
 		-- after = 'nvim-lspconfig',
 		config = function()
-			require("plugins.null-ls").setup()
+			require('plugins.null-ls').setup()
 		end,
 	})
 	use({
@@ -304,7 +304,7 @@ require('packer').startup({ function(use)
 		config = function ()
 			require('mason-lspconfig').setup({
 				ensure_installed = { 'sumneko_lua', 'clangd', 'tailwindcss', 'html',
-				"bashls", 'jedi_language_server', 'pyls' },
+				'bashls', 'jedi_language_server', 'pyls' },
 				automatic_installation = true,
 			})
 		end
@@ -313,7 +313,7 @@ require('packer').startup({ function(use)
 		'weilbith/nvim-code-action-menu',
 		cmd = { 'CodeActionMenu' }
 	})
-	use({"nanotee/sqls.nvim", ft = { 'sql' }})
+	use({'nanotee/sqls.nvim', ft = { 'sql' }})
 	use({
 		'https://gitlab.com/yorickpeterse/nvim-dd.git',
 		after = 'null-ls.nvim',
@@ -650,7 +650,7 @@ require('packer').startup({ function(use)
 		ft  = { 'text' },
 		-- event = 'CursorHold',
 		config = function()
-			require("spellsitter").setup()
+			require('spellsitter').setup()
 		end
 	})
 	use ({
@@ -662,7 +662,7 @@ require('packer').startup({ function(use)
 	})
 	use({
 		'RRethy/nvim-treesitter-endwise',
-		event = "InsertEnter",
+		event = 'InsertEnter',
 		requires = { 'nvim-treesitter' },
 	})
 	use({
@@ -1038,22 +1038,22 @@ config = {
 	},
 	compile_path = vim.fn.stdpath('config') .. '/lua/packer_compiled.lua',
 	display = {
-		prompt_border   = "rounded",
+		prompt_border   = 'rounded',
 		non_interactive = false,
-		open_fn = function() return require("packer.util").float({ border = "rounded" }) end
+		open_fn = function() return require('packer.util').float({ border = 'rounded' }) end
 	},
 },
 })
 
 local status, _ = pcall(require, 'packer_compiled')
 if not status then
-	vim.notify("Error requiring packer_compiled.lua: run PackerSync to fix!")
+	vim.notify('Error requiring packer_compiled.lua: run PackerSync to fix!')
 end
 
 -- Avoid notification of few annoying repeatitive messages
 local notify = vim.notify
 vim.notify = function(msg, ...)
-	if msg:match("Reason: breakpoint") or msg:match("Reason: step") then
+	if msg:match('Reason: breakpoint') or msg:match('Reason: step') then
 		return
 	end
 
