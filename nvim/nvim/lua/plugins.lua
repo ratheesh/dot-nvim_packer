@@ -204,6 +204,7 @@ require('packer').startup({ function(use)
 	})
 	use({
 		'nvim-treesitter/nvim-treesitter',
+		event = { 'VimEnter' },
 		opt = true,
 		run = ':TSUpdate',
 		module = 'treesitter',
