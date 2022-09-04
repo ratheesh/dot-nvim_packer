@@ -438,9 +438,9 @@ require('packer').startup({ function(use)
 		disable = false,
 		-- after = 'friendly-snippets',
 		event = 'InsertEnter',
-		wants = { 'LuaSnip' },
 		requires = {
-			{ 'hrsh7th/cmp-nvim-lsp'                         },
+			{ 'L3MON4D3/LuaSnip'     },
+			{ 'hrsh7th/cmp-nvim-lsp' },
 			{ 'hrsh7th/cmp-buffer',       after = 'nvim-cmp' },
 			{ 'hrsh7th/cmp-path',         after = 'nvim-cmp' },
 			{ 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' },
@@ -456,8 +456,8 @@ require('packer').startup({ function(use)
 		'L3MON4D3/LuaSnip',
 		opt   = true,
 		requires = { 'rafamadriz/friendly-snippets' },
-		-- after = 'nvim-cmp',
-		event = 'InsertEnter',
+		after = 'nvim-cmp',
+		-- event = 'InsertEnter',
 		config = function()
 			require('luasnip').config.set_config({ history = true, updateevents = 'TextChanged,TextChangedI', })
 			require('luasnip/loaders/from_vscode').lazy_load()
