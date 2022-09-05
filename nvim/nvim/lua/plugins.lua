@@ -113,7 +113,15 @@ require('packer').startup({ function(use)
 		end,
 	})
 	use({
+		'akinsho/bufferline.nvim',
+		requires = 'kyazdani42/nvim-web-devicons',
+		config = function ()
+			require('plugins.bufline')
+		end
+	})
+	use({
 		'romgrk/barbar.nvim',
+		disable = true,
 		after = 'alpha-nvim',
 		requires = { 'kyazdani42/nvim-web-devicons' },
 		config = function()
