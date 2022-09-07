@@ -190,6 +190,18 @@ require('packer').startup({ function(use)
 		end
 	})
 	use({
+		'simrat39/inlay-hints.nvim',
+		after = 'nvim-lspconfig',
+		config = function ()
+			require('inlay-hints').setup({
+				only_current_line = true,
+				-- eol = {
+				-- 	right_align = true,
+				-- }
+			})
+		end
+	})
+	use({
 		'lewis6991/hover.nvim',
 		event = 'LspAttach',
 		require = 'nvim-lspconfig',

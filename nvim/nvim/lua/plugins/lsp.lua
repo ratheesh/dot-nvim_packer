@@ -107,6 +107,8 @@ function M.setup()
         require('sqls').on_attach(client, bufnr)
     end
 
+		require('inlay-hints').on_attach(client, bufnr)
+
 		--[[ if client.name ~= 'pyright' or client.name ~= "sqls" then
 			navic.attach(client, bufnr)
 		end ]]
@@ -318,6 +320,9 @@ function M.setup()
 			cmd = { "lua-language-server" },
 			settings = {
 				Lua = {
+					hint = {
+						enable = true,
+					},
 					workspace = {
 						-- Make the server aware of Neovim runtime files
 						library = {
