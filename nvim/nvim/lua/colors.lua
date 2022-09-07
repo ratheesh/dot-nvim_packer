@@ -141,9 +141,9 @@ hl(0 , "NvimInternalError"	 		, { fg = "#BF616A" , bg = nil       , italic = fal
 
 -- Gitsigns
 -- sign column
-hl(0 , "GitSignsAdd"                , { fg = "#81A1C1" , bg = nil       , italic = false , bold = true , underline = false })
-hl(0 , "GitSignsChange"             , { fg = "#606672" , bg = nil       , italic = false , bold = true , underline = false })
-hl(0 , "GitSignsModified"           , { fg = "#C586C0" , bg = nil       , italic = false , bold = true , underline = false })
+hl(0 , "GitSignsAdd"                , { fg = "#81A1C1" , bg = nil       , italic = false , bold = false , underline = false })
+hl(0 , "GitSignsChange"             , { fg = "#606672" , bg = nil       , italic = false , bold = false , underline = false })
+hl(0 , "GitSignsModified"           , { fg = "#C586C0" , bg = nil       , italic = false , bold = false , underline = false })
 
 -- preview hunk
 hl(0 , "GitSignsAddPreview"         , { fg = "#A3BE8C" , bg = "#2a384e" , italic = false , bold = false , underline = false })
