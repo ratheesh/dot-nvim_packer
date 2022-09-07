@@ -132,10 +132,10 @@ local config = {
 
 -- This starts a new client & server,
 -- or attaches to an existing client & server depending on the `root_dir`.
-jdtls.start_or_attach(config)
+-- jdtls.start_or_attach(config)
 
 -- Add the commands
-require("jdtls.setup").add_commands()
+-- require("jdtls.setup").add_commands()
 -- vim.api.nvim_exec(
 --   [[
 -- command! -buffer -nargs=? -complete=custom,v:lua.require'jdtls'._complete_compile JdtCompile lua require('jdtls').compile(<f-args>)
