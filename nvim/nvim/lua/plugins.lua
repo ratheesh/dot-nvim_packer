@@ -63,32 +63,32 @@ require('packer').startup({ function(use)
 		'kyazdani42/nvim-web-devicons',
 		event = 'VimEnter',
 		config = function()
-			require'nvim-web-devicons'.setup {
+			require('nvim-web-devicons').setup {
 				override = {
 					sh = {
-						icon = '',
-						color = '#f781bf',
-						name = 'sh'
+						icon  = '',
+						color = '#994C5F',
+						name  = 'sh'
 					},
 					lua = {
-						icon = '',
+						icon  = '',
 						color = '#A070C8',
-						name = 'lua'
+						name  = 'lua'
 					},
 					md = {
-						icon = ' ',
+						icon  = ' ',
 						color = '#EC318C',
-						name = 'md'
+						name  = 'md'
 					},
 					java = {
-						icon = '',
+						icon  = '',
 						color = '#B3C1A9',
-						name = 'java'
+						name  = 'java'
 					},
 					python = {
-						icon = ' ',
+						icon  = ' ',
 						color = '#f781bf',
-						name = 'py'
+						name  = 'py'
 					},
 				}
 			}
