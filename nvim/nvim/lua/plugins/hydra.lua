@@ -4,7 +4,6 @@
 
 local Hydra = require('hydra')
 local gitsigns = require('gitsigns')
-local highlight = require('nvim-highlight-colors')
 
 local hint = [[
  _j_: next hunk       _k_: prev hunk       ^ ^
@@ -32,18 +31,14 @@ Hydra({
 			gitsigns.toggle_signs(true)
 			gitsigns.toggle_linehl(true)
 			gitsigns.toggle_word_diff(true)
-			if package.loaded['nvim-highlight-colors'] ~= nil then
-				highlight.turnOff()
-			end
+			require('nvim-highlight-colors').turnOff()
 		end,
 		on_exit = function()
 			gitsigns.toggle_signs(true)
 			gitsigns.toggle_linehl(false)
 			gitsigns.toggle_deleted(false)
 			gitsigns.toggle_word_diff(false)
-			if package.loaded['nvim-highlight-colors'] ~= nil then
-				highlight.turnOn()
-			end
+			require('nvim-highlight-colors').turnOn()
 		end
 	},
 	mode = { 'n', 'x' },
