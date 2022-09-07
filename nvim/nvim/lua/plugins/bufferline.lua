@@ -2,7 +2,9 @@
 -- License: MIT
 -- Bufferline Plugin Configuration
 
-require('bufferline').setup({
+local bufferline = require('bufferline')
+
+bufferline.setup({
 	options = {
 		mode      = 'buffers',
 		numbers   = "ordinal",
@@ -62,6 +64,15 @@ require('bufferline').setup({
 			fg = '#1E2430',
 			bg = '#383a4c'
 		},
+		tab = {
+			fg = '#988C99',
+			bg = '#383a4c'
+		},
+		tab_selected = {
+			fg = '#BF616A',
+			bg = '#404a5c',
+			bold = true,
+		},
 		numbers = {
 			bg = '#383a4c'
 		},
@@ -69,6 +80,7 @@ require('bufferline').setup({
 			bg = '#383a4c'
 		},
 		numbers_selected = {
+			fg = '#F7CAB8',
 			bg = '#404a5c',
 			italic = false,
 			bold = false,
@@ -80,7 +92,7 @@ require('bufferline').setup({
 			bg = '#383a4c'
 		},
 		modified_selected = {
-			fg = '#E79498',
+			fg = '#E23D75',
 			bg = '#404a5c',
 		},
 		duplicate_selected = {
@@ -96,18 +108,6 @@ require('bufferline').setup({
 			bg = '#383a4c'
 		},
 		--[[
-		tab = {
-		fg = '<colour-value-here>',
-		bg = '<colour-value-here>'
-		},
-		tab_selected = {
-		fg = tabline_sel_bg,
-		bg = '<colour-value-here>'
-		},
-		tab_close = {
-		fg = '<colour-value-here>',
-		bg = '<colour-value-here>'
-		},
 		diagnostic = {
 		fg = '<colour-value-here>',
 		bg = '<colour-value-here>',
@@ -287,19 +287,19 @@ local function map(mode, lhs, rhs, opts)
 end
 
 -- Move to previous/next
-map('n', '<Space>h', '<Cmd>BufferLineCyclePrev<CR>',    { desc = "Goto Previous Buffer" })
-map('n', '<Space>l', '<Cmd>BufferLineCycleNext<CR>',    { desc = "Goto Next Buffer" 		})
+map('n', '<Leader>h', '<Cmd>BufferLineCyclePrev<CR>',    { desc = "Goto Previous Buffer" })
+map('n', '<Leader>l', '<Cmd>BufferLineCycleNext<CR>',    { desc = "Goto Next Buffer" 		})
 
 -- jump to buffer index
-map('n', '<Space>1', '<Cmd>BufferLineGoToBuffer 1<CR>', { desc = "Goto Buffer 1"        })
-map('n', '<Space>2', '<Cmd>BufferLineGoToBuffer 2<CR>', { desc = "Goto Buffer 2"        })
-map('n', '<Space>3', '<Cmd>BufferLineGoToBuffer 3<CR>', { desc = "Goto Buffer 3"        })
-map('n', '<Space>4', '<Cmd>BufferLineGoToBuffer 4<CR>', { desc = "Goto Buffer 4"        })
-map('n', '<Space>5', '<Cmd>BufferLineGoToBuffer 5<CR>', { desc = "Goto Buffer 5"        })
-map('n', '<Space>6', '<Cmd>BufferLineGoToBuffer 6<CR>', { desc = "Goto Buffer 6"        })
-map('n', '<Space>7', '<Cmd>BufferLineGoToBuffer 7<CR>', { desc = "Goto Buffer 7"        })
-map('n', '<Space>8', '<Cmd>BufferLineGoToBuffer 8<CR>', { desc = "Goto Buffer 8"        })
-map('n', '<Space>9', '<Cmd>BufferLineGoToBuffer 9<CR>', { desc = "Goto Buffer 9"        })
+map('n', '<Leader>1', '<Cmd>BufferLineGoToBuffer 1<CR>', { desc = "Goto Buffer 1"        })
+map('n', '<Leader>2', '<Cmd>BufferLineGoToBuffer 2<CR>', { desc = "Goto Buffer 2"        })
+map('n', '<Leader>3', '<Cmd>BufferLineGoToBuffer 3<CR>', { desc = "Goto Buffer 3"        })
+map('n', '<Leader>4', '<Cmd>BufferLineGoToBuffer 4<CR>', { desc = "Goto Buffer 4"        })
+map('n', '<Leader>5', '<Cmd>BufferLineGoToBuffer 5<CR>', { desc = "Goto Buffer 5"        })
+map('n', '<Leader>6', '<Cmd>BufferLineGoToBuffer 6<CR>', { desc = "Goto Buffer 6"        })
+map('n', '<Leader>7', '<Cmd>BufferLineGoToBuffer 7<CR>', { desc = "Goto Buffer 7"        })
+map('n', '<Leader>8', '<Cmd>BufferLineGoToBuffer 8<CR>', { desc = "Goto Buffer 8"        })
+map('n', '<Leader>9', '<Cmd>BufferLineGoToBuffer 9<CR>', { desc = "Goto Buffer 9"        })
 
 map('n', '<A-p>',    '<Cmd>BufferLineTogglePin<CR>',    { desc = "Pin Buffer"           })
 map("n", '<A-d>',    '<Cmd>bdelete<CR>',                { desc = 'Delete Current Buf'   })
