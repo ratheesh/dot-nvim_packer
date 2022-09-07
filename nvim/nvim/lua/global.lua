@@ -13,7 +13,7 @@ vim.opt.scrolloff      = 5
 vim.opt.whichwrap:append "<,>,[,]"
 vim.opt.title          = true
 vim.opt.clipboard      = "unnamedplus"
-vim.opt.cmdheight      = 1
+vim.opt.cmdheight      = 0
 vim.opt.smartindent    = true
 vim.opt.tabstop        = 2
 vim.opt.signcolumn     = "yes"
