@@ -48,25 +48,25 @@ Hydra({
 			if vim.wo.diff then return ']c' end
 			vim.schedule(function() gitsigns.next_hunk() end)
 			return '<Ignore>'
-		end, { expr = true } },
+		end, { expr = true }},
 		{ 'k', function()
 			if vim.wo.diff then return '[c' end
 			vim.schedule(function() gitsigns.prev_hunk() end)
 			return '<Ignore>'
-		end, { expr = true } },
-		{ 's', gitsigns.stage_hunk, { silent = true } },
-		{ 'u', gitsigns.undo_stage_hunk, { desc = 'Undo Staged Hunk' } },
-		{ 'S', gitsigns.stage_buffer, { desc = 'Stage buffer' } },
-		{ 'r', gitsigns.reset_hunk, { desc = 'Reset Hunk' } },
-		{ 'p', gitsigns.preview_hunk, { desc = 'Preview Hunk' } },
-		{ 'd', gitsigns.toggle_deleted, { nowait = true } },
-		{ 'D', gitsigns.toggle_word_diff, { nowait = true } },
-		{ 'b', gitsigns.blame_line, {desc = "Blame Line"} },
+		end, { expr = true }},
+		{ 's', gitsigns.stage_hunk,       { silent = true             }},
+		{ 'u', gitsigns.undo_stage_hunk,  { desc = 'Undo Staged Hunk' }},
+		{ 'S', gitsigns.stage_buffer,     { desc = 'Stage buffer'     }},
+		{ 'r', gitsigns.reset_hunk,       { desc = 'Reset Hunk'       }},
+		{ 'p', gitsigns.preview_hunk,     { desc = 'Preview Hunk'     }},
+		{ 'd', gitsigns.toggle_deleted,   { nowait = true             }},
+		{ 'D', gitsigns.toggle_word_diff, { nowait = true             }},
+		{ 'b', gitsigns.blame_line,       {desc = "Blame Line"        }},
 		{ 'B', function() gitsigns.blame_line { full = true } end },
-		{ '/', gitsigns.show, { exit = true } },
-		{ '<Enter>', '<cmd>Neogit<CR>', { exit = true } },
-		{ '<Esc>',   nil, { exit = true, nowait = true } },
-		{ 'q',       nil, { exit = true, nowait = true } },
+		{ '/',       gitsigns.show,     { exit = true }},
+		{ '<Enter>', '<cmd>Neogit<CR>', { exit = true }},
+		{ '<Esc>',   nil,               { exit = true,     nowait = true }},
+		{ 'q',       nil,               { exit = true,     nowait = true }},
 	}
 })
 
