@@ -41,7 +41,7 @@ function M.setup()
 		-- ls.builtins.diagnostics.mypy,
 		-- ls.builtins.diagnostics.selene,
 		ls.builtins.diagnostics.djlint,
-		ls.builtins.diagnostics.commitlint,
+		-- ls.builtins.diagnostics.commitlint,
 		ls.builtins.diagnostics.gitlint.with {
       extra_args = { '--contrib=contrib-title-conventional-commits', '--ignore=body-is-missing' },
     },
