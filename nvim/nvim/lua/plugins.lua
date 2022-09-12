@@ -335,7 +335,7 @@ require('packer').startup({ function(use)
 		config = function ()
 			require('mason-lspconfig').setup({
 				ensure_installed = { 'sumneko_lua', 'clangd', 'tailwindcss', 'html',
-				'bashls', 'jedi_language_server', 'pyls' },
+				'bashls', 'jedi_language_server', 'pyls', 'jdtls' },
 				automatic_installation = true,
 			})
 		end
