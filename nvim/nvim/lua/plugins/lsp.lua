@@ -314,11 +314,16 @@ function M.setup()
 	})
 
 	-- css
-	lspconfig.tailwindcss.setup({
+	lspconfig.cssls.setup({
 		on_init      = on_init,
 		on_attach    = on_attach,
 		capabilities = capabilities,
 	})
+	--[[ lspconfig.tailwindcss.setup({
+		on_init      = on_init,
+		on_attach    = on_attach,
+		capabilities = capabilities,
+	}) ]]
 
 	-- Lua
 	lspconfig.sumneko_lua.setup(require("lua-dev").setup({
