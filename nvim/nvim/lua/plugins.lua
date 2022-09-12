@@ -711,10 +711,10 @@ require('packer').startup({ function(use)
 				map_bs                    = true,
 				map_c_w                   = true,
 				map_c_h                   = true,
-				map_cr                    = false,
+				map_cr                    = true,
 
 				fast_wrap = {
-					map            = '<c-t>',
+					map            = '<A-e>',
 					chars          = { '{', '[', '(', '"', "'" },
 					pattern        = string.gsub([[ [%'%"%)%>%]%)%}%,] ]], '%s+', ''),
 					end_key        = '$',
