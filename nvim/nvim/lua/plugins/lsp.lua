@@ -109,6 +109,10 @@ function M.setup()
 
 		require('inlay-hints').on_attach(client, bufnr)
 
+		if client.server_capabilities.colorProvider then
+			require("document-color").buf_attach(bufnr)
+		end
+
 		--[[ if client.name ~= 'pyright' or client.name ~= "sqls" then
 			navic.attach(client, bufnr)
 		end ]]
@@ -122,7 +126,12 @@ function M.setup()
 	capabilities.textDocument.completion.completionItem.resolveSupport = {
 		properties = { "documentation", "detail", "additionalTextEdits" },
 	}
+	capabilities.textDocument.colorProvider = { dynamicRegistration = true }
 	-- capabilities.offsetEncoding = "utf-32"
+
+		if capabilities.semanticTokensProvider and capabilities.semanticTokensProvider.full then
+			vim.cmd [[autocmd BufEnter,CursorHold,InsertLeave <buffer> lua vim.lsp.buf.semantic_tokens_full()]]
+		end
 
 	lspconfig.vimls.setup({ on_init = on_init, on_attach = on_attach, capabilities = capabilities })
 	lspconfig.bashls.setup({ on_init = on_init, on_attach = on_attach, capabilities = capabilities })

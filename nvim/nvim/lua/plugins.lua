@@ -262,6 +262,16 @@ require('packer').startup({ function(use)
 		end
 	})
 	use({
+		'mrshmllow/document-color.nvim',
+		disable = false,
+		event   = 'LspAttach',
+		config  = function ()
+			require('document-color').setup({
+				mode = 'background',
+			})
+		end
+	})
+	use({
 		'brenoprata10/nvim-highlight-colors',
 		disable = false,
 		event =  { 'VimEnter' },
