@@ -107,7 +107,7 @@ function M.setup()
         require('sqls').on_attach(client, bufnr)
     end
 
-		require('inlay-hints').on_attach(client, bufnr)
+		-- require('inlay-hints').on_attach(client, bufnr)
 
 		if client.server_capabilities.colorProvider then
 			require("document-color").buf_attach(bufnr)

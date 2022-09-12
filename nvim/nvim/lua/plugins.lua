@@ -191,6 +191,7 @@ require('packer').startup({ function(use)
 	})
 	use({
 		'simrat39/inlay-hints.nvim',
+		disable = true,
 		after = 'nvim-lspconfig',
 		config = function ()
 			require('inlay-hints').setup({
