@@ -49,7 +49,7 @@ function M.setup()
 
 		-- completion
 		-- ls.builtins.completion.spell,
-		ls.builtins.completion.luasnip,
+		-- ls.builtins.completion.luasnip,
 
 		-- hover
 		ls.builtins.hover.dictionary,
