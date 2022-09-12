@@ -318,7 +318,7 @@ basic.lsp_client = {
 	hl_colors = {
 		sep_before       = { 'LSPClientBg', 'NormalBg' },
 		sep_before_empty = { 'FileInfoBg', 'NormalBg' },
-		lsp_cl           = { 'LSPClientFg', 'LSPClientBg', 'italic' },
+		lsp_cl           = { 'LSPClientFg', 'LSPClientBg' },
 		sep_after        = { 'LSPClientBg', 'NormalBg' },
 	},
 	text = function()
@@ -516,7 +516,7 @@ windline.setup({
 		colors.FileInfoBg    = "#D3869B"
 
 		colors.IndentFg      = "#eeeeee"
-		colors.IndentBg      = "#605FAB"
+		colors.IndentBg      = "#5E6169"
 		colors.SearchCntFg   = "#4EB899"
 
 		colors.LineNoFg      = "#eeeeee"
