@@ -37,6 +37,7 @@ vim.opt.undoreload     = 200
 vim.opt.shell          = "/bin/bash"
 vim.opt.lazyredraw     = true
 vim.opt.mouse          = "a"
+vim.opt.mousemoveevent = true
 vim.opt.pumheight      = 12
 vim.opt.pumblend       = 8
 vim.opt.completeopt    = "menu,menuone,noselect"
