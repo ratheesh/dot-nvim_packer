@@ -14,10 +14,8 @@ require("nvim-treesitter.configs").setup({
 	-- indent    = { enable = true },
 	matchup   = { enable = true },
 	autopairs = { enable = true },
-	autotag   = { enable = true },
-	endwise   = {
-		enable  = true,
-	},
+	autotag   = { enable = false },
+	endwise   = { enable = true },
 	textsubjects = {
 		enable         = false,
 		prev_selection = ',',
@@ -57,7 +55,7 @@ require("nvim-treesitter.configs").setup({
 	rainbow   = {
 		enable         = true,
 		extended_mode  = true,
-		max_file_lines = nil,
+		max_file_lines = 2000,
 		-- colors         = {
 		-- 	"#e79498",
 		-- 	"#4682B4",
