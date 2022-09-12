@@ -325,6 +325,14 @@ function M.setup()
 		capabilities = capabilities,
 	}) ]]
 
+	require'lspconfig'.cssmodules_ls.setup {
+		on_init = on_init,
+		on_attach = on_attach,
+		init_options = {
+			camelCase = 'dashes',
+		},
+	}
+
 	-- Lua
 	lspconfig.sumneko_lua.setup(require("lua-dev").setup({
 		lspconfig = {
