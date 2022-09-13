@@ -43,15 +43,23 @@ function M.setup()
 		},
 		sources = {
 			-- { name = 'nvim_lsp_signature_help' },
-			{ name = "path",     keyword_length = 2 },
-			{ name = "nvim_lsp", keyword_length = 2 },
-			{ name = "luasnip",  keyword_length = 2 },
-			{ name = "buffer",   keyword_length = 2 },
-			{ name = "nvim_lua", keyword_length = 2 },
-			{ name = "conventionalcommits", keyword_length = 2 },
-			-- { name = "treesitter",          keyword_length = 2 },
-			-- { name = "tmux",                keyword_length = 2 },
-			-- { name = "latex_symbols", keyword_length = 2 },
+			{ name = "path"     },
+			{ name = "nvim_lsp" },
+			{ name = "luasnip"  },
+			{
+				name = 'buffer',
+				option = {
+					get_bufnrs = function()
+						local bufs = {}
+						for _, win in ipairs(vim.api.nvim_list_wins()) do
+							bufs[vim.api.nvim_win_get_buf(win)] = true
+						end
+						return vim.tbl_keys(bufs)
+					end
+				},
+			},
+			{ name = "nvim_lua" },
+			{ name = "conventionalcommits" },
 		},
 		experimental = {
 			ghost_text = { hl_group = 'CmpGhostText' }
