@@ -97,7 +97,7 @@ function M.setup()
 			["<C-u>"]     = mapping(mapping.scroll_docs(-4), { "i" }),
 			["<C-d>"]     = mapping(mapping.scroll_docs(4),  { "i" }),
 			['<C-Space>'] = mapping.complete(),
-			["<C-e>"]     = mapping.abort(),
+			-- ["<C-e>"]     = mapping.abort(),
 			['<C-y>']     = mapping.confirm({ select = true }),
 			["<CR>"]      = mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false }),
 			['<Tab>'] 		= mapping(function(fallback)
