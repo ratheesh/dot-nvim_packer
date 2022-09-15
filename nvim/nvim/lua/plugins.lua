@@ -996,6 +996,12 @@ require('packer').startup({ function(use)
 		end
 	})
 	use({
+	'uga-rosa/ccc.nvim',
+		disable = false,
+		opt = true,
+		cmd = { 'CccPick' },
+	})
+	use({
 		'majutsushi/tagbar',
 		disable = false,
 		opt = true,
