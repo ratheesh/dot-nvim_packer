@@ -274,7 +274,7 @@ require('packer').startup({ function(use)
 	})
 	use({
 		'brenoprata10/nvim-highlight-colors',
-		disable = false,
+		disable = true,
 		event =  { 'VimEnter' },
 		config = function ()
 			require('nvim-highlight-colors').setup ({
@@ -284,10 +284,13 @@ require('packer').startup({ function(use)
 		end
 	})
 	use({
-		'lilydjwg/colorizer',
-		disable = true,
+		'NvChad/nvim-colorizer.lua',
+		disable = false,
 		after  = 'nvim-treesitter',
 		module = 'colorizer',
+		config = function ()
+			require'colorizer'.setup()
+		end
 	})
 	use({ 'wbthomason/packer.nvim' })
 	use({ 'folke/lua-dev.nvim', event = 'VimEnter' })
@@ -874,7 +877,7 @@ require('packer').startup({ function(use)
 	})
 	use({ 'anuvyklack/hydra.nvim',
 		event = 'VimEnter',
-		requires = { 'anuvyklack/keymap-layer.nvim', 'lilydjwg/colorizer' },
+		requires = { 'anuvyklack/keymap-layer.nvim' },
 		after = 'gitsigns.nvim',
 		config = function()
 			require('plugins.hydra')

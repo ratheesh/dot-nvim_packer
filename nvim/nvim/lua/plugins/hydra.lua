@@ -31,14 +31,14 @@ Hydra({
 			gitsigns.toggle_signs(true)
 			gitsigns.toggle_linehl(true)
 			gitsigns.toggle_word_diff(true)
-			-- require('nvim-highlight-colors').turnOff()
+			vim.cmd([[ColorizerDetachFromBuffer]])
 		end,
 		on_exit = function()
 			gitsigns.toggle_signs(true)
 			gitsigns.toggle_linehl(false)
 			gitsigns.toggle_deleted(false)
 			gitsigns.toggle_word_diff(false)
-			-- require('nvim-highlight-colors').turnOn()
+			vim.cmd([[ColorizerAttachToBuffer]])
 		end
 	},
 	mode = { 'n', 'x' },
