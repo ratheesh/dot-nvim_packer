@@ -2,9 +2,9 @@
 -- License: MIT
 -- nvim-cmp plugin configuration
 
-local cmp     = require("cmp")
-local types   = require("cmp.types")
-local luasnip = require("luasnip")
+local cmp     = require('cmp')
+local types   = require('cmp.types')
+local luasnip = require('luasnip')
 
 local function check_backspace()
   local col = vim.fn.col '.' - 1
@@ -22,30 +22,30 @@ local M = {}
 
 local has_words_before = function()
 	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s') == nil
 end
 
 local icons = {
-	Text     = "",  Method = "", Function  = "", Constructor = "", Field         = "ﰠ",
-	Variable = "",  Class  = "ﴯ", Interface = "", Module      = "", Property      = "ﰠ",
-	Unit     = "塞", Value  = "", Enum      = "", Keyword     = "", Snippet       = "",
-	Color    = "",  File   = "", Reference = "", Folder      = "", EnumMember    = "",
-	Constant = "",  Struct = "פּ", Event     = "", Operator    = "", TypeParameter = "",
+	Text     = '',  Method = '', Function  = '', Constructor = '', Field         = 'ﰠ',
+	Variable = '',  Class  = 'ﴯ', Interface = '', Module      = '', Property      = 'ﰠ',
+	Unit     = '塞', Value  = '', Enum      = '', Keyword     = '', Snippet       = '',
+	Color    = '',  File   = '', Reference = '', Folder      = '', EnumMember    = '',
+	Constant = '',  Struct = 'פּ', Event     = '', Operator    = '', TypeParameter = '',
 }
 
 function M.setup()
 	cmp.setup({
 		window = {
 			completion    = cmp.config.window.bordered({
-				winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None"
+				winhighlight = 'Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None'
 			}),
-			documentation = cmp.config.window.bordered({ winhighlight = "Normal:CmpDocNormal" }),
+			documentation = cmp.config.window.bordered({ winhighlight = 'Normal:CmpDocNormal' }),
 		},
 		sources = {
 			-- { name = 'nvim_lsp_signature_help' },
-			{ name = "path"     },
-			{ name = "nvim_lsp" },
-			{ name = "luasnip"  },
+			{ name = 'path'     },
+			{ name = 'nvim_lsp' },
+			{ name = 'luasnip'  },
 			{
 				name = 'buffer',
 				option = {
@@ -58,8 +58,8 @@ function M.setup()
 					end
 				},
 			},
-			{ name = "nvim_lua" },
-			{ name = "conventionalcommits" },
+			{ name = 'nvim_lua' },
+			{ name = 'conventionalcommits' },
 		},
 		experimental = {
 			ghost_text = { hl_group = 'CmpGhostText' }
@@ -68,7 +68,7 @@ function M.setup()
 			trigger_debounce_time = 100
 		},
 		snippet = {
-			expand = function(args) require("luasnip").lsp_expand(args.body) end,
+			expand = function(args) require('luasnip').lsp_expand(args.body) end,
 		},
 		--[[ sorting = {
 			comparators = {
@@ -89,11 +89,12 @@ function M.setup()
 				maxwidth   = 60,
 				before = function (entry, vim_item)
 					vim_item.menu = ({
-						luasnip  = "[Snippet]",
-						nvim_lsp = "[LSP]",
-						nvim_lua = "[Neovim]",
-						buffer   = "[Buffer]",
-						path     = "[Path]",
+						luasnip  = '[Snippet]',
+						nvim_lsp = '[LSP]',
+						nvim_lua = '[Neovim]',
+						buffer   = '[Buffer]',
+						path     = '[Path]',
+						cmp_tabnine = '[T9]',
 					})[entry.source.name]
 					return vim_item
 				end
@@ -102,12 +103,12 @@ function M.setup()
 		mapping = {
 			['<C-n>']     = mapping.select_next_item({ behavior = types.cmp.SelectBehavior.Insert }),
 			['<C-p>']     = mapping.select_prev_item({ behavior = types.cmp.SelectBehavior.Insert }),
-			["<C-u>"]     = mapping(mapping.scroll_docs(-4), { "i" }),
-			["<C-d>"]     = mapping(mapping.scroll_docs(4),  { "i" }),
+			['<C-u>']     = mapping(mapping.scroll_docs(-4), { 'i' }),
+			['<C-d>']     = mapping(mapping.scroll_docs(4),  { 'i' }),
 			['<C-Space>'] = mapping.complete(),
-			-- ["<C-e>"]     = mapping.abort(),
+			-- ['<C-e>']     = mapping.abort(),
 			['<C-y>']     = mapping.confirm({ select = true }),
-			["<CR>"]      = mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false }),
+			['<CR>']      = mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false }),
 			['<Tab>'] 		= mapping(function(fallback)
 				if cmp.visible() then
 					cmp.select_next_item()
@@ -120,7 +121,7 @@ function M.setup()
 				else
 					fallback()
 				end
-			end, { "i", "s" }),
+			end, { 'i', 's' }),
 
 			['<S-Tab>'] = cmp.mapping(function(fallback)
 				if cmp.visible() then
@@ -130,13 +131,13 @@ function M.setup()
 				else
 					fallback()
 				end
-			end, { "i", "s" }),
+			end, { 'i', 's' }),
 		}
 	})
 end
 
-local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done { map_char = { tex = "" } })
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done { map_char = { tex = '' } })
 
 return M
 
