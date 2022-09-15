@@ -46,12 +46,12 @@ Hydra({
 	heads = {
 		{ 'j', function()
 			if vim.wo.diff then return ']c' end
-			vim.schedule(function() gitsigns.next_hunk() end)
+			gitsigns.next_hunk()
 			return '<Ignore>'
 		end, { expr = true }},
 		{ 'k', function()
 			if vim.wo.diff then return '[c' end
-			vim.schedule(function() gitsigns.prev_hunk() end)
+			gitsigns.prev_hunk()
 			return '<Ignore>'
 		end, { expr = true }},
 		{ 's', gitsigns.stage_hunk,       { silent = true             }},
