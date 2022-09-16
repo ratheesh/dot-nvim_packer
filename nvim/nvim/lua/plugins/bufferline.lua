@@ -10,7 +10,6 @@ bufferline.setup({
 		numbers   = 'ordinal',
 		indicator = {
 			-- icon = '▌',
-			icon = ' ',
 			style   = 'underline'
 		},
 		separator_style = 'none',
@@ -58,6 +57,7 @@ bufferline.setup({
 		},
 		close_button_selected = {
 			bg = '#404a5c',
+			sp = 'red',
 		},
 		separator_selected = {
 			fg = '#1E2430',
@@ -71,20 +71,48 @@ bufferline.setup({
 			fg = '#1E2430',
 			bg = '#383a4c'
 		},
+		indicator_visible = {
+			fg = '#F7CAB8',
+			bg = '#383a4c',
+			bold = true,
+		},
 		indicator_selected = {
-			fg = '#404a5c',
+			fg = '#F7CAB8',
 			bg = '#404a5c',
 			sp = '#FF80A0',
 			bold = true,
+			underdouble = true,
+			underline = true,
+		},
+		pick_selected = {
+			fg = '#cf314a',
+			bg = '#404a5c',
+			bold = true,
+			italic = true,
+		},
+		pick_visible = {
+			fg = '#cf314a',
+			bg = '#383a4c',
+			bold = true,
+			italic = true,
+		},
+		pick = {
+			fg = '#cf314a',
+			bg = '#383a4c',
+			bold = true,
+			italic = true,
 		},
 		tab = {
 			fg = '#988C99',
 			bg = '#383a4c'
 		},
 		tab_selected = {
-			fg = '#BF616A',
-			bg = '#404a5c',
+			fg = '#cf217a',
+			bg = '#383a4c',
+			sp = 'red',
 			bold = true,
+			-- underline = true,
+			-- undercurl = true,
 		},
 		numbers = {
 			bg = '#383a4c'
@@ -301,23 +329,24 @@ end
 
 -- Move to previous/next
 map('n', '<Leader>h', '<Cmd>BufferLineCyclePrev<CR>',    { desc = 'Goto Previous Buffer' })
-map('n', '<Leader>l', '<Cmd>BufferLineCycleNext<CR>',    { desc = 'Goto Next Buffer' 		})
+map('n', '<Leader>l', '<Cmd>BufferLineCycleNext<CR>',    { desc = 'Goto Next Buffer'     })
 
 -- jump to buffer index
-map('n', '<Leader>1', '<Cmd>BufferLineGoToBuffer 1<CR>', { desc = 'Goto Buffer 1'        })
-map('n', '<Leader>2', '<Cmd>BufferLineGoToBuffer 2<CR>', { desc = 'Goto Buffer 2'        })
-map('n', '<Leader>3', '<Cmd>BufferLineGoToBuffer 3<CR>', { desc = 'Goto Buffer 3'        })
-map('n', '<Leader>4', '<Cmd>BufferLineGoToBuffer 4<CR>', { desc = 'Goto Buffer 4'        })
-map('n', '<Leader>5', '<Cmd>BufferLineGoToBuffer 5<CR>', { desc = 'Goto Buffer 5'        })
-map('n', '<Leader>6', '<Cmd>BufferLineGoToBuffer 6<CR>', { desc = 'Goto Buffer 6'        })
-map('n', '<Leader>7', '<Cmd>BufferLineGoToBuffer 7<CR>', { desc = 'Goto Buffer 7'        })
-map('n', '<Leader>8', '<Cmd>BufferLineGoToBuffer 8<CR>', { desc = 'Goto Buffer 8'        })
-map('n', '<Leader>9', '<Cmd>BufferLineGoToBuffer 9<CR>', { desc = 'Goto Buffer 9'        })
+map('n', '<Leader>1', '<Cmd>BufferLineGoToBuffer 1<CR>', { desc = 'Goto Buffer 1' })
+map('n', '<Leader>2', '<Cmd>BufferLineGoToBuffer 2<CR>', { desc = 'Goto Buffer 2' })
+map('n', '<Leader>3', '<Cmd>BufferLineGoToBuffer 3<CR>', { desc = 'Goto Buffer 3' })
+map('n', '<Leader>4', '<Cmd>BufferLineGoToBuffer 4<CR>', { desc = 'Goto Buffer 4' })
+map('n', '<Leader>5', '<Cmd>BufferLineGoToBuffer 5<CR>', { desc = 'Goto Buffer 5' })
+map('n', '<Leader>6', '<Cmd>BufferLineGoToBuffer 6<CR>', { desc = 'Goto Buffer 6' })
+map('n', '<Leader>7', '<Cmd>BufferLineGoToBuffer 7<CR>', { desc = 'Goto Buffer 7' })
+map('n', '<Leader>8', '<Cmd>BufferLineGoToBuffer 8<CR>', { desc = 'Goto Buffer 8' })
+map('n', '<Leader>9', '<Cmd>BufferLineGoToBuffer 9<CR>', { desc = 'Goto Buffer 9' })
 
-map('n', '<A-p>',    '<Cmd>BufferLineTogglePin<CR>',    { desc = 'Pin Buffer'           })
-map('n', '<A-d>',    '<Cmd>bdelete<CR>',                { desc = 'Delete Current Buf'   })
-map('n', '<C-s>',    '<Cmd>BufferLinePick<CR>',         { desc = 'Pick Buffer'          })
-map('n', '<A->>',    '<Cmd>BufferLineMoveNext<CR>',     { desc = 'Move Buffer Right'    })
-map('n', '<A-<>',    '<Cmd>BufferLineMovePrev<CR>',     { desc = 'Move Buffer Left'     })
+map('n', '<A-p>',    '<Cmd>BufferLineTogglePin<CR>',    { desc = 'Pin Buffer'         })
+map('n', '<A-d>',    '<Cmd>bdelete<CR>',                { desc = 'Delete Current Buf' })
+map('n', '<C-s>',    '<Cmd>BufferLinePick<CR>',         { desc = 'Pick Buffer'        })
+map('n', '<A->>',    '<Cmd>BufferLineMoveNext<CR>',     { desc = 'Move Buffer Right'  })
+map('n', '<A-<>',    '<Cmd>BufferLineMovePrev<CR>',     { desc = 'Move Buffer Left'   })
+map('n' , '<C-j>',   '<Cmd>BufferLast<CR>',             { desc = "Previous Buffer"    })
 
 -- End of File
