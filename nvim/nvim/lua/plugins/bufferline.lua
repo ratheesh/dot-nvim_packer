@@ -43,8 +43,8 @@ bufferline.setup({
 		},
 		buffer_selected = {
 			fg = '#99c794',
-			bg = '#404a5c',
-			bold = false,
+			bg = '#383a4c',
+			bold = true,
 			italic = true,
 		},
 		close_button = {
@@ -56,12 +56,12 @@ bufferline.setup({
 			bg = '#383a4c'
 		},
 		close_button_selected = {
-			bg = '#404a5c',
+			bg = '#383a4c',
 			sp = 'red',
 		},
 		separator_selected = {
 			fg = '#1E2430',
-			bg = '#404a5c',
+			bg = '#383a4c',
 		},
 		separator_visible = {
 			fg = '#1E2430',
@@ -78,7 +78,7 @@ bufferline.setup({
 		},
 		indicator_selected = {
 			fg = '#F7CAB8',
-			bg = '#404a5c',
+			bg = '#383a4c',
 			sp = '#FF80A0',
 			bold = true,
 			underdouble = true,
@@ -86,7 +86,7 @@ bufferline.setup({
 		},
 		pick_selected = {
 			fg = '#cf314a',
-			bg = '#404a5c',
+			bg = '#383a4c',
 			bold = true,
 			italic = true,
 		},
@@ -107,7 +107,7 @@ bufferline.setup({
 			bg = '#383a4c'
 		},
 		tab_selected = {
-			fg = '#cf217a',
+			fg = '#A3BE8C',
 			bg = '#383a4c',
 			sp = 'red',
 			bold = true,
@@ -122,9 +122,9 @@ bufferline.setup({
 		},
 		numbers_selected = {
 			fg = '#F7CAB8',
-			bg = '#404a5c',
+			bg = '#383a4c',
 			italic = false,
-			bold = false,
+			bold = true,
 		},
 		modified = {
 			bg = '#383a4c'
@@ -134,11 +134,11 @@ bufferline.setup({
 		},
 		modified_selected = {
 			fg = '#E23D75',
-			bg = '#404a5c',
+			bg = '#383a4c',
 		},
 		duplicate_selected = {
 			fg = '#99c794',
-			bg = '#404a5c',
+			bg = '#383a4c',
 			bold = false,
 			italic = true,
 		},
