@@ -21,7 +21,7 @@ bufferline.setup({
 		end,
 		hover = {
 			enabled = true,
-			delay   = 100,
+			delay   = 0,
 			reveal  = { 'close' }
 		},
 	},
