@@ -513,7 +513,7 @@ windline.setup({
 		colors.ProjectNameBg = "#607d8b"
 
 		colors.FileInfoFg    = "#000000"
-		colors.FileInfoBg    = "#D3869B"
+		colors.FileInfoBg    = "#94789B"
 
 		colors.IndentFg      = "#eeeeee"
 		colors.IndentBg      = "#5E6169"
