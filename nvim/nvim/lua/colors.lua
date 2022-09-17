@@ -76,7 +76,7 @@ hl(0 , "PmenuSel"     , { fg = nil 			 , bg = "#25384F" , italic = false , bold 
 hl(0 , "PmenuThumb"   , { fg = "#a0a0a0" , bg = "#4B515C" , italic = false , bold = false , underline = false })
 hl(0 , "TabLine"      , { fg = "#4C566A" , bg = "#3B4252" , italic = false , bold = false , underline = false })
 hl(0 , "TabLineFill"  , { fg = "#4C566A" , bg = "#3B4252" , italic = false , bold = false , underline = false })
-hl(0 , "TabLineSel"   , { fg = "#A3BE8C" , bg = "#3B4252" , italic = false , bold = false , underline = false })
+hl(0 , "TabLineSel"   , { fg = "#A3BE8C" , bg = "#CB3E69" , italic = false , bold = true , underline = false  })
 
 -- Standard syntax highlighting
 hl(0 , "Boolean"      , { fg = "#D08770" , bg = nil       , italic = false , bold = false , underline = false })
