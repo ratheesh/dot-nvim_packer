@@ -218,6 +218,12 @@ hl(0 , "NotifyERRORTitle"    , { fg = "#BF616A" , bg = nil , italic = false , bo
 hl(0 , "NotifyERRORIcon"     , { fg = "#BF616A" , bg = nil , italic = false , bold = false , underline = false })
 hl(0 , "WhichKeyValue"       , { fg = "#8FBCBB" , bg = nil , italic = false , bold = false , underline = false })
 
+-- special attribute which require sp and undercurl attributes only
+hl(0 , "DiagnosticUnderlineError" , { fg = nil, bg = nil , italic = false , bold = false , underline = false, undercurl = true, sp ='#F06372' })
+hl(0 , "DiagnosticUnderlineWarn"  , { fg = nil, bg = nil , italic = false , bold = false , underline = false, undercurl = true, sp ='#E0AF8F' })
+hl(0 , "DiagnosticUnderlineInfo"  , { fg = nil, bg = nil , italic = false , bold = false , underline = false, undercurl = true, sp ='#6B717C' })
+hl(0 , "DiagnosticUnderlineHint"  , { fg = nil, bg = nil , italic = false , bold = false , underline = false, undercurl = true, sp ='#9467bd' })
+
 hl(0 , "LspReferenceRead"  , { fg = nil , bg = "#3B4252" , italic = false , bold = false , underline = false })
 hl(0 , "LspReferenceWrite" , { fg = nil , bg = "#3B4252" , italic = false , bold = false , underline = false })
 
