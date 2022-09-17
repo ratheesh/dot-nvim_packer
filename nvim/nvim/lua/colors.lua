@@ -323,7 +323,6 @@ hl(0 , "StartifyHeader"  , { fg = "#6E7179" , bg = nil , italic = false , bold =
 hl(0 , "StartifySection" , { fg = "#00afcb" , bg = nil , italic = true  , bold = false , underline = false })
 hl(0 , "StartifyFooter"  , { fg = "#a0a0a0" , bg = nil , italic = false , bold = false , underline = false })
 
-
 -- rainbow
 -- hl(0, "rainbowcol1", { fg = "#d78488", bg = nil, italic = false, bold = true, underline = false })
 -- hl(0, "rainbowcol2", { fg = "#81A1C1", bg = nil, italic = false, bold = true, underline = false })
@@ -335,7 +334,7 @@ hl(0 , "StartifyFooter"  , { fg = "#a0a0a0" , bg = nil , italic = false , bold =
 
 -- nvim-rainbow-ts - #65C3AD #E8C060 #33AFFF #2AA198
 hl(0, "rainbowcol1", { fg = "#4682B4", bg = nil, italic = false, bold = false, underline = false })
-hl(0, "rainbowcol2", { fg = "#AD50A1", bg = nil, italic = false, bold = false, underline = false })
+hl(0, "rainbowcol2", { fg = "#cd5c5c", bg = nil, italic = false, bold = false, underline = false })
 hl(0, "rainbowcol3", { fg = "#29A794", bg = nil, italic = false, bold = false, underline = false })
 hl(0, "rainbowcol4", { fg = "#bd93f9", bg = nil, italic = false, bold = false, underline = false })
 hl(0, "rainbowcol5", { fg = "#d5b07B", bg = nil, italic = false, bold = false, underline = false })
