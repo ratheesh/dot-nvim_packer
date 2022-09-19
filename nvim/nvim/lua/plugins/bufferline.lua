@@ -31,54 +31,54 @@ bufferline.setup({
 			bg = '#1E2430',
 		},
 		background = {
-			bg = '#383a4c'
+			bg = '#1E2430'
 		},
 		buffer = {
 			fg = '#988C99',
-			bg = '#383a4c'
+			bg = '#1E2430'
 		},
 		buffer_visible = {
 			fg = '#988C99',
-			bg = '#383a4c'
+			bg = '#1E2430'
 		},
 		buffer_selected = {
 			fg = '#99c794',
-			bg = '#383a4c',
+			bg = '#1E2430',
 			bold = true,
 			italic = true,
 		},
 		close_button = {
 			fg = '#988C99',
-			bg = '#383a4c'
+			bg = '#1E2430'
 		},
 		close_button_visible = {
 			fg = '#988C99',
-			bg = '#383a4c'
+			bg = '#1E2430'
 		},
 		close_button_selected = {
-			bg = '#383a4c',
-			sp = 'red',
+			fg = '#988C99',
+			bg = '#1E2430',
 		},
 		separator_selected = {
 			fg = '#1E2430',
-			bg = '#383a4c',
+			bg = '#1E2430',
 		},
 		separator_visible = {
 			fg = '#1E2430',
-			bg = '#383a4c',
+			bg = '#1E2430',
 		},
 		separator = {
 			fg = '#1E2430',
-			bg = '#383a4c'
+			bg = '#1E2430'
 		},
 		indicator_visible = {
 			fg = '#F7CAB8',
-			bg = '#383a4c',
+			bg = '#1E2430',
 			bold = true,
 		},
 		indicator_selected = {
 			fg = '#F7CAB8',
-			bg = '#383a4c',
+			bg = '#1E2430',
 			sp = '#FF80A0',
 			bold = true,
 			underdouble = true,
@@ -86,67 +86,67 @@ bufferline.setup({
 		},
 		pick_selected = {
 			fg = '#cf314a',
-			bg = '#383a4c',
+			bg = '#1E2430',
 			bold = true,
 			italic = true,
 		},
 		pick_visible = {
 			fg = '#cf314a',
-			bg = '#383a4c',
+			bg = '#1E2430',
 			bold = true,
 			italic = true,
 		},
 		pick = {
 			fg = '#cf314a',
-			bg = '#383a4c',
+			bg = '#1E2430',
 			bold = true,
 			italic = true,
 		},
 		tab = {
 			fg = '#988C99',
-			bg = '#383a4c'
+			bg = '#1E2430'
 		},
 		tab_selected = {
 			fg = '#A3BE8C',
-			bg = '#383a4c',
+			bg = '#1E2430',
 			sp = 'red',
 			bold = true,
 			-- underline = true,
 			-- undercurl = true,
 		},
 		numbers = {
-			bg = '#383a4c'
+			bg = '#1E2430'
 		},
 		numbers_visible = {
-			bg = '#383a4c'
+			bg = '#1E2430'
 		},
 		numbers_selected = {
-			fg = '#F7CAB8',
-			bg = '#383a4c',
+			fg = '#AA8ED6',
+			bg = '#1E2430',
 			italic = false,
 			bold = true,
 		},
 		modified = {
-			bg = '#383a4c'
+			bg = '#1E2430'
 		},
 		modified_visible = {
-			bg = '#383a4c'
+			bg = '#1E2430'
 		},
 		modified_selected = {
 			fg = '#E23D75',
-			bg = '#383a4c',
+			bg = '#1E2430',
 		},
 		duplicate_selected = {
 			fg = '#99c794',
-			bg = '#383a4c',
+			bg = '#1E2430',
 			bold = false,
 			italic = true,
 		},
 		duplicate_visible = {
-			bg = '#383a4c'
+			bg = '#1E2430'
 		},
 		duplicate = {
-			bg = '#383a4c'
+			bg = '#1E2430'
 		},
 		--[[
 		diagnostic = {
