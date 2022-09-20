@@ -466,10 +466,6 @@ require('packer').startup({ function(use)
 		event   = 'VimEnter',
 		config  = function() require('dressing').setup() end
 	})
-	use({
-		'antoinemadec/FixCursorHold.nvim',
-		event = { 'CursorHold' },
-	})
 	use({ 'rafamadriz/friendly-snippets', event = { 'InsertEnter' }})
 	use({
 		'hrsh7th/nvim-cmp',
