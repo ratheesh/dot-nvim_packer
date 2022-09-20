@@ -21,23 +21,33 @@ Hydra({
 	config = {
 		color = "pink",
 		invoke_on_body = true,
+		-- buffer = bufnr,
 		hint = {
 			offset   = 1,
 			position = 'middle-right',
 			border   = "rounded"
 		},
 		on_enter = function()
-			vim.bo.modifiable = true
+			vim.cmd('echo')
+			vim.cmd([[ColorizerDetachFromBuffer]])
+			-- vim.cmd([[CccHighlighterDisable]])
+			vim.cmd 'mkview'
+			vim.cmd 'silent! %foldopen!'
 			gitsigns.toggle_signs(true)
 			gitsigns.toggle_linehl(true)
 			gitsigns.toggle_word_diff(true)
-			vim.cmd([[ColorizerDetachFromBuffer]])
 		end,
 		on_exit = function()
+			vim.cmd('echo')
+			local cursor_pos = vim.api.nvim_win_get_cursor(0)
+			vim.cmd 'loadview'
+			vim.api.nvim_win_set_cursor(0, cursor_pos)
+			vim.cmd 'normal zv'
 			gitsigns.toggle_signs(true)
 			gitsigns.toggle_linehl(false)
 			gitsigns.toggle_deleted(false)
 			gitsigns.toggle_word_diff(false)
+			-- vim.cmd([[CccHighlighterEnable]])
 			vim.cmd([[ColorizerAttachToBuffer]])
 		end
 	},

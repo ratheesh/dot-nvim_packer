@@ -286,10 +286,12 @@ require('packer').startup({ function(use)
 	use({
 		'NvChad/nvim-colorizer.lua',
 		disable = false,
-		after  = 'nvim-treesitter',
+		opt =  true,
+		after = { 'nvim-treesitter' },
 		module = 'colorizer',
 		config = function ()
-			require'colorizer'.setup()
+			require('colorizer').setup()
+			vim.cmd([[ColorizerAttachToBuffer]])
 		end
 	})
 	use({ 'wbthomason/packer.nvim' })
@@ -1000,6 +1002,11 @@ require('packer').startup({ function(use)
 		disable = false,
 		opt = true,
 		cmd = { 'CccPick' },
+		config = function ()
+			-- require('ccc').setup({
+			-- 	vim.cmd([[CccHighlighterEnable]])
+			-- })
+		end
 	})
 	use({
 		'majutsushi/tagbar',
