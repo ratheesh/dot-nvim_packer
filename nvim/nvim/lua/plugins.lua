@@ -673,7 +673,7 @@ require('packer').startup({ function(use)
 			require('treesitter-context').setup({
 				enable    = true,
 				throttle  = true,
-				separator = '━',
+				separator = '─',
 			})
 		end
 	})
