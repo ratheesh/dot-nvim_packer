@@ -258,8 +258,8 @@ hl(0 , "TSOperator"         , { fg = "#C5B4C0" , bg = nil , italic = false , bol
 hl(0 , "pythonTSComment"    , { fg = "#909090" , bg = nil , italic = true  , bold = false , underline = false })
 
 -- Fidget
-hl(0 , "FidgetTask"         , { fg = "#81A1C1" , bg = nil , italic = false , bold = false  , underline = false })
-hl(0 , "FidgetTitle"        , { fg = "#8F575A" , bg = nil , italic = false  , bold = false  , underline = false })
+hl(0 , "FidgetTask"         , { fg = "#B6919E" , bg = nil , italic = false , bold = false  , underline = false })
+hl(0 , "FidgetTitle"        , { fg = "#2AD198" , bg = nil , italic = false  , bold = false  , underline = false })
 
 -- wilder.nvim
 hl(0 , "WildMenu"           , { fg = "#000000" , bg = "#8F575A" , italic = true  , bold = false , underline = false })
@@ -293,7 +293,7 @@ hl(0 , "Lf_hl_match"      		 , { fg = "#EB6D7F" , bg = nil       , italic = true
 
 -- mini.nvim
 hl(0, "MiniIndentscopeSymbol", { fg = "#3F4F5B", bg = nil, italic = false, bold = false, underline = false })
-hl(0, "MiniSurround", { fg = "#ec7279", bg = nil, italic = false, bold = false, underline = false })
+hl(0, "MiniSurround", 				 { fg = "#ec7279", bg = nil, italic = false, bold = false, underline = false })
 
 -- VirtColumn
 -- hl(0, "VirtColumn", { fg = "#393F4B", bg = nil, italic = false, bold = true, underline = false })
