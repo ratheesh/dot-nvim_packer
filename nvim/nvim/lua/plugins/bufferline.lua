@@ -28,7 +28,7 @@ bufferline.setup({
 	highlights = {
 		fill = {
 			fg = '#EFEAD8',
-			bg = '#1E2430',
+			bg = '#141414',
 		},
 		background = {
 			bg = '#1E2430'
@@ -42,7 +42,7 @@ bufferline.setup({
 			bg = '#1E2430'
 		},
 		buffer_selected = {
-			fg = '#99c794',
+			fg = '#00BEFF',
 			bg = '#1E2430',
 			bold = true,
 			italic = true,
@@ -121,7 +121,7 @@ bufferline.setup({
 			bg = '#1E2430'
 		},
 		numbers_selected = {
-			fg = '#AA8ED6',
+			fg = '#F2A490',
 			bg = '#1E2430',
 			italic = false,
 			bold = true,
