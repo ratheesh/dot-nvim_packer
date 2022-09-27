@@ -190,6 +190,19 @@ require('packer').startup({ function(use)
 		end
 	})
 	use({
+		'lvimuser/lsp-inlayhints.nvim',
+		disable = false,
+		event = { 'LspAttach' },
+		requires = { 'nvim-lspconfig' },
+		config = function ()
+			require("lsp-inlayhints").setup({
+				inlay_hints = {
+					only_current_line = true,
+				}
+			})
+		end
+	})
+	use({
 		'simrat39/inlay-hints.nvim',
 		disable = true,
 		after = 'nvim-lspconfig',

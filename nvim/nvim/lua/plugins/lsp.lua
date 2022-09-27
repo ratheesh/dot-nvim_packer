@@ -107,6 +107,10 @@ function M.setup()
         require('sqls').on_attach(client, bufnr)
     end
 
+		if client.server_capabilities.inlayHintProvider or client.server_capabilities.clangdInlayHintsProvider then
+			require("lsp-inlayhints").on_attach(client, bufnr)
+		end
+		-- require('lsp-inlayhints').on_attach(client, bufnr)
 		-- require('inlay-hints').on_attach(client, bufnr)
 
 		if client.server_capabilities.colorProvider then
