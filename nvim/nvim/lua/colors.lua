@@ -76,7 +76,7 @@ hl(0 , "PmenuSel"     , { fg = nil 			 , bg = "#25384F" , italic = false , bold 
 hl(0 , "PmenuThumb"   , { fg = "#a0a0a0" , bg = "#4B515C" , italic = false , bold = false , underline = false })
 hl(0 , "TabLine"      , { fg = "#4C566A" , bg = "#3B4252" , italic = false , bold = false , underline = false })
 hl(0 , "TabLineFill"  , { fg = "#4C566A" , bg = "#3B4252" , italic = false , bold = false , underline = false })
-hl(0 , "TabLineSel"   , { fg = "#A3BE8C" , bg = "#CB3E69" , italic = false , bold = true , underline = false  })
+hl(0 , "TabLineSel"   , { fg = "#A3BE8C" , bg = "#e53a80" , italic = false , bold = true , underline = false  })
 
 -- Standard syntax highlighting
 hl(0 , "Boolean"      , { fg = "#D08770" , bg = nil       , italic = false , bold = false , underline = false })
@@ -358,4 +358,6 @@ hl(0, "InclineNormalNC", { fg = "#E0E0E0", bg = "#444864", italic = false, bold 
 hl(0 , "hiPairs_matchPair" , { fg = nil       , bg = nil , italic = false , bold = false , underline = true })
 
 hl(0 , "LspInfoBorder"   , { fg = "#4C566A" , bg = nil , italic = false , bold = true , underline = false })
+
+hl(0 , "LspInlayHint"   , { fg = "#5C667A" , bg = nil , italic = true , bold = false , underline = false })
 -- End of File
