@@ -82,7 +82,7 @@ function M.setup()
 					buffer = bufnr,
 					callback = function()
 						if vim.bo.filetype == 'python' or vim.bo.filetype == 'html' or
-							vim.bo.filetype == 'css' or vim.bo.sh or
+							vim.bo.filetype == 'css' or
 							vim.bo.filetype == 'gitcommit' then
 							vim.lsp.buf.format({bufnr = bufnr})
 						end
