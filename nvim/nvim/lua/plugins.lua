@@ -90,6 +90,11 @@ require('packer').startup({ function(use)
 						color = '#f781bf',
 						name  = 'py'
 					},
+					gitcommit = {
+						icon  = '',
+						color = '#e7b898',
+						name  = 'gitcommit'
+					},
 				}
 			}
 		end
