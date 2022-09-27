@@ -107,6 +107,10 @@ function M.setup()
         require('sqls').on_attach(client, bufnr)
     end
 
+		if client.server_capabilities.definitionProvider then
+			vim.api.nvim_buf_set_option(bufnr, "tagfunc", "v:lua.vim.lsp.tagfunc")
+		end
+
 		if client.server_capabilities.inlayHintProvider or client.server_capabilities.clangdInlayHintsProvider then
 			require("lsp-inlayhints").on_attach(client, bufnr)
 		end
@@ -135,6 +139,20 @@ function M.setup()
 
 		if capabilities.semanticTokensProvider and capabilities.semanticTokensProvider.full then
 			vim.cmd [[autocmd BufEnter,CursorHold,InsertLeave <buffer> lua vim.lsp.buf.semantic_tokens_full()]]
+		end
+
+		if capabilities.documentHighlightProvider then
+			local group = vim.api.nvim_create_augroup("DocumentHighlight", {})
+			vim.api.nvim_create_autocmd("CursorHold", {
+				group = group,
+				buffer = 0,
+				callback = vim.lsp.buf.document_highlight,
+			})
+			vim.api.nvim_create_autocmd("CursorMoved", {
+				group = group,
+				buffer = 0,
+				callback = vim.lsp.buf.clear_references,
+			})
 		end
 
 	lspconfig.vimls.setup({ on_init = on_init, on_attach = on_attach, capabilities = capabilities })
@@ -220,6 +238,11 @@ function M.setup()
 			usePlaceholders      = true,
 			completeUnimported   = true,
 			semanticHighlighting = true,
+			InlayHints = {
+				Enabled        = true,
+				ParameterNames = true,
+				DeducedTypes   = true,
+			},
 		};
 	})
 
@@ -293,6 +316,10 @@ function M.setup()
 		settings = {
 			pyright = {
 				disableLanguageServices = true,
+				autoImportCompletions   = true,
+				inlayHints = {
+					enable = false,
+				},
 			},
 		},
 	})
@@ -347,6 +374,7 @@ function M.setup()
 				options = {
 					-- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
 					["bem.enabled"] = true,
+					["output.selfClosingStyle"] = 'html',
 				},
 			},
 		}
