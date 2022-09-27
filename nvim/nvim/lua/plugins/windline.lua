@@ -343,7 +343,7 @@ basic.fileinfo = {
 		sep_before = { 'FileInfoBg' , 'NormalBg'   },
 		sep_after  = { 'FileInfoBg' , 'NormalBg'   },
 		sep        = { 'black'      , 'FileInfoBg', 'bold' },
-		file_type  = { 'FileInfoFg' , 'FileInfoBg' },
+		file_type  = { 'FileInfoFg' , 'FileInfoBg', 'italic' },
 		FileIcon   = hl_list.FileIcon
 	},
 	text = function()
@@ -521,7 +521,7 @@ windline.setup({
 
 		colors.LineNoFg      = "#eeeeee"
 		colors.LineNoBg      = "#A070C8"
-		colors.RightBg       = "#B3C1A9"
+		colors.RightBg       = "#AE8A7E"
 
 		return colors
 	end,
