@@ -30,6 +30,7 @@ function M.setup()
 		ls.builtins.formatting.black,
 		ls.builtins.formatting.autopep8,
 		ls.builtins.formatting.isort,
+		ls.builtins.formatting.trim_newlines,
 		ls.builtins.formatting.prettier.with({
 			filetypes = { 'html', 'css', 'yaml', 'markdown', 'json' },
 		}),
@@ -37,10 +38,11 @@ function M.setup()
 
 		-- diagnostics
 		with_diagnostics_code(ls.builtins.diagnostics.shellcheck),
-		ls.builtins.diagnostics.flake8,
+		-- ls.builtins.diagnostics.flake8,
 		-- ls.builtins.diagnostics.mypy,
 		-- ls.builtins.diagnostics.selene,
 		ls.builtins.diagnostics.djlint,
+		ls.builtins.diagnostics.tidy,
 		-- ls.builtins.diagnostics.commitlint,
 		ls.builtins.diagnostics.gitlint.with {
       extra_args = { '--contrib=contrib-title-conventional-commits', '--ignore=body-is-missing' },
