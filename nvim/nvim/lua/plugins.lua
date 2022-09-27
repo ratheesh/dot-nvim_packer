@@ -912,13 +912,16 @@ require('packer').startup({ function(use)
 			map({ 'n', 'x' }, 'ga', '<Plug>(EasyAlign)', { desc = 'Easy Align' })
 		end
 		-- event = { 'CursorHold' }
-
+	})
+	use({
+		'tpope/vim-surround',
+		disable = false,
 	})
 	use({
 		'kylechui/nvim-surround',
+		disable = true,
 		-- event = 'InsertEnter',
 		keys = {{'n', 'ys'}, {'n', 'ds'}, {'n', 'cs'}, {'x', 'S'}},
-		disable = false,
 		config = function ()
 			require('nvim-surround').setup({
 				highlight = {
