@@ -313,7 +313,16 @@ require('packer').startup({ function(use)
 		end
 	})
 	use({ 'wbthomason/packer.nvim' })
-	use({ 'folke/lua-dev.nvim', event = 'VimEnter' })
+	use({
+		'folke/neodev.nvim',
+		event = 'VimEnter',
+		config = function()
+			require("neodev").setup({
+				plugins = false,
+				-- plugins = { "nvim-treesitter", "plenary.nvim" },
+			})
+		end
+	})
 	use({ 'hrsh7th/cmp-nvim-lsp', event = 'VimEnter' })
 	use({
 		'neovim/nvim-lspconfig',
