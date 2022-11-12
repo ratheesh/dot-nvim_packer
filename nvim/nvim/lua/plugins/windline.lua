@@ -46,7 +46,7 @@ local hl_list = {
 	PasteRightFileSep = { 'PasteModeBg', 'NormalBg' },
 }
 
-local hide_in_width = function() return vim.fn.winwidth(0) > 90 end
+-- local hide_in_width = function() return vim.fn.winwidth(0) > 90 end
 
 local basic = {}
 
@@ -180,7 +180,8 @@ basic.projectname = {
 	end,
 	click = function ()
 		vim.cmd('Neogit')
-	end
+	end,
+	width = 75
 }
 
 --[[ basic.file_leftsep = {
@@ -264,7 +265,7 @@ basic.git = {
 		removed = hl_list.GitDiffRemoved
 	},
 	text = function(bufnr)
-		if git_comps.is_git(bufnr) and hide_in_width() then
+		if git_comps.is_git(bufnr) then
 			return {
 				{ '', ' ' },
 				{ git_comps.diff_added({ format   = '  %s', show_zero = false  }), 'added'  },
@@ -274,6 +275,7 @@ basic.git = {
 		end
 		return ''
 	end,
+	width = 70
 }
 
 -- Right side segment
@@ -296,12 +298,18 @@ basic.lsp_diagnos = {
 		end
 		return ''
 	end,
+	width =	85
 }
 
 local function lsp_client_names(component)
 	local clients = {}
 	local icon = component.icon or ' '
 	for _, client in pairs(vim.lsp.get_active_clients({bufnr = 0})) do
+		if client.name ==  'jedi_language_server' then
+			client.name = 'jedi'
+		--[[ elseif client.name ==  'null-ls' then
+			client.name = nil ]]
+		end
 		table.insert(clients, client.name)
 	end
 
@@ -318,7 +326,7 @@ basic.lsp_client = {
 	hl_colors = {
 		sep_before       = { 'LSPClientBg', 'NormalBg' },
 		sep_before_empty = { 'FileInfoBg', 'NormalBg' },
-		lsp_cl           = { 'LSPClientFg', 'LSPClientBg' },
+		lsp_cl           = { 'LSPClientFg', 'LSPClientBg', 'italic' },
 		sep_after        = { 'LSPClientBg', 'NormalBg' },
 	},
 	text = function()
@@ -334,7 +342,8 @@ basic.lsp_client = {
 	end,
 	click = function ()
 		vim.cmd('LspInfo')
-	end
+	end,
+	width = 120
 }
 
 basic.fileinfo = {
@@ -343,7 +352,7 @@ basic.fileinfo = {
 		sep_before = { 'FileInfoBg' , 'NormalBg'   },
 		sep_after  = { 'FileInfoBg' , 'NormalBg'   },
 		sep        = { 'black'      , 'FileInfoBg', 'bold' },
-		file_type  = { 'FileInfoFg' , 'FileInfoBg', 'italic' },
+		file_type  = { 'FileInfoFg' , 'FileInfoBg' },
 		FileIcon   = hl_list.FileIcon
 	},
 	text = function()
@@ -357,6 +366,7 @@ basic.fileinfo = {
 			{ sep.right_rounded, 'sep_after' },
 		}
 	end,
+	width = 75
 }
 
 basic.indent = {
@@ -380,10 +390,11 @@ basic.indent = {
 			{ sep.left_rounded, 'sep_before' },
 			{string.format('%s%s≡', sw, im), 'color'},
 			{'│','sep'},
-			{ 'ch:%02BH', 'color' },
+			{ '𝒞𝒽:%02B𝒉', 'color' },
 			{ sep.right_rounded, 'sep_after' },
 		}
 	end,
+	width = 70
 }
 
 basic.right = {
@@ -510,7 +521,7 @@ windline.setup({
 		colors.LSPClientBg   = "#356088"
 
 		colors.ProjectNameFg = "#F0F0F0"
-		colors.ProjectNameBg = "#607d8b"
+		colors.ProjectNameBg = "#75828F"
 
 		colors.FileInfoFg    = "#000000"
 		colors.FileInfoBg    = "#94789B"
