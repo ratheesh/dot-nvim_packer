@@ -1102,6 +1102,7 @@ require('packer').startup({ function(use)
 		end
 	})
 
+	use({'ratheesh/hiPairs', event = 'VimEnter'})
 	if packer_bootstrap then
 		require('packer').sync()
 	end
