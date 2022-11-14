@@ -343,6 +343,15 @@ require('packer').startup({ function(use)
 			require('plugins.null-ls').setup()
 		end,
 	})
+	use ({
+		"ThePrimeagen/refactoring.nvim",
+		after = 'null-ls.nvim',
+		disable = false,
+		requires = {
+			{"nvim-lua/plenary.nvim"},
+			{"nvim-treesitter/nvim-treesitter"}
+		}
+	})
 	use({
 		'williamboman/mason.nvim',
 		requires = 'neovim/nvim-lspconfig',
