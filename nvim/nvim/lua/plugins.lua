@@ -430,6 +430,7 @@ require('packer').startup({ function(use)
 	})
 	use({
 		'ray-x/lsp_signature.nvim',
+		disable = false,
 		event = 'LspAttach',
 		wants = 'nvim-lspconfig',
 		config = function()
