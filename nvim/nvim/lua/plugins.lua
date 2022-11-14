@@ -540,21 +540,12 @@ require('packer').startup({ function(use)
 		end,
 	})
 	use({
-		'L3MON4D3/LuaSnip',
-		opt   = true,
-		requires = { 'rafamadriz/friendly-snippets' },
-		after = 'nvim-cmp',
-		-- event = 'InsertEnter',
-		config = function()
-			require('luasnip').config.set_config({ history = true, updateevents = 'TextChanged,TextChangedI', })
-			require('luasnip/loaders/from_vscode').lazy_load()
-		end,
-	})
-	use({
-		'echasnovski/mini.nvim',
+		'echasnovski/mini.indentscope',
 		event = 'CursorHold',
 		config = function()
-			require('plugins.mini').setup()
+			require("mini.indentscope").setup({
+				symbol = '╎',
+			})
 		end,
 	})
 	use({
