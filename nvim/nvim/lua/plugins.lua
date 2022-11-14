@@ -378,8 +378,8 @@ require('packer').startup({ function(use)
 		cmd = { 'LspInstall', 'LspUninstall'},
 		config = function ()
 			require('mason-lspconfig').setup({
-				ensure_installed = { 'sumneko_lua', 'clangd', 'tailwindcss', 'html',
-				'bashls', 'jedi_language_server', 'pyls', 'jdtls' },
+				-- require('plugins.lsp.init'),
+				ensure_installed = { 'sumneko_lua', 'clangd', 'html', 'bashls', 'jedi_language_server', 'jdtls' },
 				automatic_installation = true,
 			})
 		end
