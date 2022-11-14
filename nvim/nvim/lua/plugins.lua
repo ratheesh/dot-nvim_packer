@@ -355,6 +355,7 @@ require('packer').startup({ function(use)
 	use({
 		'williamboman/mason.nvim',
 		requires = 'neovim/nvim-lspconfig',
+		event = 'VimEnter',
 		cmd = { 'Mason', 'MasonInstall', 'MasonUninstall', 'MasonUninstallAll', 'MasonLog' },
 		config = function ()
 			require('mason').setup({
@@ -368,6 +369,7 @@ require('packer').startup({ function(use)
 					}
 				}
 			})
+			require('plugins.lsp.pylance')
 		end
 	})
 	use({
