@@ -1025,31 +1025,10 @@ require('packer').startup({ function(use)
 	})
 	use({
 		'lewis6991/satellite.nvim',
-		event = 'CursorHold',
-		requires = 'nvim-lspconfig',
+		event = 'VimEnter',
+		after = { 'nvim-lspconfig' },
 		config=function ()
-			require('satellite').setup {
-				current_only = false,
-				winblend = 0,
-				zindex   = 40,
-				excluded_filetypes = {},
-				width = 2,
-				handlers = {
-					search = {
-						enable = true,
-					},
-					diagnostic = {
-						enable = true,
-					},
-					gitsigns = {
-						enable = true,
-					},
-					marks = {
-						enable = true,
-						show_builtins = false,
-					},
-				},
-			}
+			require('satellite').setup()
 		end
 	})
 	use({
