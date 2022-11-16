@@ -304,7 +304,21 @@ function M.setup()
 	}) ]]
 
 	-- Python
-	lspconfig.jedi_language_server.setup({ on_init = on_init, on_attach = on_attach, capabilities = capabilities })
+	lspconfig.jedi_language_server.setup({
+		on_init = on_init,
+		on_attach = on_attach,
+		capabilities = capabilities,
+		init_options = {
+			jediSettings = {
+				case_insensitive_completion = true,
+				add_bracket_after_function = true,
+				dynamic_params = true,
+				dynamic_array_additions = true,
+				fast_parser = true,
+				-- autoImportModules = { "flask_sqlalchemy", "flask" }
+			}
+		},
+	})
 	--[[ lspconfig.pylsp.setup({
 		on_init = on_init,
 		on_attach = on_attach,
@@ -326,7 +340,7 @@ function M.setup()
 		}
 	}) ]]
 
-	lspconfig.pyright.setup({
+	--[[ lspconfig.pyright.setup({
 		on_init = on_init,
 		on_attach    = on_attach,
 		capabilities = capabilities,
@@ -339,7 +353,23 @@ function M.setup()
 				},
 			},
 		},
-	})
+	}) ]]
+
+lspconfig.pylance.setup {
+		on_init      = on_init,
+		on_attach    = on_attach,
+		capabilities = capabilities,
+    before_init = function(_, config)
+        config.settings.python.analysis.stubPath = path.concat {
+            vim.fn.stdpath "data",
+            "site",
+            "pack",
+            "packer",
+            "opt",
+            "python-type-stubs",
+        }
+    end,
+}
 
 	--html
 	lspconfig.html.setup({
