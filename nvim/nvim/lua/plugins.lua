@@ -258,12 +258,12 @@ require('packer').startup({ function(use)
 	})
 	use({
 		'xiyaowong/virtcolumn.nvim',
-		disable = false,
-		event   = 'LspAttach',
-		ft      = { 'gitcommit' },
+		disable = true,
+		-- event   = 'LspAttach',
+		ft      = { 'gitcommit', 'c' },
 		config = function ()
 			vim.g.virtcolumn_char     = '│'
-			vim.g.virtcolumn_priority = 10
+			vim.g.virtcolumn_priority = 0
 		end
 	})
 	use({
@@ -510,6 +510,7 @@ require('packer').startup({ function(use)
 	})
 	use({
 		'mfussenegger/nvim-jdtls',
+		disable = true,
 		ft = { 'java' }
 	})
 	use({
