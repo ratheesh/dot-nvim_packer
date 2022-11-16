@@ -428,40 +428,41 @@ lspconfig.pylance.setup {
 	})
 
 	-- Lua
-	lspconfig.sumneko_lua.setup(require("lua-dev").setup({
-		lspconfig = {
-			on_init      = on_init,
-			on_attach    = on_attach,
-			capabilities = capabilities,
-			cmd = { "lua-language-server" },
-			settings = {
-				Lua = {
-					hint = {
-						enable = true,
+	lspconfig.sumneko_lua.setup({
+		on_init      = on_init,
+		on_attach    = on_attach,
+		capabilities = capabilities,
+		cmd = { "lua-language-server" },
+		settings = {
+			Lua = {
+				hint = {
+					enable = false,
+				},
+				completion = {
+					callSnippet = "Replace",
+				},
+				workspace = {
+					-- Make the server aware of Neovim runtime files
+					library = {
+						[vim.fn.expand('$VIMRUNTIME/lua')] = true,
+						[vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
 					},
-					workspace = {
-						-- Make the server aware of Neovim runtime files
-						library = {
-							[vim.fn.expand('$VIMRUNTIME/lua')] = true,
-							[vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
-						},
-					},
-					telemetry = { enable = false },
-					diagnostics = {
-						globals = { 'vim' },
-						disable = {
-							"missing-parameter",
-							"cast-local-type",
-							"param-type-mismatch",
-							"assign-type-mismatch",
-							"undefined-field",
-							"redundant-parameter"
-						}
+				},
+				telemetry = { enable = false },
+				diagnostics = {
+					globals = { 'vim' },
+					disable = {
+						"missing-parameter",
+						"cast-local-type",
+						"param-type-mismatch",
+						"assign-type-mismatch",
+						"undefined-field",
+						"redundant-parameter"
 					}
 				}
 			}
 		}
-	}))
+	})
 
 	lspconfig.sqls.setup({ on_init = on_init, on_attach = on_attach, capabilities = capabilities })
 	-- lspconfig.texlab.setup({ on_attach = on_attach, capabilities = capabilities })
