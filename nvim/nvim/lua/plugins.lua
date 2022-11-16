@@ -611,6 +611,28 @@ require('packer').startup({ function(use)
 		end
 	})
 	use({
+		'nvim-neo-tree/neo-tree.nvim',
+		disable = false,
+		event = 'VimEnter',
+		cmd = { 'Neotree' },
+		config = function ()
+			require("neo-tree").setup({
+				close_if_last_window = false,
+				enable_diagnostics = true,
+				enable_git_status = true,
+				popup_border_style = "rounded",
+				sort_case_insensitive = false,
+				filesystem = {
+					filtered_items = {
+						hide_dotfiles = false,
+						hide_gitignored = false,
+					},
+				},
+				window = { width = 30 },
+			})
+		end
+	})
+	use({
 		'folke/which-key.nvim',
 		disable = true,
 		-- event = 'VimEnter',
@@ -982,6 +1004,15 @@ require('packer').startup({ function(use)
 			map({ 'n', 'x' }, 'ga', '<Plug>(EasyAlign)', { desc = 'Easy Align' })
 		end
 		-- event = { 'CursorHold' }
+	})
+	use ({
+		"danymat/neogen",
+		disable = false,
+		event = 'VimEnter',
+		config = function()
+			require('neogen').setup {}
+		end,
+		requires = "nvim-treesitter/nvim-treesitter",
 	})
 	use({
 		'tpope/vim-surround',
