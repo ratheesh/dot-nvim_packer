@@ -32,32 +32,33 @@ function M.setup()
 		ls.builtins.formatting.isort,
 		ls.builtins.formatting.trim_newlines,
 		ls.builtins.formatting.prettier.with({
-			filetypes = { 'html', 'css', 'yaml', 'markdown', 'json' },
+			filetypes = { 'html', 'css', 'yaml', 'markdown', 'json', 'javascript' },
 		}),
+		ls.builtins.formatting.stylelint,
 		-- ls.builtins.formatting.stylua,
 
 		-- diagnostics
-		with_diagnostics_code(ls.builtins.diagnostics.shellcheck),
-		-- ls.builtins.diagnostics.flake8,
-		-- ls.builtins.diagnostics.mypy,
-		-- ls.builtins.diagnostics.selene,
-		ls.builtins.diagnostics.djlint,
+		-- with_diagnostics_code(ls.builtins.diagnostics.shellcheck),
+		-- ls.builtins.diagnostics.djlint,
+		ls.builtins.diagnostics.curlylint,
 		ls.builtins.diagnostics.tidy,
-		-- ls.builtins.diagnostics.commitlint,
+		-- ls.builtins.diagnostics.shellcheck,
+		ls.builtins.diagnostics.flake8,
+		-- ls.builtins.diagnostics.mypy,
+		ls.builtins.diagnostics.cmake_lint,
+		ls.builtins.diagnostics.stylelint,
+		ls.builtins.diagnostics.trail_space,
 		ls.builtins.diagnostics.gitlint.with {
-      extra_args = { '--contrib=contrib-title-conventional-commits', '--ignore=body-is-missing' },
-    },
-		-- ls.builtins.diagnostics.vale.with({ args = '--config="$XDG_CONFIG_HOME/vale/vale.ini"' }),
+			extra_args = { '--contrib=contrib-title-conventional-commits', '--ignore=body-is-missing' },
+		},
 
-		-- completion
-		-- ls.builtins.completion.spell,
-		-- ls.builtins.completion.luasnip,
-
-		-- hover
 		ls.builtins.hover.dictionary,
 
 		-- code actions
-		-- ls.builtins.code_actions.refactoring,
+		ls.builtins.code_actions.refactoring,
+		ls.builtins.code_actions.refactoring,
+		ls.builtins.code_actions.proselint,
+		ls.builtins.code_actions.eslint_d,
 		ls.builtins.code_actions.gitsigns,
 		ls.builtins.code_actions.gitrebase,
 	}
