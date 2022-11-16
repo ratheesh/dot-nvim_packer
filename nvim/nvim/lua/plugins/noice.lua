@@ -3,27 +3,28 @@
 -- Noice plugin config
 
 local M = {}
-
 function M.setup()
-	require("noice").setup({
+	-- local noice = require('noice')
+	require('noice').setup({
 		cmdline = {
 			enabled = true,
+			view = 'cmdline_popup',
 			format = {
-				cmdline     = { icon = ">_" },
-				--[[ search_down = { icon = "⌄" },
-				search_up   = { icon = "⌃" }, ]]
-				--[[ filter      = { icon = "$" },
-				lua         = { icon = ""  },
-				help        = { icon = "?" }, ]]
+				cmdline     = { icon = '>_' },
+				--[[ search_down = { icon = '⌄' },
+				search_up   = { icon = '⌃' }, ]]
+				--[[ filter      = { icon = '$' },
+				lua         = { icon = ''  },
+				help        = { icon = '?' }, ]]
 			},
 		},
 		messages = {
 			enabled      = true,
-			view         = "mini",
-			view_error   = "notify",
-			view_warn    = "notify",
-			view_history = "messages",
-			view_search  = "virtualtext",
+			view         = 'mini',
+			view_error   = 'notify',
+			view_warn    = 'notify',
+			view_history = 'messages',
+			view_search  = 'virtualtext',
 		},
 		popupmenu = {
 			enabled = true,
@@ -35,17 +36,23 @@ function M.setup()
 				auto_open = false,
 				view = nil,
 				opts = {skip = true},
+
+				override = {
+					["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+					["vim.lsp.util.stylize_markdown"] = true,
+					["cmp.entry.get_documentation"] = true,
+				},
 			},
 			notify = {
 				enabled = true,
-				view = "notify",
+				view = 'notify',
 			},
 			progress = {
 				enabled = true,
-				format = "lsp_progress",
-				format_done = "lsp_progress_done",
+				format = 'lsp_progress',
+				format_done = 'lsp_progress_done',
 				throttle = 1000 / 10,
-				view = "mini",
+				view = 'mini',
 			},
 		},
 		notify = {
@@ -61,22 +68,32 @@ function M.setup()
 			inc_rename = true,
 		},
 		views = {
-			popupmenu = {
-				relative = "editor",
+			cmdline_popup = {
 				position = {
-					row = -2,
+					row = '40%',
 					col = "50%",
 				},
 				size = {
-					width = 60,
-					height = 10,
+					width = 50,
+					height = 'auto',
 				},
+			},
+			popupmenu = {
+				relative = 'editor',
+				position = {
+					row = "45%",
+					col = '50%',
+				},
+				size = {
+					width = 50,
+				},
+				height = 12,
 				border = {
-					style = "rounded",
+					style = 'rounded',
 					padding = { 0, 1 },
 				},
 				win_options = {
-					winhighlight = { Normal = "Normal", FloatBorder = "DiagnosticInfo" },
+					winhighlight = { Normal = 'Normal', FloatBorder = 'DiagnosticInfo' },
 				},
 			},
 		},
@@ -85,14 +102,14 @@ function M.setup()
 				filter = {
 					event = "msg_show",
 					kind = "",
-					find = "written",
+					find = 'written',
 				},
 				opts = { skip = true },
 			},
 		},
 		format = {
 			spinner = {
-				name = "moon",
+				name = 'moon',
 				hl_group = nil,
 			},
 		},
