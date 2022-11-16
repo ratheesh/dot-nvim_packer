@@ -1126,6 +1126,15 @@ require('packer').startup({ function(use)
 			})
 		end
 	})
+	use ({ 'AndrewRadev/inline_edit.vim' })
+	use({'jghauser/mkdir.nvim', event = 'VimEnter'})
+	use({'Glench/Vim-Jinja2-Syntax', event = 'VimEnter'})
+	-- use({'lepture/vim-jinja', event = 'VimEnter'})
+
+	use({
+		'mattn/emmet-vim',
+		ft = { 'html', 'css', 'scss', 'xml' },
+	})
 
 	use({'ratheesh/hiPairs', event = 'VimEnter'})
 	if packer_bootstrap then
