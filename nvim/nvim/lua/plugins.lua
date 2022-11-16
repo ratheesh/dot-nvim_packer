@@ -194,17 +194,15 @@ require('packer').startup({ function(use)
 			})
 		end
 	})
+	use({ 'microsoft/python-type-stubs', opt = true, event = 'VimEnter' })
 	use({
 		'lvimuser/lsp-inlayhints.nvim',
 		disable = false,
+		branch = 'anticonceal',
 		event = { 'LspAttach' },
 		requires = { 'nvim-lspconfig' },
 		config = function ()
-			require("lsp-inlayhints").setup({
-				inlay_hints = {
-					only_current_line = true,
-				}
-			})
+			require("lsp-inlayhints").setup()
 		end
 	})
 	use({

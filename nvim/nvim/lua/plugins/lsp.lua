@@ -111,7 +111,7 @@ function M.setup()
 			vim.api.nvim_buf_set_option(bufnr, "tagfunc", "v:lua.vim.lsp.tagfunc")
 		end
 
-		if client.server_capabilities.inlayHintProvider or client.server_capabilities.clangdInlayHintsProvider then
+		if client.server_capabilities.inlayHintProvider then
 			require("lsp-inlayhints").on_attach(client, bufnr)
 		end
 		-- require('lsp-inlayhints').on_attach(client, bufnr)
