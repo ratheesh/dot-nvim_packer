@@ -7,13 +7,18 @@
 local M = {}
 
 function M.setup()
+
+	local lspconfig = require('lspconfig')
+	local configs   = require('lspconfig.configs')
+	local path      = require ('mason-core.path')
+
 	vim.fn.sign_define("DiagnosticSignError" , { text = "" , texthl = "DiagnosticError" })
 	vim.fn.sign_define("DiagnosticSignHint"  , { text = "" , texthl = "DiagnosticHint"  })
 	vim.fn.sign_define("DiagnosticSignInfo"  , { text = "" , texthl = "DiagnosticInfo"  })
 	vim.fn.sign_define("DiagnosticSignWarn"  , { text = "" , texthl = "DiagnosticWarn"  })
 
-	vim.lsp.handlers["textDocument/hover"]         = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
-	vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
+	-- vim.lsp.handlers["textDocument/hover"]         = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
+	-- vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
 
 	vim.lsp.buf.rename = {
 		float = function()
@@ -42,8 +47,7 @@ function M.setup()
 				line            = "cursor+2",
 				col             = "cursor-1"
 			})
-
-			local map_opts = { noremap = true, silent = true }
+			local map_opts = {}
 			vim.api.nvim_buf_set_keymap(0, "i", "<Esc>", "<cmd>stopinsert | q!<CR>", map_opts)
 			vim.api.nvim_buf_set_keymap(0, "n", "<Esc>", "<cmd>stopinsert | q!<CR>", map_opts)
 			vim.api.nvim_buf_set_keymap(0, "i", "<CR>",
@@ -75,7 +79,9 @@ function M.setup()
 	}
 	vim.diagnostic.config({ virtual_text = false, float = { show_header = false, border = "rounded" }})
 
-	local function on_init(client, _) client.offset_encoding = "utf-32" end
+	local function on_init(client, _)
+		client.offset_encoding = "utf-16"
+	end
 
 	local function on_attach(client, bufnr)
 		local function bufmap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
@@ -114,8 +120,20 @@ function M.setup()
 		if client.server_capabilities.inlayHintProvider then
 			require("lsp-inlayhints").on_attach(client, bufnr)
 		end
-		-- require('lsp-inlayhints').on_attach(client, bufnr)
-		-- require('inlay-hints').on_attach(client, bufnr)
+
+		require( "lsp_signature").setup({
+			bind 						= true,
+			wrap            = true,
+			floating_window = false,
+			doc_lines       = 0,
+			hint_enable     = true,
+			hint_prefix     = '🐼 ',
+			hint_scheme     = 'String',
+			hi_parameter    = 'LspSignatureActiveParameter',
+			handler_opts    = {
+				border = 'rounded'
+			}
+		}, bufnr)
 
 		if client.server_capabilities.colorProvider then
 			require("document-color").buf_attach(bufnr)
@@ -127,10 +145,9 @@ function M.setup()
 
 	end
 
-	local lspconfig = require("lspconfig")
-	local capabilities = vim.lsp.protocol.make_client_capabilities()
-	capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
-	-- capabilities.textDocument.completion.completionItem.snippetSupport = true
+	-- local capabilities = vim.lsp.protocol.make_client_capabilities()
+	local capabilities = require('cmp_nvim_lsp').default_capabilities()
+	capabilities.textDocument.completion.completionItem.snippetSupport = true
 	capabilities.textDocument.completion.completionItem.resolveSupport = {
 		properties = { "documentation", "detail", "additionalTextEdits" },
 	}
@@ -182,15 +199,15 @@ function M.setup()
 				references = {
 					includeDecompiledSources = true,
 				},
-				format = {
+				--[[ format = {
 					enabled = true,
 					settings = {
 						url = vim.fn.stdpath "config" .. "/lang-servers/intellij-java-google-style.xml",
 						profile = "GoogleStyle",
 					},
-				},
+				}, ]]
 			},
-			signatureHelp = { enabled = true },
+			-- signatureHelp = { enabled = true },
 			completion = {
 				favoriteStaticMembers = {
 					"org.hamcrest.MatcherAssert.assertThat",
@@ -229,7 +246,7 @@ function M.setup()
 		cmd = { '/bin/clangd', '--background-index', '--header-insertion=iwyu',
 			'--completion-style=detailed', '--pch-storage=memory', '--clang-tidy',
 			'--header-insertion-decorators', '--all-scopes-completion',
-			'--offset-encoding=utf-32' },
+			'--offset-encoding=utf-16', '--inlay-hints=false' },
 		flags = {
 			debounce_text_changes = 150,
 		};
@@ -239,9 +256,9 @@ function M.setup()
 			completeUnimported   = true,
 			semanticHighlighting = true,
 			InlayHints = {
-				Enabled        = true,
-				ParameterNames = true,
-				DeducedTypes   = true,
+				Enabled        = false,
+				ParameterNames = false,
+				DeducedTypes   = false,
 			},
 		};
 	})
