@@ -58,10 +58,10 @@ if vim.fn.filereadable(packer_compiled_path) == 1 then
 end
 
 require('packer').startup({ function(use)
-	use('lewis6991/impatient.nvim')
+	use({'lewis6991/impatient.nvim'})
 	use({
 		'kyazdani42/nvim-web-devicons',
-		event = 'VimEnter',
+		-- event = 'VimEnter',
 		config = function()
 			require('nvim-web-devicons').setup {
 				override = {
@@ -271,7 +271,7 @@ require('packer').startup({ function(use)
 		after = 'nvim-treesitter',
 		-- event = { 'VimEnter' },
 		config = function()
-			require 'nvim-lastplace'.setup({
+			require ('nvim-lastplace').setup({
 				lastplace_ignore_buftype = { 'quickfix', 'nofile', 'help' },
 				lastplace_ignore_filetype = { 'gitcommit', 'gitrebase', 'svn', 'hgcommit' },
 				lastplace_open_folds = true
@@ -654,7 +654,7 @@ require('packer').startup({ function(use)
 		'mfussenegger/nvim-dap',
 		opt   = true,
 		-- keys  = { '<f5>' },
-		ft = { 'python' },
+		-- ft = { 'python' },
 		-- event = 'VimEnter',
 		wants = { 'dressing.nvim', 'nvim-dap-virtual-text', 'nvim-dap-ui', 'nvim-dap-python' },
 		requires = {
@@ -739,7 +739,7 @@ require('packer').startup({ function(use)
 			require('treesitter-context').setup({
 				enable    = true,
 				throttle  = true,
-				separator = '─',
+				-- separator = '─',
 			})
 		end
 	})
@@ -895,7 +895,7 @@ require('packer').startup({ function(use)
 		'goolord/alpha-nvim',
 		disable  = false,
 		event    = 'VimEnter',
-		requires = { 'kyazdani42/nvim-web-devicons' },
+		after = { 'nvim-web-devicons' },
 		config   = function ()
 			-- require'alpha'.setup(require'alpha.themes.startify'.config)
 			local alpha    = require'alpha'
