@@ -321,14 +321,15 @@ require('packer').startup({ function(use)
 			})
 		end
 	})
-	use({ 'hrsh7th/cmp-nvim-lsp', event = 'VimEnter' })
+	-- use({ 'hrsh7th/cmp-nvim-lsp', event = 'VimEnter' })
 	use({
 		'neovim/nvim-lspconfig',
 		requires = 'cmp-nvim-lsp',
-		after    = 'cmp-nvim-lsp',
+		after    = { 'cmp-nvim-lsp', 'mason.nvim' },
 		-- event = 'VimEnter',
 		config = function()
 			require('plugins.lsp').setup()
+			-- require('plugins.lsp.init')
 			require('lspconfig.ui.windows').default_options.border = 'rounded'
 		end,
 	})
