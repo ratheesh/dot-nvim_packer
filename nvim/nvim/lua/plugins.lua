@@ -978,11 +978,11 @@ require('packer').startup({ function(use)
 	})
 	use({
 		'tpope/vim-surround',
-		disable = false,
+		disable = true,
 	})
 	use({
 		'kylechui/nvim-surround',
-		disable = true,
+		disable = false,
 		-- event = 'InsertEnter',
 		keys = {{'n', 'ys'}, {'n', 'ds'}, {'n', 'cs'}, {'x', 'S'}},
 		config = function ()
