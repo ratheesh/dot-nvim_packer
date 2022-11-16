@@ -518,14 +518,36 @@ require('packer').startup({ function(use)
 		event   = 'VimEnter',
 		config  = function() require('dressing').setup() end
 	})
-	use({ 'rafamadriz/friendly-snippets', event = { 'InsertEnter' }})
+	use({ 'rafamadriz/friendly-snippets', disable = false, event = { 'InsertEnter', 'CmdlineEnter' }})
+	use({
+		'L3MON4D3/LuaSnip',
+		disable = false,
+		requires = { 'rafamadriz/friendly-snippets' },
+		after = 'friendly-snippets',
+		config = function()
+			require('luasnip').config.set_config({ history = true, updateevents = 'TextChanged,TextChangedI', })
+			require('luasnip/loaders/from_vscode').lazy_load()
+		end,
+	})
+	use({ "saadparwaiz1/cmp_luasnip",            after = 'nvim-cmp' })
+	use({ 'hrsh7th/cmp-buffer',                    after = 'nvim-cmp' })
+	use({ 'hrsh7th/cmp-nvim-lsp',                  after = 'nvim-cmp' })
+	use({ 'hrsh7th/cmp-nvim-lua',                  after = 'nvim-cmp' })
+	use({ 'hrsh7th/cmp-cmdline',                   after = 'nvim-cmp' })
+	use({ 'kdheepak/cmp-latex-symbols',            after = 'nvim-cmp' })
+	use({ 'hrsh7th/cmp-path',                      after = 'nvim-cmp' })
+	use({ 'hrsh7th/cmp-nvim-lsp-signature-help',   after = 'nvim-cmp' })
+	use({ 'onsails/lspkind-nvim',                  after = 'nvim-cmp' })
+	--[[ use({ 'hrsh7th/cmp-vsnip',                     after = 'nvim-cmp' })
+	use({ 'hrsh7th/vim-vsnip',                     after = 'nvim-cmp' }) ]]
+	use({ 'nat-418/cmp-color-names.nvim',          after = 'nvim-cmp' })
+	use({ 'davidsierradz/cmp-conventionalcommits', after = 'nvim-cmp' })
 	use({
 		'hrsh7th/nvim-cmp',
 		disable = false,
-		-- after = 'friendly-snippets',
-		event = 'InsertEnter',
+		event = { 'InsertEnter', 'CmdlineEnter' },
 		requires = {
-			{ 'L3MON4D3/LuaSnip'     },
+			-- { 'L3MON4D3/LuaSnip'  },
 			{ 'hrsh7th/cmp-nvim-lsp' },
 			{ 'hrsh7th/cmp-buffer',       after = 'nvim-cmp' },
 			{ 'hrsh7th/cmp-path',         after = 'nvim-cmp' },

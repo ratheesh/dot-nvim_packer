@@ -45,7 +45,6 @@ function M.setup()
 			-- { name = 'nvim_lsp_signature_help' },
 			{ name = 'path'     },
 			{ name = 'nvim_lsp' },
-			{ name = 'luasnip'  },
 			{
 				name = 'buffer',
 				option = {
@@ -58,6 +57,7 @@ function M.setup()
 					end
 				},
 			},
+			{ name = 'luasnip'  },
 			{ name = 'nvim_lua' },
 			{ name = 'conventionalcommits' },
 		},
