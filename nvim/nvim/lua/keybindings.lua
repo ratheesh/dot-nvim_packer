@@ -81,6 +81,9 @@ map("n", "<leader>u", "<cmd>UndotreeToggle<CR>")
 map({ "i", "s" }, "<C-l>", "<cmd>lua require('luasnip').jump(1)<CR>")
 map({ "i", "s" }, "<C-h>", "<cmd>lua require('luasnip').jump(-1)<CR>")
 
+--[[ map({ "i", "s" }, "<C-l>", "<Plug>(vsnip-jump-next)")
+map({ "i", "s" }, "<C-h>", "<Plug>(vsnip-jump-prev)") ]]
+
 map({ "n", "x" }, "<leader>s", "<Plug>(sqls-execute-query)", { desc = "Exec SQL Query" })
 
 -- gitsigns
