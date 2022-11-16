@@ -449,6 +449,7 @@ require('packer').startup({ function(use)
 	})
 	use({
 		'j-hui/fidget.nvim',
+		disable = true,
 		opt   = true,
 		-- branch = 'menu-border',
 		event = 'LspAttach',
@@ -582,6 +583,7 @@ require('packer').startup({ function(use)
 	})
 	use({
 		'folke/which-key.nvim',
+		disable = true,
 		-- event = 'VimEnter',
 		keys = { '<space>' },
 		config = function()
