@@ -64,15 +64,15 @@ function M.setup()
 	}
 
 	ls.setup({
-		debug             = true,
-		debounce          = 50,
+		debug             = false,
+		debounce          = 150,
 		save_after_format = false,
 		sources           = sources,
 		root_dir          = nls_utils.root_pattern ".git",
-		-- filetypes         = { 'python', 'lua', 'gitcommit', 'c', 'cpp', 'html',  },
+		filetypes         = { 'python', 'lua', 'gitcommit', 'c', 'cpp', 'html',  },
 
 		on_init = function(new_client, _)
-			new_client.offset_encoding = 'utf-32'
+			new_client.offset_encoding = 'utf-16'
 		end,
 
 		on_attach = function(client, bufnr)
@@ -83,8 +83,7 @@ function M.setup()
 					buffer = bufnr,
 					callback = function()
 						if vim.bo.filetype == 'python' or vim.bo.filetype == 'html' or
-							vim.bo.filetype == 'css' or
-							vim.bo.filetype == 'gitcommit' then
+							vim.bo.filetype == 'css' or vim.bo.filetype == 'gitcommit' then
 							vim.lsp.buf.format({bufnr = bufnr})
 						end
 					end,
