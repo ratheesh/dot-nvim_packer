@@ -242,8 +242,8 @@ require('packer').startup({ function(use)
 	})
 	use({
 		'nvim-treesitter/nvim-treesitter',
-		event = { 'VimEnter' },
-		opt = true,
+		-- event = { 'VimEnter' },
+		-- opt = true,
 		run = ':TSUpdate',
 		module = 'treesitter',
 		config = function()
@@ -756,8 +756,8 @@ require('packer').startup({ function(use)
 	end
 	use({
 		'p00f/nvim-ts-rainbow',
-		event = 'LspAttach',
-		-- after = 'nvim-treesitter',
+		event = 'VimEnter',
+		after = { 'nvim-treesitter' },
 		requires = { 'nvim-treesitter' },
 	})
 	use({
@@ -791,7 +791,7 @@ require('packer').startup({ function(use)
 	use({
 		'RRethy/nvim-treesitter-endwise',
 		event = 'InsertEnter',
-		requires = { 'nvim-treesitter' },
+		after = { 'nvim-treesitter' },
 	})
 	use({
 		'windwp/nvim-autopairs',
@@ -914,7 +914,7 @@ require('packer').startup({ function(use)
 	use ({
 		'windwp/nvim-ts-autotag',
 		ft = { 'html', 'javascript', 'xml', 'markdown' },
-		wants  = 'nvim-treesitter',
+		wants  = 'treesitter',
 		-- event  = 'InsertEnter',
 		config = function()
 			require('nvim-ts-autotag').setup()
@@ -958,7 +958,7 @@ require('packer').startup({ function(use)
 	use({
 		'folke/noice.nvim',
 		disable = false,
-		-- after = 'nvim-lspconfig',
+		after = { 'nvim-lspconfig', 'nvim-treesitter' },
 		event = { 'VimEnter', 'CmdlineEnter' },
 		module = 'noice',
 		requires = {
