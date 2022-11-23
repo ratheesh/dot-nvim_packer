@@ -37,7 +37,8 @@ function M.setup()
 	cmp.setup({
 		window = {
 			completion    = cmp.config.window.bordered({
-				winhighlight = 'Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None'
+				winhighlight = 'Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None',
+				scrollbar = false,
 			}),
 			documentation = cmp.config.window.bordered({ winhighlight = 'Normal:CmpDocNormal' }),
 		},
@@ -83,10 +84,11 @@ function M.setup()
 		}, ]]
 		formatting = {
 			format = require('lspkind').cmp_format({
-				preset     = 'codicons',
-				mode       = 'symbol',
-				symbol_map = icons,
-				maxwidth   = 60,
+				preset        = 'codicons',
+				ellipsis_char = '...',
+				mode          = 'symbol',
+				symbol_map    = icons,
+				maxwidth      = 60,
 				before = function (entry, vim_item)
 					vim_item.menu = ({
 						luasnip  = '[Snippet]',
