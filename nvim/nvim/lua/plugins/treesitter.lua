@@ -17,7 +17,7 @@ require("nvim-treesitter.configs").setup({
 	autotag   = { enable = false },
 	endwise   = { enable = true },
 	textsubjects = {
-		enable         = false,
+		enable         = true,
 		prev_selection = ',',
 		keymaps  = {
 			['.']  = 'textsubjects-smart',
@@ -26,6 +26,15 @@ require("nvim-treesitter.configs").setup({
 		},
 	},
 	textobjects = {
+		incremental_selection = {
+			enable = true,
+			keymaps = {
+				init_selection    = '<CR>',
+				scope_incremental = '<CR>',
+				node_incremental  = '<TAB>',
+				node_decremental  = '<S-TAB>',
+			},
+		},
 		select = {
 			enable    = true,
 			lookahead = true,
@@ -35,11 +44,16 @@ require("nvim-treesitter.configs").setup({
 				["if"] = "@function.inner",
 				["ac"] = "@class.outer",
 				["ic"] = "@class.inner",
+				['al'] = '@loop.outer',
+				['il'] = '@loop.inner',
+				['aa'] = '@parameter.outer',
+				['ia'] = '@parameter.inner',
+				['uc'] = '@comment.outer',
 			},
 			selection_modes = {
-				['@function.outer']   = 'V', -- linewise
-				['@sparameter.outer'] = 'v', -- charwise
-				['@class.outer']      = '<c-v>', -- blockwise
+				['@function.outer']   = 'V',
+				['@sparameter.outer'] = 'v',
+				['@class.outer']      = '<c-v>',
 			},
 		},
 		swap = {
