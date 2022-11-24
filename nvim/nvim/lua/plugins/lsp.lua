@@ -491,6 +491,7 @@ lspconfig.pylance.setup {
 						[vim.fn.expand('$VIMRUNTIME/lua')] = true,
 						[vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
 					},
+					checkThirdParty = false,
 				},
 				telemetry = { enable = false },
 				diagnostics = {
