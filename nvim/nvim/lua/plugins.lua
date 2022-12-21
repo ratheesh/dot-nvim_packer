@@ -202,7 +202,7 @@ require('packer').startup({ function(use)
 		event = { 'LspAttach' },
 		requires = { 'nvim-lspconfig' },
 		config = function ()
-			require("lsp-inlayhints").setup()
+			require('lsp-inlayhints').setup()
 		end
 	})
 	use({
@@ -243,9 +243,9 @@ require('packer').startup({ function(use)
 	use({
 		'nvim-treesitter/nvim-treesitter',
 		-- event = { 'VimEnter' },
-		-- opt = true,
+		opt = false,
 		run = ':TSUpdate',
-		module = 'treesitter',
+		-- module = 'treesitter',
 		config = function()
 			require('plugins.treesitter')
 		end,
@@ -303,9 +303,10 @@ require('packer').startup({ function(use)
 	use({
 		'NvChad/nvim-colorizer.lua',
 		disable = false,
-		opt =  true,
-		after = { 'nvim-treesitter' },
-		module = 'colorizer',
+		event = 'VimEnter',
+		-- opt =  true,
+		-- after = { 'nvim-treesitter' },
+		-- module = 'colorizer',
 		config = function ()
 			require('colorizer').setup()
 			vim.cmd([[ColorizerAttachToBuffer]])
@@ -316,16 +317,16 @@ require('packer').startup({ function(use)
 		'folke/neodev.nvim',
 		event = 'VimEnter',
 		config = function()
-			require("neodev").setup({
+			require('neodev').setup({
 				plugins = false,
-				-- plugins = { "nvim-treesitter", "plenary.nvim" },
+				-- plugins = { 'nvim-treesitter', 'plenary.nvim' },
 			})
 		end
 	})
 	-- use({ 'hrsh7th/cmp-nvim-lsp', event = 'VimEnter' })
 	use({
 		'neovim/nvim-lspconfig',
-		requires = 'cmp-nvim-lsp',
+		requires = { 'cmp-nvim-lsp', 'nvim-treesitter' },
 		after    = { 'cmp-nvim-lsp', 'mason.nvim' },
 		-- event = 'VimEnter',
 		config = function()
@@ -344,12 +345,12 @@ require('packer').startup({ function(use)
 		end,
 	})
 	use ({
-		"ThePrimeagen/refactoring.nvim",
+		'ThePrimeagen/refactoring.nvim',
 		after = 'null-ls.nvim',
 		disable = false,
 		requires = {
-			{"nvim-lua/plenary.nvim"},
-			{"nvim-treesitter/nvim-treesitter"}
+			{'nvim-lua/plenary.nvim'},
+			{'nvim-treesitter/nvim-treesitter'}
 		}
 	})
 	use({
@@ -489,6 +490,7 @@ require('packer').startup({ function(use)
 	use({ 'nvim-treesitter/playground', event = 'LspAttach' })
 	use({
 		'rcarriga/nvim-notify',
+		disable = false,
 		event = 'VimEnter',
 		config = function()
 			require('notify').setup({ max_width = 40 })
@@ -496,7 +498,7 @@ require('packer').startup({ function(use)
 		end
 	})
 	use ({
-		"vigoux/notifier.nvim",
+		'vigoux/notifier.nvim',
 		disable = true,
 		event = 'VimEnter',
 		opt = true,
@@ -506,6 +508,7 @@ require('packer').startup({ function(use)
 					clear_time = 5000,
 					min_level = vim.log.levels.TRACE,
 				},
+				component_name_recall = false,
 			})
 		end
 	})
@@ -532,7 +535,7 @@ require('packer').startup({ function(use)
 			require('luasnip/loaders/from_vscode').lazy_load()
 		end,
 	})
-	use({ "saadparwaiz1/cmp_luasnip",            after = 'nvim-cmp' })
+	use({ 'saadparwaiz1/cmp_luasnip',            after = 'nvim-cmp' })
 	use({ 'hrsh7th/cmp-buffer',                    after = 'nvim-cmp' })
 	use({ 'hrsh7th/cmp-nvim-lsp',                  after = 'nvim-cmp' })
 	use({ 'hrsh7th/cmp-nvim-lua',                  after = 'nvim-cmp' })
@@ -567,7 +570,7 @@ require('packer').startup({ function(use)
 		'echasnovski/mini.indentscope',
 		event = 'CursorHold',
 		config = function()
-			require("mini.indentscope").setup({
+			require('mini.indentscope').setup({
 				symbol = '╎',
 			})
 		end,
@@ -604,7 +607,7 @@ require('packer').startup({ function(use)
 				pre_hook = function(ctx)
 					local line_start = (ctx.srow or ctx.range.srow) - 1
 					local line_end = ctx.erow or ctx.range.erow
-					-- require("lsp-inlayhints.core").clear(0, line_start, line_end)
+					-- require('lsp-inlayhints.core').clear(0, line_start, line_end)
 					vim.api.nvim_buf_clear_namespace(0, -1, line_start, line_end)
 				end,
 				post_hook = nil,
@@ -932,6 +935,7 @@ require('packer').startup({ function(use)
 	})
 	use ({
 		'windwp/nvim-ts-autotag',
+		disable = true,
 		ft = { 'html', 'javascript', 'xml', 'markdown' },
 		wants  = 'treesitter',
 		-- event  = 'InsertEnter',
@@ -1126,7 +1130,7 @@ require('packer').startup({ function(use)
 	})
 	use({
 		'majutsushi/tagbar',
-		disable = false,
+		disable = true,
 		opt = true,
 		cmd = { 'TagbarToggle', 'Tagbar' },
 		keys = { '<f4>' },
@@ -1193,7 +1197,7 @@ require('packer').startup({ function(use)
 		ft = { 'html', 'css', 'scss', 'xml' },
 	})
 
-	use({'ratheesh/hiPairs', event = 'VimEnter'})
+	-- use({'ratheesh/hiPairs', event = 'VimEnter'})
 	if packer_bootstrap then
 		require('packer').sync()
 	end
