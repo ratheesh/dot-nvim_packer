@@ -246,9 +246,9 @@ function M.setup()
 		on_attach    = on_attach,
 		capabilities = capabilities,
 		cmd = { '/bin/clangd', '--background-index', '--header-insertion=iwyu',
-			'--completion-style=detailed', '--pch-storage=memory', '--clang-tidy',
+			'--completion-style=bundled', '--function-arg-placeholders', '--malloc-trim', '--pch-storage=memory', '--clang-tidy',
 			'--header-insertion-decorators', '--all-scopes-completion',
-			'--offset-encoding=utf-16', '--inlay-hints=false' },
+			'--offset-encoding=utf-16', '--inlay-hints=true' },
 		flags = {
 			debounce_text_changes = 150,
 		};
@@ -259,8 +259,8 @@ function M.setup()
 			semanticHighlighting = true,
 			InlayHints = {
 				Enabled        = false,
-				ParameterNames = false,
-				DeducedTypes   = false,
+				ParameterNames = true,
+				DeducedTypes   = true,
 			},
 		};
 	})
