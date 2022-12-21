@@ -103,6 +103,7 @@ require('packer').startup({ function(use)
 	use({ 'psliwka/vim-smoothie', keys = { '<c-u>', '<c-d>' }})
 	use({
 		'mbbill/undotree',
+		disable = true,
 		cmd = { 'UndotreeToggle' },
 		keys = { '<space>u' },
 		config = function ()
