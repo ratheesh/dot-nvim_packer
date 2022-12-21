@@ -15,7 +15,7 @@ function M.setup()
 	vim.fn.sign_define("DiagnosticSignError" , { text = "" , texthl = "DiagnosticError" })
 	vim.fn.sign_define("DiagnosticSignHint"  , { text = "" , texthl = "DiagnosticHint"  })
 	vim.fn.sign_define("DiagnosticSignInfo"  , { text = "" , texthl = "DiagnosticInfo"  })
-	vim.fn.sign_define("DiagnosticSignWarn"  , { text = "" , texthl = "DiagnosticWarn"  })
+	vim.fn.sign_define("DiagnosticSignWarn"  , { text = "" , texthl = "DiagnosticWarn"  })
 
 	-- vim.lsp.handlers["textDocument/hover"]         = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
 	-- vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
