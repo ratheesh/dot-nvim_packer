@@ -88,7 +88,8 @@ map("n", "<leader>ft", "<cmd>Telescope lsp_document_symbols<CR>")
 map("n", "<leader>fw", "<cmd>Telescope lsp_dynamic_workspace_symbols,<CR>")
 
 -- tagbar
-map("n", "<f4>", ":TagbarToggle<CR>")
+-- map("n", "<f4>", ":TagbarToggle<CR>")
+map("n", "<f4>", "<cmd>lua require('lsp-inlayhints').toggle()<CR>")
 
 map("n", "<F3>", "<cmd>TroubleToggle<CR>")
 -- map("n", "<leader>xw", "<cmd>TroubleToggle lsp_workspace_diagnostics<CR>")
@@ -115,6 +116,9 @@ map({ "i", "s" }, "<C-h>", "<cmd>lua require('luasnip').jump(-1)<CR>")
 map({ "i", "s" }, "<C-h>", "<Plug>(vsnip-jump-prev)") ]]
 
 map({ "n", "x" }, "<leader>s", "<Plug>(sqls-execute-query)", { desc = "Exec SQL Query" })
+
+map("n", "<leader>d", '<cmd>lua require"popui.diagnostics-navigator"()<CR>')
+map("n", "<leader>m", '<cmd>lua require"popui.marks-manager"()<CR>')
 
 -- gitsigns
 vim.api.nvim_create_user_command("Stage", function(t) gitsigns.stage_hunk({ t.line1, t.line2 }) end, { range = true })
