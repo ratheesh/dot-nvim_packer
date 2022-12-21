@@ -719,7 +719,22 @@ require('packer').startup({ function(use)
 		config = function() require('nvim-dap-virtual-text').setup() end
 	})
 	use({
+		'nvim-telescope/telescope.nvim',
+		disable = false,
+		requires = {
+			{ 'nvim-lua/plenary.nvim' },
+			{ 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 },
+			{ 'nvim-telescope/telescope-project.nvim' },
+			{ 'desdic/telescope-rooter.nvim' },
+			{ 'debugloop/telescope-undo.nvim' },
+		},
+		config = function()
+			require('plugins.telescope').setup()
+		end
+	})
+	use({
 		'Yggdroot/LeaderF',
+		disable = true,
 		cmd = { 'Leaderf', 'LeaderfRgInteractive' },
 		run = '<cmd>LeaderfInstallCExtension<cr>',
 		config = function()

@@ -74,11 +74,18 @@ map("i", ".", ".<C-g>u")
 map("i", "!", "!<C-g>u")
 map("i", "?", "?<C-g>u")
 
--- Leaderf 
-map("n", "<leader>fo", "<cmd>Leaderf file<CR>")
+-- Leaderf
+--[[ map("n", "<leader>fo", "<cmd>Leaderf file<CR>")
 map("n", "<leader>fr", "<cmd>Leaderf mru<CR>")
-map("n", "<leader>ft", "<cmd>Leaderf bufTag<CR>")
 map("n", "<leader>d/", "<cmd>LeaderfRgInteractive<CR>")
+map("n", "<leader>ft", "<cmd>Leaderf bufTag<CR>") ]]
+
+map("n", "<leader>fo", "<cmd>Telescope find_files<CR>")
+map("n", "<leader>fr", "<cmd>Telescope oldfiles<CR>")
+map("n", "<leader>d/", "<cmd>Telescope live_grep<CR>")
+map("n", "<leader>ft", "<cmd>Telescope lsp_document_symbols<CR>")
+map("n", "<leader>ft", "<cmd>Telescope lsp_document_symbols<CR>")
+map("n", "<leader>fw", "<cmd>Telescope lsp_dynamic_workspace_symbols,<CR>")
 
 -- tagbar
 map("n", "<f4>", ":TagbarToggle<CR>")
