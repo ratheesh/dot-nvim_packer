@@ -26,11 +26,17 @@ local has_words_before = function()
 end
 
 local icons = {
-	Text     = '',  Method = '', Function  = '', Constructor = '', Field         = 'ﰠ',
+  Text     = ' ' , Method = ' ' , Function  = ' ' , Constructor = ' ' , Field         = ' ' ,
+  Variable = ' ' , Class  = ' ' , Interface = ' ' , Module      = ' ' , Property      = ' ' ,
+  Unit     = ' ' , Value  = ' ' , Enum      = ' ' , Keyword     = ' ' , Snippet       = ' ' ,
+	color    = ' ' , File   = ' ' , Reference = ' ' , Folder      = ' ' , Enummember    = ' ' ,
+	Constant = ' ' , Struct = 'פּ ' , Event     = ' ' , Operator    = ' ' , Typeparameter = ' ' ,
+
+	--[[ Text     = '',  Method = '', Function  = '', Constructor = '', Field         = 'ﰠ',
 	Variable = '',  Class  = 'ﴯ', Interface = '', Module      = '', Property      = 'ﰠ',
 	Unit     = '塞', Value  = '', Enum      = '', Keyword     = '', Snippet       = '',
 	Color    = '',  File   = '', Reference = '', Folder      = '', EnumMember    = '',
-	Constant = '',  Struct = 'פּ', Event     = '', Operator    = '', TypeParameter = '',
+	Constant = '',  Struct = 'פּ', Event     = '', Operator    = '', TypeParameter = '', ]]
 }
 
 function M.setup()
@@ -83,6 +89,7 @@ function M.setup()
 			},
 		}, ]]
 		formatting = {
+			fields = { 'kind', 'abbr', 'menu'},
 			format = require('lspkind').cmp_format({
 				preset        = 'codicons',
 				ellipsis_char = '...',
@@ -91,12 +98,12 @@ function M.setup()
 				maxwidth      = 60,
 				before = function (entry, vim_item)
 					vim_item.menu = ({
-						luasnip  = '[Snippet]',
-						nvim_lsp = '[LSP]',
-						nvim_lua = '[Neovim]',
-						buffer   = '[Buffer]',
-						path     = '[Path]',
-						cmp_tabnine = '[T9]',
+						luasnip     = 'SNP',
+						nvim_lsp    = 'LSP',
+						nvim_lua    = 'NVM',
+						buffer      = 'BUF',
+						path        = 'PATH',
+						cmp_tabnine = 'T9',
 					})[entry.source.name]
 					return vim_item
 				end
