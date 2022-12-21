@@ -89,7 +89,7 @@ function M.setup()
 		local opts = { noremap = true, silent = true }
 		bufmap("n" , "gD"         , "<cmd>lua vim.lsp.buf.declaration()<CR>"       , opts)
 		bufmap("n" , "gd"         , "<cmd>lua vim.lsp.buf.definition()<CR>"        , opts)
-		bufmap("n" , "K"          , "<cmd>lua vim.lsp.buf.hover()<CR>"             , opts)
+		-- bufmap("n" , "K"          , "<cmd>lua vim.lsp.buf.hover()<CR>"             , opts)
 		-- bufmap("n" , "<leader>gi"         , "<cmd>lua vim.lsp.buf.implementation()<CR>"    , opts)
 		-- bufmap("n" , "gk"         , "<cmd>lua vim.lsp.buf.signature_help()<CR>"    , opts)
 		-- bufmap("n" , "<leader>D"  , "<cmd>lua vim.lsp.buf.type_definition()<CR>"   , opts)
