@@ -11,18 +11,13 @@ function M.setup()
 			view = 'cmdline_popup',
 			format = {
 				cmdline     = { icon = '>_' },
-				--[[ search_down = { icon = '⌄' },
-				search_up   = { icon = '⌃' }, ]]
-				--[[ filter      = { icon = '$' },
-				lua         = { icon = ''  },
-				help        = { icon = '?' }, ]]
 			},
 		},
 		messages = {
-			enabled      = true,
-			view         = 'mini',
-			view_error   = 'notify',
-			view_warn    = 'notify',
+			enabled = true,
+			view = 'mini',
+			view_warn = 'mini',
+			view_error = 'mini',
 			view_history = 'messages',
 			view_search  = 'virtualtext',
 		},
@@ -44,7 +39,7 @@ function M.setup()
 				},
 			},
 			notify = {
-				enabled = true,
+				enabled = false,
 				view = 'notify',
 			},
 			progress = {
@@ -54,12 +49,27 @@ function M.setup()
 				throttle = 1000 / 10,
 				view = 'mini',
 			},
+			documentation = {
+				view = "hover",
+				---@type NoiceViewOptions
+				opts = {
+					-- lang = "markdown",
+					replace = true,
+					render = "plain",
+					format = { "{message}" },
+					win_options = { concealcursor = "n", conceallevel = 3 },
+				},
+			},
 		},
 		notify = {
 			enabled = true,
 		},
 		health = {
 			checker = true,
+		},
+		smart_move = {
+			enabled = true,
+			excluded_filetypes = { "cmp_menu", "cmp_docs", "notify" },
 		},
 		presets = {
 			bottom_search = true,
@@ -68,48 +78,85 @@ function M.setup()
 			inc_rename = true,
 		},
 		views = {
+			mini = {
+				position = {
+					row = '95%',
+					col = '98%',
+				},
+			},
 			cmdline_popup = {
 				position = {
-					row = '40%',
-					col = "50%",
+					row = '30%',
+					col = '50%',
 				},
 				size = {
-					width = 50,
+					width = '40%',
 					height = 'auto',
 				},
 			},
 			popupmenu = {
 				relative = 'editor',
 				position = {
-					row = "45%",
-					col = '50%',
+					row = 8,
+					col = "50%",
 				},
 				size = {
-					width = 50,
+					width  = '40%',
+					height = 10,
 				},
-				height = 12,
 				border = {
-					style = 'rounded',
+					style = "rounded",
 					padding = { 0, 1 },
 				},
 				win_options = {
-					winhighlight = { Normal = 'Normal', FloatBorder = 'DiagnosticInfo' },
+					winhighlight = { Normal = "Normal", FloatBorder = "DiagnosticInfo" },
 				},
 			},
 		},
 		routes = {
+			filter = {
+				event = 'msg_show',
+				kind = '',
+				find = '%d+B written',
+			},
+			opts = { skip = true },
 			{
 				filter = {
-					event = "msg_show",
-					kind = "",
+					event = 'msg_show',
+					kind = '',
+					find = 'before #%d+',
+				},
+				opts = { skip = true },
+			},
+			{
+				filter = {
+					event = 'msg_show',
+					kind = '',
 					find = 'written',
 				},
 				opts = { skip = true },
 			},
+			{
+				filter = {
+					event = 'msg_show',
+					kind = '',
+					find = 'more lines?',
+				},
+				opts = { skip = true },
+			},
+			{
+				filter = {
+					event = 'msg_show',
+					kind = '',
+					find = 'lines? yank',
+				},
+				opts = { skip = true },
+
+			},
 		},
 		format = {
 			spinner = {
-				name = 'moon',
+				name = 'aesthetic',
 				hl_group = nil,
 			},
 		},
