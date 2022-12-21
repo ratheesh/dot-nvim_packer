@@ -121,6 +121,8 @@ function M.setup()
 			require("lsp-inlayhints").on_attach(client, bufnr)
 		end
 
+		client.server_capabilities.semanticTokensProvider = nil
+
 		require( "lsp_signature").setup({
 			bind 						= true,
 			wrap            = true,
@@ -154,9 +156,9 @@ function M.setup()
 	capabilities.textDocument.colorProvider = { dynamicRegistration = true }
 	-- capabilities.offsetEncoding = "utf-32"
 
-		if capabilities.semanticTokensProvider and capabilities.semanticTokensProvider.full then
-			vim.cmd [[autocmd BufEnter,CursorHold,InsertLeave <buffer> lua vim.lsp.buf.semantic_tokens_full()]]
-		end
+		--[[ if capabilities.semanticTokensProvider and capabilities.semanticTokensProvider.full then
+			vim.cmd [[autocmd BufEnter,CursorHold,InsertLeave <buffer> lua vim.lsp.buf.semantic_tokens_full()
+		end ]]
 
 		if capabilities.documentHighlightProvider then
 			local group = vim.api.nvim_create_augroup("DocumentHighlight", {})
