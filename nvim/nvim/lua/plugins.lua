@@ -170,6 +170,13 @@ require('packer').startup({ function(use)
 		end
 	})
 	use({
+		'akinsho/git-conflict.nvim',
+		disable = false,
+		config = function()
+			 require('git-conflict').setup()
+		end
+	})
+	use({
 		'sindrets/diffview.nvim',
 		module = 'neogit',
 		cmd    = 'Neogit',
@@ -484,6 +491,20 @@ require('packer').startup({ function(use)
 			require('lsp_lines').setup()
 			vim.keymap.set( '', '<Leader>L', require('lsp_lines').toggle, { desc = 'Toggle lsp_lines' })
 			vim.defer_fn(function() vim.diagnostic.config({ virtual_lines = false }) end, 50)
+		end,
+	})
+	use({
+		'dnlhc/glance.nvim',
+		disable = false,
+		event = 'LspAttach',
+		config = function()
+			require('glance').setup({
+				border = {
+					enable      = true,
+					top_char    = '─',
+					bottom_char = '─',
+				},
+			})
 		end,
 	})
 	-- use({ 'RRethy/vim-illuminate', after = 'fidget.nvim' })
@@ -1029,13 +1050,13 @@ require('packer').startup({ function(use)
 		-- event = { 'CursorHold' }
 	})
 	use ({
-		"danymat/neogen",
+		'danymat/neogen',
 		disable = false,
 		event = 'VimEnter',
 		config = function()
 			require('neogen').setup {}
 		end,
-		requires = "nvim-treesitter/nvim-treesitter",
+		requires = 'nvim-treesitter/nvim-treesitter',
 	})
 	use({
 		'tpope/vim-surround',
@@ -1070,6 +1091,14 @@ require('packer').startup({ function(use)
 		ft  = { 'python' },
 		cmd = { 'Codi' },
 		config = function ()
+		end
+	})
+	use({
+		'hood/popui.nvim',
+		disable = false,
+		config = function()
+			vim.ui.select = require('popui.ui-overrider')
+			vim.ui.input = require('popui.input-overrider')
 		end
 	})
 	use({
@@ -1140,6 +1169,13 @@ require('packer').startup({ function(use)
 			vim.g.tagbar_expand           = 0;
 			vim.g.tagbar_show_linenumbers = 0;
 			vim.g.tagbar_autoshowtag      = 1;
+		end
+	})
+	use({
+		'simrat39/symbols-outline.nvim',
+		disable = false,
+		config = function()
+			require('symbols-outline').setup()
 		end
 	})
 	use({
