@@ -615,12 +615,15 @@ require('packer').startup({ function(use)
 		disable = false,
 		event = 'VimEnter',
 		cmd = { 'Neotree' },
+		requires = {
+			'MunifTanjim/nui.nvim',
+    },
 		config = function ()
-			require("neo-tree").setup({
+			require('neo-tree').setup({
 				close_if_last_window = false,
 				enable_diagnostics = true,
 				enable_git_status = true,
-				popup_border_style = "rounded",
+				popup_border_style = 'rounded',
 				sort_case_insensitive = false,
 				filesystem = {
 					filtered_items = {
