@@ -48,10 +48,16 @@ function M.setup()
 			}),
 			documentation = cmp.config.window.bordered({ winhighlight = 'Normal:CmpDocNormal' }),
 		},
+	view = {
+			entries = "custom", -- can be "custom", "wildmenu" or "native"
+			winhighlight = 'Normal:WildStatus,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None',
+		},
 		sources = {
 			-- { name = 'nvim_lsp_signature_help' },
 			{ name = 'path'     },
 			{ name = 'nvim_lsp' },
+			{ name = 'luasnip'  },
+			{ name = 'nvim_lua' },
 			{
 				name = 'buffer',
 				option = {
@@ -64,8 +70,6 @@ function M.setup()
 					end
 				},
 			},
-			{ name = 'luasnip'  },
-			{ name = 'nvim_lua' },
 			{ name = 'conventionalcommits' },
 		},
 		experimental = {
@@ -146,8 +150,16 @@ function M.setup()
 end
 
 -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+local cmdline_view = {
+	entries = {
+		name = 'wildmenu',
+		separator = ' • ',
+},
+		winhighlight = 'Normal:WildStatus,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None',
+}
 cmp.setup.cmdline({ '/', '?' }, {
 	mapping = cmp.mapping.preset.cmdline(),
+	view = cmdline_view,
 	sources = {
 		{ name = 'buffer' }
 	}
@@ -156,6 +168,7 @@ cmp.setup.cmdline({ '/', '?' }, {
 -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline(':', {
 	mapping = cmp.mapping.preset.cmdline(),
+	-- view = cmdline_view,
 	sources = cmp.config.sources({
 		{ name = 'path' }
 	}, {
