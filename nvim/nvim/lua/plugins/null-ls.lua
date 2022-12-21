@@ -34,7 +34,7 @@ function M.setup()
 		ls.builtins.formatting.prettier.with({
 			filetypes = { 'html', 'css', 'yaml', 'markdown', 'json', 'javascript' },
 		}),
-		ls.builtins.formatting.stylelint,
+		-- ls.builtins.formatting.stylelint,
 		-- ls.builtins.formatting.stylua,
 
 		-- diagnostics
@@ -46,7 +46,7 @@ function M.setup()
 		ls.builtins.diagnostics.flake8,
 		-- ls.builtins.diagnostics.mypy,
 		ls.builtins.diagnostics.cmake_lint,
-		ls.builtins.diagnostics.stylelint,
+		-- ls.builtins.diagnostics.stylelint,
 		ls.builtins.diagnostics.trail_space,
 		ls.builtins.diagnostics.gitlint.with {
 			extra_args = { '--contrib=contrib-title-conventional-commits', '--ignore=body-is-missing' },
@@ -56,7 +56,7 @@ function M.setup()
 
 		-- code actions
 		ls.builtins.code_actions.refactoring,
-		ls.builtins.code_actions.refactoring,
+		-- ls.builtins.code_actions.refactoring,
 		ls.builtins.code_actions.proselint,
 		ls.builtins.code_actions.eslint_d,
 		ls.builtins.code_actions.gitsigns,
