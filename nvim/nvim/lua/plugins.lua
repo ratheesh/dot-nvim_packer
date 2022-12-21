@@ -258,11 +258,12 @@ require('packer').startup({ function(use)
 	})
 	use({
 		'xiyaowong/virtcolumn.nvim',
-		disable = true,
+		disable = false,
 		-- event   = 'LspAttach',
-		ft      = { 'gitcommit', 'c' },
+		-- ft      = { 'gitcommit', 'c' },
 		config = function ()
-			vim.g.virtcolumn_char     = '│'
+			-- vim.g.virtcolumn_char     = '│'
+			vim.g.virtcolumn_char = '▕'
 			vim.g.virtcolumn_priority = 0
 		end
 	})
