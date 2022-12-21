@@ -399,11 +399,11 @@ lspconfig.pylance.setup {
 		on_attach    = on_attach,
 		capabilities = capabilities,
 	})
-	--[[ lspconfig.tailwindcss.setup({
+	lspconfig.tailwindcss.setup({
 		on_init      = on_init,
 		on_attach    = on_attach,
 		capabilities = capabilities,
-	}) ]]
+	})
 
 	require'lspconfig'.cssmodules_ls.setup {
 		on_init = on_init,
@@ -421,6 +421,7 @@ lspconfig.pylance.setup {
 					'html',
 					'css',
 					'scss',
+					'javascript',
 					'javascriptreact',
 					'typescriptreact',
 					'haml',
